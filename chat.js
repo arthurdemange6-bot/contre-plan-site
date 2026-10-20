@@ -3,7 +3,7 @@
   var COMEUP = "https://comeup.com/fr/@contreplan";
   var KB = [
     { q: "Combien ça coûte ?", k: ["prix", "tarif", "coût", "cout", "combien", "€", "euro", "cher"],
-      a: "L'analyse d'un devis coûte 33 € sur ComeUp. Options : 2e devis + 16,50 €, comparatif de plusieurs devis + 22 €, livraison express en 24 h + 11 €. Pas de TVA." },
+      a: "L'analyse d'un devis coûte 22 € sur ComeUp (prix de lancement réservé aux premiers clients, au lieu de 33 €). Options : 2e devis + 16,50 €, comparatif de plusieurs devis + 22 €, livraison express en 24 h + 11 €. Pas de TVA." },
     { q: "Quel est le délai ?", k: ["délai", "delai", "quand", "combien de temps", "rapide", "express", "24", "48", "jours"],
       a: "Vous recevez votre rapport PDF sous 48 h après l'envoi du devis, ou 24 h avec l'option express." },
     { q: "Comment ça marche ?", k: ["comment", "marche", "fonctionne", "étapes", "etapes", "commander", "procédure"],
