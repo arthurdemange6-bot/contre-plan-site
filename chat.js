@@ -16,10 +16,12 @@
       a: "Vous pouvez masquer votre nom et votre adresse sur le devis : seuls les postes, quantités et prix sont utiles. Votre devis n'est jamais partagé." },
     { q: "Vous déplacez-vous ?", k: ["déplace", "deplace", "visite", "chantier", "venir", "sur place", "expertise", "litige", "avocat"],
       a: "Non, le service est 100 % à distance. Ce n'est ni une expertise judiciaire ni une maîtrise d'œuvre, et je n'interviens pas dans un litige déjà en cours." },
+    { q: "Peut-on en parler par téléphone ?", k: ["appel", "téléphone", "telephone", "parler", "visio", "rendez-vous", "rdv", "joindre"],
+      a: "Oui : vous pouvez réserver un appel gratuit de 15 min en visio pour présenter votre projet : https://calendar.app.google/6LCc6yKVHnbvA3WN7" },
     { q: "Qui analyse mon devis ?", k: ["qui", "ingénieur", "ingenieur", "expérience", "experience", "compétent", "fiable", "commission", "indépendant"],
       a: "Un ingénieur BTP qui pilote des chantiers depuis 2020. Indépendant : aucune commission d'artisan, aucune entreprise à vous revendre." }
   ];
-  var FALLBACK = "Je n'ai pas la réponse à cette question. Écrivez directement à contact@contre-plan.com, ou posez-la sur ComeUp avant de commander.";
+  var FALLBACK = "Je n'ai pas la réponse à cette question. Écrivez à contact@contre-plan.com, ou réservez un appel gratuit de 15 min : https://calendar.app.google/6LCc6yKVHnbvA3WN7";
 
   var css = "#cp-chat-btn{position:fixed;right:20px;bottom:20px;z-index:9999;display:flex;align-items:center;gap:10px;background:#d4561f;color:#fff;border:0;border-radius:999px;padding:14px 20px;font:700 16px 'Source Sans 3',Arial,sans-serif;box-shadow:0 8px 24px rgba(0,0,0,.3);cursor:pointer}" +
     "#cp-chat-btn:hover{background:#b8461a}" +
