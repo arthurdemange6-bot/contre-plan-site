@@ -82,6 +82,7 @@
     setTimeout(function () {
       var m = add(e ? e.a : FALLBACK, "bot");
       var a = document.createElement("a"); a.href = COMEUP; a.className = "cp-cta"; a.target = "_blank"; a.rel = "noopener"; a.textContent = "Faire analyser mon devis";
+      a.onclick = function () { try { window.goatcounter && window.goatcounter.count({ path: "clic-comeup-chat", event: true }); } catch (x) {} };
       m.appendChild(document.createElement("br")); m.appendChild(a);
     }, 250);
   }
