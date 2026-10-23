@@ -4,22 +4,28 @@
   var KB = [
     { q: "Combien ça coûte ?", k: ["prix", "tarif", "coût", "cout", "combien", "€", "euro", "cher"],
       a: "L'analyse d'un devis coûte 16,50 € sur ComeUp (prix de lancement −50 %, au lieu de 33 €). Options : 2e devis + 11 €, comparatif de plusieurs devis + 16,50 €, livraison express en 24 h + 5,50 €. Pas de TVA." },
-    { q: "Quel est le délai ?", k: ["délai", "delai", "quand", "combien de temps", "rapide", "express", "24", "48", "jours"],
+    { q: "Quel est le délai ?", k: ["délai", "délai ", "delai", "quand", "recevoir", "sous combien", "combien de temps", "rapide", "express", "24", "48", "jours"],
       a: "Vous recevez votre rapport PDF sous 48 h après l'envoi du devis, ou 24 h avec l'option express." },
     { q: "Comment ça marche ?", k: ["comment", "marche", "fonctionne", "étapes", "etapes", "commander", "procédure"],
       a: "1. Vous commandez sur ComeUp. 2. Vous envoyez votre devis en PDF ou en photo. 3. Vous recevez un rapport avec un verdict, les prix poste par poste, les oublis et les questions à poser à l'artisan." },
     { q: "Que contient le rapport ?", k: ["rapport", "contient", "reçois", "recois", "livrable", "pdf", "exemple"],
-      a: "Un verdict global (cohérent, négociable ou signaux d'alerte), le contrôle des prix poste par poste, les postes oubliés, les incohérences d'enchaînement des travaux, les questions à poser avant de signer, et un échange de suivi inclus." },
+      a: "Un verdict global (cohérent, négociable ou signaux d'alerte), le contrôle des prix poste par poste, les postes oubliés, les incohérences d'enchaînement des travaux, les questions à poser avant de signer, et un échange de suivi inclus.", l: ["/exemple-rapport-contre-plan.pdf", "Voir un exemple de rapport complet (PDF)"] },
     { q: "Quels travaux analysez-vous ?", k: ["travaux", "type", "salle de bain", "cuisine", "isolation", "toiture", "pompe", "pac", "électricité", "electricite", "plomberie", "maçonnerie", "extension", "fenêtre", "menuiserie"],
-      a: "Rénovation et construction : salle de bain, cuisine, isolation, toiture, pompe à chaleur, électricité, plomberie, maçonnerie, menuiseries, extension…" },
+      a: "Rénovation et construction : salle de bain, cuisine, isolation, toiture, pompe à chaleur, électricité, plomberie, maçonnerie, menuiseries, extension…", l: ["/#travaux", "Ce que je vérifie selon vos travaux"] },
     { q: "Mes données sont-elles protégées ?", k: ["données", "donnees", "confidentiel", "nom", "adresse", "personnel", "sécurité", "partag"],
-      a: "Vous pouvez masquer votre nom et votre adresse sur le devis : seuls les postes, quantités et prix sont utiles. Votre devis n'est jamais partagé." },
+      a: "Vous pouvez masquer votre nom et votre adresse sur le devis : seuls les postes, quantités et prix sont utiles. Votre devis n'est jamais partagé.", l: ["/engagements.html", "Mes engagements de confidentialité"] },
     { q: "Vous déplacez-vous ?", k: ["déplace", "deplace", "visite", "chantier", "venir", "sur place", "expertise", "litige", "avocat"],
       a: "Non, le service est 100 % à distance. Ce n'est ni une expertise judiciaire ni une maîtrise d'œuvre, et je n'interviens pas dans un litige déjà en cours." },
     { q: "Peut-on en parler par téléphone ?", k: ["appel", "téléphone", "telephone", "parler", "visio", "rendez-vous", "rdv", "joindre"],
       a: "Oui : vous pouvez réserver un appel gratuit de 15 min en visio pour présenter votre projet : https://calendar.app.google/6LCc6yKVHnbvA3WN7" },
+    { q: "Quel acompte verser ?", k: ["acompte", "arrhes", "verser", "signature", "payer", "paiement", "échéancier", "echeancier", "solde", "avance"],
+      a: "L'usage est d'environ 30 % à la signature, puis des paiements liés à l'avancement et le solde à la réception. Un acompte de 50 % ou plus mérite d'être négocié.", l: ["/guide-acompte-paiement-devis-travaux.html", "Le guide acompte et paiement"] },
+    { q: "Quel taux de TVA ?", k: ["tva", "taux", "5,5", "10 %", "20 %", "taxe"],
+      a: "5,5 % pour la rénovation énergétique, 10 % pour l'amélioration d'un logement de plus de 2 ans, 20 % dans les autres cas (neuf, agrandissement, certains équipements). Le taux doit correspondre à vos travaux.", l: ["/guide-tva-travaux-renovation.html", "Le guide TVA"] },
+    { q: "Que veut dire ce mot ?", k: ["mot", "terme", "signifie", "veut dire", "définition", "definition", "lexique", "ragréage", "forfait", "ml"],
+      a: "Les termes courants d'un devis (forfait, ml, P.U., ragréage, SPEC, RGE, réception…) sont expliqués simplement dans le lexique.", l: ["/lexique-devis-travaux.html", "Ouvrir le lexique"] },
     { q: "Qui analyse mon devis ?", k: ["qui", "ingénieur", "ingenieur", "expérience", "experience", "compétent", "fiable", "commission", "indépendant"],
-      a: "Un ingénieur BTP qui pilote des chantiers depuis 2020. Indépendant : aucune commission d'artisan, aucune entreprise à vous revendre." }
+      a: "Un ingénieur BTP qui pilote des chantiers depuis 2020. Indépendant : aucune commission d'artisan, aucune entreprise à vous revendre.", l: ["/methode.html", "Voir ma méthode"] }
   ];
   var FALLBACK = "Je n'ai pas la réponse à cette question. Écrivez à contact@contre-plan.com, ou réservez un appel gratuit de 15 min : https://calendar.app.google/6LCc6yKVHnbvA3WN7";
 
@@ -73,7 +79,7 @@
   function norm(s) { return s.toLowerCase(); }
   function find(t) {
     var n = norm(t), best = null, score = 0;
-    KB.forEach(function (e) { var s = 0; e.k.forEach(function (k) { if (n.indexOf(k) !== -1) s++; }); if (s > score) { score = s; best = e; } });
+    KB.forEach(function (e) { var s = 0; e.k.forEach(function (k) { if (n.indexOf(k) !== -1) s += k.length; }); if (s > score) { score = s; best = e; } });
     return best;
   }
   function ask(text, entry) {
@@ -83,6 +89,7 @@
       var m = add(e ? e.a : FALLBACK, "bot");
       var a = document.createElement("a"); a.href = COMEUP; a.className = "cp-cta"; a.target = "_blank"; a.rel = "noopener"; a.textContent = "Faire analyser mon devis";
       a.onclick = function () { try { window.goatcounter && window.goatcounter.count({ path: "clic-comeup-chat", event: true }); } catch (x) {} };
+      if (e && e.l) { var l = document.createElement("a"); l.href = e.l[0]; l.textContent = e.l[1] + " →"; l.style.cssText = "display:block;margin-top:8px;color:#b8461a;font-weight:700"; m.appendChild(l); }
       m.appendChild(document.createElement("br")); m.appendChild(a);
     }, 250);
   }
