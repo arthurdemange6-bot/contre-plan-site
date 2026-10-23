@@ -66,7 +66,7 @@ def footer(root=""):
     return f'''<footer style="background: #08111f; color: #a9b6d3; border-top: 1px solid #1c2943;">
 <div style="max-width: 1160px; margin: 0 auto; padding: 40px 24px; display: flex; flex-wrap: wrap; gap: 24px; justify-content: space-between; font-size: 15px; line-height: 1.6;">
 <div><div style="color: #ffffff; font-family: Archivo, Arial, sans-serif; font-weight: 800; letter-spacing: 2px; font-size: 18px;">CONTRE-PLAN</div><div>Analyse de devis travaux · 100 % à distance</div></div>
-<div style="display: flex; flex-wrap: wrap; gap: 20px; align-items: center; font-size: 13px;"><a href="{root}guides.html" style="color: #a9b6d3;">Guides</a><a href="{root}mentions-legales.html" style="color: #a9b6d3;">Mentions légales</a><span>© 2026 Contre-Plan</span></div>
+<div style="display: flex; flex-wrap: wrap; gap: 20px; align-items: center; font-size: 13px;"><a href="{root}guides.html" style="color: #a9b6d3;">Guides</a><a href="{root}mentions-legales.html" style="color: #a9b6d3; font-size: 11px;">Mentions légales</a><span>© 2026 Contre-Plan</span></div>
 </div>
 </footer>
 </div>
