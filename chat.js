@@ -29,7 +29,7 @@
     { q: "Qui analyse mon devis ?", k: ["qui", "ingénieur", "ingenieur", "expérience", "experience", "compétent", "fiable", "commission", "indépendant"],
       a: "Un ingénieur BTP avec 10 ans d'expérience sur les chantiers et environ 1 000 devis lus et négociés. Indépendant : aucune commission d'artisan, aucune entreprise à vous revendre.", l: ["/methode.html", "Voir ma méthode"] },
     { q: "Comment vous contacter ?", k: ["contact", "contacter", "joindre", "écrire", "ecrire", "mail", "email", "message", "formulaire"],
-      a: "Par le formulaire de contact : je réponds sous 48 h ouvrées. Pour faire analyser un devis, commandez directement sur ComeUp.", l: ["/contact.html", "Formulaire de contact"] }
+      a: "Par le formulaire de contact : je réponds sous 24 h. Pour faire analyser un devis, commandez directement sur ComeUp.", l: ["/contact.html", "Formulaire de contact"] }
   ];
   var FALLBACK = "Je n'ai pas la réponse à cette question. Écrivez-moi via le formulaire de contact, ou réservez un appel gratuit de 15 min : https://calendar.app.google/6LCc6yKVHnbvA3WN7";
 
