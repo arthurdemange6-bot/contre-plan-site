@@ -1,0 +1,26 @@
+/* Animations Contre-Plan — désactivées si l'utilisateur demande moins de mouvement */
+@keyframes cpUp{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
+@keyframes cpCard{from{opacity:0;transform:translateY(28px) rotate(1.5deg)}to{opacity:1;transform:none}}
+@keyframes cpRow{from{opacity:0;transform:translateX(-12px)}to{opacity:1;transform:none}}
+@keyframes cpStamp{0%{opacity:0;transform:scale(1.9) rotate(-14deg)}70%{opacity:1;transform:scale(.94) rotate(-3deg)}100%{opacity:1;transform:scale(1) rotate(-4deg)}}
+@keyframes cpPen{to{background-size:100% .09em}}
+@keyframes cpDrift{to{background-position:160px 160px,160px 160px,160px 160px,160px 160px}}
+.anim .cp-hero{animation:cpUp .7s cubic-bezier(.2,.7,.2,1) both}
+.anim .cp-card{animation:cpCard .85s .25s cubic-bezier(.2,.7,.2,1) both}
+.anim .cp-row{animation:cpRow .45s ease-out both}
+.anim .cp-stamp{display:inline-block;animation:cpStamp .55s cubic-bezier(.3,1.4,.5,1) both}
+.anim .cp-pen{background-image:linear-gradient(#e8733c,#e8733c);background-repeat:no-repeat;background-position:0 96%;background-size:0 .09em;animation:cpPen 1.1s 1.1s cubic-bezier(.6,0,.3,1) forwards}
+.anim .cp-grid{animation:cpDrift 70s linear infinite}
+.anim .cp-rv{opacity:0}
+.anim .cp-rv.cp-in{animation:cpUp .65s cubic-bezier(.2,.7,.2,1) both}
+/* Survols */
+a[style*="background: #d4561f"]{transition:transform .2s ease,box-shadow .2s ease,background-color .2s ease}
+a[style*="background: #d4561f"]:hover{transform:translateY(-2px);box-shadow:0 10px 24px rgba(212,86,31,.35);background-color:#c04c19!important}
+a[style*="border-radius:6px"],a[style*="border-radius: 6px"]{transition:transform .25s ease,box-shadow .25s ease}
+a[style*="border-radius:6px"]:hover,a[style*="border-radius: 6px"]:hover{transform:translateY(-4px);box-shadow:0 16px 34px rgba(20,40,75,.14)}
+@media (prefers-reduced-motion: reduce){
+  .anim .cp-hero,.anim .cp-card,.anim .cp-row,.anim .cp-stamp,.anim .cp-grid,.anim .cp-rv.cp-in{animation:none}
+  .anim .cp-rv{opacity:1}
+  .anim .cp-pen{animation:none;background-size:100% .09em}
+  a:hover{transform:none!important}
+}

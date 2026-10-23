@@ -47,6 +47,8 @@ h1{{font-size:clamp(32px,5.5vw,48px)!important}}
 .note p{{margin:0}}
 </style>
 {extra}
+<link rel="stylesheet" href="{root}anim.css">
+<script src="{root}anim.js" defer></script>
 {GC}
 </head>
 <body>
