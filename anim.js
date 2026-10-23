@@ -113,10 +113,9 @@
   }
 
   function devis() {
-    var top = document.getElementById('top');
-    if (!top) return;
     var wrap = document.body.firstElementChild;
     if (!wrap || wrap.tagName !== 'DIV') return;
+    var home = !!document.getElementById('top');
     var rows = [
       ['Protection des sols, évacuation du mobilier', '1 ft', '180,00', '180,00'],
       ['Dépose carrelage mural et sol', '25 m²', '58,00', '1 450,00', 'ring', 'élevé ?'],
@@ -132,43 +131,85 @@
     function el(tag, cls, html) { var e = document.createElement(tag); if (cls) e.className = cls; if (html != null) e.innerHTML = html; return e; }
     var layer = el('div'); layer.id = 'cp-devis'; layer.setAttribute('aria-hidden', 'true');
     var sheet = el('div', 'cp-sheet'); layer.appendChild(sheet);
-    var steps = [];  // [élément, début, fin, type]
-    var h = el('div', 'h cp-w', '<b>DEVIS</b><span>Exemple fictif · Salle de bain 6 m²</span>'); sheet.appendChild(h); steps.push([h, 0, 0.05, 'w']);
-    var hd = el('div', 'r hd cp-w', '<span>Désignation</span><span>Qté</span><span>P.U. HT</span><span>Total HT</span>'); sheet.appendChild(hd); steps.push([hd, 0.03, 0.07, 'w']);
-    var notes = [];
+    var pen = el('div', 'cp-pentip', '<svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21l3.5-1 11-11-2.5-2.5-11 11L3 21z"/><path d="M14.5 5.5l2.5-2.5 4 4-2.5 2.5"/></svg>');
+    sheet.appendChild(pen);
+    var typed = [];   // [span, texte, début, fin]
+    var marks = [];   // [élément, seuil]
+    var lines = [];   // [ligne, seuil]
+    function line(cls, cells, a, b) {
+      var r = el('div', cls); sheet.appendChild(r);
+      var tot = cells.reduce(function (s, c) { return s + Math.max(1, c.length); }, 0), pos = a;
+      cells.forEach(function (c) {
+        var s = el('span'); r.appendChild(s);
+        var d = (b - a) * Math.max(1, c.length) / tot; typed.push([s, c, pos, pos + d]); pos += d;
+      });
+      lines.push([r, a]);
+      return r;
+    }
+    var hd0 = el('div', 'h'); sheet.insertBefore(hd0, pen);
+    var tb = el('b'); var ts = el('span'); hd0.appendChild(tb); hd0.appendChild(ts);
+    typed.push([tb, 'DEVIS', 0, 0.025]); typed.push([ts, 'Exemple fictif · Salle de bain 6 m²', 0.025, 0.06]); lines.push([hd0, 0]);
+    line('r hd', ['Désignation', 'Qté', 'P.U. HT', 'Total HT'], 0.06, 0.08);
+    var span = 0.46 / rows.length;
     rows.forEach(function (r, i) {
-      var row = el('div', 'r cp-w');
-      row.innerHTML = '<span>' + r[0] + '</span><span>' + r[1] + '</span><span>' + r[2] + '</span><span class="cp-amt">' + r[3] + '</span>';
-      sheet.appendChild(row);
-      var a = 0.07 + i * 0.05; steps.push([row, a, a + 0.045, 'w']);
-      if (r[4] === 'ring') { var ring = el('i', 'cp-ring2'); row.lastChild.appendChild(ring); notes.push(ring); }
-      if (r[5]) { var n = el('span', 'cp-n', r[5]); row.appendChild(n); notes.push(n); }
+      var a = 0.08 + i * span, row = line('r', r.slice(0, 4), a, a + span * 0.92);
+      row.lastChild.className = 'cp-amt';
+      if (r[4] === 'ring') { var ring = el('i', 'cp-ring2'); row.lastChild.appendChild(ring); marks.push([ring, a + span]); }
+      if (r[5]) { var n = el('span', 'cp-n', r[5]); row.appendChild(n); marks.push([n, a + span * 1.05]); }
     });
-    var gr = el('div', 'r cp-w', '<span></span><span></span><span></span><span></span>'); gr.appendChild(el('span', 'cp-n', '+ évacuation des gravats ?')); gr.lastChild.style.right = 'auto'; gr.lastChild.style.left = '0'; gr.lastChild.style.top = '.2em';
-    sheet.appendChild(gr); steps.push([gr, 0.57, 0.575, 'w']); notes.splice(4, 0, gr.lastChild);
-    var t1 = el('div', 't cp-w', '<span>Total HT</span><span>6 704,00 €</span>');
-    var t2 = el('div', 't cp-w', '<span>TVA 10 %</span><span>670,40 €</span>');
-    var t3 = el('div', 't cp-w', '<span>Total TTC</span><span>7 374,40 €</span>');
-    var t4 = el('div', 't cp-w', '<span>Acompte à la commande : 50 %</span><span class="cp-amt">3 687,20 €</span>');
-    [t1, t2, t3, t4].forEach(function (t, i) { sheet.appendChild(t); steps.push([t, 0.58 + i * 0.03, 0.61 + i * 0.03, 'w']); });
-    var ring4 = el('i', 'cp-ring2'); t4.lastChild.appendChild(ring4); var n4 = el('span', 'cp-n', '→ 30 % suffit'); t4.appendChild(n4); notes.push(ring4, n4);
-    var sig = el('div', 'sig cp-w', '<span>Bon pour accord, le …</span><span>Signature :</span>'); sheet.appendChild(sig); steps.push([sig, 0.7, 0.74, 'w']);
-    var tampon = el('div', 'cp-tampon', 'RELU'); sig.style.position = 'relative'; sig.appendChild(tampon);
-    notes.forEach(function (n, i) { var a = 0.75 + i * 0.022; steps.push([n, a, a, 'on']); });
-    steps.push([tampon, 0.95, 0.95, 'on']);
+    var gr = el('div', 'r'); sheet.appendChild(gr); var gn = el('span', 'cp-n', '+ évacuation des gravats ?'); gn.style.right = 'auto'; gn.style.left = '0'; gn.style.top = '.2em'; gr.appendChild(gn); marks.push([gn, 0.56]); lines.push([gr, 0.555]);
+    var tt = [['Total HT', '6 704,00 €'], ['TVA 10 %', '670,40 €'], ['Total TTC', '7 374,40 €'], ['Acompte à la commande : 50 %', '3 687,20 €']], t4;
+    tt.forEach(function (t, i) { var a = 0.57 + i * 0.035; t4 = line('t', t, a, a + 0.032); });
+    t4.lastChild.className = 'cp-amt';
+    var ring4 = el('i', 'cp-ring2'); t4.lastChild.appendChild(ring4); var n4 = el('span', 'cp-n', '→ 30 % suffit'); t4.appendChild(n4); marks.push([ring4, 0.72], [n4, 0.73]);
+    var sig = line('sig', ['Bon pour accord, le …', 'Signature :'], 0.74, 0.79); sig.style.position = 'relative';
+    var tampon = el('div', 'cp-tampon', 'RELU'); sig.appendChild(tampon); marks.push([tampon, 0.93]);
+    sheet.appendChild(pen);
     document.body.insertBefore(layer, wrap);
     wrap.style.background = 'transparent'; wrap.classList.add('cp-front');
-    var busy = false;
+    if (!home) layer.classList.add('cp-soft');
+    // Sections blanches légèrement translucides : le devis apparaît derrière
+    each(wrap.children, function (c) {
+      var bg = c.getAttribute('style') || '';
+      if (/background:\s*#ffffff/i.test(bg)) c.style.background = 'rgba(255,255,255,.72)';
+    });
+    var busy = false, idle;
     function upd() {
       busy = false;
-      var H = document.documentElement.scrollHeight - innerHeight, p = H > 0 ? scrollY / H : 1;
-      steps.forEach(function (s) {
-        if (s[3] === 'w') { var k = Math.max(0, Math.min(1, (p - s[1]) / (s[2] - s[1]))); s[0].style.clipPath = k >= 1 ? 'none' : 'inset(0 ' + (100 - k * 100) + '% 0 0)'; }
-        else s[0].classList.toggle('on', p >= s[1]);
+      var H = document.documentElement.scrollHeight - innerHeight, p = H > 40 ? scrollY / H : 1;
+      p = Math.min(1, p * (home ? 1.05 : 1.25));
+      var cur = null;
+      typed.forEach(function (t) {
+        var k = Math.max(0, Math.min(1, (p - t[2]) / (t[3] - t[2]))), n = Math.round(k * t[1].length);
+        var txt = t[1].slice(0, n);
+        if (t[0].firstChild && t[0].firstChild.nodeType === 3) { if (t[0].firstChild.nodeValue !== txt) t[0].firstChild.nodeValue = txt; }
+        else t[0].insertBefore(document.createTextNode(txt), t[0].firstChild);
+        if (k > 0 && k < 1) cur = t[0];
       });
+      var last = null;
+      lines.forEach(function (l) { var on = p >= l[1]; l[0].classList.toggle('on', on); if (on) last = l[0]; });
+      if (last) { var f = 0.42 - 0.2 * Math.max(0, Math.min(1, (p - 0.75) / 0.2)), want = last.offsetTop + last.offsetHeight - innerHeight * f; sheet.style.marginTop = (-Math.max(0, want)) + 'px'; }
+      marks.forEach(function (m) { m[0].classList.toggle('on', p >= m[1]); });
+      if (cur) {
+        var sr = sheet.getBoundingClientRect(), r = cur.getBoundingClientRect();
+        pen.style.transform = 'translate(' + (r.right - sr.left) + 'px,' + (r.top - sr.top - 18) + 'px)';
+        pen.classList.add('on'); clearTimeout(idle); idle = setTimeout(function () { pen.classList.remove('on'); }, 500);
+      }
     }
     addEventListener('scroll', function () { if (!busy) { busy = true; requestAnimationFrame(upd); } }, { passive: true });
     addEventListener('resize', upd); upd();
+  }
+
+  // Bandeaux qui se déroulent, cartes qui se soulèvent, reflets sur les boutons
+  function plus() {
+    var bands = [];
+    each(document.querySelectorAll('.cp-kicker, .cp-kick, span[style*="text-transform: uppercase"][style*="background:"]'), function (b) { b.classList.add('cp-band'); bands.push(b); });
+    var io = new IntersectionObserver(function (en) { en.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('cp-go'); io.unobserve(e.target); } }); }, { threshold: 0.6 });
+    bands.forEach(function (b) { io.observe(b); });
+    each(document.querySelectorAll('#travaux a, #tarifs div[style*="padding: 32px"], .cp-rcard, .cp-tpl, .cp-term, section a[style*="border: 1px solid"]'), function (c) { c.classList.add('cp-lift'); });
+    each(document.querySelectorAll('a[style*="background: #bf4a17"], .cp-side a[style*="background"], .cp-form button'), function (a) { a.classList.add('cp-shine'); });
+    var h2 = new IntersectionObserver(function (en) { en.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('cp-drawn'); h2.unobserve(e.target); } }); }, { threshold: 0.5 });
+    each(document.querySelectorAll('.art h2, main h2'), function (h) { h2.observe(h); });
   }
 
   function finitions() {
@@ -192,6 +233,6 @@
       });
     });
   }
-  function start() { finitions(); init(); extras(); devis(); }
+  function start() { finitions(); init(); extras(); devis(); plus(); }
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', start); else start();
 })();

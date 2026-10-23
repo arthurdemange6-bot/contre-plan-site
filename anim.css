@@ -72,16 +72,16 @@ summary:hover{color:#b8461a}
 /* ---- Devis en filigrane qui se remplit au défilement (accueil) ---- */
 #cp-devis{position:fixed;inset:0;z-index:0;background:#f6f7f9;display:flex;justify-content:center;align-items:flex-start;padding-top:86px;pointer-events:none;overflow:hidden}
 .cp-front{position:relative;z-index:1}
-.cp-sheet{position:relative;width:min(820px,92vw);font-family:'Source Sans 3',Arial,sans-serif;color:rgba(20,40,75,.12);font-size:clamp(11px,1.6vw,16px);line-height:1.35;transform:rotate(-1.2deg)}
+.cp-sheet{position:relative;width:min(820px,92vw);font-family:'Source Sans 3',Arial,sans-serif;color:rgba(20,40,75,.18);font-size:clamp(11px,1.6vw,16px);line-height:1.35;transform:rotate(-1.2deg);transition:margin-top .5s cubic-bezier(.2,.7,.2,1)}
 .cp-sheet .h{display:flex;justify-content:space-between;align-items:flex-end;border-bottom:2px solid rgba(20,40,75,.13);padding-bottom:.6em;margin-bottom:.4em}
-.cp-sheet .h b{font-family:Archivo,Arial,sans-serif;font-weight:800;font-size:2.2em;letter-spacing:.08em;color:rgba(20,40,75,.12)}
+.cp-sheet .h b{font-family:Archivo,Arial,sans-serif;font-weight:800;font-size:2.2em;letter-spacing:.08em;color:rgba(20,40,75,.2)}
 .cp-sheet .r{display:grid;grid-template-columns:1fr 4.2em 5.2em 6.2em;gap:.6em;padding:.42em 0;border-bottom:1px solid rgba(20,40,75,.06);position:relative}
 .cp-sheet .r span:not(:first-child){text-align:right}
 .cp-sheet .hd{font-weight:700;text-transform:uppercase;letter-spacing:.06em;font-size:.8em}
 .cp-sheet .t{position:relative;display:grid;grid-template-columns:1fr 7em;gap:.6em;padding:.3em 0;font-weight:700}
 .cp-sheet .t span:last-child{text-align:right}
 .cp-sheet .sig{display:flex;justify-content:space-between;margin-top:1.4em;font-style:italic}
-.cp-w{clip-path:inset(0 100% 0 0)}
+
 .cp-n{color:rgba(196,76,25,.42);font-style:italic;font-weight:700;opacity:0;transform:translateY(4px) rotate(-2deg);transition:opacity .4s,transform .4s;position:absolute;right:-.2em;top:-.95em;font-size:.9em;white-space:nowrap}
 .cp-n.on{opacity:1;transform:rotate(-2deg)}
 .cp-ring2{position:absolute;border:2px solid rgba(196,76,25,.42);border-radius:50%;inset:-.15em -.5em;opacity:0;transform:scale(1.4);transition:opacity .35s,transform .35s}
@@ -148,3 +148,27 @@ details[open] > summary::after{transform:rotate(135deg);background:#bf4a17;borde
 footer a[data-goatcounter-click^="clic-"][rel~="me"]{transition:background .2s,border-color .2s}
 footer a[data-goatcounter-click^="clic-"][rel~="me"]:hover{background:#bf4a17;border-color:#bf4a17!important}
 /* clic-tiktok */
+
+/* Devis qui s'écrit au défilement */
+.cp-sheet .h,.cp-sheet .r{border-bottom-color:transparent;transition:border-color .5s}
+.cp-sheet .h.on{border-bottom-color:rgba(20,40,75,.2)}
+.cp-sheet .r.on{border-bottom-color:rgba(20,40,75,.09)}
+.cp-sheet .r,.cp-sheet .t{min-height:1.35em}
+.cp-n{color:rgba(191,74,23,.6)}
+.cp-ring2{border-color:rgba(191,74,23,.6)}
+.cp-tampon{border-color:rgba(191,74,23,.6);color:rgba(191,74,23,.65)}
+.cp-pentip{position:absolute;left:0;top:0;color:rgba(191,74,23,.75);opacity:0;transition:opacity .3s,transform .12s linear;pointer-events:none;will-change:transform}
+.cp-pentip.on{opacity:1}
+#cp-devis.cp-soft .cp-sheet{color:rgba(20,40,75,.13)}
+#cp-devis.cp-soft .cp-sheet .h b{color:rgba(20,40,75,.13)}
+/* Bandeaux qui se déroulent */
+.anim .cp-band{clip-path:inset(0 100% 0 0)}
+.anim .cp-band.cp-go{animation:cpWipe .7s cubic-bezier(.6,0,.2,1) forwards}
+@keyframes cpWipe{to{clip-path:inset(0 0 0 0)}}
+/* Cartes qui se soulèvent */
+.cp-lift{transition:transform .25s ease,box-shadow .25s ease,border-color .25s}
+.cp-lift:hover{transform:translateY(-4px);box-shadow:0 14px 30px rgba(15,39,71,.13)}
+/* Trait des titres qui se dessine */
+.anim .art h2::before{transform:scaleX(0);transition:transform .6s cubic-bezier(.6,0,.2,1) .15s}
+.anim .art h2.cp-drawn::before{transform:scaleX(1)}
+@media (prefers-reduced-motion: reduce){.anim .cp-band{clip-path:none;animation:none}.cp-lift:hover{transform:none}.anim .art h2::before{transform:none}.cp-pentip{display:none}}
