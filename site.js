@@ -107,32 +107,31 @@
     if (m[1] === 'prediagnostic') { sel.value = 'Pré-diagnostic gratuit'; var t = document.querySelector('.cp-form textarea'); if (t && !t.value) t.placeholder = "Type de travaux, montant du devis, ce qui vous inquiète (3 lignes suffisent)."; }
   })();
 
-  /* ---------- Formulaire de contact : envoi sans quitter la page ---------- */
+  /* ---------- Formulaire de contact : remerciement immédiat, envoi en arrière-plan ---------- */
   (function () {
     var f = document.querySelector('.cp-form'), box = document.getElementById('cp-form-ok');
     if (!f || !box || !window.fetch || !window.FormData) return;   // sans JavaScript : envoi classique puis page merci.html
+    function show(html, err) {
+      box.className = 'cp-form-ok' + (err ? ' err' : ''); box.innerHTML = html; box.hidden = false;
+      box.scrollIntoView({ behavior: 'smooth', block: 'center' }); box.focus({ preventScroll: true });
+    }
     f.addEventListener('submit', function (ev) {
       ev.preventDefault();
       if (f.querySelector('[name="_honey"]').value) return;          // robot
-      var btn = f.querySelector('button[type="submit"]'), label = btn.textContent;
-      btn.disabled = true; btn.textContent = 'Envoi en cours…';
-      fetch(f.action.replace('formsubmit.co/', 'formsubmit.co/ajax/'), { method: 'POST', body: new FormData(f), headers: { Accept: 'application/json' } })
+      var data = new FormData(f), saved = {};
+      Array.prototype.forEach.call(f.elements, function (el) { if (el.name && el.type !== 'hidden') saved[el.name] = el.value; });
+      // Le visiteur n'attend pas la réponse du service d'envoi (souvent plusieurs secondes)
+      f.reset();
+      show('<p class="t">Merci, votre message est bien envoyé.</p><p>Je vous réponds sous 48 h ouvrées à l\'adresse que vous avez indiquée. Pensez à regarder vos courriers indésirables.</p>');
+      gc('formulaire-contact-envoye');
+      fetch(f.action.replace('formsubmit.co/', 'formsubmit.co/ajax/'), { method: 'POST', body: data, headers: { Accept: 'application/json' }, keepalive: true })
         .then(function (r) { return r.json(); })
-        .then(function (d) {
-          var ok = d && (d.success === true || d.success === 'true');
-          if (!ok) throw new Error((d && d.message) || 'envoi refusé');
-          f.reset();
-          box.className = 'cp-form-ok';
-          box.innerHTML = '<p class="t">Merci, votre message est bien envoyé.</p><p>Je vous réponds sous 48 h ouvrées à l\'adresse que vous avez indiquée. Pensez à regarder vos courriers indésirables.</p>';
-          gc('formulaire-contact-envoye');
-        })
+        .then(function (d) { if (!(d && (d.success === true || d.success === 'true'))) throw new Error('refus'); })
         .catch(function () {
-          box.className = 'cp-form-ok err';
-          box.innerHTML = '<p class="t">Le message n\'est pas parti.</p><p>Réessayez dans un instant, ou écrivez directement à <a href="mailto:contact@contre-plan.com">contact@contre-plan.com</a>. Ce que vous avez écrit est conservé dans le formulaire.</p>';
-        })
-        .then(function () {
-          box.hidden = false; btn.disabled = false; btn.textContent = label;
-          box.scrollIntoView({ behavior: 'smooth', block: 'center' }); box.focus({ preventScroll: true });
+          // Échec : on remet le texte du visiteur et on le prévient
+          Array.prototype.forEach.call(f.elements, function (el) { if (el.name && saved[el.name] != null) el.value = saved[el.name]; });
+          show('<p class="t">Le message n\'est finalement pas parti.</p><p>Votre texte a été remis dans le formulaire : réessayez dans un instant, ou écrivez directement à <a href="mailto:contact@contre-plan.com">contact@contre-plan.com</a>.</p>', true);
+          gc('formulaire-contact-echec');
         });
     });
   })();
