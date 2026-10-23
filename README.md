@@ -15,4 +15,4 @@ Les guides, la page Guides, la page 404 et le sitemap sont générés par `tools
 
 ## Si les prix changent
 
-Mettre à jour partout en même temps : `index.html` (cartes Tarifs, FAQ et ses données structurées, offres du JSON-LD, `data-prix` du calcul « Votre devis fait combien ? »), `site.js` (texte de la barre mobile « dès 16,50 € »), `chat.js`, l'annonce ComeUp et l'agent carrousel.
+Mettre à jour partout en même temps : `index.html` (cartes Tarifs, FAQ et ses données structurées, offres du JSON-LD, `data-prix` du calcul « Votre devis fait combien ? »), `site.js` (texte de la barre mobile « dès 16,50 € »), `tools/build.py` (encadré latéral SIDE et bloc CTA), `chat.js`, l'annonce ComeUp et l'agent carrousel.

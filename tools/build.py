@@ -63,6 +63,8 @@ h1{{font-size:clamp(32px,5.5vw,48px)!important}}
 <a href="{root or './'}" style="color: #ffffff; text-decoration: none; font-family: Archivo, Arial, sans-serif; font-weight: 800; font-size: 22px; letter-spacing: 2px;">CONTRE-PLAN</a>
 <nav style="display: flex; flex-wrap: wrap; gap: 20px; align-items: center; font-size: 17px;">
 <a href="{root}methode.html" style="color: #c9d3ea; text-decoration: none;">Méthode</a>
+<a href="{root}index.html#travaux" style="color: #c9d3ea; text-decoration: none;">Travaux</a>
+<a href="{root}comparer-ses-devis.html" style="color: #c9d3ea; text-decoration: none;">Outils</a>
 <a href="{root}guides.html" style="color: #c9d3ea; text-decoration: none;">Guides</a>
 <a href="{COMEUP}" data-goatcounter-click="clic-comeup" style="background: #c44c19; color: #ffffff; text-decoration: none; font-weight: 700; padding: 12px 20px; border-radius: 4px;">Faire analyser mon devis</a>
 </nav>
@@ -70,24 +72,62 @@ h1{{font-size:clamp(32px,5.5vw,48px)!important}}
 </header>
 '''
 
+def FOOTER(root=""):
+    def L(h, t, ev=""):
+        e = f' data-goatcounter-click="{ev}"' if ev else ""
+        return f'<a href="{root}{h}"{e}>{t}</a>'
+    soc = "".join(f'<a href="{u}" target="_blank" rel="noopener me" data-goatcounter-click="{ev}" class="cp-soc">{t}</a>' for u, t, ev in [
+        ("https://www.tiktok.com/@contreplan_", "TikTok", "clic-tiktok"), ("https://www.instagram.com/contreplan_/", "Instagram", "clic-instagram"),
+        ("https://www.pinterest.fr/contreplan/", "Pinterest", "clic-pinterest")])
+    return f"""<footer class="cp-foot"><div class="cp-foot-in">
+<div class="cp-foot-brand"><div class="cp-foot-logo">CONTRE-PLAN</div><p>Votre devis de travaux relu par un ingénieur BTP avant que vous signiez. 100 % à distance, indépendant de tout artisan.</p><div class="cp-socs">{soc}</div></div>
+<div class="cp-foot-col"><p>Le service</p>{L("methode.html","Ma méthode")}{L("engagements.html","Mes engagements")}{L("exemple-rapport-contre-plan.pdf","Exemple de rapport","telechargement-exemple-rapport")}{L("index.html#tarifs","Tarifs")}<a href="{COMEUP}" data-goatcounter-click="clic-comeup">Commander sur ComeUp</a></div>
+<div class="cp-foot-col"><p>Par travaux</p>{L("analyse-devis-salle-de-bain.html","Salle de bain")}{L("analyse-devis-pompe-a-chaleur.html","Pompe à chaleur")}{L("analyse-devis-isolation.html","Isolation")}{L("analyse-devis-toiture.html","Toiture")}{L("cas-fictifs.html","Cas fictifs")}</div>
+<div class="cp-foot-col"><p>Ressources</p>{L("guides.html","Guides")}{L("comparer-ses-devis.html","Tableau comparatif")}{L("modeles-messages-artisan.html","Modèles de messages")}{L("lexique-devis-travaux.html","Lexique")}{L("checklist-devis-travaux.pdf","Check-list PDF","telechargement-checklist")}</div>
+</div><div class="cp-foot-bottom"><span>© 2026 Contre-Plan</span><a href="{root}mentions-legales.html" class="cp-ml">Mentions légales</a></div></footer>"""
+
 def footer(root=""):
-    return f'''<footer style="background: #08111f; color: #a9b6d3; border-top: 1px solid #1c2943;">
-<div style="max-width: 1160px; margin: 0 auto; padding: 40px 24px; display: flex; flex-wrap: wrap; gap: 24px; justify-content: space-between; font-size: 15px; line-height: 1.6;">
-<div><div style="color: #ffffff; font-family: Archivo, Arial, sans-serif; font-weight: 800; letter-spacing: 2px; font-size: 18px;">CONTRE-PLAN</div><div>Analyse de devis travaux · 100 % à distance</div><div style="display: flex; flex-wrap: wrap; gap: 10px; align-items: center; margin-top: 12px;"><a href="https://www.tiktok.com/@contreplan_" target="_blank" rel="noopener me" data-goatcounter-click="clic-tiktok" style="color: #ffffff; text-decoration: none; font-size: 14px; font-weight: 600; border: 1px solid #2d3d62; border-radius: 999px; padding: 6px 14px;">TikTok</a><a href="https://www.instagram.com/contreplan_/" target="_blank" rel="noopener me" data-goatcounter-click="clic-instagram" style="color: #ffffff; text-decoration: none; font-size: 14px; font-weight: 600; border: 1px solid #2d3d62; border-radius: 999px; padding: 6px 14px;">Instagram</a><a href="https://www.pinterest.fr/contreplan/" target="_blank" rel="noopener me" data-goatcounter-click="clic-pinterest" style="color: #ffffff; text-decoration: none; font-size: 14px; font-weight: 600; border: 1px solid #2d3d62; border-radius: 999px; padding: 6px 14px;">Pinterest</a></div></div>
-<div style="display: flex; flex-wrap: wrap; gap: 20px; align-items: center; font-size: 13px;"><a href="{root}methode.html" style="color: #a9b6d3;">Méthode</a><a href="{root}engagements.html" style="color: #a9b6d3;">Engagements</a><a href="{root}lexique-devis-travaux.html" style="color: #a9b6d3;">Lexique</a><a href="{root}guides.html" style="color: #a9b6d3;">Guides</a><a href="{root}mentions-legales.html" style="color: #a9b6d3; font-size: 11px;">Mentions légales</a><span>© 2026 Contre-Plan</span></div>
-</div>
-</footer>
+    return FOOTER(root) + f"""
 </div>
 <script src="{root}chat.js" defer></script>
 </body>
 </html>
-'''
+"""
 
 CTA = f'''<aside style="margin-top: 48px; background-color: #08111f; background-image: linear-gradient(#2d3d62 1px, transparent 1px), linear-gradient(90deg, #2d3d62 1px, transparent 1px); background-size: 80px 80px; color: #fff; border-radius: 8px; padding: 32px; display: flex; flex-direction: column; gap: 16px;">
 <p style="margin: 0; font-family: Archivo, Arial, sans-serif; font-weight: 800; font-size: 26px; line-height: 1.2; color: #fff;">Un devis à signer ? Faites-le relire par un ingénieur BTP.</p>
 <p style="margin: 0; font-size: 18px; line-height: 1.5; color: #c9d3ea;">Prix poste par poste, oublis, TVA, conditions de paiement : rapport PDF sous 48 h, 16,50 € au tarif de lancement.</p>
 <div style="display: flex; flex-wrap: wrap; gap: 12px;"><a href="{COMEUP}" data-goatcounter-click="clic-comeup" style="background: #c44c19; color: #fff; text-decoration: none; font-weight: 700; font-size: 18px; padding: 16px 24px; border-radius: 4px;">Faire analyser mon devis</a><a href="{BOOK}" data-goatcounter-click="clic-appel" target="_blank" rel="noopener" style="color: #fff; font-weight: 700; font-size: 17px; padding: 14px 22px; border: 2px solid #fff; border-radius: 4px; text-decoration: none;">Appel gratuit de 15 min</a></div>
 </aside>'''
+
+SIDE = f"""<div class="cp-sidecard"><p class="t">Votre devis relu par un ingénieur BTP</p><p>Rapport PDF sous 48 h, prix poste par poste, oublis et questions à poser. Dès 16,50 €.</p><a class="cp-btn" href="{COMEUP}" data-goatcounter-click="clic-comeup-side">Faire analyser mon devis</a><a class="cp-sublink" href="exemple-rapport-contre-plan.pdf" target="_blank" rel="noopener" data-goatcounter-click="telechargement-exemple-rapport">Voir un exemple de rapport</a></div>
+<div class="cp-sidelinks"><p>Outils gratuits</p><a href="index.html#test">Test : votre devis est-il complet ?</a><a href="comparer-ses-devis.html">Tableau comparatif de devis</a><a href="modeles-messages-artisan.html">Modèles de messages</a><a href="checklist-devis-travaux.pdf" download data-goatcounter-click="telechargement-checklist">Check-list à imprimer</a></div>"""
+
+def slug_id(t):
+    t = t.lower()
+    for a_, b_ in (("é","e"),("è","e"),("ê","e"),("ë","e"),("à","a"),("â","a"),("ç","c"),("î","i"),("ï","i"),("ô","o"),("ù","u"),("û","u"),("œ","oe"),("’","-"),("'","-")):
+        t = t.replace(a_, b_)
+    return re.sub(r"[^a-z0-9]+", "-", t).strip("-")[:60]
+
+def pagehero(kicker, h1, lead, meta, crumbs):
+    cr = ' <span aria-hidden="true">›</span> '.join(f'<a href="{h}">{html.escape(t)}</a>' if h else f'<span aria-current="page">{html.escape(t)}</span>' for t, h in crumbs)
+    m = f'<p class="cp-meta">{meta}</p>' if meta else ''
+    return f'<section class="cp-ph"><div class="cp-ph-in"><nav class="cp-crumbs" aria-label="Fil d\'Ariane">{cr}</nav><span class="cp-kick">{kicker}</span><h1>{html.escape(h1)}</h1><p class="cp-lead">{lead}</p>{m}</div></section>'
+
+def crumbs_ld(crumbs, url):
+    items = [{"@type":"ListItem","position":i+1,"name":t,"item":("https://contre-plan.com/" + (h if h != "index.html" else "")) if h else url} for i,(t,h) in enumerate(crumbs)]
+    return '<script type="application/ld+json">' + json.dumps({"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":items}, ensure_ascii=False) + '</script>'
+
+def layout(body, toc_on=True):
+    toc = []
+    def rep(m):
+        txt = re.sub(r"<[^>]+>", "", m.group(1)); i = slug_id(txt); toc.append((i, txt)); return f'<h2 id="{i}">{m.group(1)}</h2>'
+    body = re.sub(r"<h2>(.*?)</h2>", rep, body)
+    show = toc_on and len(toc) >= 3
+    tl = "".join(f'<li><a href="#{i}">{html.escape(t)}</a></li>' for i, t in toc)
+    side_toc = f'<nav class="cp-toc" aria-label="Sommaire"><p>Sommaire</p><ol>{tl}</ol></nav>' if show else ''
+    mob_toc = f'<details class="cp-toc-m"><summary>Sommaire</summary><ol>{tl}</ol></details>' if show else ''
+    return f'<div class="cp-wrap"><main class="art">{mob_toc}{body}{CTA}</main><aside class="cp-side">{side_toc}{SIDE}</aside></div>'
 
 ARTICLES = []
 def article(slug, title, h1, desc, lead, body, readtime, date=DATE):
@@ -98,17 +138,10 @@ def article(slug, title, h1, desc, lead, body, readtime, date=DATE):
           "publisher":{"@type":"Organization","name":"Contre-Plan","logo":{"@type":"ImageObject","url":"https://contre-plan.com/logo-512.png"}},
           "mainEntityOfPage":url}
     extra = '<script type="application/ld+json">' + json.dumps(ld, ensure_ascii=False) + '</script>'
-    page = head(title, desc, url, extra) + f'''<main class="art" style="max-width: 760px; margin: 0 auto; padding: 56px 24px 96px;">
-<p style="font-size: 15px; margin: 0 0 16px;"><a href="guides.html">Guides</a> <span style="color:#5b6784">›</span> <span style="color:#5b6784">{html.escape(h1)}</span></p>
-<h1 style="margin: 0 0 16px; font-family: Archivo, Arial, sans-serif; font-weight: 800; line-height: 1.1; color: #14284b;">{html.escape(h1)}</h1>
-<p style="font-size: 15px; color: #5b6784; margin: 0 0 28px;">Par un ingénieur BTP · mis à jour le {date_fr(date)} · lecture {readtime} min</p>
-<p style="font-size: 20px !important; color: #14284b !important;">{lead}</p>
-{body}
-{CTA}
-</main>
-''' + footer()
+    crumbs = [("Accueil", "index.html"), ("Guides", "guides.html"), (h1, None)]
+    page = head(title, desc, url, extra + crumbs_ld(crumbs, url)) + pagehero("Guide", h1, lead, f"Par un ingénieur BTP · mis à jour le {date_fr(date)} · lecture {readtime} min", crumbs) + layout(body) + footer()
     open(os.path.join(OUT, slug + ".html"), "w").write(page)
-    ARTICLES.append((slug, h1, desc))
+    ARTICLES.append((slug, h1, desc, readtime))
     LASTMOD[slug + ".html"] = date
 
 # ---------- Article 1
@@ -214,19 +247,13 @@ article("guide-oublis-devis-salle-de-bain",
 
 
 PAGES = []
-def page(slug, title, h1, desc, lead, body, kicker):
+def page(slug, title, h1, desc, lead, body, kicker, toc=True):
     url = f"https://contre-plan.com/{slug}.html"
     ld = {"@context":"https://schema.org","@type":"WebPage","name":h1,"description":desc,"url":url,"inLanguage":"fr-FR",
           "publisher":{"@type":"Organization","name":"Contre-Plan","url":"https://contre-plan.com/"}}
-    extra = '<script type="application/ld+json">' + json.dumps(ld, ensure_ascii=False) + '</script>'
-    out = head(title, desc, url, extra).replace('<meta property="og:type" content="article">','<meta property="og:type" content="website">') + f'''<main class="art" style="max-width: 760px; margin: 0 auto; padding: 56px 24px 96px;">
-<span style="display:inline-block;background:#14284b;color:#fff;font-weight:700;font-size:15px;letter-spacing:1.5px;text-transform:uppercase;padding:8px 14px;margin-bottom:18px;">{kicker}</span>
-<h1 style="margin: 0 0 20px; font-family: Archivo, Arial, sans-serif; font-weight: 800; line-height: 1.1; color: #14284b;">{html.escape(h1)}</h1>
-<p style="font-size: 20px !important; color: #14284b !important;">{lead}</p>
-{body}
-{CTA}
-</main>
-''' + footer()
+    crumbs = [("Accueil", "index.html"), (kicker, None)]
+    extra = '<script type="application/ld+json">' + json.dumps(ld, ensure_ascii=False) + '</script>' + crumbs_ld(crumbs, url)
+    out = head(title, desc, url, extra).replace('<meta property="og:type" content="article">','<meta property="og:type" content="website">') + pagehero(kicker, h1, lead, None, crumbs) + layout(body, toc) + footer()
     open(os.path.join(OUT, slug + ".html"), "w").write(out)
     PAGES.append(slug)
 
@@ -448,14 +475,24 @@ LEX = [
  ("u (unité)", "Prix à la pièce : un receveur, un radiateur, une fenêtre."),
  ("Zinguerie", "Éléments en métal d'une toiture : gouttières, descentes, noues, solins, faîtage."),
 ]
-lex_html = "".join(f'<h3 id="{re.sub(r"[^a-z0-9]+","-",t.lower().replace("é","e").replace("è","e").replace("ê","e").replace("à","a").replace("ç","c").replace("ï","i")).strip("-")}">{html.escape(t)}</h3><p>{html.escape(d)}</p>' for t,d in LEX)
+def _first(t):
+    c = t[0].upper()
+    return {"É":"E","È":"E","Ê":"E","À":"A","Ç":"C"}.get(c, c)
+_groups = {}
+for t, d in sorted(LEX, key=lambda x: slug_id(x[0])):
+    _groups.setdefault(_first(t), []).append((t, d))
+lex_html = '<nav class="cp-letters" aria-label="Lettres">' + "".join(f'<a href="#lettre-{k.lower()}">{k}</a>' for k in sorted(_groups)) + '</nav>'
+for k in sorted(_groups):
+    lex_html += f'<section class="cp-gl" id="lettre-{k.lower()}"><div class="cp-gl-letter">{k}</div><dl>' + "".join(
+        f'<div class="cp-term" id="{slug_id(t)}"><dt>{html.escape(t)}</dt><dd>{html.escape(d)}</dd></div>' for t, d in _groups[k]) + '</dl></section>'
+
 page("lexique-devis-travaux",
  "Lexique du devis de travaux : les termes expliqués | Contre-Plan",
  "Lexique du devis de travaux",
  "Acompte, arrhes, forfait, ml, P.U., ragréage, SPEC, RGE, résistance thermique : les mots d'un devis de travaux expliqués simplement.",
  "Les termes qu'on croise sur un devis de travaux, expliqués en une ou deux phrases.",
  lex_html + '<p style="margin-top:28px">Un terme vous manque ? Posez-moi la question via le chat du site.</p>',
- "Lexique")
+ "Lexique", toc=False)
 
 # ---------- Cas fictifs
 page("cas-fictifs",
@@ -534,22 +571,34 @@ page("modeles-messages-artisan",
  '<p style="margin-top:24px">Vous ne savez pas quelles questions poser sur votre devis ? <a href="index.html#test">Faites le test en 1 minute</a>, ou confiez-le moi : chaque rapport se termine par les questions à envoyer à l\'artisan.</p>',
  "Outil gratuit")
 
-# ---------- Guides index
-cards = "".join(f'''<a href="{s}.html" style="display:flex;flex-direction:column;gap:10px;background:#fff;border:1px solid #ddd8ca;border-radius:6px;padding:28px;text-decoration:none;color:#14284b;">
-<span style="font-family:Archivo,Arial,sans-serif;font-weight:800;font-size:22px;line-height:1.25;">{html.escape(h)}</span>
-<span style="font-size:17px;line-height:1.5;color:#4a5b7e;">{html.escape(d)}</span>
-<span style="margin-top:auto;font-weight:700;color:#b8461a;">Lire le guide →</span></a>''' for s,h,d in ARTICLES)
-idx = head("Guides : bien lire un devis de travaux | Contre-Plan",
-  "Guides pratiques d'un ingénieur BTP pour vérifier un devis de travaux avant de signer : mentions obligatoires, TVA, oublis fréquents.",
-  "https://contre-plan.com/guides.html") + f'''<main style="max-width: 1160px; margin: 0 auto; padding: 56px 24px 96px; display:flex; flex-direction:column; gap:32px;">
-<div style="display:flex;flex-direction:column;gap:12px;max-width:760px;">
-<h1 style="margin:0;font-family:Archivo,Arial,sans-serif;font-weight:800;line-height:1.1;">Guides : bien lire un devis de travaux</h1>
-<p style="margin:0;font-size:20px;line-height:1.5;color:#4a5b7e;">Ce que je vérifie sur chaque devis, expliqué simplement pour que vous puissiez le faire vous-même.</p>
-</div>
-<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:20px;">{cards}</div>
-<a href="checklist-devis-travaux.pdf" download data-goatcounter-click="telechargement-checklist" style="display:flex;flex-wrap:wrap;gap:16px;align-items:center;justify-content:space-between;background:#14284b;color:#fff;border-radius:6px;padding:28px;text-decoration:none;"><span style="display:flex;flex-direction:column;gap:6px;"><span style="font-family:Archivo,Arial,sans-serif;font-weight:800;font-size:22px;">La check-list à imprimer : 20 points avant de signer</span><span style="font-size:17px;color:#c9d3ea;">Une page PDF gratuite, sans inscription. Cochez au fur et à mesure.</span></span><span style="background:#c44c19;font-weight:700;padding:14px 22px;border-radius:4px;">Télécharger le PDF</span></a>
-</main>
-''' + footer()
+# ---------- Guides index (centre de ressources)
+def rcard(href, tag, title, desc, cta, extra=""):
+    return f'<a class="cp-rcard" href="{href}"{extra}><span class="cp-rtag">{tag}</span><span class="cp-rtitle">{html.escape(title)}</span><span class="cp-rdesc">{html.escape(desc)}</span><span class="cp-rcta">{cta} →</span></a>'
+g_cards = "".join(rcard(f"{s_}.html", f"Guide · {rt} min", h_, d_, "Lire le guide") for s_, h_, d_, rt in ARTICLES)
+t_cards = "".join(rcard(h_, "Par travaux", t_, d_, "Ce que je vérifie") for h_, t_, d_ in [
+ ("analyse-devis-salle-de-bain.html", "Salle de bain", "Étanchéité, dépose, plomberie au forfait, volumes électriques."),
+ ("analyse-devis-pompe-a-chaleur.html", "Pompe à chaleur", "Dimensionnement, liaisons, condensats, RGE et TVA."),
+ ("analyse-devis-isolation.html", "Isolation", "Résistance thermique, surface, pare-vapeur, points singuliers."),
+ ("analyse-devis-toiture.html", "Toiture", "Surface, échafaudage, zinguerie, charpente, amiante.")])
+o_cards = "".join([
+ rcard("index.html#test", "Outil gratuit", "Test : votre devis est-il complet ?", "Six questions pour repérer en une minute ce qu'il faut faire préciser.", "Faire le test"),
+ rcard("comparer-ses-devis.html", "Outil gratuit", "Tableau comparatif de devis", "Excel et PDF : totaux, TVA, acompte et postes manquants calculés pour vous.", "Télécharger"),
+ rcard("modeles-messages-artisan.html", "Outil gratuit", "Modèles de messages à l'artisan", "Sept messages prêts à copier pour demander, négocier ou refuser poliment.", "Voir les modèles"),
+ rcard("checklist-devis-travaux.pdf", "Outil gratuit", "Check-list à imprimer", "Vingt points à cocher en relisant n'importe quel devis de travaux.", "Télécharger", ' download data-goatcounter-click="telechargement-checklist"')])
+c_cards = "".join([
+ rcard("methode.html", "Comprendre", "Ma méthode", "La grille de contrôle appliquée à chaque devis, en cinq temps.", "Découvrir"),
+ rcard("cas-fictifs.html", "Comprendre", "Trois devis analysés", "Salle de bain, pompe à chaleur, combles : ce qu'une relecture révèle (cas fictifs).", "Lire les cas"),
+ rcard("lexique-devis-travaux.html", "Comprendre", "Lexique du devis", "Les termes d'un devis expliqués en une ou deux phrases.", "Ouvrir le lexique"),
+ rcard("exemple-rapport-contre-plan.pdf", "Comprendre", "Exemple de rapport", "Un rapport complet de 4 pages, sur un devis fictif de salle de bain.", "Voir le PDF", ' target="_blank" rel="noopener" data-goatcounter-click="telechargement-exemple-rapport"')])
+def rsec(title, sub, cards):
+    return f'<section class="cp-rsec"><div class="cp-rhead"><h2>{title}</h2><p>{sub}</p></div><div class="cp-rgrid">{cards}</div></section>'
+crumbs = [("Accueil", "index.html"), ("Guides et outils", None)]
+idx = head("Guides et outils pour lire un devis de travaux | Contre-Plan",
+  "Guides, outils gratuits et pages par type de travaux pour vérifier un devis avant de signer : mentions, TVA, acompte, comparatif, modèles de messages.",
+  "https://contre-plan.com/guides.html", crumbs_ld(crumbs, "https://contre-plan.com/guides.html")) + pagehero("Ressources", "Guides et outils pour lire un devis", "Tout ce que je vérifie sur un devis, expliqué simplement, et des outils gratuits pour le faire vous-même avant de signer.", None, crumbs) + \
+  '<main class="cp-res-wrap">' + rsec("Guides", "Les règles et les pièges, sujet par sujet.", g_cards) + rsec("Par type de travaux", "Chaque chantier a ses oublis classiques.", t_cards) + \
+  rsec("Outils gratuits", "À utiliser avec votre devis sous les yeux.", o_cards) + rsec("Pour aller plus loin", "Ce que contient une analyse, et comment je la mène.", c_cards) + \
+  f'<div class="cp-res-cta">{CTA}</div></main>' + footer()
 open(os.path.join(OUT, "guides.html"), "w").write(idx)
 
 # ---------- 404 (absolute paths: served at any URL)
@@ -565,7 +614,7 @@ p404 = head("Page introuvable | Contre-Plan", "Cette page n'existe pas ou a ét�
 open(os.path.join(OUT, "404.html"), "w").write(p404)
 
 # ---------- sitemap
-urls = [("", "1.0"), ("guides.html","0.8")] + [(s+".html","0.7") for s,_,_ in ARTICLES] + [(s+".html","0.7") for s in PAGES] + [("checklist-devis-travaux.pdf","0.6"),("exemple-rapport-contre-plan.pdf","0.6"),("tableau-comparatif-devis.pdf","0.5")]
+urls = [("", "1.0"), ("guides.html","0.8")] + [(s+".html","0.7") for s,_,_,_ in ARTICLES] + [(s+".html","0.7") for s in PAGES] + [("checklist-devis-travaux.pdf","0.6"),("exemple-rapport-contre-plan.pdf","0.6"),("tableau-comparatif-devis.pdf","0.5")]
 sm = '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n' + "".join(f'  <url><loc>https://contre-plan.com/{u}</loc><lastmod>{LASTMOD.get(u, max([DATE] + list(LASTMOD.values())))}</lastmod><priority>{p}</priority></url>\n' for u,p in urls) + '</urlset>\n'
 open(os.path.join(OUT, "sitemap.xml"), "w").write(sm)
 print("ok", [a[0] for a in ARTICLES])
