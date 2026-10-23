@@ -24,6 +24,8 @@
       a: "5,5 % pour la rénovation énergétique, 10 % pour l'amélioration d'un logement de plus de 2 ans, 20 % dans les autres cas (neuf, agrandissement, certains équipements). Le taux doit correspondre à vos travaux.", l: ["/guide-tva-travaux-renovation.html", "Le guide TVA"] },
     { q: "Que veut dire ce mot ?", k: ["mot", "terme", "signifie", "veut dire", "définition", "definition", "lexique", "ragréage", "forfait", "ml"],
       a: "Les termes courants d'un devis (forfait, ml, P.U., ragréage, SPEC, RGE, réception…) sont expliqués simplement dans le lexique.", l: ["/lexique-devis-travaux.html", "Ouvrir le lexique"] },
+    { q: "Comment comparer mes devis ?", k: ["comparer", "comparatif", "plusieurs devis", "deux devis", "trois devis", "tableau"],
+      a: "Comparez poste par poste, en HT, en mettant les prestations comparables sur la même ligne : un devis moins cher avec des postes absents peut finir plus cher. Un tableau gratuit est disponible, et l'option « Comparatif multi devis » vous le livre rempli et commenté.", l: ["/comparer-ses-devis.html", "Le tableau comparatif gratuit"] },
     { q: "Qui analyse mon devis ?", k: ["qui", "ingénieur", "ingenieur", "expérience", "experience", "compétent", "fiable", "commission", "indépendant"],
       a: "Un ingénieur BTP qui pilote des chantiers depuis 2020. Indépendant : aucune commission d'artisan, aucune entreprise à vous revendre.", l: ["/methode.html", "Voir ma méthode"] }
   ];

@@ -84,6 +84,20 @@
     each(ends, function (e) { io.observe(e); });
   }
 
-  function start() { test(); slider(); calc(); bar(); }
+
+  /* ---------- Boutons « Copier » ---------- */
+  function copy() {
+    each(document.querySelectorAll('.cp-copy'), function (b) {
+      b.addEventListener('click', function () {
+        var t = document.getElementById(b.getAttribute('data-copy')); if (!t) return;
+        var txt = t.innerText, label = b.textContent;
+        function done() { b.textContent = 'Copié ✓'; b.classList.add('ok'); gc('copie-modele-message'); setTimeout(function () { b.textContent = label; b.classList.remove('ok'); }, 1800); }
+        if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(txt).then(done, function () { fallback(); });
+        else fallback();
+        function fallback() { var r = document.createRange(); r.selectNodeContents(t); var sel = getSelection(); sel.removeAllRanges(); sel.addRange(r); try { document.execCommand('copy'); done(); } catch (e) {} }
+      });
+    });
+  }
+  function start() { test(); slider(); calc(); bar(); copy(); }
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', start); else start();
 })();

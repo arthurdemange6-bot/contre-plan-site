@@ -254,6 +254,31 @@ article("guide-acompte-paiement-devis-travaux",
 <p>Le montant et la nature de l'acompte, l'échéancier, la cohérence avec l'avancement réel du chantier et les conditions de paiement en cas de démarchage. Voir aussi <a href="guide-mentions-obligatoires-devis.html">les mentions obligatoires d'un devis</a> et <a href="lexique-devis-travaux.html">le lexique du devis</a>.</p>''',
  6, date="2026-10-23")
 
+article("guide-bien-demander-ses-devis",
+ "Comment bien demander ses devis de travaux | Contre-Plan",
+ "Avant de demander vos devis : comment obtenir des offres comparables",
+ "Décrire son projet, fixer les mêmes bases à chaque artisan, poser les bonnes questions : la méthode pour recevoir des devis de travaux que l'on peut vraiment comparer.",
+ "La plupart des devis impossibles à comparer le sont dès la demande : chaque artisan a compris un projet différent. Dix minutes de préparation évitent ce piège.",
+ '''<h2>1. Décrivez votre projet par écrit</h2>
+<p>Rédigez une description courte, la même pour tous les artisans : ce que vous voulez faire, les surfaces, l'état actuel, ce que vous gardez, ce que vous remplacez. Joignez quelques photos et, si vous en avez, un plan ou des mesures.</p>
+<ul><li>Pour une salle de bain : surface, remplacement de la baignoire par une douche ou non, hauteur de faïence souhaitée, équipements conservés.</li>
+<li>Pour une pompe à chaleur : surface chauffée, année de construction, isolation existante, système actuel, radiateurs ou plancher chauffant.</li>
+<li>Pour une isolation : surface des combles, accès, isolant existant, présence de spots ou de conduits.</li></ul>
+<h2>2. Fixez les mêmes bases à chaque artisan</h2>
+<p>Demandez à chacun de chiffrer les mêmes prestations, et de détailler les quantités et les prix unitaires. Si vous avez une gamme de matériaux en tête (une marque de receveur, un type de carrelage), donnez-la à tous. Sinon, demandez les marques et références prévues pour pouvoir comparer.</p>
+<div class="note"><p><strong>L'astuce :</strong> demandez explicitement que la dépose, l'évacuation des déchets, la protection du chantier et le nettoyage soient chiffrés, même s'ils semblent évidents. Ce sont les postes qui disparaissent le plus souvent.</p></div>
+<h2>3. Demandez trois devis, pas dix</h2>
+<p>Trois devis suffisent en général pour situer les prix. Au-delà, la comparaison devient difficile et les artisans les plus demandés risquent de ne pas répondre. Privilégiez des entreprises qui ont visité le chantier : un devis fait sans visite oublie souvent des contraintes.</p>
+<h2>4. Vérifiez l'entreprise avant de recevoir le devis</h2>
+<ul><li>Son immatriculation, sur annuaire-entreprises.data.gouv.fr.</li>
+<li>Sa qualification RGE si vous visez des aides, sur france-renov.gouv.fr.</li>
+<li>Son attestation d'assurance décennale, à demander avec le devis.</li></ul>
+<h2>5. Ne signez rien le jour de la visite</h2>
+<p>Un devis se relit au calme. Méfiez-vous des remises valables « seulement aujourd'hui ». Si vous signez chez vous, vous disposez en principe d'un délai de rétractation de 14 jours, et aucun paiement ne peut être exigé pendant 7 jours, sauf exceptions.</p>
+<h2>6. Comparez poste par poste</h2>
+<p>Une fois les devis reçus, mettez-les côte à côte avec <a href="comparer-ses-devis.html">le tableau comparatif gratuit</a>. Pour les points à faire préciser, utilisez <a href="modeles-messages-artisan.html">les modèles de messages</a>, et vérifiez les mentions obligatoires avec <a href="guide-mentions-obligatoires-devis.html">ce guide</a>.</p>''',
+ 6, date="2026-10-23")
+
 # ---------- Pages Méthode et Engagements
 page("methode",
  "Ma méthode : ce que je vérifie sur un devis | Contre-Plan",
@@ -457,6 +482,58 @@ page("cas-fictifs",
 <p>Pour voir ce que je contrôle à chaque fois : <a href="methode.html">ma méthode</a>.</p>""",
  "Cas fictifs")
 
+# ---------- Outils gratuits
+page("comparer-ses-devis",
+ "Tableau comparatif de devis gratuit (Excel et PDF) | Contre-Plan",
+ "Comparer ses devis : le tableau gratuit",
+ "Tableau gratuit pour comparer 2 ou 3 devis de travaux poste par poste : totaux, TVA, acompte, postes non chiffrés, garanties. Excel et PDF à imprimer.",
+ "Deux devis ne se comparent pas sur le total : ils ne contiennent presque jamais les mêmes prestations. Ce tableau vous aide à les remettre à plat, poste par poste.",
+ """<div style="display:flex;flex-wrap:wrap;gap:12px;margin:8px 0 24px;">
+<a href="tableau-comparatif-devis.xlsx" download data-goatcounter-click="telechargement-comparatif-xlsx" style="background:#c44c19;color:#fff;text-decoration:none;font-weight:700;font-size:18px;padding:16px 24px;border-radius:4px;">Télécharger le tableau (Excel)</a>
+<a href="tableau-comparatif-devis.pdf" download data-goatcounter-click="telechargement-comparatif-pdf" style="background:#14284b;color:#fff;text-decoration:none;font-weight:700;font-size:18px;padding:16px 24px;border-radius:4px;">Version à imprimer (PDF)</a>
+</div>
+<p>Le fichier Excel s'ouvre aussi dans Google Sheets (Fichier, Importer) et dans Numbers. Une feuille d'exemple fictif montre un tableau rempli.</p>
+<h2>Ce que le tableau fait pour vous</h2>
+<ul><li>Il additionne les postes, calcule la TVA, le total TTC et l'acompte en euros pour chaque artisan.</li>
+<li>Il affiche l'écart de chaque devis avec le moins cher.</li>
+<li>Il colore en orange les postes chiffrés chez un artisan mais absents chez un autre : ce sont ceux à faire chiffrer avant de comparer.</li>
+<li>Il signale en rouge chaque « Non » : attestation décennale non reçue, pas de délai ferme, déchets non chiffrés.</li>
+<li>Il met en évidence un acompte supérieur à 30 %.</li></ul>
+<h2>Comment bien l'utiliser</h2>
+<ul><li><b>Une ligne par prestation comparable.</b> Si un artisan regroupe la dépose et l'évacuation et un autre les sépare, additionnez pour comparer la même chose.</li>
+<li><b>Les montants hors taxes.</b> La TVA peut différer d'un devis à l'autre si l'un des taux est mal appliqué : comparez d'abord en HT.</li>
+<li><b>Les quantités.</b> Si deux devis n'annoncent pas la même surface pour le même travail, demandez pourquoi avant de comparer les prix.</li>
+<li><b>Le moins cher n'est pas forcément le meilleur.</b> Un devis bas avec deux postes absents peut finir plus cher qu'un devis complet.</li></ul>
+<div class="note"><p><b>Vous préférez un regard d'ingénieur ?</b> L'option « Comparatif multi devis » vous livre ce tableau rempli et commenté poste par poste, avec ce qui différencie vraiment les offres. Voir <a href="index.html#tarifs">les tarifs</a>.</p></div>
+<p>Pour demander des devis comparables dès le départ : <a href="guide-bien-demander-ses-devis.html">comment bien demander ses devis</a>. Pour écrire aux artisans : <a href="modeles-messages-artisan.html">les modèles de messages</a>.</p>""",
+ "Outil gratuit")
+
+TPL = [
+ ("Demander l'attestation d'assurance décennale",
+  "Bonjour,\n\nMerci pour votre devis du [date]. Avant de m'engager, pourriez-vous me transmettre votre attestation d'assurance décennale en cours de validité, couvrant les travaux prévus ([type de travaux]) ?\n\nJe vous remercie par avance.\n\nCordialement,\n[Votre nom]"),
+ ("Négocier l'acompte et l'échéancier",
+  "Bonjour,\n\nVotre devis me convient sur le fond. Concernant le paiement, serait-il possible de prévoir un acompte de 30 % à la signature, puis des paiements liés à l'avancement des travaux et le solde à la réception ?\n\nPar exemple : 30 % à la signature, 30 % à [étape], 30 % à [étape], le solde à la réception.\n\nMerci de me dire si cela vous convient.\n\nCordialement,\n[Votre nom]"),
+ ("Faire détailler un forfait",
+  "Bonjour,\n\nSur votre devis, la ligne « [intitulé du forfait] » est indiquée au forfait pour [montant] € HT. Pour pouvoir comparer, pourriez-vous me détailler ce qu'elle comprend (travaux, quantités, matériaux) ?\n\nMerci beaucoup.\n\nCordialement,\n[Votre nom]"),
+ ("Faire ajouter un poste oublié",
+  "Bonjour,\n\nEn relisant votre devis, je ne vois pas de ligne pour [poste : par exemple l'étanchéité sous carrelage de la douche / l'évacuation des gravats]. Pourriez-vous l'ajouter, ou me confirmer par écrit qu'il est inclus dans un autre poste ?\n\nJe préfère que tout soit chiffré avant de signer pour éviter les suppléments en cours de chantier.\n\nCordialement,\n[Votre nom]"),
+ ("Obtenir une date de début et un délai ferme",
+  "Bonjour,\n\nVotre devis indique une durée indicative de [durée]. Pourriez-vous préciser une date de début des travaux et un délai d'exécution sur lequel vous vous engagez ?\n\nMerci par avance.\n\nCordialement,\n[Votre nom]"),
+ ("Demander les marques et références",
+  "Bonjour,\n\nPour bien comparer les offres, pourriez-vous m'indiquer les marques et références des matériaux et équipements prévus, notamment [équipement : receveur, mitigeur, pompe à chaleur, isolant…] ?\n\nMerci beaucoup.\n\nCordialement,\n[Votre nom]"),
+ ("Refuser poliment un devis",
+  "Bonjour,\n\nMerci pour le temps passé et pour votre devis du [date]. Après réflexion, j'ai choisi une autre proposition pour ce projet.\n\nJe garde vos coordonnées pour de futurs travaux.\n\nBien cordialement,\n[Votre nom]"),
+]
+tpl_html = "".join(f'<div class="cp-tpl"><h3>{html.escape(t)}</h3><pre id="tpl{i}">{html.escape(x)}</pre><button type="button" class="cp-copy" data-copy="tpl{i}">Copier le message</button></div>' for i,(t,x) in enumerate(TPL,1))
+page("modeles-messages-artisan",
+ "Modèles de messages à envoyer à un artisan | Contre-Plan",
+ "Modèles de messages à envoyer à l'artisan",
+ "Messages prêts à copier pour demander l'attestation décennale, négocier l'acompte, faire détailler un forfait ou ajouter un poste oublié sur un devis de travaux.",
+ "Poser les bonnes questions par écrit, c'est la meilleure protection avant de signer. Voici des messages prêts à copier : remplacez simplement les passages entre crochets.",
+ '<p>Gardez un ton cordial : l\'artisan n\'est pas un adversaire, et un devis précisé par écrit protège aussi l\'entreprise. Envoyez vos questions par e-mail ou par message, pour en garder une trace.</p>' + tpl_html +
+ '<p style="margin-top:24px">Vous ne savez pas quelles questions poser sur votre devis ? <a href="index.html#test">Faites le test en 1 minute</a>, ou confiez-le moi : chaque rapport se termine par les questions à envoyer à l\'artisan.</p>',
+ "Outil gratuit")
+
 # ---------- Guides index
 cards = "".join(f'''<a href="{s}.html" style="display:flex;flex-direction:column;gap:10px;background:#fff;border:1px solid #ddd8ca;border-radius:6px;padding:28px;text-decoration:none;color:#14284b;">
 <span style="font-family:Archivo,Arial,sans-serif;font-weight:800;font-size:22px;line-height:1.25;">{html.escape(h)}</span>
@@ -488,7 +565,7 @@ p404 = head("Page introuvable | Contre-Plan", "Cette page n'existe pas ou a ét�
 open(os.path.join(OUT, "404.html"), "w").write(p404)
 
 # ---------- sitemap
-urls = [("", "1.0"), ("guides.html","0.8")] + [(s+".html","0.7") for s,_,_ in ARTICLES] + [(s+".html","0.7") for s in PAGES] + [("checklist-devis-travaux.pdf","0.6"),("exemple-rapport-contre-plan.pdf","0.6")]
+urls = [("", "1.0"), ("guides.html","0.8")] + [(s+".html","0.7") for s,_,_ in ARTICLES] + [(s+".html","0.7") for s in PAGES] + [("checklist-devis-travaux.pdf","0.6"),("exemple-rapport-contre-plan.pdf","0.6"),("tableau-comparatif-devis.pdf","0.5")]
 sm = '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n' + "".join(f'  <url><loc>https://contre-plan.com/{u}</loc><lastmod>{LASTMOD.get(u, max([DATE] + list(LASTMOD.values())))}</lastmod><priority>{p}</priority></url>\n' for u,p in urls) + '</urlset>\n'
 open(os.path.join(OUT, "sitemap.xml"), "w").write(sm)
 print("ok", [a[0] for a in ARTICLES])
