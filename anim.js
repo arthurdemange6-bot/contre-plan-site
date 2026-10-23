@@ -136,6 +136,7 @@
     var wrap = document.body.firstElementChild;
     if (!wrap || wrap.tagName !== 'DIV') return;
     var home = !!document.getElementById('top');
+    if (!home) return;  // pages de lecture : pas de devis derrière le texte
     var rows = [
       ['Protection des sols, évacuation du mobilier', '1 ft', '180,00', '180,00'],
       ['Dépose carrelage mural et sol', '25 m²', '58,00', '1 450,00', 'ring', 'élevé ?'],
