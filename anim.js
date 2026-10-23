@@ -111,6 +111,65 @@
       top.addEventListener('mouseleave', function () { card.style.transform = ''; });
     }
   }
-  function start() { init(); extras(); }
+
+  function devis() {
+    var top = document.getElementById('top');
+    if (!top) return;
+    var wrap = document.body.firstElementChild;
+    if (!wrap || wrap.tagName !== 'DIV') return;
+    var rows = [
+      ['Protection des sols, évacuation du mobilier', '1 ft', '180,00', '180,00'],
+      ['Dépose carrelage mural et sol', '18 m²', '78,00', '1 404,00', 'ring', 'élevé ?'],
+      ['Dépose baignoire et sanitaires', '1 u', '250,00', '250,00'],
+      ['Receveur extra-plat 90×120', '1 u', '690,00', '690,00', '', 'OK ✓'],
+      ['Étanchéité sous carrelage', '—', '—', '—', '', 'non chiffrée !'],
+      ['Faïence murale 30×60, fourniture et pose', '14 m²', '95,00', '1 330,00'],
+      ['Carrelage sol antidérapant', '6 m²', '89,00', '534,00'],
+      ['Plomberie : alimentations, évacuations', '1 ft', '1 150,00', '1 150,00', '', 'à détailler'],
+      ['Meuble vasque 80 cm et mitigeur', '1 u', '640,00', '640,00'],
+      ['Électricité : 2 spots, raccordement VMC', '1 ft', '480,00', '480,00']
+    ];
+    function el(tag, cls, html) { var e = document.createElement(tag); if (cls) e.className = cls; if (html != null) e.innerHTML = html; return e; }
+    var layer = el('div'); layer.id = 'cp-devis'; layer.setAttribute('aria-hidden', 'true');
+    var sheet = el('div', 'cp-sheet'); layer.appendChild(sheet);
+    var steps = [];  // [élément, début, fin, type]
+    var h = el('div', 'h cp-w', '<b>DEVIS</b><span>Exemple fictif · Salle de bain 6 m²</span>'); sheet.appendChild(h); steps.push([h, 0, 0.05, 'w']);
+    var hd = el('div', 'r hd cp-w', '<span>Désignation</span><span>Qté</span><span>P.U. HT</span><span>Total HT</span>'); sheet.appendChild(hd); steps.push([hd, 0.03, 0.07, 'w']);
+    var notes = [];
+    rows.forEach(function (r, i) {
+      var row = el('div', 'r cp-w');
+      row.innerHTML = '<span>' + r[0] + '</span><span>' + r[1] + '</span><span>' + r[2] + '</span><span class="cp-amt">' + r[3] + '</span>';
+      sheet.appendChild(row);
+      var a = 0.07 + i * 0.05; steps.push([row, a, a + 0.045, 'w']);
+      if (r[4] === 'ring') { var ring = el('i', 'cp-ring2'); row.lastChild.appendChild(ring); notes.push(ring); }
+      if (r[5]) { var n = el('span', 'cp-n', r[5]); row.appendChild(n); notes.push(n); }
+    });
+    var gr = el('div', 'r cp-w', '<span></span><span></span><span></span><span></span>'); gr.appendChild(el('span', 'cp-n', '+ évacuation des gravats ?')); gr.lastChild.style.right = 'auto'; gr.lastChild.style.left = '0'; gr.lastChild.style.top = '.2em';
+    sheet.appendChild(gr); steps.push([gr, 0.57, 0.575, 'w']); notes.splice(4, 0, gr.lastChild);
+    var t1 = el('div', 't cp-w', '<span>Total HT</span><span>6 658,00 €</span>');
+    var t2 = el('div', 't cp-w', '<span>TVA 10 %</span><span>665,80 €</span>');
+    var t3 = el('div', 't cp-w', '<span>Total TTC</span><span>7 323,80 €</span>');
+    var t4 = el('div', 't cp-w', '<span>Acompte à la commande : 50 %</span><span class="cp-amt">3 661,90 €</span>');
+    [t1, t2, t3, t4].forEach(function (t, i) { sheet.appendChild(t); steps.push([t, 0.58 + i * 0.03, 0.61 + i * 0.03, 'w']); });
+    var ring4 = el('i', 'cp-ring2'); t4.lastChild.appendChild(ring4); var n4 = el('span', 'cp-n', '→ 30 % suffit'); t4.appendChild(n4); notes.push(ring4, n4);
+    var sig = el('div', 'sig cp-w', '<span>Bon pour accord, le …</span><span>Signature :</span>'); sheet.appendChild(sig); steps.push([sig, 0.7, 0.74, 'w']);
+    var tampon = el('div', 'cp-tampon', 'RELU'); sig.style.position = 'relative'; sig.appendChild(tampon);
+    notes.forEach(function (n, i) { var a = 0.75 + i * 0.022; steps.push([n, a, a, 'on']); });
+    steps.push([tampon, 0.95, 0.95, 'on']);
+    document.body.insertBefore(layer, wrap);
+    wrap.style.background = 'transparent'; wrap.classList.add('cp-front');
+    var busy = false;
+    function upd() {
+      busy = false;
+      var H = document.documentElement.scrollHeight - innerHeight, p = H > 0 ? scrollY / H : 1;
+      steps.forEach(function (s) {
+        if (s[3] === 'w') { var k = Math.max(0, Math.min(1, (p - s[1]) / (s[2] - s[1]))); s[0].style.clipPath = k >= 1 ? 'none' : 'inset(0 ' + (100 - k * 100) + '% 0 0)'; }
+        else s[0].classList.toggle('on', p >= s[1]);
+      });
+    }
+    addEventListener('scroll', function () { if (!busy) { busy = true; requestAnimationFrame(upd); } }, { passive: true });
+    addEventListener('resize', upd); upd();
+  }
+  function start() { init(); extras(); devis(); }
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', start); else start();
 })();

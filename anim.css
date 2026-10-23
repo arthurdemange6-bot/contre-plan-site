@@ -69,3 +69,24 @@ summary:hover{color:#b8461a}
   .anim .cp-strike::after{transform:scaleX(1);animation:none}
   .anim .cp-scanbox::after,.anim #cp-chat-btn{animation:none}
 }
+/* ---- Devis en filigrane qui se remplit au défilement (accueil) ---- */
+#cp-devis{position:fixed;inset:0;z-index:0;background:#f3f0e8;display:flex;justify-content:center;align-items:flex-start;padding-top:86px;pointer-events:none;overflow:hidden}
+.cp-front{position:relative;z-index:1}
+.cp-sheet{position:relative;width:min(820px,92vw);font-family:'Source Sans 3',Arial,sans-serif;color:rgba(20,40,75,.12);font-size:clamp(11px,1.6vw,16px);line-height:1.35;transform:rotate(-1.2deg)}
+.cp-sheet .h{display:flex;justify-content:space-between;align-items:flex-end;border-bottom:2px solid rgba(20,40,75,.13);padding-bottom:.6em;margin-bottom:.4em}
+.cp-sheet .h b{font-family:Archivo,Arial,sans-serif;font-weight:800;font-size:2.2em;letter-spacing:.08em;color:rgba(20,40,75,.12)}
+.cp-sheet .r{display:grid;grid-template-columns:1fr 4.2em 5.2em 6.2em;gap:.6em;padding:.42em 0;border-bottom:1px solid rgba(20,40,75,.06);position:relative}
+.cp-sheet .r span:not(:first-child){text-align:right}
+.cp-sheet .hd{font-weight:700;text-transform:uppercase;letter-spacing:.06em;font-size:.8em}
+.cp-sheet .t{position:relative;display:grid;grid-template-columns:1fr 7em;gap:.6em;padding:.3em 0;font-weight:700}
+.cp-sheet .t span:last-child{text-align:right}
+.cp-sheet .sig{display:flex;justify-content:space-between;margin-top:1.4em;font-style:italic}
+.cp-w{clip-path:inset(0 100% 0 0)}
+.cp-n{color:rgba(212,86,31,.42);font-style:italic;font-weight:700;opacity:0;transform:translateY(4px) rotate(-2deg);transition:opacity .4s,transform .4s;position:absolute;right:-.2em;top:-.95em;font-size:.9em;white-space:nowrap}
+.cp-n.on{opacity:1;transform:rotate(-2deg)}
+.cp-ring2{position:absolute;border:2px solid rgba(212,86,31,.42);border-radius:50%;inset:-.15em -.5em;opacity:0;transform:scale(1.4);transition:opacity .35s,transform .35s}
+.cp-ring2.on{opacity:1;transform:scale(1) rotate(-3deg)}
+.cp-amt{position:relative}
+.cp-tampon{position:absolute;right:4%;bottom:-.6em;border:3px solid rgba(212,86,31,.42);color:rgba(212,86,31,.45);font-family:Archivo,Arial,sans-serif;font-weight:800;letter-spacing:.12em;padding:.25em .7em;font-size:1.3em;opacity:0;transform:scale(1.8) rotate(-16deg);transition:opacity .3s,transform .35s cubic-bezier(.3,1.4,.5,1)}
+.cp-tampon.on{opacity:1;transform:scale(1) rotate(-8deg)}
+@media (max-width:600px){#cp-devis{padding-top:64px}.cp-sheet .r{grid-template-columns:1fr 3.4em 4.4em 5.4em}}
