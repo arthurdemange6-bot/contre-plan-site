@@ -27,9 +27,11 @@
     { q: "Comment comparer mes devis ?", k: ["comparer", "comparatif", "plusieurs devis", "deux devis", "trois devis", "tableau"],
       a: "Comparez poste par poste, en HT, en mettant les prestations comparables sur la même ligne : un devis moins cher avec des postes absents peut finir plus cher. Un tableau gratuit est disponible, et l'option « Comparatif multi devis » vous le livre rempli et commenté.", l: ["/comparer-ses-devis.html", "Le tableau comparatif gratuit"] },
     { q: "Qui analyse mon devis ?", k: ["qui", "ingénieur", "ingenieur", "expérience", "experience", "compétent", "fiable", "commission", "indépendant"],
-      a: "Un ingénieur BTP qui pilote des chantiers depuis 2020. Indépendant : aucune commission d'artisan, aucune entreprise à vous revendre.", l: ["/methode.html", "Voir ma méthode"] }
+      a: "Un ingénieur BTP qui pilote des chantiers depuis 2020. Indépendant : aucune commission d'artisan, aucune entreprise à vous revendre.", l: ["/methode.html", "Voir ma méthode"] },
+    { q: "Comment vous contacter ?", k: ["contact", "contacter", "joindre", "écrire", "ecrire", "mail", "email", "message", "formulaire"],
+      a: "Par le formulaire de contact : je réponds sous 48 h ouvrées. Pour faire analyser un devis, commandez directement sur ComeUp.", l: ["/contact.html", "Formulaire de contact"] }
   ];
-  var FALLBACK = "Je n'ai pas la réponse à cette question. Écrivez à contact@contre-plan.com, ou réservez un appel gratuit de 15 min : https://calendar.app.google/6LCc6yKVHnbvA3WN7";
+  var FALLBACK = "Je n'ai pas la réponse à cette question. Écrivez-moi via le formulaire de contact, ou réservez un appel gratuit de 15 min : https://calendar.app.google/6LCc6yKVHnbvA3WN7";
 
   var css = "#cp-chat-btn{position:fixed;right:20px;bottom:20px;z-index:9999;display:flex;align-items:center;gap:10px;background:#bf4a17;color:#fff;border:0;border-radius:2px;padding:14px 20px;font:700 16px 'Source Sans 3',Arial,sans-serif;box-shadow:0 8px 24px rgba(0,0,0,.3);cursor:pointer}" +
     "#cp-chat-btn:hover{background:#b8461a}" +
@@ -91,6 +93,7 @@
       var m = add(e ? e.a : FALLBACK, "bot");
       var a = document.createElement("a"); a.href = COMEUP; a.className = "cp-cta"; a.target = "_blank"; a.rel = "noopener"; a.textContent = "Faire analyser mon devis";
       a.onclick = function () { try { window.goatcounter && window.goatcounter.count({ path: "clic-comeup-chat", event: true }); } catch (x) {} };
+      if (!e) { var lc = document.createElement("a"); lc.href = "/contact.html"; lc.textContent = "Formulaire de contact"; lc.style.cssText = "display:block;margin-top:8px;color:#b8461a;font-weight:700"; m.appendChild(lc); }
       if (e && e.l) { var l = document.createElement("a"); l.href = e.l[0]; l.textContent = e.l[1] + ""; l.style.cssText = "display:block;margin-top:8px;color:#b8461a;font-weight:700"; m.appendChild(l); }
       m.appendChild(document.createElement("br")); m.appendChild(a);
     }, 250);

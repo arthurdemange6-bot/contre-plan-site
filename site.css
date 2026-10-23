@@ -143,3 +143,17 @@
 @media (max-width:420px){.cp-foot-in{grid-template-columns:1fr}}
 
 @media (max-width:760px){.cp-topnav{gap:0!important}.cp-topnav{display:none!important}.cp-top{padding:48px 24px 72px!important;gap:40px!important}.cp-top h1{font-size:40px!important}#cp-chat-btn{padding:14px!important}#cp-chat-btn span{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}}
+
+.cp-form{display:flex;flex-direction:column;gap:18px;background:#fff;border:1px solid #d8dee6;border-radius:2px;padding:28px;margin:28px 0}
+.cp-form label{display:flex;flex-direction:column;gap:6px;font-weight:700;font-size:16px;color:#14284b}
+.cp-form input,.cp-form select,.cp-form textarea{font:400 17px 'Source Sans 3',Arial,sans-serif;color:#14284b;background:#f6f7f9;border:1px solid #b9c3d1;border-radius:2px;padding:12px 14px;width:100%;box-sizing:border-box}
+.cp-form textarea{resize:vertical;min-height:150px}
+.cp-form input:focus,.cp-form select:focus,.cp-form textarea:focus{outline:2px solid #bf4a17;outline-offset:1px;border-color:#bf4a17;background:#fff}
+.cp-form button{align-self:flex-start;background:#bf4a17;color:#fff;border:0;border-radius:2px;padding:15px 26px;font:700 18px 'Source Sans 3',Arial,sans-serif;cursor:pointer}
+.cp-form button:hover{background:#a93f14}
+.cp-form button:focus-visible{outline:3px solid #14284b;outline-offset:2px}
+.cp-f2{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.cp-hp{position:absolute!important;left:-9999px!important;width:1px;height:1px;opacity:0}
+.cp-form-note{background:#fff;border-left:4px solid #bf4a17;padding:14px 18px}
+.cp-form-rgpd{margin:0;font-size:14px;line-height:1.5;color:#4a5b7e}
+@media (max-width:600px){.cp-f2{grid-template-columns:1fr}.cp-form{padding:20px}}

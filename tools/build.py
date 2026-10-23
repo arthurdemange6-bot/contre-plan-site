@@ -81,7 +81,7 @@ def FOOTER(root=""):
         ("https://www.pinterest.fr/contreplan/", "Pinterest", "clic-pinterest")])
     return f"""<footer class="cp-foot"><div class="cp-foot-in">
 <div class="cp-foot-brand"><div class="cp-foot-logo">CONTRE-PLAN</div><p>Votre devis de travaux relu par un ingénieur BTP avant que vous signiez. 100 % à distance, indépendant de tout artisan.</p><div class="cp-socs">{soc}</div></div>
-<div class="cp-foot-col"><p>Le service</p>{L("methode.html","Ma méthode")}{L("engagements.html","Mes engagements")}{L("exemple-rapport-contre-plan.pdf","Exemple de rapport","telechargement-exemple-rapport")}{L("index.html#tarifs","Tarifs")}<a href="{COMEUP}" data-goatcounter-click="clic-comeup">Commander sur ComeUp</a></div>
+<div class="cp-foot-col"><p>Le service</p>{L("methode.html","Ma méthode")}{L("engagements.html","Mes engagements")}{L("exemple-rapport-contre-plan.pdf","Exemple de rapport","telechargement-exemple-rapport")}{L("index.html#tarifs","Tarifs")}{L("contact.html","Contact")}<a href="{COMEUP}" data-goatcounter-click="clic-comeup">Commander sur ComeUp</a></div>
 <div class="cp-foot-col"><p>Par travaux</p>{L("analyse-devis-salle-de-bain.html","Salle de bain")}{L("analyse-devis-pompe-a-chaleur.html","Pompe à chaleur")}{L("analyse-devis-isolation.html","Isolation")}{L("analyse-devis-toiture.html","Toiture")}{L("cas-fictifs.html","Cas fictifs")}</div>
 <div class="cp-foot-col"><p>Ressources</p>{L("guides.html","Guides")}{L("comparer-ses-devis.html","Tableau comparatif")}{L("modeles-messages-artisan.html","Modèles de messages")}{L("lexique-devis-travaux.html","Lexique")}{L("checklist-devis-travaux.pdf","Check-list PDF","telechargement-checklist")}</div>
 </div><div class="cp-foot-bottom"><span>© 2026 Contre-Plan</span><a href="{root}mentions-legales.html" class="cp-ml">Mentions légales</a></div></footer>"""
@@ -600,6 +600,41 @@ idx = head("Guides et outils pour lire un devis de travaux | Contre-Plan",
   rsec("Outils gratuits", "À utiliser avec votre devis sous les yeux.", o_cards) + rsec("Pour aller plus loin", "Ce que contient une analyse, et comment je la mène.", c_cards) + \
   f'<div class="cp-res-cta">{CTA}</div></main>' + footer()
 open(os.path.join(OUT, "guides.html"), "w").write(idx)
+
+
+# ---------- contact
+FORM_ACTION = "https://formsubmit.co/contact@contre-plan.com"
+contact_body = f"""<p>Une question sur le service, sur un devis ou sur un guide ? Écrivez-moi ici, je réponds sous 48 h ouvrées à l'adresse que vous indiquez.</p>
+<p class="cp-form-note">Pour faire analyser un devis, passez directement par <a href="{COMEUP}" data-goatcounter-click="clic-comeup-contact">ComeUp</a> : c'est là que vous l'envoyez et que vous recevez le rapport. N'envoyez pas votre devis par ce formulaire.</p>
+<form class="cp-form" action="{FORM_ACTION}" method="POST" accept-charset="UTF-8">
+<input type="hidden" name="_subject" value="Nouveau message depuis contre-plan.com">
+<input type="hidden" name="_next" value="https://contre-plan.com/merci.html">
+<input type="hidden" name="_captcha" value="false">
+<input type="hidden" name="_template" value="table">
+<input type="text" name="_honey" class="cp-hp" tabindex="-1" autocomplete="off" aria-hidden="true">
+<div class="cp-f2">
+<label>Prénom ou pseudo<input type="text" name="nom" required maxlength="80" autocomplete="given-name"></label>
+<label>Adresse e-mail<input type="email" name="email" required maxlength="120" autocomplete="email"></label>
+</div>
+<label>Sujet<select name="sujet" required>
+<option value="">Choisissez un sujet</option>
+<option>Question sur le service</option>
+<option>Question sur un devis</option>
+<option>Question sur un guide ou un outil</option>
+<option>Partenariat ou presse</option>
+<option>Autre</option>
+</select></label>
+<label>Votre message<textarea name="message" required minlength="10" maxlength="4000" rows="7"></textarea></label>
+<button type="submit" data-goatcounter-click="envoi-formulaire-contact">Envoyer le message</button>
+<p class="cp-form-rgpd">Vos nom, e-mail et message servent uniquement à vous répondre. Ils sont transmis par le service d'envoi FormSubmit puis conservés dans ma messagerie au plus 12 mois. Vous pouvez demander leur suppression à tout moment : voir les <a href="mentions-legales.html">mentions légales</a>.</p>
+</form>
+<p>Vous préférez en parler de vive voix ? <a href="https://calendar.app.google/6LCc6yKVHnbvA3WN7" target="_blank" rel="noopener" data-goatcounter-click="clic-rdv-contact">Réservez un appel gratuit de 15 min</a>.</p>"""
+page("contact", "Contact | Contre-Plan", "Me contacter",
+ "Une question sur l'analyse de devis de travaux ? Écrivez à Contre-Plan via le formulaire de contact, réponse sous 48 h ouvrées.",
+ "Une question avant de commander, ou après avoir lu un guide ? Je vous réponds personnellement.", contact_body, "Contact", toc=False)
+
+merci = head("Message envoyé | Contre-Plan", "Votre message a bien été envoyé.", "https://contre-plan.com/merci.html").replace('<meta property="og:type" content="article">','<meta name="robots" content="noindex">') + pagehero("Contact", "Message envoyé", "Merci, votre message est bien parti. Je vous réponds sous 48 h ouvrées à l'adresse indiquée.", None, [("Accueil", "index.html"), ("Contact", "contact.html"), ("Message envoyé", None)]) + layout(f"""<p>En attendant, vous pouvez déjà vérifier votre devis avec les <a href="guides.html">guides et outils gratuits</a>, ou le <a href="lexique-devis-travaux.html">lexique du devis</a>.</p>""", False) + footer()
+open(os.path.join(OUT, "merci.html"), "w").write(merci)
 
 # ---------- 404 (absolute paths: served at any URL)
 p404 = head("Page introuvable | Contre-Plan", "Cette page n'existe pas ou a été déplacée.", "https://contre-plan.com/404.html", root="/").replace('<meta property="og:type" content="article">','<meta name="robots" content="noindex">') + f'''<main style="background-color: #0f2747; background-image: linear-gradient(#2a4a75 1px, transparent 1px), linear-gradient(90deg, #2a4a75 1px, transparent 1px); background-size: 160px 160px; color:#fff; min-height: 60vh;">
