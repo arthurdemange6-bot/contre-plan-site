@@ -97,7 +97,8 @@ def footer(root=""):
 CTA = f'''<aside style="margin-top: 48px; background-color: #0f2747; background-image: linear-gradient(#2a4a75 1px, transparent 1px), linear-gradient(90deg, #2a4a75 1px, transparent 1px); background-size: 80px 80px; color: #fff; border-radius: 2px; padding: 32px; display: flex; flex-direction: column; gap: 16px;">
 <p style="margin: 0; font-family: Archivo, Arial, sans-serif; font-weight: 800; font-size: 26px; line-height: 1.2; color: #fff;">Un devis à signer ? Faites-le relire par un ingénieur BTP.</p>
 <p style="margin: 0; font-size: 18px; line-height: 1.5; color: #c9d3ea;">Prix poste par poste, oublis, TVA, conditions de paiement : rapport PDF sous 48 h, 16,50 € au tarif de lancement.</p>
-<div style="display: flex; flex-wrap: wrap; gap: 12px;"><a href="{COMEUP}" data-goatcounter-click="clic-comeup" style="background: #bf4a17; color: #fff; text-decoration: none; font-weight: 700; font-size: 18px; padding: 16px 24px; border-radius: 2px;">Faire analyser mon devis</a><a href="{BOOK}" data-goatcounter-click="clic-appel" target="_blank" rel="noopener" style="color: #fff; font-weight: 700; font-size: 17px; padding: 14px 22px; border: 2px solid #fff; border-radius: 2px; text-decoration: none;">Appel gratuit de 15 min</a></div>
+<div style="display: flex; flex-wrap: wrap; gap: 12px;"><a href="{COMEUP}" data-goatcounter-click="clic-comeup" style="background: #bf4a17; color: #fff; text-decoration: none; font-weight: 700; font-size: 18px; padding: 16px 24px; border-radius: 2px;">Faire analyser mon devis, 16,50 €</a><a href="{BOOK}" data-goatcounter-click="clic-appel" target="_blank" rel="noopener" style="color: #fff; font-weight: 700; font-size: 17px; padding: 14px 22px; border: 2px solid #fff; border-radius: 2px; text-decoration: none;">Appel gratuit de 15 min</a></div>
+<p style="margin: 0; font-size: 15px; color: #c9d3ea;">Paiement sécurisé sur ComeUp. Rapport PDF sous 48 h. Aucun engagement envers l'artisan.</p>
 </aside>'''
 
 SIDE = f"""<div class="cp-sidecard"><p class="t">Votre devis relu par un ingénieur BTP</p><p>Rapport PDF sous 48 h, prix poste par poste, oublis et questions à poser. Dès 16,50 €.</p><a class="cp-btn" href="{COMEUP}" data-goatcounter-click="clic-comeup-side">Faire analyser mon devis</a><a class="cp-sublink" href="exemple-rapport-contre-plan.pdf" target="_blank" rel="noopener" data-goatcounter-click="telechargement-exemple-rapport">Voir un exemple de rapport</a></div>
@@ -605,6 +606,7 @@ open(os.path.join(OUT, "guides.html"), "w").write(idx)
 # ---------- contact
 FORM_ACTION = "https://formsubmit.co/contact@contre-plan.com"
 contact_body = f"""<p>Une question sur le service, sur un devis ou sur un guide ? Écrivez-moi ici, je réponds sous 48 h ouvrées à l'adresse que vous indiquez.</p>
+<p><b>Pas sûr que votre devis vaille une analyse ?</b> Choisissez « Pré-diagnostic gratuit » et décrivez-le en 3 lignes (type de travaux, montant, ce qui vous inquiète) : je vous dis gratuitement si une analyse vaut le coup.</p>
 <p class="cp-form-note">Pour faire analyser un devis, passez directement par <a href="{COMEUP}" data-goatcounter-click="clic-comeup-contact">ComeUp</a> : c'est là que vous l'envoyez et que vous recevez le rapport. N'envoyez pas votre devis par ce formulaire.</p>
 <form class="cp-form" action="{FORM_ACTION}" method="POST" accept-charset="UTF-8">
 <input type="hidden" name="_subject" value="Nouveau message depuis contre-plan.com">
@@ -618,6 +620,7 @@ contact_body = f"""<p>Une question sur le service, sur un devis ou sur un guide 
 </div>
 <label>Sujet<select name="sujet" required>
 <option value="">Choisissez un sujet</option>
+<option>Pré-diagnostic gratuit</option>
 <option>Question sur le service</option>
 <option>Question sur un devis</option>
 <option>Question sur un guide ou un outil</option>

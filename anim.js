@@ -73,7 +73,7 @@
       var fs = sp.style.fontSize;
       if (fs === '44px') prices.push(sp);
       if (sp.style.textDecoration === 'line-through') sp.classList.add('cp-strike');
-      if (/^Lancement/.test(sp.textContent.trim())) sp.classList.add('cp-badge');
+      if (/^−50/.test(sp.textContent.trim())) sp.classList.add('cp-badge');
     });
     // Prix qui montent au fil du défilement (et redescendent si l'on remonte)
     var pr = prices.map(function (sp) {
@@ -95,6 +95,19 @@
     }
     addEventListener('scroll', function () { if (!pbusy) { pbusy = true; requestAnimationFrame(pupd); } }, { passive: true });
     addEventListener('resize', pupd); pupd();
+    // Chiffres clés qui montent au fil du défilement
+    var stats = Array.prototype.map.call(document.querySelectorAll('[data-count]'), function (b) {
+      return { b: b, to: +b.getAttribute('data-count'), pre: b.getAttribute('data-prefix') || '', suf: b.getAttribute('data-suffix') || '', orig: b.textContent };
+    });
+    function sfmt(v) { return String(Math.round(v)).replace(/\B(?=(\d{3})+(?!\d))/g, ' '); }
+    function supd() {
+      stats.forEach(function (o, i) {
+        var r = o.b.getBoundingClientRect(), k = Math.max(0, Math.min(1, (innerHeight - r.top) / (innerHeight * 0.55) * 1.1 - i * 0.05));
+        var t = k >= 1 ? o.orig : o.pre + sfmt(o.to * (1 - Math.pow(1 - k, 2))) + o.suf;
+        if (o.b.textContent !== t) o.b.textContent = t;
+      });
+    }
+    if (stats.length) { addEventListener('scroll', function () { requestAnimationFrame(supd); }, { passive: true }); supd(); }
     var once = new IntersectionObserver(function (entries) {
       entries.forEach(function (e) {
         if (!e.isIntersecting) return; once.unobserve(e.target);

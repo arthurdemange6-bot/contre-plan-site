@@ -100,4 +100,10 @@
   }
   function start() { test(); slider(); calc(); bar(); copy(); }
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', start); else start();
+
+  (function () {
+    var m = location.search.match(/[?&]sujet=([^&]+)/), sel = document.querySelector('.cp-form select[name="sujet"]');
+    if (!m || !sel) return;
+    if (m[1] === 'prediagnostic') { sel.value = 'Pré-diagnostic gratuit'; var t = document.querySelector('.cp-form textarea'); if (t && !t.value) t.placeholder = "Type de travaux, montant du devis, ce qui vous inquiète (3 lignes suffisent)."; }
+  })();
 })();
