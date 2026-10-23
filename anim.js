@@ -87,7 +87,7 @@
       var r = tarifs.getBoundingClientRect(), vh = innerHeight;
       var k = Math.max(0, Math.min(1, (vh - r.top) / (vh * 0.7)));
       pr.forEach(function (o, i) {
-        var ki = Math.max(0, Math.min(1, k * 1.12 - i * 0.06));
+        var ki = Math.max(0, Math.min(1, k * 1.35 - i * 0.06));
         var v = ki >= 1 ? o.orig : o.orig.replace(o.m[0], (o.target * ki).toFixed(o.dec).replace('.', ','));
         if (v !== o.last) { o.tn.nodeValue = v; o.last = v; }
       });
@@ -102,7 +102,7 @@
     function sfmt(v) { return String(Math.round(v)).replace(/\B(?=(\d{3})+(?!\d))/g, ' '); }
     function supd() {
       stats.forEach(function (o, i) {
-        var r = o.b.getBoundingClientRect(), k = Math.max(0, Math.min(1, (innerHeight - r.top) / (innerHeight * 0.55) * 1.1 - i * 0.05));
+        var r = o.b.getBoundingClientRect(), k = Math.max(0, Math.min(1, (innerHeight - r.top) / (innerHeight * 0.55) * 1.25 - i * 0.05));
         var t = k >= 1 ? o.orig : o.pre + sfmt(o.to * (1 - Math.pow(1 - k, 2))) + o.suf;
         if (o.b.textContent !== t) o.b.textContent = t;
       });
