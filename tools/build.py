@@ -20,6 +20,7 @@ def head(title, desc, url, extra="", root=""):
 <link rel="icon" type="image/png" sizes="32x32" href="{root}favicon-32.png">
 <link rel="apple-touch-icon" href="{root}apple-touch-icon.png">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#0f2747">
 <title>{html.escape(title)}</title>
 <meta name="description" content="{html.escape(desc)}">
 <link rel="canonical" href="{url}">
@@ -58,6 +59,7 @@ h1{{font-size:clamp(32px,5.5vw,48px)!important}}
 {GC}
 </head>
 <body>
+<a class="cp-skip" href="#contenu">Aller au contenu</a>
 <div style="font-family: 'Source Sans 3', Arial, sans-serif; color: #14284b; background: #f6f7f9; width: 100%;">
 <header style="background: #0f2747;">
 <div style="max-width: 1160px; margin: 0 auto; padding: 24px; display: flex; flex-wrap: wrap; gap: 16px; align-items: center; justify-content: space-between;">
@@ -123,13 +125,13 @@ def crumbs_ld(crumbs, url):
 def layout(body, toc_on=True):
     toc = []
     def rep(m):
-        txt = re.sub(r"<[^>]+>", "", m.group(1)); i = slug_id(txt); toc.append((i, txt)); return f'<h2 id="{i}">{m.group(1)}</h2>'
+        txt = html.unescape(re.sub(r"<[^>]+>", "", m.group(1))); i = slug_id(txt); toc.append((i, re.sub(r"^\d+\.\s*", "", txt))); return f'<h2 id="{i}">{m.group(1)}</h2>'
     body = re.sub(r"<h2>(.*?)</h2>", rep, body)
     show = toc_on and len(toc) >= 3
     tl = "".join(f'<li><a href="#{i}">{html.escape(t)}</a></li>' for i, t in toc)
     side_toc = f'<nav class="cp-toc" aria-label="Sommaire"><p>Sommaire</p><ol>{tl}</ol></nav>' if show else ''
     mob_toc = f'<details class="cp-toc-m"><summary>Sommaire</summary><ol>{tl}</ol></details>' if show else ''
-    return f'<div class="cp-wrap"><main class="art">{mob_toc}{body}{CTA}</main><aside class="cp-side">{side_toc}{SIDE}</aside></div>'
+    return f'<div class="cp-wrap" id="contenu"><main class="art">{mob_toc}{body}{CTA}</main><aside class="cp-side">{side_toc}{SIDE}</aside></div>'
 
 ARTICLES = []
 def article(slug, title, h1, desc, lead, body, readtime, date=DATE):
@@ -148,9 +150,9 @@ def article(slug, title, h1, desc, lead, body, readtime, date=DATE):
 
 # ---------- Article 1
 article("guide-mentions-obligatoires-devis",
- "Mentions obligatoires d'un devis de travaux : la liste à vérifier | Contre-Plan",
+ "Mentions obligatoires d'un devis de travaux : la check-list",
  "Devis de travaux : les mentions obligatoires à vérifier avant de signer",
- "Assurance décennale, détail des postes, déchets, TVA, délais : la liste des mentions qu'un devis de travaux doit contenir, et ce que leur absence doit vous faire demander.",
+ "Assurance décennale, détail des postes, déchets, TVA, délais : les mentions qu'un devis de travaux doit contenir, et quoi demander si elles manquent.",
  "Un devis signé vaut contrat. S'il est incomplet, c'est vous qui en supporterez les conséquences en cas de désaccord. Voici ce qu'un devis de travaux doit contenir, regroupé dans l'ordre où je le vérifie.",
  '''<h2>1. L'entreprise et son assurance</h2>
 <ul>
@@ -191,9 +193,9 @@ article("guide-mentions-obligatoires-devis",
 
 # ---------- Article 2
 article("guide-tva-travaux-renovation",
- "TVA travaux 5,5 %, 10 % ou 20 % : quel taux sur votre devis ? | Contre-Plan",
+ "TVA travaux 5,5 %, 10 % ou 20 % : quel taux sur votre devis ?",
  "TVA sur un devis de travaux : 5,5 %, 10 % ou 20 %, quel taux est le bon ?",
- "Rénovation énergétique, amélioration, neuf ou agrandissement : quel taux de TVA doit figurer sur votre devis de travaux, et la mention qui remplace l'attestation depuis 2025.",
+ "Rénovation énergétique, amélioration, neuf, agrandissement : quel taux de TVA sur votre devis, et la mention qui remplace l'attestation depuis 2025.",
  "Sur un devis de 15 000 € HT, passer de 10 % à 20 % de TVA, c'est 1 500 € de plus. Pourtant, je vois régulièrement des taux mal appliqués, dans les deux sens. Voici comment vérifier le vôtre.",
  '''<h2>La condition de base : un logement achevé depuis plus de 2 ans</h2>
 <p>Les taux réduits ne s'appliquent qu'aux travaux dans des <strong>locaux d'habitation achevés depuis plus de deux ans</strong>. Ils sont exclus si les travaux, sur deux ans, aboutissent à un <strong>immeuble neuf</strong> ou <strong>augmentent la surface de plancher de plus de 10 %</strong>.</p>
@@ -221,9 +223,9 @@ article("guide-tva-travaux-renovation",
 
 # ---------- Article 3
 article("guide-oublis-devis-salle-de-bain",
- "Devis salle de bain : les 7 oublis qui font exploser la facture | Contre-Plan",
+ "Devis salle de bain : 7 oublis qui font exploser la facture",
  "Devis de salle de bain : les 7 oublis qui font grimper la facture",
- "Dépose, étanchéité, évacuation, électricité, ventilation : les postes souvent absents d'un devis de salle de bain, qui reviennent en supplément une fois le chantier lancé.",
+ "Dépose, étanchéité, évacuation, électricité, ventilation : les postes souvent absents d'un devis de salle de bain, qui reviennent en supplément.",
  "Le devis le moins cher n'est pas toujours le moins cher à l'arrivée. Sur une salle de bain, les mauvaises surprises viennent presque toujours de ce qui n'est pas écrit. Voici les sept postes que je vérifie en premier.",
  '''<h2>1. La dépose et l'évacuation des gravats</h2>
 <p>Retirer l'ancienne baignoire, la faïence et le carrelage prend du temps et génère des déchets. Si la dépose n'est pas chiffrée, ou si l'évacuation n'apparaît pas, attendez-vous à un supplément. Rappel : le devis doit d'ailleurs mentionner la gestion des déchets (voir <a href="guide-mentions-obligatoires-devis.html">les mentions obligatoires</a>).</p>
@@ -260,9 +262,9 @@ def page(slug, title, h1, desc, lead, body, kicker, toc=True):
     PAGES.append(slug)
 
 article("guide-acompte-paiement-devis-travaux",
- "Acompte sur un devis de travaux : combien, quand, comment | Contre-Plan",
+ "Acompte sur un devis de travaux : combien, quand, comment",
  "Acompte, échéancier, solde : comment payer un devis de travaux",
- "Montant de l'acompte, arrhes ou acompte, démarchage à domicile, paiements à l'avancement, solde et réserves : les règles pour payer vos travaux sans prendre de risque.",
+ "Montant de l'acompte, arrhes ou acompte, démarchage, paiements à l'avancement, solde et réserves : les règles pour payer vos travaux sans risque.",
  "Un acompte trop élevé, c'est vous qui financez le chantier à la place de l'entreprise, et c'est votre seul levier qui disparaît en cas de problème. Voici comment caler les paiements.",
  '''<h2>Combien verser à la signature ?</h2>
 <p>Aucun texte ne fixe un plafond général d'acompte pour des travaux chez un particulier. L'usage est d'environ <strong>30 % à la signature</strong>, parfois un peu plus si l'entreprise doit commander des matériaux sur mesure (menuiseries, cuisine). Au-delà de 40 à 50 %, demandez pourquoi et proposez un échéancier.</p>
@@ -286,7 +288,7 @@ article("guide-acompte-paiement-devis-travaux",
 article("guide-bien-demander-ses-devis",
  "Comment bien demander ses devis de travaux | Contre-Plan",
  "Avant de demander vos devis : comment obtenir des offres comparables",
- "Décrire son projet, fixer les mêmes bases à chaque artisan, poser les bonnes questions : la méthode pour recevoir des devis de travaux que l'on peut vraiment comparer.",
+ "Décrire son projet, donner les mêmes bases à chaque artisan, poser les bonnes questions : la méthode pour recevoir des devis vraiment comparables.",
  "La plupart des devis impossibles à comparer le sont dès la demande : chaque artisan a compris un projet différent. Dix minutes de préparation évitent ce piège.",
  '''<h2>1. Décrivez votre projet par écrit</h2>
 <p>Rédigez une description courte, la même pour tous les artisans : ce que vous voulez faire, les surfaces, l'état actuel, ce que vous gardez, ce que vous remplacez. Joignez quelques photos et, si vous en avez, un plan ou des mesures.</p>
@@ -335,7 +337,7 @@ page("methode",
  "Méthode")
 
 page("engagements",
- "Mes engagements : indépendance et confidentialité | Contre-Plan",
+ "Engagements de Contre-Plan : indépendance et confidentialité",
  "Mes engagements",
  "Indépendance vis-à-vis des artisans, confidentialité de vos devis, délais et portée de l'analyse : ce sur quoi Contre-Plan s'engage.",
  "Vous me confiez un document qui engage plusieurs milliers d'euros. Voici comment je le traite.",
@@ -360,7 +362,7 @@ def cta_type(t):
     return f"""<div class="note"><p><b>Vous avez un devis {t} sous les yeux ?</b> Faites d'abord <a href="index.html#test">le test en 1 minute</a>, puis envoyez-le moi : je le relis ligne par ligne et vous dites quoi demander à l'artisan. <a href="exemple-rapport-contre-plan.pdf" target="_blank" rel="noopener">Voir un exemple de rapport</a>.</p></div>"""
 
 page("analyse-devis-salle-de-bain",
- "Analyse de devis salle de bain par un ingénieur BTP | Contre-Plan",
+ "Analyse de devis salle de bain par un ingénieur BTP",
  "Analyse de devis salle de bain",
  "Étanchéité, dépose, plomberie au forfait, électricité, TVA : les points qu'un ingénieur BTP vérifie sur un devis de rénovation de salle de bain.",
  "Une salle de bain concentre plusieurs corps de métier dans quelques mètres carrés : c'est le devis où les oublis coûtent le plus cher.",
@@ -383,7 +385,7 @@ page("analyse-devis-salle-de-bain",
  "Salle de bain")
 
 page("analyse-devis-pompe-a-chaleur",
- "Analyse de devis pompe à chaleur par un ingénieur BTP | Contre-Plan",
+ "Analyse de devis pompe à chaleur par un ingénieur BTP",
  "Analyse de devis pompe à chaleur",
  "Dimensionnement, fluides frigorigènes, liaisons, condensats, RGE, TVA : ce qu'un ingénieur BTP vérifie sur un devis de pompe à chaleur.",
  "Une pompe à chaleur mal dimensionnée ou mal posée consomme plus et dure moins. Le devis doit le montrer avant la signature.",
@@ -407,7 +409,7 @@ page("analyse-devis-pompe-a-chaleur",
  "Pompe à chaleur")
 
 page("analyse-devis-isolation",
- "Analyse de devis isolation par un ingénieur BTP | Contre-Plan",
+ "Analyse de devis isolation par un ingénieur BTP",
  "Analyse de devis isolation",
  "Résistance thermique, épaisseur, surface, pare-vapeur, points singuliers, RGE et TVA : ce qu'un ingénieur BTP vérifie sur un devis d'isolation.",
  "Sur un devis d'isolation, un chiffre compte plus que tous les autres : la résistance thermique. S'il manque, vous ne savez pas ce que vous achetez.",
@@ -427,7 +429,7 @@ page("analyse-devis-isolation",
  "Isolation")
 
 page("analyse-devis-toiture",
- "Analyse de devis toiture par un ingénieur BTP | Contre-Plan",
+ "Analyse de devis toiture par un ingénieur BTP",
  "Analyse de devis toiture",
  "Surface, échafaudage, dépose, écran sous-toiture, zinguerie, charpente, amiante : ce qu'un ingénieur BTP vérifie sur un devis de toiture.",
  "Une toiture se refait rarement deux fois dans une vie. Le devis doit dire précisément ce qui est remplacé, et ce qui ne l'est pas.",
@@ -489,7 +491,7 @@ for k in sorted(_groups):
         f'<div class="cp-term" id="{slug_id(t)}"><dt>{html.escape(t)}</dt><dd>{html.escape(d)}</dd></div>' for t, d in _groups[k]) + '</dl></section>'
 
 page("lexique-devis-travaux",
- "Lexique du devis de travaux : les termes expliqués | Contre-Plan",
+ "Lexique du devis de travaux : les termes expliqués",
  "Lexique du devis de travaux",
  "Acompte, arrhes, forfait, ml, P.U., ragréage, SPEC, RGE, résistance thermique : les mots d'un devis de travaux expliqués simplement.",
  "Les termes qu'on croise sur un devis de travaux, expliqués en une ou deux phrases.",
@@ -523,7 +525,7 @@ page("cas-fictifs",
 
 # ---------- Outils gratuits
 page("comparer-ses-devis",
- "Tableau comparatif de devis gratuit (Excel et PDF) | Contre-Plan",
+ "Tableau comparatif de devis gratuit (Excel et PDF)",
  "Comparer ses devis : le tableau gratuit",
  "Tableau gratuit pour comparer 2 ou 3 devis de travaux poste par poste : totaux, TVA, acompte, postes non chiffrés, garanties. Excel et PDF à imprimer.",
  "Deux devis ne se comparent pas sur le total : ils ne contiennent presque jamais les mêmes prestations. Ce tableau vous aide à les remettre à plat, poste par poste.",
@@ -563,11 +565,11 @@ TPL = [
  ("Refuser poliment un devis",
   "Bonjour,\n\nMerci pour le temps passé et pour votre devis du [date]. Après réflexion, j'ai choisi une autre proposition pour ce projet.\n\nJe garde vos coordonnées pour de futurs travaux.\n\nBien cordialement,\n[Votre nom]"),
 ]
-tpl_html = "".join(f'<div class="cp-tpl"><h3>{html.escape(t)}</h3><pre id="tpl{i}">{html.escape(x)}</pre><button type="button" class="cp-copy" data-copy="tpl{i}">Copier le message</button></div>' for i,(t,x) in enumerate(TPL,1))
+tpl_html = "".join(f'<div class="cp-tpl"><h2>{html.escape(t)}</h2><pre id="tpl{i}">{html.escape(x)}</pre><button type="button" class="cp-copy" data-copy="tpl{i}">Copier le message</button></div>' for i,(t,x) in enumerate(TPL,1))
 page("modeles-messages-artisan",
  "Modèles de messages à envoyer à un artisan | Contre-Plan",
  "Modèles de messages à envoyer à l'artisan",
- "Messages prêts à copier pour demander l'attestation décennale, négocier l'acompte, faire détailler un forfait ou ajouter un poste oublié sur un devis de travaux.",
+ "Messages prêts à copier pour demander l'attestation décennale, négocier l'acompte, faire détailler un forfait ou ajouter un poste oublié.",
  "Poser les bonnes questions par écrit, c'est la meilleure protection avant de signer. Voici des messages prêts à copier : remplacez simplement les passages entre crochets.",
  '<p>Gardez un ton cordial : l\'artisan n\'est pas un adversaire, et un devis précisé par écrit protège aussi l\'entreprise. Envoyez vos questions par e-mail ou par message, pour en garder une trace.</p>' + tpl_html +
  '<p style="margin-top:24px">Vous ne savez pas quelles questions poser sur votre devis ? <a href="index.html#test">Faites le test en 1 minute</a>, ou confiez-le moi : chaque rapport se termine par les questions à envoyer à l\'artisan.</p>',
@@ -598,7 +600,7 @@ crumbs = [("Accueil", "index.html"), ("Guides et outils", None)]
 idx = head("Guides et outils pour lire un devis de travaux | Contre-Plan",
   "Guides, outils gratuits et pages par type de travaux pour vérifier un devis avant de signer : mentions, TVA, acompte, comparatif, modèles de messages.",
   "https://contre-plan.com/guides.html", crumbs_ld(crumbs, "https://contre-plan.com/guides.html")) + pagehero("Ressources", "Guides et outils pour lire un devis", "Tout ce que je vérifie sur un devis, expliqué simplement, et des outils gratuits pour le faire vous-même avant de signer.", None, crumbs) + \
-  '<main class="cp-res-wrap">' + rsec("Guides", "Les règles et les pièges, sujet par sujet.", g_cards) + rsec("Par type de travaux", "Chaque chantier a ses oublis classiques.", t_cards) + \
+  '<main class="cp-res-wrap" id="contenu">' + rsec("Guides", "Les règles et les pièges, sujet par sujet.", g_cards) + rsec("Par type de travaux", "Chaque chantier a ses oublis classiques.", t_cards) + \
   rsec("Outils gratuits", "À utiliser avec votre devis sous les yeux.", o_cards) + rsec("Pour aller plus loin", "Ce que contient une analyse, et comment je la mène.", c_cards) + \
   f'<div class="cp-res-cta">{CTA}</div></main>' + footer()
 open(os.path.join(OUT, "guides.html"), "w").write(idx)
@@ -641,7 +643,7 @@ merci = head("Message envoyé | Contre-Plan", "Votre message a bien été envoy�
 open(os.path.join(OUT, "merci.html"), "w").write(merci)
 
 # ---------- 404 (absolute paths: served at any URL)
-p404 = head("Page introuvable | Contre-Plan", "Cette page n'existe pas ou a été déplacée.", "https://contre-plan.com/404.html", root="/").replace('<meta property="og:type" content="article">','<meta name="robots" content="noindex">') + f'''<main style="background-color: #0f2747; background-image: linear-gradient(#2a4a75 1px, transparent 1px), linear-gradient(90deg, #2a4a75 1px, transparent 1px); background-size: 160px 160px; color:#fff; min-height: 60vh;">
+p404 = head("Page introuvable | Contre-Plan", "Cette page n'existe pas ou a été déplacée.", "https://contre-plan.com/404.html", root="/").replace('<meta property="og:type" content="article">','<meta name="robots" content="noindex">') + f'''<main id="contenu" style="background-color: #0f2747; background-image: linear-gradient(#2a4a75 1px, transparent 1px), linear-gradient(90deg, #2a4a75 1px, transparent 1px); background-size: 160px 160px; color:#fff; min-height: 60vh;">
 <div style="max-width: 760px; margin: 0 auto; padding: 120px 24px; display:flex; flex-direction:column; gap:24px;">
 <span style="align-self:flex-start;background:#bf4a17;color:#fff;font-weight:700;font-size:15px;padding:8px 14px;">Erreur 404</span>
 <h1 style="margin:0;font-family:Archivo,Arial,sans-serif;font-weight:800;line-height:1.1;">Ce poste ne figure pas <span style="color:#e8733c;">sur le plan.</span></h1>
@@ -656,4 +658,6 @@ open(os.path.join(OUT, "404.html"), "w").write(p404)
 urls = [("", "1.0"), ("guides.html","0.8")] + [(s+".html","0.7") for s,_,_,_ in ARTICLES] + [(s+".html","0.7") for s in PAGES] + [("checklist-devis-travaux.pdf","0.6"),("exemple-rapport-contre-plan.pdf","0.6"),("tableau-comparatif-devis.pdf","0.5")]
 sm = '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n' + "".join(f'  <url><loc>https://contre-plan.com/{u}</loc><lastmod>{LASTMOD.get(u, max([DATE] + list(LASTMOD.values())))}</lastmod><priority>{p}</priority></url>\n' for u,p in urls) + '</urlset>\n'
 open(os.path.join(OUT, "sitemap.xml"), "w").write(sm)
+import subprocess, sys as _s
+subprocess.run([_s.executable, os.path.join(os.path.dirname(os.path.abspath(__file__)), "typo.py"), OUT], check=True)
 print("ok", [a[0] for a in ARTICLES])

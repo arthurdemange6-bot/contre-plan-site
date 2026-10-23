@@ -19,3 +19,7 @@ Mettre à jour partout en même temps : `index.html` (cartes Tarifs, FAQ et ses 
 
 ## Offre de lancement
 Le texte « −50 % pour les 20 premières commandes » figure dans index.html (badge des tarifs, FAQ et JSON-LD FAQ) et chat.js (réponse sur le prix). Le retirer à ces endroits quand l'offre se termine, et passer le prix à 33 €.
+
+## Typographie et image de partage
+- `tools/typo.py` ajoute les espaces insécables (avant ? : ; !, entre nombre et unité). Il est lancé automatiquement à la fin de `tools/build.py` ; après une modification manuelle de index.html, relancer `python3 tools/build.py`.
+- `og-image.jpg` (aperçu de partage 1200×630) est généré depuis `tools/og-image.html` par une capture Playwright.

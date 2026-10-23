@@ -188,6 +188,7 @@
     sheet.appendChild(pen);
     document.body.insertBefore(layer, wrap);
     wrap.style.background = 'transparent'; wrap.classList.add('cp-front');
+    document.documentElement.style.background = getComputedStyle(document.body).backgroundColor; document.body.style.background = '#f6f7f9';
     if (!home) layer.classList.add('cp-soft');
     // Sections blanches légèrement translucides : le devis apparaît derrière
     each(wrap.children, function (c) {
