@@ -1,6 +1,6 @@
 /* Éléments interactifs Contre-Plan : test, avant/après, calcul, barre mobile */
 .cp-box{background:#fff;border:1px solid #d8dee6;border-radius:2px;padding:clamp(20px,4vw,40px);display:flex;flex-direction:column;gap:20px}
-.cp-kicker{align-self:flex-start;background:#bf4a17;color:#fff;font-weight:700;font-size:15px;padding:8px 14px}
+.cp-kicker{align-self:flex-start;background:#bf4a17;color:#fff;font-weight:700;font-size:15px;letter-spacing:1.5px;text-transform:uppercase;padding:8px 14px}
 /* Test */
 .cp-test-bar{height:8px;background:#e6e9ee;border-radius:2px;overflow:hidden}
 .cp-test-bar i{display:block;height:100%;width:0;background:linear-gradient(90deg,#bf4a17,#e8733c);border-radius:2px;transition:width .45s cubic-bezier(.2,.7,.2,1)}
@@ -68,7 +68,7 @@
 .cp-ph{background-color:#0f2747;background-image:linear-gradient(#22406a 1px,transparent 1px),linear-gradient(90deg,#22406a 1px,transparent 1px);background-size:40px 40px;color:#fff;border-bottom:4px solid #bf4a17}
 .cp-ph-in{max-width:1160px;margin:0 auto;padding:44px 24px 52px;display:flex;flex-direction:column;gap:14px}
 .cp-crumbs{font-size:14px;color:#8d9cc0}.cp-crumbs a{color:#c9d3ea;text-decoration:none}.cp-crumbs a:hover{color:#fff;text-decoration:underline}
-.cp-kick{align-self:flex-start;background:#bf4a17;color:#fff;font-weight:700;font-size:13px;padding:6px 12px}
+.cp-kick{display:inline-block;align-self:flex-start;background:#bf4a17;color:#fff;font-weight:700;font-size:13px;letter-spacing:1.6px;text-transform:uppercase;padding:6px 12px}
 .cp-ph h1{margin:0;font-family:Archivo,Arial,sans-serif;font-weight:800;line-height:1.08;color:#fff;max-width:860px}
 .cp-lead{margin:0;font-size:clamp(18px,2.2vw,21px);line-height:1.5;color:#c9d3ea;max-width:760px}
 .cp-meta{margin:0;font-size:14px;color:#8d9cc0}
@@ -142,4 +142,4 @@
 @media (max-width:860px){.cp-foot-in{grid-template-columns:1fr 1fr}.cp-foot-brand{grid-column:1/-1}}
 @media (max-width:420px){.cp-foot-in{grid-template-columns:1fr}}
 
-@media (max-width:760px){.cp-topnav{gap:0!important}.cp-topnav{display:none!important}.cp-hero{padding:48px 24px 72px!important;gap:40px!important}.cp-hero h1{font-size:40px!important}#cp-chat-btn{padding:14px!important}#cp-chat-btn span{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}}
+@media (max-width:760px){.cp-topnav{gap:0!important}.cp-topnav{display:none!important}.cp-top{padding:48px 24px 72px!important;gap:40px!important}.cp-top h1{font-size:40px!important}#cp-chat-btn{padding:14px!important}#cp-chat-btn span{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}}
