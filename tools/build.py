@@ -611,6 +611,7 @@ FORM_ACTION = "https://formsubmit.co/contact@contre-plan.com"
 contact_body = f"""<p>Une question sur le service, sur un devis ou sur un guide ? Écrivez-moi ici, je réponds sous 48 h ouvrées à l'adresse que vous indiquez.</p>
 <p><b>Pas sûr que votre devis vaille une analyse ?</b> Choisissez « Pré-diagnostic gratuit » et décrivez-le en 3 lignes (type de travaux, montant, ce qui vous inquiète) : je vous dis gratuitement si une analyse vaut le coup.</p>
 <p class="cp-form-note">Pour faire analyser un devis, passez directement par <a href="{COMEUP}" data-goatcounter-click="clic-comeup-contact">ComeUp</a> : c'est là que vous l'envoyez et que vous recevez le rapport. N'envoyez pas votre devis par ce formulaire.</p>
+<div class="cp-form-ok" id="cp-form-ok" role="status" aria-live="polite" tabindex="-1" hidden></div>
 <form class="cp-form" action="{FORM_ACTION}" method="POST" accept-charset="UTF-8">
 <input type="hidden" name="_subject" value="Nouveau message depuis contre-plan.com">
 <input type="hidden" name="_next" value="https://contre-plan.com/merci.html">

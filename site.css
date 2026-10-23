@@ -187,3 +187,9 @@ h1,h2,h3{text-wrap:balance}
 .cp-skip{position:absolute;left:12px;top:-60px;z-index:10000;background:#bf4a17;color:#fff;font-weight:700;padding:10px 16px;border-radius:2px;text-decoration:none}
 .cp-skip:focus{top:12px}
 @media (max-width:600px){.cp-pdfmeta{display:block}}
+.cp-form-ok{margin:28px 0 0;background:#fff;border:1px solid #d8dee6;border-left:4px solid #2f7d4a;border-radius:2px;padding:20px 24px}
+.cp-form-ok.err{border-left-color:#b3261e}
+.cp-form-ok p{margin:0;font-size:17px;line-height:1.5;color:#33415f}
+.cp-form-ok .t{font-weight:700;font-size:19px;color:#14284b;margin-bottom:4px}
+.cp-form-ok:focus{outline:none}
+.cp-form button[disabled]{opacity:.7;cursor:wait}
