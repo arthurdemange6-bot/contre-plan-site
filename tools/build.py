@@ -1,4 +1,4 @@
-import json, html, os
+import json, html, os, re
 OUT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))  # racine du site
 GC = '<script data-goatcounter="https://contreplan.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>'
 COMEUP = "https://comeup.com/fr/@contreplan"
@@ -74,7 +74,7 @@ def footer(root=""):
     return f'''<footer style="background: #08111f; color: #a9b6d3; border-top: 1px solid #1c2943;">
 <div style="max-width: 1160px; margin: 0 auto; padding: 40px 24px; display: flex; flex-wrap: wrap; gap: 24px; justify-content: space-between; font-size: 15px; line-height: 1.6;">
 <div><div style="color: #ffffff; font-family: Archivo, Arial, sans-serif; font-weight: 800; letter-spacing: 2px; font-size: 18px;">CONTRE-PLAN</div><div>Analyse de devis travaux · 100 % à distance</div></div>
-<div style="display: flex; flex-wrap: wrap; gap: 20px; align-items: center; font-size: 13px;"><a href="{root}methode.html" style="color: #a9b6d3;">Méthode</a><a href="{root}engagements.html" style="color: #a9b6d3;">Engagements</a><a href="{root}guides.html" style="color: #a9b6d3;">Guides</a><a href="{root}mentions-legales.html" style="color: #a9b6d3; font-size: 11px;">Mentions légales</a><span>© 2026 Contre-Plan</span></div>
+<div style="display: flex; flex-wrap: wrap; gap: 20px; align-items: center; font-size: 13px;"><a href="{root}methode.html" style="color: #a9b6d3;">Méthode</a><a href="{root}engagements.html" style="color: #a9b6d3;">Engagements</a><a href="{root}lexique-devis-travaux.html" style="color: #a9b6d3;">Lexique</a><a href="{root}guides.html" style="color: #a9b6d3;">Guides</a><a href="{root}mentions-legales.html" style="color: #a9b6d3; font-size: 11px;">Mentions légales</a><span>© 2026 Contre-Plan</span></div>
 </div>
 </footer>
 </div>
@@ -230,6 +230,30 @@ def page(slug, title, h1, desc, lead, body, kicker):
     open(os.path.join(OUT, slug + ".html"), "w").write(out)
     PAGES.append(slug)
 
+article("guide-acompte-paiement-devis-travaux",
+ "Acompte sur un devis de travaux : combien, quand, comment | Contre-Plan",
+ "Acompte, échéancier, solde : comment payer un devis de travaux",
+ "Montant de l'acompte, arrhes ou acompte, démarchage à domicile, paiements à l'avancement, solde et réserves : les règles pour payer vos travaux sans prendre de risque.",
+ "Un acompte trop élevé, c'est vous qui financez le chantier à la place de l'entreprise, et c'est votre seul levier qui disparaît en cas de problème. Voici comment caler les paiements.",
+ '''<h2>Combien verser à la signature ?</h2>
+<p>Aucun texte ne fixe un plafond général d'acompte pour des travaux chez un particulier. L'usage est d'environ <strong>30 % à la signature</strong>, parfois un peu plus si l'entreprise doit commander des matériaux sur mesure (menuiseries, cuisine). Au-delà de 40 à 50 %, demandez pourquoi et proposez un échéancier.</p>
+<div class="note"><p><strong>À éviter :</strong> payer l'intégralité avant le début des travaux. Si le chantier dérape ou si l'entreprise disparaît, vous n'avez plus aucun moyen de pression.</p></div>
+<h2>Acompte ou arrhes : ce n'est pas la même chose</h2>
+<p>Avec des <strong>arrhes</strong>, chacun peut renoncer : vous en perdant les arrhes, l'entreprise en vous rendant le double. Avec un <strong>acompte</strong>, le contrat est ferme des deux côtés. Sauf mention contraire, les sommes versées d'avance sont considérées comme des arrhes. Vérifiez le mot employé sur le devis.</p>
+<h2>Devis signé chez vous : attention au démarchage</h2>
+<p>Si le devis a été signé à votre domicile, vous disposez en principe d'un <strong>délai de rétractation de 14 jours</strong>, et l'entreprise ne peut rien encaisser pendant les <strong>7 jours</strong> qui suivent la signature, sauf exceptions. Le devis doit comporter un formulaire de rétractation. Ne remettez ni chèque, même daté plus tard, ni autorisation de prélèvement pendant ce délai.</p>
+<h2>Un échéancier lié à l'avancement</h2>
+<p>Le plus sain est de payer au rythme du chantier. Par exemple, pour une salle de bain :</p>
+<ul><li>30 % à la signature ;</li><li>30 % à la fin de la dépose et des réseaux (plomberie, électricité) ;</li><li>30 % à la fin de la pose des revêtements ;</li><li>le solde à la réception.</li></ul>
+<p>Chaque étape doit être décrite pour être vérifiable : « fin de la plomberie », plutôt qu'une date fixe sans rapport avec l'avancement.</p>
+<h2>Le solde et la réception</h2>
+<p>La <strong>réception</strong> est le moment où vous acceptez les travaux, avec ou sans réserves. Notez par écrit chaque défaut constaté : ce sont les réserves, que l'entreprise doit corriger. La réception fait aussi démarrer les garanties (parfait achèvement, biennale, décennale). Si le contrat le prévoit, une <strong>retenue de garantie</strong> limitée à 5 % du prix peut être conservée jusqu'à la levée des réserves, dans la limite d'un an.</p>
+<h2>Les travaux supplémentaires</h2>
+<p>Tout ajout en cours de chantier doit faire l'objet d'un <strong>avenant écrit et chiffré</strong>, signé avant d'être réalisé. Un supplément annoncé oralement puis découvert sur la facture est la première source de litige.</p>
+<h2>Ce que je vérifie sur votre devis</h2>
+<p>Le montant et la nature de l'acompte, l'échéancier, la cohérence avec l'avancement réel du chantier et les conditions de paiement en cas de démarchage. Voir aussi <a href="guide-mentions-obligatoires-devis.html">les mentions obligatoires d'un devis</a> et <a href="lexique-devis-travaux.html">le lexique du devis</a>.</p>''',
+ 6, date="2026-10-23")
+
 # ---------- Pages Méthode et Engagements
 page("methode",
  "Ma méthode : ce que je vérifie sur un devis | Contre-Plan",
@@ -276,6 +300,162 @@ page("engagements",
 <p>La décision de signer, de négocier ou de refuser le devis vous appartient. En cas de litige déjà engagé ou de travaux touchant la structure du bâtiment, faites appel à un expert ou à un professionnel qui pourra se rendre sur place.</p>
 <p>Pour savoir précisément ce que je contrôle, voir <a href="methode.html">ma méthode</a>.</p>""",
  "Engagements")
+
+# ---------- Pages par type de travaux
+def cta_type(t):
+    return f"""<div class="note"><p><b>Vous avez un devis {t} sous les yeux ?</b> Faites d'abord <a href="index.html#test">le test en 1 minute</a>, puis envoyez-le moi : je le relis ligne par ligne et vous dites quoi demander à l'artisan. <a href="exemple-rapport-contre-plan.pdf" target="_blank" rel="noopener">Voir un exemple de rapport</a>.</p></div>"""
+
+page("analyse-devis-salle-de-bain",
+ "Analyse de devis salle de bain par un ingénieur BTP | Contre-Plan",
+ "Analyse de devis salle de bain",
+ "Étanchéité, dépose, plomberie au forfait, électricité, TVA : les points qu'un ingénieur BTP vérifie sur un devis de rénovation de salle de bain.",
+ "Une salle de bain concentre plusieurs corps de métier dans quelques mètres carrés : c'est le devis où les oublis coûtent le plus cher.",
+ """<h2>Les pièges les plus fréquents</h2>
+<ul><li><b>L'étanchéité sous carrelage absente ou floue.</b> En zone de douche, un système d'étanchéité (liquide ou natte, selon le support) est indispensable. Une plaque hydrofuge seule n'est pas étanche.</li>
+<li><b>La dépose et l'évacuation des gravats oubliées.</b> Retirer faïence, carrelage et baignoire prend du temps et génère des déchets : s'ils ne sont pas chiffrés, ils reviendront en supplément.</li>
+<li><b>La plomberie au forfait.</b> Un forfait sans détail empêche de savoir si les alimentations, les évacuations et les robinets d'arrêt sont refaits.</li>
+<li><b>L'électricité.</b> Les volumes de sécurité autour de la douche et de la baignoire (norme NF C 15-100) imposent des règles précises pour les prises, les spots et le chauffage.</li>
+<li><b>La ventilation.</b> Une salle de bain refaite sans ventilation adaptée vieillit mal.</li>
+<li><b>La pente et l'évacuation de la douche</b>, surtout pour une douche à l'italienne.</li></ul>
+<h2>Exemple de ligne à faire préciser</h2>
+<p>« Plomberie : 1 forfait, 1 150 € HT. » Rien ne permet de vérifier ce qui est prévu. À demander : la liste des travaux (alimentations, évacuations, raccordements), les matériaux et la présence de robinets d'arrêt accessibles.</p>
+<h2>La TVA sur une salle de bain</h2>
+<p>Dans un logement achevé depuis plus de 2 ans, les travaux d'amélioration relèvent en principe du taux de 10 %. Les meubles non intégrés au bâti et l'électroménager restent à 20 %. Détails dans <a href="guide-tva-travaux-renovation.html">le guide TVA</a>.</p>
+<h2>Logement ancien : pensez à l'amiante</h2>
+<p>Si le permis de construire date d'avant le 1er juillet 1997, un repérage amiante avant travaux est en principe requis pour la démolition. Demandez qui le prend en charge.</p>
+<h2>Ce que je vérifie en plus</h2>
+<p>Les quantités (surfaces de faïence et de sol cohérentes avec la pièce), les prix unitaires comparés à des ordres de grandeur récents, les références des équipements, l'enchaînement des travaux et les conditions de paiement. Voir aussi <a href="guide-oublis-devis-salle-de-bain.html">les 7 oublis qui font grimper la facture</a> et <a href="methode.html">ma méthode</a>.</p>
+""" + cta_type("de salle de bain"),
+ "Salle de bain")
+
+page("analyse-devis-pompe-a-chaleur",
+ "Analyse de devis pompe à chaleur par un ingénieur BTP | Contre-Plan",
+ "Analyse de devis pompe à chaleur",
+ "Dimensionnement, fluides frigorigènes, liaisons, condensats, RGE, TVA : ce qu'un ingénieur BTP vérifie sur un devis de pompe à chaleur.",
+ "Une pompe à chaleur mal dimensionnée ou mal posée consomme plus et dure moins. Le devis doit le montrer avant la signature.",
+ """<h2>Le dimensionnement</h2>
+<p>La puissance de la pompe à chaleur doit correspondre aux besoins du logement. Un devis sérieux s'appuie sur une estimation des déperditions, pas seulement sur la surface. Trop puissante, elle fonctionne par à-coups ; pas assez, l'appoint électrique prend le relais. Demandez sur quelle base la puissance a été choisie.</p>
+<h2>Les points techniques à retrouver sur le devis</h2>
+<ul><li><b>L'attestation de capacité</b> de l'entreprise pour la manipulation des fluides frigorigènes.</li>
+<li><b>Les liaisons frigorifiques</b> : longueur prévue et prix du mètre supplémentaire.</li>
+<li><b>L'évacuation des condensats</b> : gravitaire ou par pompe de relevage.</li>
+<li><b>Les supports du groupe extérieur</b> et les plots anti-vibratiles, pour limiter le bruit.</li>
+<li><b>L'alimentation électrique dédiée</b> et sa protection au tableau.</li>
+<li><b>La mise en service</b> : tirage au vide, contrôle d'étanchéité, réglages.</li>
+<li>Pour une pompe à chaleur air-eau : le raccordement au circuit existant, le désembouage éventuel et la régulation.</li></ul>
+<h2>Les aides et la qualification RGE</h2>
+<p>Pour bénéficier des aides à la rénovation énergétique (MaPrimeRénov', primes CEE), l'entreprise doit être qualifiée RGE pour ces travaux : vérifiez-le sur france-renov.gouv.fr. Si une prime est déduite sur le devis, son montant et son origine doivent être indiqués clairement.</p>
+<h2>La TVA</h2>
+<p>Dans un logement achevé depuis plus de 2 ans, les pompes à chaleur éligibles à la rénovation énergétique relèvent du taux de 5,5 %. La climatisation n'en bénéficie pas, et les chaudières fonctionnant au gaz ou au fioul sont au taux de 20 % depuis le 1er mars 2025. Vérifiez que le taux appliqué correspond bien à l'équipement.</p>
+<h2>Exemple de ligne à faire préciser</h2>
+<p>« Liaisons frigorifiques : forfait. » Sans longueur indiquée, impossible de savoir si un supplément sera facturé le jour de la pose. À demander : la longueur incluse et le prix au mètre au-delà.</p>
+""" + cta_type("de pompe à chaleur"),
+ "Pompe à chaleur")
+
+page("analyse-devis-isolation",
+ "Analyse de devis isolation par un ingénieur BTP | Contre-Plan",
+ "Analyse de devis isolation",
+ "Résistance thermique, épaisseur, surface, pare-vapeur, points singuliers, RGE et TVA : ce qu'un ingénieur BTP vérifie sur un devis d'isolation.",
+ "Sur un devis d'isolation, un chiffre compte plus que tous les autres : la résistance thermique. S'il manque, vous ne savez pas ce que vous achetez.",
+ """<h2>La résistance thermique (R)</h2>
+<p>Le devis doit indiquer la résistance thermique de l'isolant posé, en m².K/W, avec la marque, la référence et l'épaisseur. Pour les aides, des minimums s'appliquent, par exemple R ≥ 7 en combles perdus et R ≥ 6 en rampants de toiture pour la prime CEE d'isolation des combles. Un isolant soufflé se tasse : l'épaisseur posée doit tenir compte du tassement.</p>
+<h2>Les points à retrouver sur le devis</h2>
+<ul><li><b>La surface isolée en m²</b>, cohérente avec la maison, et le prix au m².</li>
+<li><b>Le pare-vapeur ou la membrane d'étanchéité à l'air</b> quand la technique l'exige.</li>
+<li><b>Les points singuliers</b> : trappe d'accès, spots encastrés, conduits de cheminée (distances de sécurité), boîtiers électriques.</li>
+<li><b>La préparation</b> : retrait de l'ancien isolant si nécessaire, protection, repérage des gaines.</li>
+<li><b>Le certificat de l'isolant</b> (certification ACERMI ou équivalent) pour justifier les performances annoncées.</li></ul>
+<h2>Les aides, le RGE et la TVA</h2>
+<p>Les aides à la rénovation énergétique exigent une entreprise qualifiée RGE pour ces travaux. Dans un logement achevé depuis plus de 2 ans, l'isolation relève du taux de TVA de 5,5 %. Si une prime est déduite du devis, son montant doit apparaître clairement.</p>
+<h2>Exemple de ligne à faire préciser</h2>
+<p>« Isolation des combles, laine soufflée : 80 m², 22 € le m². » Sans résistance thermique ni épaisseur, impossible de comparer deux devis ni de savoir si vous êtes éligible aux aides. À demander : le produit exact, la résistance thermique, l'épaisseur après tassement.</p>
+""" + cta_type("d'isolation"),
+ "Isolation")
+
+page("analyse-devis-toiture",
+ "Analyse de devis toiture par un ingénieur BTP | Contre-Plan",
+ "Analyse de devis toiture",
+ "Surface, échafaudage, dépose, écran sous-toiture, zinguerie, charpente, amiante : ce qu'un ingénieur BTP vérifie sur un devis de toiture.",
+ "Une toiture se refait rarement deux fois dans une vie. Le devis doit dire précisément ce qui est remplacé, et ce qui ne l'est pas.",
+ """<h2>Les points à retrouver sur le devis</h2>
+<ul><li><b>La surface de toiture</b> en m², mesurée en rampant et non au sol, et le prix au m² pour chaque poste.</li>
+<li><b>L'échafaudage et la sécurité</b> : souvent un poste important, parfois oublié.</li>
+<li><b>La dépose et l'évacuation</b> de l'ancienne couverture.</li>
+<li><b>L'écran sous-toiture, les liteaux et contre-liteaux</b> : remplacés ou conservés ?</li>
+<li><b>La zinguerie</b> : gouttières, descentes, noues, faîtage, solins autour des cheminées et fenêtres de toit.</li>
+<li><b>La charpente</b> : traitement, remplacement de pièces abîmées, avec un prix au mètre ou à la pièce plutôt qu'un forfait « selon état ».</li></ul>
+<h2>L'amiante dans les anciennes couvertures</h2>
+<p>Les plaques de fibres-ciment posées avant 1997 peuvent contenir de l'amiante. Leur retrait obéit à des règles strictes et doit être confié à une entreprise habilitée. Le repérage et la filière d'élimination doivent apparaître sur le devis.</p>
+<h2>Les démarches et la TVA</h2>
+<p>Une réfection qui change l'aspect extérieur (matériau, couleur, fenêtres de toit) peut nécessiter une déclaration préalable en mairie. Dans un logement achevé depuis plus de 2 ans, la réfection relève en principe du taux de 10 %, et l'isolation de la toiture de 5,5 % si les conditions sont réunies. Vérifiez aussi l'attestation d'assurance décennale : c'est elle qui vous couvre en cas d'infiltration.</p>
+<h2>Exemple de ligne à faire préciser</h2>
+<p>« Remplacement des bois abîmés : selon état. » Cette ligne ouvre la porte à n'importe quel supplément. À demander : un prix unitaire par mètre de chevron ou de liteau, et un plafond au-delà duquel l'entreprise doit vous prévenir avant d'agir.</p>
+""" + cta_type("de toiture"),
+ "Toiture")
+
+# ---------- Lexique
+LEX = [
+ ("Acompte", "Somme versée à la signature. Elle engage les deux parties : vous ne pouvez pas renoncer en la perdant, comme avec des arrhes."),
+ ("Arrhes", "Somme versée d'avance qui permet de renoncer en la perdant (ou, pour l'entreprise, en la remboursant au double). Sauf mention contraire, les sommes versées d'avance sont des arrhes."),
+ ("Avenant", "Modification du devis signé (travaux en plus ou en moins). Il doit être écrit et accepté avant d'être réalisé."),
+ ("Décennale (assurance)", "Assurance obligatoire de l'entreprise qui couvre pendant 10 ans les dommages graves touchant la solidité de l'ouvrage ou le rendant impropre à son usage."),
+ ("Dépose", "Retrait de l'existant (carrelage, sanitaires, couverture…) avant les nouveaux travaux."),
+ ("Échéancier", "Calendrier des paiements : acompte, paiements à l'avancement, solde à la réception."),
+ ("Écran sous-toiture", "Membrane posée sous les tuiles ou ardoises qui protège la charpente des infiltrations et de la poussière."),
+ ("Fourniture et pose (F+P)", "Le prix comprend le matériau et la main-d'œuvre pour l'installer."),
+ ("Forfait (ft)", "Prix global pour un ensemble de travaux, sans détail des quantités. Pratique, mais impossible à vérifier sans précisions."),
+ ("HT / TTC", "Hors taxes / toutes taxes comprises. Le TTC est le montant que vous payez réellement."),
+ ("Liaisons frigorifiques", "Tuyaux qui relient l'unité extérieure et l'unité intérieure d'une pompe à chaleur ou d'une climatisation."),
+ ("ml (mètre linéaire)", "Unité de longueur utilisée pour les plinthes, les gouttières, les tuyaux ou les joints."),
+ ("Mise en service", "Réglages et contrôles réalisés au démarrage d'un équipement (chauffage, pompe à chaleur, VMC)."),
+ ("NF C 15-100", "Norme française des installations électriques des logements, avec des règles précises dans les salles de bain."),
+ ("Parfait achèvement (garantie de)", "Garantie d'un an après la réception : l'entreprise doit réparer les défauts signalés."),
+ ("Pare-vapeur", "Membrane qui empêche l'humidité intérieure de pénétrer dans l'isolant."),
+ ("Plus-value / moins-value", "Supplément ou réduction de prix par rapport au devis initial, généralement formalisé par un avenant."),
+ ("P.U. (prix unitaire)", "Prix d'une unité (un m², un mètre, une pièce). Multiplié par la quantité, il donne le total de la ligne."),
+ ("Ragréage", "Couche de mortier fluide qui rend un sol plan et lisse avant la pose d'un revêtement."),
+ ("Réception", "Moment où vous acceptez les travaux, avec ou sans réserves. Elle fait démarrer les garanties."),
+ ("Réserves", "Défauts constatés à la réception et notés par écrit, que l'entreprise doit corriger."),
+ ("Résistance thermique (R)", "Capacité d'un isolant à freiner la chaleur, en m².K/W. Plus R est élevé, plus l'isolation est performante."),
+ ("RGE", "Reconnu garant de l'environnement : qualification obligatoire de l'entreprise pour que vous ayez droit aux aides à la rénovation énergétique."),
+ ("SPEC / SEL", "Systèmes d'étanchéité liquide appliqués sous le carrelage, au mur (SPEC) ou au sol (SEL), dans les zones exposées à l'eau."),
+ ("Solde", "Dernier paiement, versé à la réception des travaux."),
+ ("u (unité)", "Prix à la pièce : un receveur, un radiateur, une fenêtre."),
+ ("Zinguerie", "Éléments en métal d'une toiture : gouttières, descentes, noues, solins, faîtage."),
+]
+lex_html = "".join(f'<h3 id="{re.sub(r"[^a-z0-9]+","-",t.lower().replace("é","e").replace("è","e").replace("ê","e").replace("à","a").replace("ç","c").replace("ï","i")).strip("-")}">{html.escape(t)}</h3><p>{html.escape(d)}</p>' for t,d in LEX)
+page("lexique-devis-travaux",
+ "Lexique du devis de travaux : les termes expliqués | Contre-Plan",
+ "Lexique du devis de travaux",
+ "Acompte, arrhes, forfait, ml, P.U., ragréage, SPEC, RGE, résistance thermique : les mots d'un devis de travaux expliqués simplement.",
+ "Les termes qu'on croise sur un devis de travaux, expliqués en une ou deux phrases.",
+ lex_html + '<p style="margin-top:28px">Un terme vous manque ? Posez-moi la question via le chat du site.</p>',
+ "Lexique")
+
+# ---------- Cas fictifs
+page("cas-fictifs",
+ "Cas fictifs : trois devis de travaux analysés | Contre-Plan",
+ "Trois devis analysés : cas fictifs",
+ "Salle de bain, pompe à chaleur, isolation des combles : trois exemples fictifs de devis analysés pour montrer ce qu'une relecture peut révéler.",
+ "Ces trois cas sont inventés pour illustrer le travail d'analyse. Les devis, les entreprises et les chiffres sont fictifs, mais les points relevés sont ceux que l'on rencontre réellement.",
+ """<div class="note"><p><b>Cas fictifs.</b> Aucun de ces exemples ne correspond à un client ou à une entreprise réels.</p></div>
+<h2>Cas 1 : une salle de bain de 6 m² à 7 374 € TTC</h2>
+<p><b>Le devis :</b> rénovation complète avec dépose, receveur extra-plat, faïence, plomberie au forfait et électricité.</p>
+<p><b>Ce que la relecture relève :</b> étanchéité sous carrelage non chiffrée, évacuation des gravats absente, dépose jugée élevée, plomberie au forfait sans détail, acompte de 50 %.</p>
+<p><b>Ce qu'il faut demander :</b> l'ajout de l'étanchéité et des gravats, le détail de la plomberie, une révision de la dépose et un acompte ramené à 30 %.</p>
+<p><a href="exemple-rapport-contre-plan.pdf" target="_blank" rel="noopener" data-goatcounter-click="telechargement-exemple-rapport">Lire le rapport complet de ce cas (PDF, 4 pages)</a></p>
+<h2>Cas 2 : une pompe à chaleur air-eau à 14 900 € TTC</h2>
+<p><b>Le devis :</b> remplacement d'une chaudière fioul par une pompe à chaleur air-eau de 11 kW, prime déduite, pose comprise.</p>
+<p><b>Ce que la relecture relève :</b> aucune estimation des besoins de chauffage pour justifier les 11 kW, liaisons au forfait sans longueur, dépose de l'ancienne chaudière et de la cuve non mentionnées, prime déduite sans indication de son origine ni de la qualification RGE.</p>
+<p><b>Ce qu'il faut demander :</b> la base du dimensionnement, la longueur de liaisons incluse et le prix au mètre au-delà, le chiffrage de la dépose et de la neutralisation de la cuve, le certificat RGE et le détail de la prime.</p>
+<h2>Cas 3 : l'isolation de 90 m² de combles perdus à 2 300 € TTC</h2>
+<p><b>Le devis :</b> laine soufflée en combles perdus, « isolation performante », TVA à 5,5 %.</p>
+<p><b>Ce que la relecture relève :</b> ni résistance thermique ni épaisseur indiquées, aucune mention de la protection des spots et du conduit de cheminée, surface plus grande que l'emprise de la maison au sol.</p>
+<p><b>Ce qu'il faut demander :</b> la marque et la référence de l'isolant, la résistance thermique et l'épaisseur après tassement, le traitement des points singuliers, la justification de la surface.</p>
+<h2>Ce que montrent ces trois cas</h2>
+<p>Aucun de ces devis n'était malhonnête. Ils étaient incomplets, comme beaucoup de devis : ce qui n'est pas écrit est justement ce qui finit en supplément ou en litige. Une relecture avant signature permet de le faire préciser pendant qu'il est encore temps.</p>
+<p>Pour voir ce que je contrôle à chaque fois : <a href="methode.html">ma méthode</a>.</p>""",
+ "Cas fictifs")
 
 # ---------- Guides index
 cards = "".join(f'''<a href="{s}.html" style="display:flex;flex-direction:column;gap:10px;background:#fff;border:1px solid #ddd8ca;border-radius:6px;padding:28px;text-decoration:none;color:#14284b;">
