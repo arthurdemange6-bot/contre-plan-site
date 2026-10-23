@@ -607,22 +607,18 @@ open(os.path.join(OUT, "guides.html"), "w").write(idx)
 
 
 # ---------- contact
-FORM_ACTION = "https://formsubmit.co/45e67b27d49c1daf8be3699aa7ac587b"
+FORM_ACTION = "https://docs.google.com/forms/d/e/1FAIpQLScKwDm4HbZRdSL-ztX3gq3D7E7z_C8HTu44G3CKTzHwInyvyQ/formResponse"
 contact_body = f"""<p>Une question sur le service, sur un devis ou sur un guide ? Écrivez-moi ici, je réponds sous 48 h ouvrées à l'adresse que vous indiquez.</p>
 <p><b>Pas sûr que votre devis vaille une analyse ?</b> Choisissez « Pré-diagnostic gratuit » et décrivez-le en 3 lignes (type de travaux, montant, ce qui vous inquiète) : je vous dis gratuitement si une analyse vaut le coup.</p>
 <p class="cp-form-note">Pour faire analyser un devis, passez directement par <a href="{COMEUP}" data-goatcounter-click="clic-comeup-contact">ComeUp</a> : c'est là que vous l'envoyez et que vous recevez le rapport. N'envoyez pas votre devis par ce formulaire.</p>
 <div class="cp-form-ok" id="cp-form-ok" role="status" aria-live="polite" tabindex="-1" hidden></div>
 <form class="cp-form" action="{FORM_ACTION}" method="POST" accept-charset="UTF-8">
-<input type="hidden" name="_subject" value="Nouveau message depuis contre-plan.com">
-<input type="hidden" name="_next" value="https://contre-plan.com/merci.html">
-<input type="hidden" name="_captcha" value="false">
-<input type="hidden" name="_template" value="table">
-<input type="text" name="_honey" class="cp-hp" tabindex="-1" autocomplete="off" aria-hidden="true">
+<input type="text" id="cp-hp" class="cp-hp" tabindex="-1" autocomplete="off" aria-hidden="true">
 <div class="cp-f2">
-<label>Prénom ou pseudo<input type="text" name="nom" required maxlength="80" autocomplete="given-name"></label>
-<label>Adresse e-mail<input type="email" name="email" required maxlength="120" autocomplete="email"></label>
+<label>Prénom ou pseudo<input type="text" name="entry.110816487" required maxlength="80" autocomplete="given-name"></label>
+<label>Adresse e-mail<input type="email" name="entry.721010462" required maxlength="120" autocomplete="email"></label>
 </div>
-<label>Sujet<select name="sujet" required>
+<label>Sujet<select name="entry.1520641388" required>
 <option value="">Choisissez un sujet</option>
 <option>Pré-diagnostic gratuit</option>
 <option>Question sur le service</option>
@@ -631,9 +627,9 @@ contact_body = f"""<p>Une question sur le service, sur un devis ou sur un guide 
 <option>Partenariat ou presse</option>
 <option>Autre</option>
 </select></label>
-<label>Votre message<textarea name="message" required minlength="10" maxlength="4000" rows="7"></textarea></label>
+<label>Votre message<textarea name="entry.881289893" required minlength="10" maxlength="4000" rows="7"></textarea></label>
 <button type="submit" data-goatcounter-click="envoi-formulaire-contact">Envoyer le message</button>
-<p class="cp-form-rgpd">Vos nom, e-mail et message servent uniquement à vous répondre. Ils sont transmis par le service d'envoi FormSubmit puis conservés dans ma messagerie au plus 12 mois. Vous pouvez demander leur suppression à tout moment : voir les <a href="mentions-legales.html">mentions légales</a>.</p>
+<p class="cp-form-rgpd">Vos nom, e-mail et message servent uniquement à vous répondre. Ils sont enregistrés via Google Forms (Google) et conservés au plus 12 mois. Vous pouvez demander leur suppression à tout moment : voir les <a href="mentions-legales.html">mentions légales</a>.</p>
 </form>
 <p>Vous préférez en parler de vive voix ? <a href="https://calendar.app.google/6LCc6yKVHnbvA3WN7" target="_blank" rel="noopener" data-goatcounter-click="clic-rdv-contact">Réservez un appel gratuit de 15 min</a>.</p>"""
 page("contact", "Contact | Contre-Plan", "Me contacter",

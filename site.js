@@ -102,7 +102,7 @@
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', start); else start();
 
   (function () {
-    var m = location.search.match(/[?&]sujet=([^&]+)/), sel = document.querySelector('.cp-form select[name="sujet"]');
+    var m = location.search.match(/[?&]sujet=([^&]+)/), sel = document.querySelector('.cp-form select');
     if (!m || !sel) return;
     if (m[1] === 'prediagnostic') { sel.value = 'Pré-diagnostic gratuit'; var t = document.querySelector('.cp-form textarea'); if (t && !t.value) t.placeholder = "Type de travaux, montant du devis, ce qui vous inquiète (3 lignes suffisent)."; }
   })();
@@ -110,23 +110,22 @@
   /* ---------- Formulaire de contact : remerciement immédiat, envoi en arrière-plan ---------- */
   (function () {
     var f = document.querySelector('.cp-form'), box = document.getElementById('cp-form-ok');
-    if (!f || !box || !window.fetch || !window.FormData) return;   // sans JavaScript : envoi classique puis page merci.html
+    if (!f || !box || !window.fetch || !window.FormData) return;   // sans JavaScript : envoi classique vers Google Forms
     function show(html, err) {
       box.className = 'cp-form-ok' + (err ? ' err' : ''); box.innerHTML = html; box.hidden = false;
       box.scrollIntoView({ behavior: 'smooth', block: 'center' }); box.focus({ preventScroll: true });
     }
     f.addEventListener('submit', function (ev) {
       ev.preventDefault();
-      if (f.querySelector('[name="_honey"]').value) return;          // robot
+      var hp = document.getElementById('cp-hp'); if (hp && hp.value) return;   // robot
       var data = new FormData(f), saved = {};
       Array.prototype.forEach.call(f.elements, function (el) { if (el.name && el.type !== 'hidden') saved[el.name] = el.value; });
       // Le visiteur n'attend pas la réponse du service d'envoi (souvent plusieurs secondes)
       f.reset();
       show('<p class="t">Merci, votre message est bien envoyé.</p><p>Je vous réponds sous 48 h ouvrées à l\'adresse que vous avez indiquée. Pensez à regarder vos courriers indésirables.</p>');
       gc('formulaire-contact-envoye');
-      fetch(f.action.replace('formsubmit.co/', 'formsubmit.co/ajax/'), { method: 'POST', body: data, headers: { Accept: 'application/json' }, keepalive: true })
-        .then(function (r) { return r.json(); })
-        .then(function (d) { if (!(d && (d.success === true || d.success === 'true'))) throw new Error('refus'); })
+      // Google Forms ne renvoie pas de réponse lisible (mode no-cors) : seule une coupure réseau est détectable
+      fetch(f.action, { method: 'POST', body: new URLSearchParams(data), mode: 'no-cors', keepalive: true })
         .catch(function () {
           // Échec : on remet le texte du visiteur et on le prévient
           Array.prototype.forEach.call(f.elements, function (el) { if (el.name && saved[el.name] != null) el.value = saved[el.name]; });
