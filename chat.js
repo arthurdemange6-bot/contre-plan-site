@@ -31,30 +31,30 @@
   ];
   var FALLBACK = "Je n'ai pas la réponse à cette question. Écrivez à contact@contre-plan.com, ou réservez un appel gratuit de 15 min : https://calendar.app.google/6LCc6yKVHnbvA3WN7";
 
-  var css = "#cp-chat-btn{position:fixed;right:20px;bottom:20px;z-index:9999;display:flex;align-items:center;gap:10px;background:#c44c19;color:#fff;border:0;border-radius:999px;padding:14px 20px;font:700 16px 'Source Sans 3',Arial,sans-serif;box-shadow:0 8px 24px rgba(0,0,0,.3);cursor:pointer}" +
+  var css = "#cp-chat-btn{position:fixed;right:20px;bottom:20px;z-index:9999;display:flex;align-items:center;gap:10px;background:#bf4a17;color:#fff;border:0;border-radius:2px;padding:14px 20px;font:700 16px 'Source Sans 3',Arial,sans-serif;box-shadow:0 8px 24px rgba(0,0,0,.3);cursor:pointer}" +
     "#cp-chat-btn:hover{background:#b8461a}" +
-    "#cp-chat{position:fixed;right:20px;bottom:86px;z-index:9999;width:min(380px,calc(100vw - 40px));max-height:min(560px,calc(100vh - 120px));display:none;flex-direction:column;background:#fbfaf6;color:#14284b;border-radius:10px;box-shadow:0 16px 48px rgba(0,0,0,.35);overflow:hidden;font-family:'Source Sans 3',Arial,sans-serif}" +
+    "#cp-chat{position:fixed;right:20px;bottom:86px;z-index:9999;width:min(380px,calc(100vw - 40px));max-height:min(560px,calc(100vh - 120px));display:none;flex-direction:column;background:#ffffff;color:#14284b;border-radius:10px;box-shadow:0 16px 48px rgba(0,0,0,.35);overflow:hidden;font-family:'Source Sans 3',Arial,sans-serif}" +
     "#cp-chat.open{display:flex}" +
-    "#cp-chat header{background:#08111f;color:#fff;padding:14px 16px;display:flex;align-items:center;justify-content:space-between;gap:10px}" +
-    "#cp-chat header b{font-family:Archivo,Arial,sans-serif;letter-spacing:1px}" +
+    "#cp-chat header{background:#0f2747;color:#fff;padding:14px 16px;display:flex;align-items:center;justify-content:space-between;gap:10px}" +
+    "#cp-chat header b{font-family:Archivo,Arial,sans-serif;}" +
     "#cp-chat header small{display:block;color:#c9d3ea;font-size:13px;font-weight:400;letter-spacing:0}" +
     "#cp-close{background:none;border:0;color:#fff;font-size:26px;line-height:1;cursor:pointer;width:44px;height:44px}" +
     "#cp-log{flex:1;overflow-y:auto;padding:14px;display:flex;flex-direction:column;gap:10px}" +
     ".cp-m{max-width:85%;padding:10px 13px;border-radius:12px;font-size:15px;line-height:1.45}" +
-    ".cp-bot{background:#fff;border:1px solid #ddd8ca;align-self:flex-start}" +
+    ".cp-bot{background:#fff;border:1px solid #d8dee6;align-self:flex-start}" +
     ".cp-user{background:#14284b;color:#fff;align-self:flex-end}" +
     ".cp-chips{display:flex;flex-wrap:wrap;gap:6px}" +
-    ".cp-chip{background:#fff;border:1px solid #c44c19;color:#b8461a;border-radius:999px;padding:8px 12px;font:600 14px 'Source Sans 3',Arial,sans-serif;cursor:pointer;min-height:36px}" +
+    ".cp-chip{background:#fff;border:1px solid #bf4a17;color:#b8461a;border-radius:2px;padding:8px 12px;font:600 14px 'Source Sans 3',Arial,sans-serif;cursor:pointer;min-height:36px}" +
     ".cp-chip:hover{background:#fdf1ea}" +
-    ".cp-cta{display:inline-block;margin-top:6px;background:#c44c19;color:#fff!important;text-decoration:none;font-weight:700;padding:9px 14px;border-radius:4px}" +
-    "#cp-form{display:flex;gap:8px;padding:10px;border-top:1px solid #e3e0d6;background:#fff}" +
-    "#cp-in{flex:1;border:1px solid #c9c3b3;border-radius:6px;padding:10px;font:15px 'Source Sans 3',Arial,sans-serif;min-width:0}" +
-    "#cp-send{background:#14284b;color:#fff;border:0;border-radius:6px;padding:0 14px;font-weight:700;cursor:pointer;min-height:44px}";
+    ".cp-cta{display:inline-block;margin-top:6px;background:#bf4a17;color:#fff!important;text-decoration:none;font-weight:700;padding:9px 14px;border-radius:2px}" +
+    "#cp-form{display:flex;gap:8px;padding:10px;border-top:1px solid #e6e9ee;background:#fff}" +
+    "#cp-in{flex:1;border:1px solid #c5ccd6;border-radius:2px;padding:10px;font:15px 'Source Sans 3',Arial,sans-serif;min-width:0}" +
+    "#cp-send{background:#14284b;color:#fff;border:0;border-radius:2px;padding:0 14px;font-weight:700;cursor:pointer;min-height:44px}";
   var st = document.createElement("style"); st.textContent = css; document.head.appendChild(st);
 
   var btn = document.createElement("button");
   btn.id = "cp-chat-btn"; btn.type = "button"; btn.setAttribute("aria-expanded", "false"); btn.setAttribute("aria-controls", "cp-chat");
-  btn.innerHTML = '<svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>Une question ?';
+  btn.innerHTML = '<svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg><span>Une question ?</span>';
 
   var box = document.createElement("section");
   box.id = "cp-chat"; box.setAttribute("aria-label", "Assistant Contre-Plan");
@@ -91,7 +91,7 @@
       var m = add(e ? e.a : FALLBACK, "bot");
       var a = document.createElement("a"); a.href = COMEUP; a.className = "cp-cta"; a.target = "_blank"; a.rel = "noopener"; a.textContent = "Faire analyser mon devis";
       a.onclick = function () { try { window.goatcounter && window.goatcounter.count({ path: "clic-comeup-chat", event: true }); } catch (x) {} };
-      if (e && e.l) { var l = document.createElement("a"); l.href = e.l[0]; l.textContent = e.l[1] + " →"; l.style.cssText = "display:block;margin-top:8px;color:#b8461a;font-weight:700"; m.appendChild(l); }
+      if (e && e.l) { var l = document.createElement("a"); l.href = e.l[0]; l.textContent = e.l[1] + ""; l.style.cssText = "display:block;margin-top:8px;color:#b8461a;font-weight:700"; m.appendChild(l); }
       m.appendChild(document.createElement("br")); m.appendChild(a);
     }, 250);
   }

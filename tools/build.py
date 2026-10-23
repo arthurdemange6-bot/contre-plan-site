@@ -36,7 +36,7 @@ def head(title, desc, url, extra="", root=""):
 <link rel="preload" href="{root}fonts/archivo-latin-800-normal.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="{root}fonts.css">
 <style>
-body{{margin:0;background:#08111f}}
+body{{margin:0;background:#0f2747}}
 a{{color:#b8461a}}a:hover{{color:#8f3612}}
 h1{{font-size:clamp(32px,5.5vw,48px)!important}}
 .art h2{{font-family:Archivo,Arial,sans-serif;font-weight:800;font-size:clamp(22px,3.5vw,28px);line-height:1.2;color:#14284b;margin:40px 0 8px}}
@@ -46,7 +46,7 @@ h1{{font-size:clamp(32px,5.5vw,48px)!important}}
 .art ul,.art ol{{margin:0 0 14px;padding-left:24px}}
 .art li{{margin-bottom:8px}}
 .art strong{{color:#14284b}}
-.note{{background:#fff;border:1px solid #ddd8ca;border-left:4px solid #c44c19;border-radius:6px;padding:16px 20px;margin:20px 0}}
+.note{{background:#fff;border:1px solid #d8dee6;border-left:4px solid #bf4a17;border-radius:2px;padding:16px 20px;margin:20px 0}}
 .note p{{margin:0}}
 </style>
 {extra}
@@ -57,16 +57,16 @@ h1{{font-size:clamp(32px,5.5vw,48px)!important}}
 {GC}
 </head>
 <body>
-<div style="font-family: 'Source Sans 3', Arial, sans-serif; color: #14284b; background: #f3f0e8; width: 100%;">
-<header style="background: #08111f;">
+<div style="font-family: 'Source Sans 3', Arial, sans-serif; color: #14284b; background: #f6f7f9; width: 100%;">
+<header style="background: #0f2747;">
 <div style="max-width: 1160px; margin: 0 auto; padding: 24px; display: flex; flex-wrap: wrap; gap: 16px; align-items: center; justify-content: space-between;">
 <a href="{root or './'}" style="color: #ffffff; text-decoration: none; font-family: Archivo, Arial, sans-serif; font-weight: 800; font-size: 22px; letter-spacing: 2px;">CONTRE-PLAN</a>
-<nav style="display: flex; flex-wrap: wrap; gap: 20px; align-items: center; font-size: 17px;">
+<nav class="cp-topnav" style="display: flex; flex-wrap: wrap; gap: 20px; align-items: center; font-size: 17px;">
 <a href="{root}methode.html" style="color: #c9d3ea; text-decoration: none;">Méthode</a>
 <a href="{root}index.html#travaux" style="color: #c9d3ea; text-decoration: none;">Travaux</a>
 <a href="{root}comparer-ses-devis.html" style="color: #c9d3ea; text-decoration: none;">Outils</a>
 <a href="{root}guides.html" style="color: #c9d3ea; text-decoration: none;">Guides</a>
-<a href="{COMEUP}" data-goatcounter-click="clic-comeup" style="background: #c44c19; color: #ffffff; text-decoration: none; font-weight: 700; padding: 12px 20px; border-radius: 4px;">Faire analyser mon devis</a>
+<a href="{COMEUP}" data-goatcounter-click="clic-comeup" style="background: #bf4a17; color: #ffffff; text-decoration: none; font-weight: 700; padding: 12px 20px; border-radius: 2px;">Faire analyser mon devis</a>
 </nav>
 </div>
 </header>
@@ -94,10 +94,10 @@ def footer(root=""):
 </html>
 """
 
-CTA = f'''<aside style="margin-top: 48px; background-color: #08111f; background-image: linear-gradient(#2d3d62 1px, transparent 1px), linear-gradient(90deg, #2d3d62 1px, transparent 1px); background-size: 80px 80px; color: #fff; border-radius: 8px; padding: 32px; display: flex; flex-direction: column; gap: 16px;">
+CTA = f'''<aside style="margin-top: 48px; background-color: #0f2747; background-image: linear-gradient(#2a4a75 1px, transparent 1px), linear-gradient(90deg, #2a4a75 1px, transparent 1px); background-size: 80px 80px; color: #fff; border-radius: 2px; padding: 32px; display: flex; flex-direction: column; gap: 16px;">
 <p style="margin: 0; font-family: Archivo, Arial, sans-serif; font-weight: 800; font-size: 26px; line-height: 1.2; color: #fff;">Un devis à signer ? Faites-le relire par un ingénieur BTP.</p>
 <p style="margin: 0; font-size: 18px; line-height: 1.5; color: #c9d3ea;">Prix poste par poste, oublis, TVA, conditions de paiement : rapport PDF sous 48 h, 16,50 € au tarif de lancement.</p>
-<div style="display: flex; flex-wrap: wrap; gap: 12px;"><a href="{COMEUP}" data-goatcounter-click="clic-comeup" style="background: #c44c19; color: #fff; text-decoration: none; font-weight: 700; font-size: 18px; padding: 16px 24px; border-radius: 4px;">Faire analyser mon devis</a><a href="{BOOK}" data-goatcounter-click="clic-appel" target="_blank" rel="noopener" style="color: #fff; font-weight: 700; font-size: 17px; padding: 14px 22px; border: 2px solid #fff; border-radius: 4px; text-decoration: none;">Appel gratuit de 15 min</a></div>
+<div style="display: flex; flex-wrap: wrap; gap: 12px;"><a href="{COMEUP}" data-goatcounter-click="clic-comeup" style="background: #bf4a17; color: #fff; text-decoration: none; font-weight: 700; font-size: 18px; padding: 16px 24px; border-radius: 2px;">Faire analyser mon devis</a><a href="{BOOK}" data-goatcounter-click="clic-appel" target="_blank" rel="noopener" style="color: #fff; font-weight: 700; font-size: 17px; padding: 14px 22px; border: 2px solid #fff; border-radius: 2px; text-decoration: none;">Appel gratuit de 15 min</a></div>
 </aside>'''
 
 SIDE = f"""<div class="cp-sidecard"><p class="t">Votre devis relu par un ingénieur BTP</p><p>Rapport PDF sous 48 h, prix poste par poste, oublis et questions à poser. Dès 16,50 €.</p><a class="cp-btn" href="{COMEUP}" data-goatcounter-click="clic-comeup-side">Faire analyser mon devis</a><a class="cp-sublink" href="exemple-rapport-contre-plan.pdf" target="_blank" rel="noopener" data-goatcounter-click="telechargement-exemple-rapport">Voir un exemple de rapport</a></div>
@@ -112,7 +112,7 @@ def slug_id(t):
 def pagehero(kicker, h1, lead, meta, crumbs):
     cr = ' <span aria-hidden="true">›</span> '.join(f'<a href="{h}">{html.escape(t)}</a>' if h else f'<span aria-current="page">{html.escape(t)}</span>' for t, h in crumbs)
     m = f'<p class="cp-meta">{meta}</p>' if meta else ''
-    return f'<section class="cp-ph"><div class="cp-ph-in"><nav class="cp-crumbs" aria-label="Fil d\'Ariane">{cr}</nav><span class="cp-kick">{kicker}</span><h1>{html.escape(h1)}</h1><p class="cp-lead">{lead}</p>{m}</div></section>'
+    return f'<section class="cp-ph"><div class="cp-ph-in"><nav class="cp-crumbs" aria-label="Fil d\'Ariane">{cr}</nav><h1>{html.escape(h1)}</h1><p class="cp-lead">{lead}</p>{m}</div></section>'
 
 def crumbs_ld(crumbs, url):
     items = [{"@type":"ListItem","position":i+1,"name":t,"item":("https://contre-plan.com/" + (h if h != "index.html" else "")) if h else url} for i,(t,h) in enumerate(crumbs)]
@@ -139,7 +139,7 @@ def article(slug, title, h1, desc, lead, body, readtime, date=DATE):
           "mainEntityOfPage":url}
     extra = '<script type="application/ld+json">' + json.dumps(ld, ensure_ascii=False) + '</script>'
     crumbs = [("Accueil", "index.html"), ("Guides", "guides.html"), (h1, None)]
-    page = head(title, desc, url, extra + crumbs_ld(crumbs, url)) + pagehero("Guide", h1, lead, f"Par un ingénieur BTP · mis à jour le {date_fr(date)} · lecture {readtime} min", crumbs) + layout(body) + footer()
+    page = head(title, desc, url, extra + crumbs_ld(crumbs, url)) + pagehero("Guide", h1, lead, f"Mis à jour le {date_fr(date)}, lecture {readtime} min", crumbs) + layout(body) + footer()
     open(os.path.join(OUT, slug + ".html"), "w").write(page)
     ARTICLES.append((slug, h1, desc, readtime))
     LASTMOD[slug + ".html"] = date
@@ -526,8 +526,8 @@ page("comparer-ses-devis",
  "Tableau gratuit pour comparer 2 ou 3 devis de travaux poste par poste : totaux, TVA, acompte, postes non chiffrés, garanties. Excel et PDF à imprimer.",
  "Deux devis ne se comparent pas sur le total : ils ne contiennent presque jamais les mêmes prestations. Ce tableau vous aide à les remettre à plat, poste par poste.",
  """<div style="display:flex;flex-wrap:wrap;gap:12px;margin:8px 0 24px;">
-<a href="tableau-comparatif-devis.xlsx" download data-goatcounter-click="telechargement-comparatif-xlsx" style="background:#c44c19;color:#fff;text-decoration:none;font-weight:700;font-size:18px;padding:16px 24px;border-radius:4px;">Télécharger le tableau (Excel)</a>
-<a href="tableau-comparatif-devis.pdf" download data-goatcounter-click="telechargement-comparatif-pdf" style="background:#14284b;color:#fff;text-decoration:none;font-weight:700;font-size:18px;padding:16px 24px;border-radius:4px;">Version à imprimer (PDF)</a>
+<a href="tableau-comparatif-devis.xlsx" download data-goatcounter-click="telechargement-comparatif-xlsx" style="background:#bf4a17;color:#fff;text-decoration:none;font-weight:700;font-size:18px;padding:16px 24px;border-radius:2px;">Télécharger le tableau (Excel)</a>
+<a href="tableau-comparatif-devis.pdf" download data-goatcounter-click="telechargement-comparatif-pdf" style="background:#14284b;color:#fff;text-decoration:none;font-weight:700;font-size:18px;padding:16px 24px;border-radius:2px;">Version à imprimer (PDF)</a>
 </div>
 <p>Le fichier Excel s'ouvre aussi dans Google Sheets (Fichier, Importer) et dans Numbers. Une feuille d'exemple fictif montre un tableau rempli.</p>
 <h2>Ce que le tableau fait pour vous</h2>
@@ -573,8 +573,8 @@ page("modeles-messages-artisan",
 
 # ---------- Guides index (centre de ressources)
 def rcard(href, tag, title, desc, cta, extra=""):
-    return f'<a class="cp-rcard" href="{href}"{extra}><span class="cp-rtag">{tag}</span><span class="cp-rtitle">{html.escape(title)}</span><span class="cp-rdesc">{html.escape(desc)}</span><span class="cp-rcta">{cta} →</span></a>'
-g_cards = "".join(rcard(f"{s_}.html", f"Guide · {rt} min", h_, d_, "Lire le guide") for s_, h_, d_, rt in ARTICLES)
+    return f'<a class="cp-rcard" href="{href}"{extra}><span class="cp-rtag">{tag}</span><span class="cp-rtitle">{html.escape(title)}</span><span class="cp-rdesc">{html.escape(desc)}</span><span class="cp-rcta">{cta} </span></a>'
+g_cards = "".join(rcard(f"{s_}.html", f"Guide, {rt} min", h_, d_, "Lire le guide") for s_, h_, d_, rt in ARTICLES)
 t_cards = "".join(rcard(h_, "Par travaux", t_, d_, "Ce que je vérifie") for h_, t_, d_ in [
  ("analyse-devis-salle-de-bain.html", "Salle de bain", "Étanchéité, dépose, plomberie au forfait, volumes électriques."),
  ("analyse-devis-pompe-a-chaleur.html", "Pompe à chaleur", "Dimensionnement, liaisons, condensats, RGE et TVA."),
@@ -602,12 +602,12 @@ idx = head("Guides et outils pour lire un devis de travaux | Contre-Plan",
 open(os.path.join(OUT, "guides.html"), "w").write(idx)
 
 # ---------- 404 (absolute paths: served at any URL)
-p404 = head("Page introuvable | Contre-Plan", "Cette page n'existe pas ou a été déplacée.", "https://contre-plan.com/404.html", root="/").replace('<meta property="og:type" content="article">','<meta name="robots" content="noindex">') + f'''<main style="background-color: #08111f; background-image: linear-gradient(#2d3d62 1px, transparent 1px), linear-gradient(90deg, #2d3d62 1px, transparent 1px); background-size: 160px 160px; color:#fff; min-height: 60vh;">
+p404 = head("Page introuvable | Contre-Plan", "Cette page n'existe pas ou a été déplacée.", "https://contre-plan.com/404.html", root="/").replace('<meta property="og:type" content="article">','<meta name="robots" content="noindex">') + f'''<main style="background-color: #0f2747; background-image: linear-gradient(#2a4a75 1px, transparent 1px), linear-gradient(90deg, #2a4a75 1px, transparent 1px); background-size: 160px 160px; color:#fff; min-height: 60vh;">
 <div style="max-width: 760px; margin: 0 auto; padding: 120px 24px; display:flex; flex-direction:column; gap:24px;">
-<span style="align-self:flex-start;background:#c44c19;color:#fff;font-weight:700;font-size:15px;letter-spacing:1.5px;text-transform:uppercase;padding:8px 14px;">Erreur 404</span>
+<span style="align-self:flex-start;background:#bf4a17;color:#fff;font-weight:700;font-size:15px;padding:8px 14px;">Erreur 404</span>
 <h1 style="margin:0;font-family:Archivo,Arial,sans-serif;font-weight:800;line-height:1.1;">Ce poste ne figure pas <span style="color:#e8733c;">sur le plan.</span></h1>
 <p style="margin:0;font-size:20px;line-height:1.5;color:#c9d3ea;">La page que vous cherchez n'existe pas ou a été déplacée.</p>
-<div style="display:flex;flex-wrap:wrap;gap:14px;"><a href="/" style="background:#c44c19;color:#fff;text-decoration:none;font-weight:700;font-size:18px;padding:16px 24px;border-radius:4px;">Retour à l'accueil</a><a href="/guides.html" style="color:#fff;font-weight:700;font-size:17px;padding:14px 22px;border:2px solid #fff;border-radius:4px;text-decoration:none;">Lire les guides</a></div>
+<div style="display:flex;flex-wrap:wrap;gap:14px;"><a href="/" style="background:#bf4a17;color:#fff;text-decoration:none;font-weight:700;font-size:18px;padding:16px 24px;border-radius:2px;">Retour à l'accueil</a><a href="/guides.html" style="color:#fff;font-weight:700;font-size:17px;padding:14px 22px;border:2px solid #fff;border-radius:2px;text-decoration:none;">Lire les guides</a></div>
 </div>
 </main>
 ''' + footer(root="/")
