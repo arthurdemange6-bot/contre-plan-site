@@ -24,3 +24,48 @@ a[style*="border-radius:6px"]:hover,a[style*="border-radius: 6px"]:hover{transfo
   .anim .cp-pen{animation:none;background-size:100% .09em}
   a:hover{transform:none!important}
 }
+/* ---- Effets supplémentaires ---- */
+@keyframes cpDraw{to{stroke-dashoffset:0}}
+@keyframes cpPop{0%{opacity:0;transform:scale(.3)}70%{opacity:1;transform:scale(1.15)}100%{opacity:1;transform:scale(1)}}
+@keyframes cpRing{0%{box-shadow:0 0 0 0 rgba(212,86,31,.55)}100%{box-shadow:0 0 0 18px rgba(212,86,31,0)}}
+@keyframes cpStrike{to{transform:scaleX(1)}}
+@keyframes cpBadge{0%{opacity:0;transform:scale(1.7) rotate(-10deg)}70%{opacity:1;transform:scale(.95) rotate(-2deg)}100%{opacity:1;transform:rotate(-2deg)}}
+@keyframes cpScan{0%{top:-12%;opacity:0}10%{opacity:1}90%{opacity:1}100%{top:105%;opacity:0}}
+@keyframes cpFaq{from{opacity:0;transform:translateY(-6px)}to{opacity:1;transform:none}}
+/* barre de progression façon règle */
+#cp-progress{position:fixed;top:0;left:0;height:3px;width:100%;transform-origin:0 50%;transform:scaleX(0);background:repeating-linear-gradient(90deg,#d4561f 0 10px,#e8733c 10px 11px);z-index:9998;pointer-events:none}
+/* coches qui se dessinent */
+.anim .cp-check path{stroke-dasharray:24;stroke-dashoffset:24}
+.anim .cp-in .cp-check path{animation:cpDraw .5s ease-out forwards}
+/* numéros d'étapes qui surgissent */
+.anim .cp-num{opacity:0}
+.anim .cp-in .cp-num{animation:cpPop .55s cubic-bezier(.3,1.4,.5,1) forwards,cpRing 1.2s .5s ease-out}
+/* soulignement au stylo sur les titres */
+.anim .cp-pen2{background-image:linear-gradient(#e8733c,#e8733c);background-repeat:no-repeat;background-position:0 96%;background-size:0 .08em}
+.anim .cp-in .cp-pen2,.anim .cp-pen2.cp-go{animation:cpPen .9s .35s cubic-bezier(.6,0,.3,1) forwards}
+/* ancien prix barré au trait */
+.anim .cp-strike{text-decoration:none!important;position:relative;display:inline-block}
+.anim .cp-strike::after{content:"";position:absolute;left:-2px;right:-2px;top:52%;height:2px;background:#e8733c;transform:scaleX(0);transform-origin:0 50%}
+.anim .cp-in .cp-strike::after{animation:cpStrike .45s 1s ease-out forwards}
+.anim .cp-badge{display:inline-block}
+.anim .cp-in .cp-badge{animation:cpBadge .5s 1.3s cubic-bezier(.3,1.4,.5,1) both}
+/* balayage du rapport d'exemple */
+.cp-scanbox{position:relative;overflow:hidden}
+.cp-scanbox::after{content:"";position:absolute;left:0;right:0;top:-12%;height:10%;background:linear-gradient(180deg,rgba(232,115,60,0),rgba(232,115,60,.28),rgba(232,115,60,0));border-bottom:2px solid rgba(212,86,31,.7);opacity:0;pointer-events:none}
+.anim .cp-scanbox.cp-go::after{animation:cpScan 1.8s .2s ease-in-out}
+/* FAQ qui s'ouvre en douceur */
+.anim details[open] > *:not(summary){animation:cpFaq .35s ease-out}
+summary{transition:color .2s}
+summary:hover{color:#b8461a}
+/* bouton du chat qui attire l'œil */
+.anim #cp-chat-btn.cp-ring{animation:cpRing 1.4s ease-out 3}
+/* carte de l'accueil qui suit la souris (ordinateur) */
+.cp-tilt{transition:transform .25s ease-out;will-change:transform}
+@media (prefers-reduced-motion: reduce){
+  #cp-progress{display:none}
+  .anim .cp-check path{stroke-dashoffset:0;animation:none}
+  .anim .cp-num{opacity:1;animation:none}
+  .anim .cp-pen2{background-size:100% .08em;animation:none}
+  .anim .cp-strike::after{transform:scaleX(1);animation:none}
+  .anim .cp-scanbox::after,.anim #cp-chat-btn{animation:none}
+}
