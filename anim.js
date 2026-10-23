@@ -119,7 +119,7 @@
     if (!wrap || wrap.tagName !== 'DIV') return;
     var rows = [
       ['Protection des sols, évacuation du mobilier', '1 ft', '180,00', '180,00'],
-      ['Dépose carrelage mural et sol', '18 m²', '78,00', '1 404,00', 'ring', 'élevé ?'],
+      ['Dépose carrelage mural et sol', '25 m²', '58,00', '1 450,00', 'ring', 'élevé ?'],
       ['Dépose baignoire et sanitaires', '1 u', '250,00', '250,00'],
       ['Receveur extra-plat 90×120', '1 u', '690,00', '690,00', '', 'OK ✓'],
       ['Étanchéité sous carrelage', '—', '—', '—', '', 'non chiffrée !'],
@@ -146,10 +146,10 @@
     });
     var gr = el('div', 'r cp-w', '<span></span><span></span><span></span><span></span>'); gr.appendChild(el('span', 'cp-n', '+ évacuation des gravats ?')); gr.lastChild.style.right = 'auto'; gr.lastChild.style.left = '0'; gr.lastChild.style.top = '.2em';
     sheet.appendChild(gr); steps.push([gr, 0.57, 0.575, 'w']); notes.splice(4, 0, gr.lastChild);
-    var t1 = el('div', 't cp-w', '<span>Total HT</span><span>6 658,00 €</span>');
-    var t2 = el('div', 't cp-w', '<span>TVA 10 %</span><span>665,80 €</span>');
-    var t3 = el('div', 't cp-w', '<span>Total TTC</span><span>7 323,80 €</span>');
-    var t4 = el('div', 't cp-w', '<span>Acompte à la commande : 50 %</span><span class="cp-amt">3 661,90 €</span>');
+    var t1 = el('div', 't cp-w', '<span>Total HT</span><span>6 704,00 €</span>');
+    var t2 = el('div', 't cp-w', '<span>TVA 10 %</span><span>670,40 €</span>');
+    var t3 = el('div', 't cp-w', '<span>Total TTC</span><span>7 374,40 €</span>');
+    var t4 = el('div', 't cp-w', '<span>Acompte à la commande : 50 %</span><span class="cp-amt">3 687,20 €</span>');
     [t1, t2, t3, t4].forEach(function (t, i) { sheet.appendChild(t); steps.push([t, 0.58 + i * 0.03, 0.61 + i * 0.03, 'w']); });
     var ring4 = el('i', 'cp-ring2'); t4.lastChild.appendChild(ring4); var n4 = el('span', 'cp-n', '→ 30 % suffit'); t4.appendChild(n4); notes.push(ring4, n4);
     var sig = el('div', 'sig cp-w', '<span>Bon pour accord, le …</span><span>Signature :</span>'); sheet.appendChild(sig); steps.push([sig, 0.7, 0.74, 'w']);
@@ -170,6 +170,28 @@
     addEventListener('scroll', function () { if (!busy) { busy = true; requestAnimationFrame(upd); } }, { passive: true });
     addEventListener('resize', upd); upd();
   }
-  function start() { init(); extras(); devis(); }
+
+  function finitions() {
+    var top = document.getElementById('top');
+    if (top && top.children[1]) {
+      var card = top.children[1]; card.classList.add('cp-coted');
+      var h = document.createElement('div'); h.className = 'cp-cote h'; h.setAttribute('aria-hidden', 'true'); h.innerHTML = '<span>Relu ligne par ligne</span>';
+      var v = document.createElement('div'); v.className = 'cp-cote v'; v.setAttribute('aria-hidden', 'true'); v.innerHTML = '<span>Sous 48 h</span>';
+      card.appendChild(h); card.appendChild(v);
+      var cta = top.querySelector('a[style*="background: #d4561f"]'); if (cta) cta.classList.add('cp-shine');
+    }
+    each(document.querySelectorAll('section div[style*="border-radius: 6px"]'), function (c) {
+      var f = c.firstElementChild; if (f && /^0\d$/.test(f.textContent.trim())) c.classList.add('cp-topline');
+    });
+    each(document.querySelectorAll('section p'), function (p) {
+      var key = 'mon seul intérêt est que vous signiez un devis juste';
+      each(p.childNodes, function (n) {
+        if (n.nodeType !== 3) return; var i = n.nodeValue.indexOf(key); if (i < 0) return;
+        var after = n.splitText(i); after.splitText(key.length);
+        var m = document.createElement('span'); m.className = 'cp-mark'; m.textContent = key; after.parentNode.replaceChild(m, after);
+      });
+    });
+  }
+  function start() { finitions(); init(); extras(); devis(); }
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', start); else start();
 })();
