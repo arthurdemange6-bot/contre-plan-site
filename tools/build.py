@@ -15,6 +15,7 @@ def head(title, desc, url, extra="", root=""):
 <html lang="fr">
 <head>
 <meta charset="utf-8">
+<link rel="icon" type="image/png" sizes="192x192" href="{root}favicon-192.png">
 <link rel="icon" href="{root}favicon.ico" sizes="any">
 <link rel="icon" type="image/png" sizes="32x32" href="{root}favicon-32.png">
 <link rel="apple-touch-icon" href="{root}apple-touch-icon.png">
