@@ -31,6 +31,9 @@ def head(title, desc, url, extra="", root=""):
 <meta property="og:image:height" content="630">
 <meta property="og:image:alt" content="Contre-Plan : votre devis de travaux relu ligne par ligne avant que vous signiez">
 <meta name="twitter:card" content="summary_large_image">
+<link rel="preload" href="{root}fonts/source-sans-3-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="{root}fonts/source-sans-3-latin-700-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="{root}fonts/archivo-latin-800-normal.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="{root}fonts.css">
 <style>
 body{{margin:0;background:#08111f}}
@@ -43,7 +46,7 @@ h1{{font-size:clamp(32px,5.5vw,48px)!important}}
 .art ul,.art ol{{margin:0 0 14px;padding-left:24px}}
 .art li{{margin-bottom:8px}}
 .art strong{{color:#14284b}}
-.note{{background:#fff;border:1px solid #ddd8ca;border-left:4px solid #d4561f;border-radius:6px;padding:16px 20px;margin:20px 0}}
+.note{{background:#fff;border:1px solid #ddd8ca;border-left:4px solid #c44c19;border-radius:6px;padding:16px 20px;margin:20px 0}}
 .note p{{margin:0}}
 </style>
 {extra}
@@ -59,8 +62,9 @@ h1{{font-size:clamp(32px,5.5vw,48px)!important}}
 <div style="max-width: 1160px; margin: 0 auto; padding: 24px; display: flex; flex-wrap: wrap; gap: 16px; align-items: center; justify-content: space-between;">
 <a href="{root or './'}" style="color: #ffffff; text-decoration: none; font-family: Archivo, Arial, sans-serif; font-weight: 800; font-size: 22px; letter-spacing: 2px;">CONTRE-PLAN</a>
 <nav style="display: flex; flex-wrap: wrap; gap: 20px; align-items: center; font-size: 17px;">
+<a href="{root}methode.html" style="color: #c9d3ea; text-decoration: none;">Méthode</a>
 <a href="{root}guides.html" style="color: #c9d3ea; text-decoration: none;">Guides</a>
-<a href="{COMEUP}" data-goatcounter-click="clic-comeup" style="background: #d4561f; color: #ffffff; text-decoration: none; font-weight: 700; padding: 12px 20px; border-radius: 4px;">Faire analyser mon devis</a>
+<a href="{COMEUP}" data-goatcounter-click="clic-comeup" style="background: #c44c19; color: #ffffff; text-decoration: none; font-weight: 700; padding: 12px 20px; border-radius: 4px;">Faire analyser mon devis</a>
 </nav>
 </div>
 </header>
@@ -70,7 +74,7 @@ def footer(root=""):
     return f'''<footer style="background: #08111f; color: #a9b6d3; border-top: 1px solid #1c2943;">
 <div style="max-width: 1160px; margin: 0 auto; padding: 40px 24px; display: flex; flex-wrap: wrap; gap: 24px; justify-content: space-between; font-size: 15px; line-height: 1.6;">
 <div><div style="color: #ffffff; font-family: Archivo, Arial, sans-serif; font-weight: 800; letter-spacing: 2px; font-size: 18px;">CONTRE-PLAN</div><div>Analyse de devis travaux · 100 % à distance</div></div>
-<div style="display: flex; flex-wrap: wrap; gap: 20px; align-items: center; font-size: 13px;"><a href="{root}guides.html" style="color: #a9b6d3;">Guides</a><a href="{root}mentions-legales.html" style="color: #a9b6d3; font-size: 11px;">Mentions légales</a><span>© 2026 Contre-Plan</span></div>
+<div style="display: flex; flex-wrap: wrap; gap: 20px; align-items: center; font-size: 13px;"><a href="{root}methode.html" style="color: #a9b6d3;">Méthode</a><a href="{root}engagements.html" style="color: #a9b6d3;">Engagements</a><a href="{root}guides.html" style="color: #a9b6d3;">Guides</a><a href="{root}mentions-legales.html" style="color: #a9b6d3; font-size: 11px;">Mentions légales</a><span>© 2026 Contre-Plan</span></div>
 </div>
 </footer>
 </div>
@@ -82,7 +86,7 @@ def footer(root=""):
 CTA = f'''<aside style="margin-top: 48px; background-color: #08111f; background-image: linear-gradient(#2d3d62 1px, transparent 1px), linear-gradient(90deg, #2d3d62 1px, transparent 1px); background-size: 80px 80px; color: #fff; border-radius: 8px; padding: 32px; display: flex; flex-direction: column; gap: 16px;">
 <p style="margin: 0; font-family: Archivo, Arial, sans-serif; font-weight: 800; font-size: 26px; line-height: 1.2; color: #fff;">Un devis à signer ? Faites-le relire par un ingénieur BTP.</p>
 <p style="margin: 0; font-size: 18px; line-height: 1.5; color: #c9d3ea;">Prix poste par poste, oublis, TVA, conditions de paiement : rapport PDF sous 48 h, 16,50 € au tarif de lancement.</p>
-<div style="display: flex; flex-wrap: wrap; gap: 12px;"><a href="{COMEUP}" data-goatcounter-click="clic-comeup" style="background: #d4561f; color: #fff; text-decoration: none; font-weight: 700; font-size: 18px; padding: 16px 24px; border-radius: 4px;">Faire analyser mon devis</a><a href="{BOOK}" data-goatcounter-click="clic-appel" target="_blank" rel="noopener" style="color: #fff; font-weight: 700; font-size: 17px; padding: 14px 22px; border: 2px solid #fff; border-radius: 4px; text-decoration: none;">Appel gratuit de 15 min</a></div>
+<div style="display: flex; flex-wrap: wrap; gap: 12px;"><a href="{COMEUP}" data-goatcounter-click="clic-comeup" style="background: #c44c19; color: #fff; text-decoration: none; font-weight: 700; font-size: 18px; padding: 16px 24px; border-radius: 4px;">Faire analyser mon devis</a><a href="{BOOK}" data-goatcounter-click="clic-appel" target="_blank" rel="noopener" style="color: #fff; font-weight: 700; font-size: 17px; padding: 14px 22px; border: 2px solid #fff; border-radius: 4px; text-decoration: none;">Appel gratuit de 15 min</a></div>
 </aside>'''
 
 ARTICLES = []
@@ -208,6 +212,71 @@ article("guide-oublis-devis-salle-de-bain",
 <p>Reprenez votre devis avec cette liste et cochez chaque point. Pour chaque absence, posez la question à l'artisan <strong>par écrit</strong> : soit le poste est inclus et il le précise, soit il le chiffre. Dans les deux cas, vous signez en sachant ce que vous payez.</p>
 <p style="font-size: 15px !important; color: #5b6784 !important;">Article d'information générale. Chaque chantier est différent : en cas de doute sur un point technique, faites vérifier votre devis.</p>''', 5)
 
+
+PAGES = []
+def page(slug, title, h1, desc, lead, body, kicker):
+    url = f"https://contre-plan.com/{slug}.html"
+    ld = {"@context":"https://schema.org","@type":"WebPage","name":h1,"description":desc,"url":url,"inLanguage":"fr-FR",
+          "publisher":{"@type":"Organization","name":"Contre-Plan","url":"https://contre-plan.com/"}}
+    extra = '<script type="application/ld+json">' + json.dumps(ld, ensure_ascii=False) + '</script>'
+    out = head(title, desc, url, extra).replace('<meta property="og:type" content="article">','<meta property="og:type" content="website">') + f'''<main class="art" style="max-width: 760px; margin: 0 auto; padding: 56px 24px 96px;">
+<span style="display:inline-block;background:#14284b;color:#fff;font-weight:700;font-size:15px;letter-spacing:1.5px;text-transform:uppercase;padding:8px 14px;margin-bottom:18px;">{kicker}</span>
+<h1 style="margin: 0 0 20px; font-family: Archivo, Arial, sans-serif; font-weight: 800; line-height: 1.1; color: #14284b;">{html.escape(h1)}</h1>
+<p style="font-size: 20px !important; color: #14284b !important;">{lead}</p>
+{body}
+{CTA}
+</main>
+''' + footer()
+    open(os.path.join(OUT, slug + ".html"), "w").write(out)
+    PAGES.append(slug)
+
+# ---------- Pages Méthode et Engagements
+page("methode",
+ "Ma méthode : ce que je vérifie sur un devis | Contre-Plan",
+ "Ma méthode : ce que je vérifie sur chaque devis",
+ "Recalcul, mentions obligatoires, TVA, oublis techniques, prix : la grille de contrôle appliquée à chaque devis de travaux analysé par Contre-Plan.",
+ "Chaque devis passe par la même grille de contrôle, en cinq temps. Voici ce que je regarde, et pourquoi.",
+ """<h2>1. Je relis et je recalcule tout</h2>
+<p>Je reprends chaque ligne du devis dans un tableau : désignation, unité, quantité, prix unitaire, total. Je refais tous les calculs, des lignes jusqu'au total TTC.</p>
+<ul><li>Erreurs de multiplication ou d'addition, TVA mal calculée.</li><li>Quantités incohérentes entre elles ou avec la surface annoncée (par exemple plus de faïence que de murs).</li><li>Postes en double, ou main-d'œuvre facturée deux fois.</li></ul>
+<h2>2. Je vérifie la forme et les mentions obligatoires</h2>
+<p>Un devis incomplet n'est pas forcément mauvais, mais il vous laisse sans recours en cas de problème. Je contrôle notamment :</p>
+<ul><li>La date, la durée de validité, la date de début et un délai d'exécution ferme.</li><li>L'identité de l'entreprise : raison sociale, adresse, SIRET, immatriculation.</li><li>L'assurance décennale : assureur et zone géographique couverte, et je vous dis quelle attestation demander.</li><li>La gestion des déchets, le détail fourniture et main-d'œuvre, les marques et références.</li><li>Les conditions de paiement et l'acompte, les garanties, le médiateur de la consommation.</li><li>Le droit de rétractation si le devis a été signé chez vous.</li></ul>
+<p>Le détail est expliqué dans le guide <a href="guide-mentions-obligatoires-devis.html">des mentions obligatoires d'un devis</a>.</p>
+<h2>3. Je contrôle la TVA et les aides</h2>
+<p>Je vérifie que le taux appliqué (5,5 %, 10 % ou 20 %) correspond à vos travaux et à votre logement, et que la mention à signer est prévue. Si vous visez des aides, je vérifie la qualification RGE de l'entreprise pour les travaux concernés. Voir aussi <a href="guide-tva-travaux-renovation.html">le guide TVA</a>.</p>
+<h2>4. Je cherche ce qui manque et ce qui est flou</h2>
+<p>C'est le cœur de mon travail d'ingénieur : repérer ce qui n'est pas écrit et qui coûtera cher plus tard.</p>
+<ul><li>Les forfaits sans détail (« plomberie », « divers », « finitions ») et les unités inadaptées.</li><li>Les oublis classiques : préparation des supports, dépose et évacuation, protection du chantier, raccordements, mises en conformité, accès en hauteur, nettoyage.</li><li>Les points propres à chaque type de travaux : étanchéité et volumes électriques en salle de bain, liaisons frigorifiques et évacuation des condensats pour une pompe à chaleur, repérage amiante pour un logement ancien.</li><li>Les enchaînements de travaux incohérents entre les lots.</li></ul>
+<h2>5. Je compare les prix</h2>
+<p>Je compare les principaux prix unitaires à des ordres de grandeur récents, en tenant compte de votre région quand je la connais. Chaque poste est classé cohérent, bas ou élevé. Je regarde aussi la répartition entre fourniture et main-d'œuvre, et le niveau de l'acompte : l'usage est d'environ 30 % à la signature.</p>
+<div class="note"><p>Les prix cités sont toujours des fourchettes indicatives : ils varient selon la région, l'accès au chantier et les matériaux. Je ne vous dirai jamais qu'un prix est « le bon » au centime près.</p></div>
+<h2>Ce que vous recevez</h2>
+<p>Un rapport PDF avec une synthèse, un verdict, les points prioritaires chiffrés, l'analyse poste par poste, les questions à poser à l'artisan et un récapitulatif des corrections. <a href="exemple-rapport-contre-plan.pdf" target="_blank" rel="noopener" data-goatcounter-click="telechargement-exemple-rapport">Voir un exemple de rapport complet (PDF)</a>.</p>
+<p>Ce que couvre l'analyse, et ce qu'elle ne couvre pas, est détaillé dans <a href="engagements.html">mes engagements</a>.</p>""",
+ "Méthode")
+
+page("engagements",
+ "Mes engagements : indépendance et confidentialité | Contre-Plan",
+ "Mes engagements",
+ "Indépendance vis-à-vis des artisans, confidentialité de vos devis, délais et portée de l'analyse : ce sur quoi Contre-Plan s'engage.",
+ "Vous me confiez un document qui engage plusieurs milliers d'euros. Voici comment je le traite.",
+ """<h2>Indépendance</h2>
+<ul><li>Je ne touche aucune commission, d'aucune entreprise.</li><li>Je ne vous recommande ni ne vous revends aucun artisan.</li><li>Mon seul intérêt est que vous signiez un devis juste, quel que soit l'artisan que vous choisissez.</li></ul>
+<h2>Confidentialité de vos devis</h2>
+<ul><li>Vous pouvez masquer votre nom, votre adresse et vos coordonnées avant de m'envoyer le devis : ils ne sont pas nécessaires à l'analyse.</li><li>Votre devis sert uniquement à réaliser votre analyse. Il n'est jamais transmis à un artisan ni à un tiers à des fins commerciales.</li><li>Les documents sont conservés dans un espace professionnel sécurisé. Vous pouvez demander leur suppression à tout moment en écrivant à contact@contre-plan.com.</li><li>Pour certaines vérifications (recalculs, recherche de prix et de textes de référence), je m'aide d'outils logiciels, y compris d'intelligence artificielle. Chaque rapport est relu, corrigé et validé par moi avant de vous être envoyé.</li></ul>
+<h2>Délais</h2>
+<ul><li>Rapport sous 48 h, ou 24 h avec l'option express, à compter de la réception de votre devis complet.</li><li>Un échange de suivi est inclus : vous pouvez me poser une question après lecture du rapport.</li><li>Si un document manque ou est illisible, je vous le signale dès réception.</li></ul>
+<h2>Commande et paiement</h2>
+<p>Les commandes et le paiement passent par la plateforme ComeUp, selon ses conditions générales. Vous n'avez rien à régler en dehors de la plateforme.</p>
+<h2>Portée de cette analyse</h2>
+<p>Cette analyse est un avis technique établi à distance, uniquement à partir des documents et informations que vous avez transmis. Elle ne comprend pas de visite du chantier : les éléments non visibles ou non communiqués (état réel des supports et des réseaux, présence d'amiante, contraintes de copropriété ou d'urbanisme…) ne peuvent pas être évalués.</p>
+<p>Les prix de référence cités sont des fourchettes indicatives. Ils varient selon la région, l'accès au chantier et les matériaux choisis.</p>
+<p>Cet avis n'est ni une expertise judiciaire ou d'assurance, ni une mission de maîtrise d'œuvre, ni un conseil juridique. Il ne remplace pas le devoir de conseil de l'entreprise qui réalisera les travaux.</p>
+<p>La décision de signer, de négocier ou de refuser le devis vous appartient. En cas de litige déjà engagé ou de travaux touchant la structure du bâtiment, faites appel à un expert ou à un professionnel qui pourra se rendre sur place.</p>
+<p>Pour savoir précisément ce que je contrôle, voir <a href="methode.html">ma méthode</a>.</p>""",
+ "Engagements")
+
 # ---------- Guides index
 cards = "".join(f'''<a href="{s}.html" style="display:flex;flex-direction:column;gap:10px;background:#fff;border:1px solid #ddd8ca;border-radius:6px;padding:28px;text-decoration:none;color:#14284b;">
 <span style="font-family:Archivo,Arial,sans-serif;font-weight:800;font-size:22px;line-height:1.25;">{html.escape(h)}</span>
@@ -221,7 +290,7 @@ idx = head("Guides : bien lire un devis de travaux | Contre-Plan",
 <p style="margin:0;font-size:20px;line-height:1.5;color:#4a5b7e;">Ce que je vérifie sur chaque devis, expliqué simplement pour que vous puissiez le faire vous-même.</p>
 </div>
 <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:20px;">{cards}</div>
-<a href="checklist-devis-travaux.pdf" download data-goatcounter-click="telechargement-checklist" style="display:flex;flex-wrap:wrap;gap:16px;align-items:center;justify-content:space-between;background:#14284b;color:#fff;border-radius:6px;padding:28px;text-decoration:none;"><span style="display:flex;flex-direction:column;gap:6px;"><span style="font-family:Archivo,Arial,sans-serif;font-weight:800;font-size:22px;">La check-list à imprimer : 20 points avant de signer</span><span style="font-size:17px;color:#c9d3ea;">Une page PDF gratuite, sans inscription. Cochez au fur et à mesure.</span></span><span style="background:#d4561f;font-weight:700;padding:14px 22px;border-radius:4px;">Télécharger le PDF</span></a>
+<a href="checklist-devis-travaux.pdf" download data-goatcounter-click="telechargement-checklist" style="display:flex;flex-wrap:wrap;gap:16px;align-items:center;justify-content:space-between;background:#14284b;color:#fff;border-radius:6px;padding:28px;text-decoration:none;"><span style="display:flex;flex-direction:column;gap:6px;"><span style="font-family:Archivo,Arial,sans-serif;font-weight:800;font-size:22px;">La check-list à imprimer : 20 points avant de signer</span><span style="font-size:17px;color:#c9d3ea;">Une page PDF gratuite, sans inscription. Cochez au fur et à mesure.</span></span><span style="background:#c44c19;font-weight:700;padding:14px 22px;border-radius:4px;">Télécharger le PDF</span></a>
 </main>
 ''' + footer()
 open(os.path.join(OUT, "guides.html"), "w").write(idx)
@@ -229,17 +298,17 @@ open(os.path.join(OUT, "guides.html"), "w").write(idx)
 # ---------- 404 (absolute paths: served at any URL)
 p404 = head("Page introuvable | Contre-Plan", "Cette page n'existe pas ou a été déplacée.", "https://contre-plan.com/404.html", root="/").replace('<meta property="og:type" content="article">','<meta name="robots" content="noindex">') + f'''<main style="background-color: #08111f; background-image: linear-gradient(#2d3d62 1px, transparent 1px), linear-gradient(90deg, #2d3d62 1px, transparent 1px); background-size: 160px 160px; color:#fff; min-height: 60vh;">
 <div style="max-width: 760px; margin: 0 auto; padding: 120px 24px; display:flex; flex-direction:column; gap:24px;">
-<span style="align-self:flex-start;background:#d4561f;color:#fff;font-weight:700;font-size:15px;letter-spacing:1.5px;text-transform:uppercase;padding:8px 14px;">Erreur 404</span>
+<span style="align-self:flex-start;background:#c44c19;color:#fff;font-weight:700;font-size:15px;letter-spacing:1.5px;text-transform:uppercase;padding:8px 14px;">Erreur 404</span>
 <h1 style="margin:0;font-family:Archivo,Arial,sans-serif;font-weight:800;line-height:1.1;">Ce poste ne figure pas <span style="color:#e8733c;">sur le plan.</span></h1>
 <p style="margin:0;font-size:20px;line-height:1.5;color:#c9d3ea;">La page que vous cherchez n'existe pas ou a été déplacée.</p>
-<div style="display:flex;flex-wrap:wrap;gap:14px;"><a href="/" style="background:#d4561f;color:#fff;text-decoration:none;font-weight:700;font-size:18px;padding:16px 24px;border-radius:4px;">Retour à l'accueil</a><a href="/guides.html" style="color:#fff;font-weight:700;font-size:17px;padding:14px 22px;border:2px solid #fff;border-radius:4px;text-decoration:none;">Lire les guides</a></div>
+<div style="display:flex;flex-wrap:wrap;gap:14px;"><a href="/" style="background:#c44c19;color:#fff;text-decoration:none;font-weight:700;font-size:18px;padding:16px 24px;border-radius:4px;">Retour à l'accueil</a><a href="/guides.html" style="color:#fff;font-weight:700;font-size:17px;padding:14px 22px;border:2px solid #fff;border-radius:4px;text-decoration:none;">Lire les guides</a></div>
 </div>
 </main>
 ''' + footer(root="/")
 open(os.path.join(OUT, "404.html"), "w").write(p404)
 
 # ---------- sitemap
-urls = [("", "1.0"), ("guides.html","0.8")] + [(s+".html","0.7") for s,_,_ in ARTICLES] + [("checklist-devis-travaux.pdf","0.6")]
+urls = [("", "1.0"), ("guides.html","0.8")] + [(s+".html","0.7") for s,_,_ in ARTICLES] + [(s+".html","0.7") for s in PAGES] + [("checklist-devis-travaux.pdf","0.6"),("exemple-rapport-contre-plan.pdf","0.6")]
 sm = '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n' + "".join(f'  <url><loc>https://contre-plan.com/{u}</loc><lastmod>{LASTMOD.get(u, max([DATE] + list(LASTMOD.values())))}</lastmod><priority>{p}</priority></url>\n' for u,p in urls) + '</urlset>\n'
 open(os.path.join(OUT, "sitemap.xml"), "w").write(sm)
 print("ok", [a[0] for a in ARTICLES])

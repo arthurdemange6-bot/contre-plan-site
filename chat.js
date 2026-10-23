@@ -23,7 +23,7 @@
   ];
   var FALLBACK = "Je n'ai pas la réponse à cette question. Écrivez à contact@contre-plan.com, ou réservez un appel gratuit de 15 min : https://calendar.app.google/6LCc6yKVHnbvA3WN7";
 
-  var css = "#cp-chat-btn{position:fixed;right:20px;bottom:20px;z-index:9999;display:flex;align-items:center;gap:10px;background:#d4561f;color:#fff;border:0;border-radius:999px;padding:14px 20px;font:700 16px 'Source Sans 3',Arial,sans-serif;box-shadow:0 8px 24px rgba(0,0,0,.3);cursor:pointer}" +
+  var css = "#cp-chat-btn{position:fixed;right:20px;bottom:20px;z-index:9999;display:flex;align-items:center;gap:10px;background:#c44c19;color:#fff;border:0;border-radius:999px;padding:14px 20px;font:700 16px 'Source Sans 3',Arial,sans-serif;box-shadow:0 8px 24px rgba(0,0,0,.3);cursor:pointer}" +
     "#cp-chat-btn:hover{background:#b8461a}" +
     "#cp-chat{position:fixed;right:20px;bottom:86px;z-index:9999;width:min(380px,calc(100vw - 40px));max-height:min(560px,calc(100vh - 120px));display:none;flex-direction:column;background:#fbfaf6;color:#14284b;border-radius:10px;box-shadow:0 16px 48px rgba(0,0,0,.35);overflow:hidden;font-family:'Source Sans 3',Arial,sans-serif}" +
     "#cp-chat.open{display:flex}" +
@@ -36,9 +36,9 @@
     ".cp-bot{background:#fff;border:1px solid #ddd8ca;align-self:flex-start}" +
     ".cp-user{background:#14284b;color:#fff;align-self:flex-end}" +
     ".cp-chips{display:flex;flex-wrap:wrap;gap:6px}" +
-    ".cp-chip{background:#fff;border:1px solid #d4561f;color:#b8461a;border-radius:999px;padding:8px 12px;font:600 14px 'Source Sans 3',Arial,sans-serif;cursor:pointer;min-height:36px}" +
+    ".cp-chip{background:#fff;border:1px solid #c44c19;color:#b8461a;border-radius:999px;padding:8px 12px;font:600 14px 'Source Sans 3',Arial,sans-serif;cursor:pointer;min-height:36px}" +
     ".cp-chip:hover{background:#fdf1ea}" +
-    ".cp-cta{display:inline-block;margin-top:6px;background:#d4561f;color:#fff!important;text-decoration:none;font-weight:700;padding:9px 14px;border-radius:4px}" +
+    ".cp-cta{display:inline-block;margin-top:6px;background:#c44c19;color:#fff!important;text-decoration:none;font-weight:700;padding:9px 14px;border-radius:4px}" +
     "#cp-form{display:flex;gap:8px;padding:10px;border-top:1px solid #e3e0d6;background:#fff}" +
     "#cp-in{flex:1;border:1px solid #c9c3b3;border-radius:6px;padding:10px;font:15px 'Source Sans 3',Arial,sans-serif;min-width:0}" +
     "#cp-send{background:#14284b;color:#fff;border:0;border-radius:6px;padding:0 14px;font-weight:700;cursor:pointer;min-height:44px}";

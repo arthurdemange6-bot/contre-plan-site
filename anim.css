@@ -14,8 +14,8 @@
 .anim .cp-rv{opacity:0}
 .anim .cp-rv.cp-in{animation:cpUp .65s cubic-bezier(.2,.7,.2,1) both}
 /* Survols */
-a[style*="background: #d4561f"]{transition:transform .2s ease,box-shadow .2s ease,background-color .2s ease}
-a[style*="background: #d4561f"]:hover{transform:translateY(-2px);box-shadow:0 10px 24px rgba(212,86,31,.35);background-color:#c04c19!important}
+a[style*="background: #c44c19"]{transition:transform .2s ease,box-shadow .2s ease,background-color .2s ease}
+a[style*="background: #c44c19"]:hover{transform:translateY(-2px);box-shadow:0 10px 24px rgba(196,76,25,.35);background-color:#a93f14!important}
 a[style*="border-radius:6px"],a[style*="border-radius: 6px"]{transition:transform .25s ease,box-shadow .25s ease}
 a[style*="border-radius:6px"]:hover,a[style*="border-radius: 6px"]:hover{transform:translateY(-4px);box-shadow:0 16px 34px rgba(20,40,75,.14)}
 @media (prefers-reduced-motion: reduce){
@@ -27,13 +27,13 @@ a[style*="border-radius:6px"]:hover,a[style*="border-radius: 6px"]:hover{transfo
 /* ---- Effets supplémentaires ---- */
 @keyframes cpDraw{to{stroke-dashoffset:0}}
 @keyframes cpPop{0%{opacity:0;transform:scale(.3)}70%{opacity:1;transform:scale(1.15)}100%{opacity:1;transform:scale(1)}}
-@keyframes cpRing{0%{box-shadow:0 0 0 0 rgba(212,86,31,.55)}100%{box-shadow:0 0 0 18px rgba(212,86,31,0)}}
+@keyframes cpRing{0%{box-shadow:0 0 0 0 rgba(196,76,25,.55)}100%{box-shadow:0 0 0 18px rgba(196,76,25,0)}}
 @keyframes cpStrike{to{transform:scaleX(1)}}
 @keyframes cpBadge{0%{opacity:0;transform:scale(1.7) rotate(-10deg)}70%{opacity:1;transform:scale(.95) rotate(-2deg)}100%{opacity:1;transform:rotate(-2deg)}}
 @keyframes cpScan{0%{top:-12%;opacity:0}10%{opacity:1}90%{opacity:1}100%{top:105%;opacity:0}}
 @keyframes cpFaq{from{opacity:0;transform:translateY(-6px)}to{opacity:1;transform:none}}
 /* barre de progression façon règle */
-#cp-progress{position:fixed;top:0;left:0;height:3px;width:100%;transform-origin:0 50%;transform:scaleX(0);background:repeating-linear-gradient(90deg,#d4561f 0 10px,#e8733c 10px 11px);z-index:9998;pointer-events:none}
+#cp-progress{position:fixed;top:0;left:0;height:3px;width:100%;transform-origin:0 50%;transform:scaleX(0);background:repeating-linear-gradient(90deg,#c44c19 0 10px,#e8733c 10px 11px);z-index:9998;pointer-events:none}
 /* coches qui se dessinent */
 .anim .cp-check path{stroke-dasharray:24;stroke-dashoffset:24}
 .anim .cp-in .cp-check path{animation:cpDraw .5s ease-out forwards}
@@ -51,7 +51,7 @@ a[style*="border-radius:6px"]:hover,a[style*="border-radius: 6px"]:hover{transfo
 .anim .cp-in .cp-badge{animation:cpBadge .5s 1.3s cubic-bezier(.3,1.4,.5,1) both}
 /* balayage du rapport d'exemple */
 .cp-scanbox{position:relative;overflow:hidden}
-.cp-scanbox::after{content:"";position:absolute;left:0;right:0;top:-12%;height:10%;background:linear-gradient(180deg,rgba(232,115,60,0),rgba(232,115,60,.28),rgba(232,115,60,0));border-bottom:2px solid rgba(212,86,31,.7);opacity:0;pointer-events:none}
+.cp-scanbox::after{content:"";position:absolute;left:0;right:0;top:-12%;height:10%;background:linear-gradient(180deg,rgba(232,115,60,0),rgba(232,115,60,.28),rgba(232,115,60,0));border-bottom:2px solid rgba(196,76,25,.7);opacity:0;pointer-events:none}
 .anim .cp-scanbox.cp-go::after{animation:cpScan 1.8s .2s ease-in-out}
 /* FAQ qui s'ouvre en douceur */
 .anim details[open] > *:not(summary){animation:cpFaq .35s ease-out}
@@ -82,12 +82,12 @@ summary:hover{color:#b8461a}
 .cp-sheet .t span:last-child{text-align:right}
 .cp-sheet .sig{display:flex;justify-content:space-between;margin-top:1.4em;font-style:italic}
 .cp-w{clip-path:inset(0 100% 0 0)}
-.cp-n{color:rgba(212,86,31,.42);font-style:italic;font-weight:700;opacity:0;transform:translateY(4px) rotate(-2deg);transition:opacity .4s,transform .4s;position:absolute;right:-.2em;top:-.95em;font-size:.9em;white-space:nowrap}
+.cp-n{color:rgba(196,76,25,.42);font-style:italic;font-weight:700;opacity:0;transform:translateY(4px) rotate(-2deg);transition:opacity .4s,transform .4s;position:absolute;right:-.2em;top:-.95em;font-size:.9em;white-space:nowrap}
 .cp-n.on{opacity:1;transform:rotate(-2deg)}
-.cp-ring2{position:absolute;border:2px solid rgba(212,86,31,.42);border-radius:50%;inset:-.15em -.5em;opacity:0;transform:scale(1.4);transition:opacity .35s,transform .35s}
+.cp-ring2{position:absolute;border:2px solid rgba(196,76,25,.42);border-radius:50%;inset:-.15em -.5em;opacity:0;transform:scale(1.4);transition:opacity .35s,transform .35s}
 .cp-ring2.on{opacity:1;transform:scale(1) rotate(-3deg)}
 .cp-amt{position:relative}
-.cp-tampon{position:absolute;right:4%;bottom:-.6em;border:3px solid rgba(212,86,31,.42);color:rgba(212,86,31,.45);font-family:Archivo,Arial,sans-serif;font-weight:800;letter-spacing:.12em;padding:.25em .7em;font-size:1.3em;opacity:0;transform:scale(1.8) rotate(-16deg);transition:opacity .3s,transform .35s cubic-bezier(.3,1.4,.5,1)}
+.cp-tampon{position:absolute;right:4%;bottom:-.6em;border:3px solid rgba(196,76,25,.42);color:rgba(196,76,25,.45);font-family:Archivo,Arial,sans-serif;font-weight:800;letter-spacing:.12em;padding:.25em .7em;font-size:1.3em;opacity:0;transform:scale(1.8) rotate(-16deg);transition:opacity .3s,transform .35s cubic-bezier(.3,1.4,.5,1)}
 .cp-tampon.on{opacity:1;transform:scale(1) rotate(-8deg)}
 @media (max-width:600px){#cp-devis{padding-top:64px}.cp-sheet .r{grid-template-columns:1fr 3.4em 4.4em 5.4em}}
 /* ---- Finitions professionnelles ---- */
@@ -116,7 +116,7 @@ header nav a:not([style*="background"]):hover{background-size:100% 2px;color:#ff
 @media (max-width:899px){.cp-cote.v{display:none}}
 /* Cartes « 01 02 03 » : filet orange qui se trace en haut */
 .cp-topline{position:relative;overflow:hidden}
-.cp-topline::before{content:"";position:absolute;left:0;right:0;top:0;height:4px;background:#d4561f;transform:scaleX(0);transform-origin:0 50%}
+.cp-topline::before{content:"";position:absolute;left:0;right:0;top:0;height:4px;background:#c44c19;transform:scaleX(0);transform-origin:0 50%}
 .anim .cp-topline.cp-in::before{animation:cpStrike .7s .35s cubic-bezier(.6,0,.3,1) forwards}
 .cp-topline:hover::before{transform:scaleX(1)}
 /* Surligneur sur la phrase clé */
@@ -125,16 +125,16 @@ header nav a:not([style*="background"]):hover{background-size:100% 2px;color:#ff
 @keyframes cpMark{to{background-size:100% 100%}}
 /* Reflet sur le bouton principal */
 .cp-shine{position:relative;overflow:hidden}
-.cp-shine::after{content:"";position:absolute;top:0;bottom:0;width:40%;left:-60%;background:linear-gradient(100deg,transparent,rgba(255,255,255,.35),transparent);transform:skewX(-18deg);pointer-events:none}
+.cp-shine::after{content:"";position:absolute;top:0;bottom:0;width:40%;left:0;background:linear-gradient(100deg,transparent,rgba(255,255,255,.35),transparent);transform:translateX(-150%) skewX(-18deg);pointer-events:none}
 .anim .cp-shine::after{animation:cpShine 7s 2.4s ease-in-out infinite}
-@keyframes cpShine{0%{left:-60%}14%,100%{left:130%}}
+@keyframes cpShine{0%{transform:translateX(-150%) skewX(-18deg)}14%,100%{transform:translateX(330%) skewX(-18deg)}}
 /* FAQ : signe + qui pivote */
 details > summary{list-style:none;display:flex;justify-content:space-between;align-items:center;gap:16px}
 details > summary::-webkit-details-marker{display:none}
-details > summary::after{content:"+";flex:none;width:30px;height:30px;border-radius:50%;border:2px solid #ddd8ca;display:flex;align-items:center;justify-content:center;font-size:20px;font-weight:700;color:#d4561f;line-height:1;transition:transform .3s ease,background .3s,border-color .3s,color .3s}
-details[open] > summary::after{transform:rotate(135deg);background:#d4561f;border-color:#d4561f;color:#fff}
+details > summary::after{content:"+";flex:none;width:30px;height:30px;border-radius:50%;border:2px solid #ddd8ca;display:flex;align-items:center;justify-content:center;font-size:20px;font-weight:700;color:#c44c19;line-height:1;transition:transform .3s ease,background .3s,border-color .3s,color .3s}
+details[open] > summary::after{transform:rotate(135deg);background:#c44c19;border-color:#c44c19;color:#fff}
 /* Guides : petit trait orange devant les intertitres */
-.art h2::before{content:"";display:block;width:32px;height:3px;background:#d4561f;margin-bottom:12px;transform-origin:0 50%}
+.art h2::before{content:"";display:block;width:32px;height:3px;background:#c44c19;margin-bottom:12px;transform-origin:0 50%}
 .anim .art h2.cp-rv::before{transform:scaleX(0)}
 .anim .art h2.cp-in::before{animation:cpStrike .5s .3s ease-out forwards}
 @media (prefers-reduced-motion: reduce){

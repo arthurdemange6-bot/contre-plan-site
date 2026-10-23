@@ -178,7 +178,7 @@
       var h = document.createElement('div'); h.className = 'cp-cote h'; h.setAttribute('aria-hidden', 'true'); h.innerHTML = '<span>Relu ligne par ligne</span>';
       var v = document.createElement('div'); v.className = 'cp-cote v'; v.setAttribute('aria-hidden', 'true'); v.innerHTML = '<span>Sous 48 h</span>';
       card.appendChild(h); card.appendChild(v);
-      var cta = top.querySelector('a[style*="background: #d4561f"]'); if (cta) cta.classList.add('cp-shine');
+      var cta = top.querySelector('a[style*="background: #c44c19"]'); if (cta) cta.classList.add('cp-shine');
     }
     each(document.querySelectorAll('section div[style*="border-radius: 6px"]'), function (c) {
       var f = c.firstElementChild; if (f && /^0\d$/.test(f.textContent.trim())) c.classList.add('cp-topline');

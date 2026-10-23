@@ -1,0 +1,140 @@
+<!doctype html>
+<html lang="fr"><head><meta charset="utf-8"><title>Exemple de rapport Contre-Plan</title>
+<style>
+@font-face{font-family:Archivo;font-weight:800;src:url(../fonts/archivo-latin-800-normal.woff2)}
+@font-face{font-family:Archivo;font-weight:700;src:url(../fonts/archivo-latin-700-normal.woff2)}
+@font-face{font-family:'Source Sans 3';font-weight:400;src:url(../fonts/source-sans-3-latin-400-normal.woff2)}
+@font-face{font-family:'Source Sans 3';font-weight:600;src:url(../fonts/source-sans-3-latin-600-normal.woff2)}
+@font-face{font-family:'Source Sans 3';font-weight:700;src:url(../fonts/source-sans-3-latin-700-normal.woff2)}
+@page{size:A4}
+*{box-sizing:border-box}
+body{margin:0;font-family:'Source Sans 3',Arial,sans-serif;color:#14284b;font-size:9.8pt;line-height:1.4}
+h1,h2,h3{font-family:Archivo,Arial,sans-serif;margin:0}
+h2{font-size:13pt;margin:12px 0 6px;padding-top:7px;border-top:3px solid #c44c19;display:inline-block}
+h3{font-size:11.5pt;margin:10px 0 4px}
+p{margin:0 0 8px}
+.page{page-break-after:always}
+.page:last-child{page-break-after:auto}
+.top{display:flex;justify-content:space-between;align-items:center;padding-bottom:10px;border-bottom:2px solid #14284b;margin-bottom:14px}
+.logo{font-family:Archivo;font-weight:800;letter-spacing:3px;font-size:14pt}
+.small{font-size:8.5pt;color:#5b6784}
+.fict{background:#fdf0e9;border:1px dashed #c44c19;color:#8f3612;font-size:8.5pt;padding:6px 10px;border-radius:4px;margin-bottom:14px}
+.hero{background:#08111f;color:#fff;border-radius:6px;padding:18px 20px;display:flex;justify-content:space-between;gap:16px;align-items:center}
+.hero h1{font-size:19pt;line-height:1.15}
+.hero .meta{color:#c9d3ea;font-size:9.5pt;margin-top:6px}
+.verdict{border:3px solid #e8733c;color:#e8733c;font-family:Archivo;font-weight:800;font-size:15pt;padding:6px 14px;border-radius:4px;transform:rotate(-4deg);white-space:nowrap}
+.kpis{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:10px 0 4px}
+.kpi{border:1px solid #ddd8ca;border-radius:6px;padding:10px 12px}
+.kpi b{display:block;font-family:Archivo;font-size:15pt}
+.kpi span{font-size:8.5pt;color:#5b6784;text-transform:uppercase;letter-spacing:1px}
+.prio{border-left:4px solid #c44c19;background:#fbfaf6;padding:6px 10px;margin:0 0 6px;border-radius:0 4px 4px 0}
+.prio b{color:#b8461a}
+table{width:100%;border-collapse:collapse;font-size:9.5pt}
+th{text-align:left;font-size:8pt;text-transform:uppercase;letter-spacing:.8px;color:#5b6784;border-bottom:2px solid #14284b;padding:6px 5px}
+td{border-bottom:1px solid #e3e0d6;padding:4px 5px;vertical-align:top}
+td.n{text-align:right;white-space:nowrap}
+.tag{display:inline-block;font-weight:700;font-size:8pt;padding:2px 7px;border-radius:99px;white-space:nowrap}
+.ok{background:#e5f4e4;color:#2e7d4f}.warn{background:#f9ece7;color:#b8461a}.bad{background:#fbebeb;color:#b3261e}
+.chk td:first-child{width:38%}
+.q{background:#fbfaf6;border:1px solid #ddd8ca;border-radius:6px;padding:10px 14px}
+.q ol{margin:0;padding-left:18px}.q li{margin:0 0 5px}
+.portee{background:#f3f0e8;border-radius:6px;padding:12px 16px;font-size:9.5pt}
+.portee p{margin:0 0 6px}
+.sign{margin-top:14px;font-weight:700}
+.foot{position:fixed;bottom:-10mm;left:0;right:0;font-size:7.5pt;color:#8d9cc0;display:flex;justify-content:space-between}
+</style></head><body>
+
+<div class="page">
+<div class="top"><span class="logo">CONTRE-PLAN</span><span class="small">Rapport d'analyse de devis · Commande n° EXEMPLE</span></div>
+<div class="fict">Ce rapport est un exemple. Le devis, l'entreprise et le chantier sont fictifs. Il montre la structure et le niveau de détail d'une analyse réelle.</div>
+<div class="hero"><div><h1>Rénovation d'une salle de bain de 6 m²</h1><div class="meta">Devis d'une entreprise de rénovation · 10 postes · Logement de plus de 2 ans · Relu le 23/10/2026</div></div><div class="verdict">NÉGOCIABLE</div></div>
+<div class="kpis">
+<div class="kpi"><span>Montant du devis</span><b>7 374,40 € TTC</b><span>6 704,00 € HT · TVA 10 %</span></div>
+<div class="kpi"><span>Points à négocier</span><b>3</b><span>prix, forfait, acompte</span></div>
+<div class="kpi"><span>Oublis à faire chiffrer</span><b>2</b><span>étanchéité, gravats</span></div>
+</div>
+<h2>1. Synthèse</h2>
+<p>Le devis est globalement cohérent pour une rénovation complète de salle de bain : la plupart des prix unitaires se situent dans des ordres de grandeur habituels et les fournitures principales sont identifiées. En revanche, deux postes indispensables ne sont pas chiffrés (l'étanchéité sous carrelage et l'évacuation des gravats), le poste de dépose paraît élevé et l'acompte demandé est nettement supérieur à l'usage.</p>
+<p>En l'état, le montant final risque d'augmenter en cours de chantier. Ces points se règlent facilement par écrit avant la signature.</p>
+<h2>2. Verdict : à négocier avant de signer</h2>
+<p>Le devis peut être signé après correction des points ci-dessous. Rien n'indique une pratique abusive : il s'agit surtout d'oublis et d'un manque de détail, fréquents sur ce type de travaux.</p>
+<h2>3. Points prioritaires</h2>
+<div class="prio"><b>Étanchéité sous carrelage non chiffrée.</b> En zone de douche, une étanchéité sous carrelage (système d'étanchéité liquide ou natte, selon le support) est indispensable. Une plaque hydrofuge seule n'est pas étanche. À faire ajouter au devis, avec le produit et les zones traitées.</div>
+<div class="prio"><b>Évacuation des gravats absente.</b> La dépose de 25 m² de carrelage et d'une baignoire génère des déchets dont la gestion doit figurer sur le devis (quantité estimée, modalités, coût). À ajouter, sinon elle reviendra en supplément.</div>
+<div class="prio"><b>Dépose à 58 €/m², soit 1 450 € HT.</b> Ce prix paraît élevé par rapport aux ordres de grandeur habituels pour une dépose de carrelage mur et sol. Demandez ce qu'il comprend (piquage du support, ragréage, protection). Un montant de l'ordre de 1 000 € HT serait plus courant, sous réserve de l'état du support.</div>
+<div class="prio"><b>Acompte de 50 % à la commande (3 687,20 €).</b> L'usage est d'environ 30 % à la signature, puis des paiements liés à l'avancement et un solde à la réception. Proposez 30 %, soit 2 212,32 €.</div>
+<div class="prio"><b>Plomberie au forfait (1 150 € HT).</b> Le forfait ne permet pas de vérifier ce qui est prévu. Demandez le détail : alimentations, évacuations, robinets d'arrêt accessibles, matériaux.</div>
+</div>
+
+<div class="page">
+<div class="top"><span class="logo">CONTRE-PLAN</span><span class="small">Rapport d'analyse de devis · Exemple fictif</span></div>
+<h2>4. Analyse poste par poste</h2>
+<table>
+<tr><th>Poste</th><th>Qté</th><th class="n">P.U. HT</th><th class="n">Total HT</th><th>Avis</th><th>Commentaire</th></tr>
+<tr><td>Protection des sols, évacuation du mobilier</td><td>1 ft</td><td class="n">180,00</td><td class="n">180,00</td><td><span class="tag ok">Cohérent</span></td><td>Poste souvent oublié, ici bien prévu.</td></tr>
+<tr><td>Dépose carrelage mural et sol</td><td>25 m²</td><td class="n">58,00</td><td class="n">1 450,00</td><td><span class="tag warn">Élevé</span></td><td>Demander le contenu exact et viser environ 1 000 € HT.</td></tr>
+<tr><td>Dépose baignoire et sanitaires</td><td>1 u</td><td class="n">250,00</td><td class="n">250,00</td><td><span class="tag ok">Cohérent</span></td><td>Vérifier que la neutralisation des arrivées est incluse.</td></tr>
+<tr><td>Receveur extra-plat 90×120, fourniture et pose</td><td>1 u</td><td class="n">690,00</td><td class="n">690,00</td><td><span class="tag ok">Cohérent</span></td><td>Demander la marque, la référence et le type de bonde.</td></tr>
+<tr><td>Étanchéité sous carrelage</td><td>—</td><td class="n">—</td><td class="n">—</td><td><span class="tag bad">Manquant</span></td><td>Indispensable en zone de douche. À faire chiffrer.</td></tr>
+<tr><td>Faïence murale 30×60, fourniture et pose</td><td>14 m²</td><td class="n">95,00</td><td class="n">1 330,00</td><td><span class="tag ok">Cohérent</span></td><td>Quantité cohérente avec une pièce de 6 m². Préciser la gamme de faïence.</td></tr>
+<tr><td>Carrelage sol antidérapant</td><td>6 m²</td><td class="n">89,00</td><td class="n">534,00</td><td><span class="tag ok">Cohérent</span></td><td>Vérifier la classe antidérapante prévue près de la douche.</td></tr>
+<tr><td>Plomberie : alimentations, évacuations</td><td>1 ft</td><td class="n">1 150,00</td><td class="n">1 150,00</td><td><span class="tag warn">À détailler</span></td><td>Forfait sans détail : demander la liste des travaux et des matériaux.</td></tr>
+<tr><td>Meuble vasque 80 cm et mitigeur</td><td>1 u</td><td class="n">640,00</td><td class="n">640,00</td><td><span class="tag ok">Cohérent</span></td><td>Demander les références pour comparer.</td></tr>
+<tr><td>Électricité : 2 spots, raccordement VMC</td><td>1 ft</td><td class="n">480,00</td><td class="n">480,00</td><td><span class="tag warn">À vérifier</span></td><td>Préciser le respect des volumes de sécurité (NF C 15-100) et l'état de la VMC existante.</td></tr>
+<tr><td><i>Évacuation des gravats</i></td><td>—</td><td class="n">—</td><td class="n">—</td><td><span class="tag bad">Absent</span></td><td>Gestion des déchets à faire figurer sur le devis.</td></tr>
+<tr><td colspan="3"><b>Total HT</b></td><td class="n"><b>6 704,00</b></td><td colspan="2"></td></tr>
+<tr><td colspan="3">TVA 10 %</td><td class="n">670,40</td><td colspan="2" class="small">Taux intermédiaire, applicable aux travaux dans un logement achevé depuis plus de 2 ans.</td></tr>
+<tr><td colspan="3"><b>Total TTC</b></td><td class="n"><b>7 374,40</b></td><td colspan="2"></td></tr>
+</table>
+<p class="small" style="margin-top:8px">Les avis sur les prix reposent sur des ordres de grandeur indicatifs. Les prix varient selon la région, l'accès au chantier et les matériaux choisis.</p>
+
+</div>
+
+<div class="page">
+<div class="top"><span class="logo">CONTRE-PLAN</span><span class="small">Rapport d'analyse de devis · Exemple fictif</span></div>
+<h2>5. Autres points vérifiés</h2>
+<table class="chk">
+<tr><td>Date, validité du devis</td><td><span class="tag ok">OK</span></td><td>Devis daté, validité de 3 mois indiquée.</td></tr>
+<tr><td>Identité de l'entreprise</td><td><span class="tag ok">OK</span></td><td>Raison sociale, adresse, SIRET et immatriculation présents.</td></tr>
+<tr><td>Assurance décennale</td><td><span class="tag warn">À vérifier</span></td><td>Assureur cité, zone géographique couverte absente. Demander l'attestation en cours de validité couvrant ces travaux.</td></tr>
+<tr><td>Délai d'exécution</td><td><span class="tag warn">À préciser</span></td><td>« Durée indicative : 2 semaines ». Demander une date de début et un délai ferme.</td></tr>
+<tr><td>Taux de TVA</td><td><span class="tag ok">OK</span></td><td>10 % justifié pour ce logement. Vérifier que la mention à signer remplaçant l'attestation figure sur le devis.</td></tr>
+<tr><td>Gestion des déchets</td><td><span class="tag bad">Absente</span></td><td>Voir point prioritaire.</td></tr>
+<tr><td>Médiateur de la consommation</td><td><span class="tag ok">OK</span></td><td>Coordonnées indiquées dans les conditions générales.</td></tr>
+</table>
+<h2>6. Questions à poser à l'artisan</h2>
+<p class="small">Prêtes à copier dans un e-mail ou un message.</p>
+<div class="q"><ol>
+<li>Pouvez-vous ajouter au devis l'étanchéité sous carrelage de la zone de douche, en précisant le produit utilisé et les surfaces traitées ?</li>
+<li>Pouvez-vous chiffrer l'évacuation des gravats et indiquer la quantité estimée et la filière de traitement ?</li>
+<li>Que comprend exactement la dépose à 58 €/m² ? Est-il possible de revoir ce poste ?</li>
+<li>Pouvez-vous détailler le forfait plomberie (alimentations, évacuations, robinets d'arrêt, matériaux) ?</li>
+<li>Pouvez-vous ramener l'acompte à 30 % à la signature, avec un paiement à l'avancement et un solde à la réception ?</li>
+<li>Pouvez-vous m'indiquer une date de début et un délai d'exécution ferme ?</li>
+<li>Pouvez-vous me transmettre votre attestation d'assurance décennale en cours de validité, couvrant ces travaux ?</li>
+</ol></div>
+
+</div>
+
+<div class="page">
+<div class="top"><span class="logo">CONTRE-PLAN</span><span class="small">Rapport d'analyse de devis · Exemple fictif</span></div>
+<h2>7. Récapitulatif des corrections</h2>
+<table>
+<tr><th>Poste</th><th class="n">Devis actuel</th><th class="n">Après correction</th><th>Effet</th></tr>
+<tr><td>Dépose carrelage</td><td class="n">1 450,00 € HT</td><td class="n">≈ 1 000,00 € HT</td><td>≈ −450 € HT</td></tr>
+<tr><td>Étanchéité sous carrelage</td><td class="n">non chiffrée</td><td class="n">à chiffrer</td><td>supplément évité en cours de chantier</td></tr>
+<tr><td>Évacuation des gravats</td><td class="n">absente</td><td class="n">à chiffrer</td><td>supplément évité en cours de chantier</td></tr>
+<tr><td>Plomberie</td><td class="n">forfait 1 150,00 € HT</td><td class="n">détaillé</td><td>contenu vérifiable</td></tr>
+<tr><td>Acompte à la commande</td><td class="n">3 687,20 € (50 %)</td><td class="n">2 212,32 € (30 %)</td><td>−1 474,88 € avancés</td></tr>
+</table>
+<h2>8. Portée de cette analyse</h2>
+<div class="portee">
+<p>Cette analyse est un avis technique établi à distance, uniquement à partir des documents et informations que vous avez transmis. Elle ne comprend pas de visite du chantier : les éléments non visibles ou non communiqués (état réel des supports et des réseaux, présence d'amiante, contraintes de copropriété ou d'urbanisme…) ne peuvent pas être évalués.</p>
+<p>Les prix de référence cités sont des fourchettes indicatives. Ils varient selon la région, l'accès au chantier et les matériaux choisis.</p>
+<p>Cet avis n'est ni une expertise judiciaire ou d'assurance, ni une mission de maîtrise d'œuvre, ni un conseil juridique. Il ne remplace pas le devoir de conseil de l'entreprise qui réalisera les travaux.</p>
+<p style="margin:0">La décision de signer, de négocier ou de refuser le devis vous appartient. En cas de litige déjà engagé ou de travaux touchant la structure du bâtiment, faites appel à un expert ou à un professionnel qui pourra se rendre sur place.</p>
+</div>
+<p class="sign">L'équipe Contre-Plan</p>
+<p class="small">Une question sur ce rapport ? Un échange de suivi est inclus dans chaque commande.</p>
+</div>
+</body></html>
