@@ -607,7 +607,7 @@ open(os.path.join(OUT, "guides.html"), "w").write(idx)
 
 
 # ---------- contact
-FORM_ACTION = "https://formsubmit.co/contact@contre-plan.com"
+FORM_ACTION = "https://formsubmit.co/45e67b27d49c1daf8be3699aa7ac587b"
 contact_body = f"""<p>Une question sur le service, sur un devis ou sur un guide ? Écrivez-moi ici, je réponds sous 48 h ouvrées à l'adresse que vous indiquez.</p>
 <p><b>Pas sûr que votre devis vaille une analyse ?</b> Choisissez « Pré-diagnostic gratuit » et décrivez-le en 3 lignes (type de travaux, montant, ce qui vous inquiète) : je vous dis gratuitement si une analyse vaut le coup.</p>
 <p class="cp-form-note">Pour faire analyser un devis, passez directement par <a href="{COMEUP}" data-goatcounter-click="clic-comeup-contact">ComeUp</a> : c'est là que vous l'envoyez et que vous recevez le rapport. N'envoyez pas votre devis par ce formulaire.</p>
