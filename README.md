@@ -12,3 +12,7 @@ Les guides, la page Guides, la page 404 et le sitemap sont générés par `tools
 3. Ne jamais modifier à la main les fichiers générés (guide-*.html, guides.html, 404.html, sitemap.xml) : ils seraient écrasés au prochain build.
 
 `index.html` et `mentions-legales.html` ne sont pas générés : on les modifie directement.
+
+## Si les prix changent
+
+Mettre à jour partout en même temps : `index.html` (cartes Tarifs, FAQ, `data-prix` du calcul « Votre devis fait combien ? »), `site.js` (texte de la barre mobile « dès 16,50 € »), `chat.js`, l'annonce ComeUp et l'agent carrousel.

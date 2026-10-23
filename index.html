@@ -29,6 +29,8 @@ a{color:#d4561f}a:hover{color:#b8461a}
 </style>
 <style>h1{font-size:clamp(36px,6vw,60px)!important} h2{font-size:clamp(28px,4.5vw,42px)!important} html{scroll-behavior:smooth}</style>
 <link rel="stylesheet" href="anim.css">
+<link rel="stylesheet" href="site.css">
+<script src="site.js" defer></script>
 <script src="anim.js" defer></script>
 </head>
 <body>
@@ -97,6 +99,25 @@ a{color:#d4561f}a:hover{color:#b8461a}
 </div>
 </section>
 
+<section id="test" style="max-width: 860px; margin: 0 auto; padding: 0 24px 96px;">
+<div class="cp-box" id="cp-test">
+<span class="cp-kicker">Test en 1 minute</span>
+<h2 style="margin: 0; font-family: Archivo, Arial, sans-serif; font-weight: 800; line-height: 1.15;">Votre devis est-il complet ?</h2>
+<p style="margin: 0; font-size: 18px; line-height: 1.5; color: #4a5b7e;">Prenez votre devis sous les yeux et répondez à ces 6 questions. Rien n'est enregistré.</p>
+<div class="cp-test-bar" aria-hidden="true"><i></i></div>
+<div>
+<div class="cp-q" data-tip="<b>Assurance décennale :</b> demandez l'attestation en cours de validité, qui couvre bien ces travaux."><p>1. Le nom de l'assureur décennal et la zone couverte figurent-ils sur le devis ?</p><div class="cp-opts"><button type="button" data-v="oui" aria-pressed="false">Oui</button><button type="button" data-v="non" aria-pressed="false">Non</button><button type="button" data-v="nsp" aria-pressed="false">Je ne sais pas</button></div></div>
+<div class="cp-q" data-tip="<b>Acompte :</b> l'usage est d'environ 30 % à la signature. Au-delà, négociez un échéancier lié à l'avancement des travaux."><p>2. L'acompte demandé à la signature est-il de 30 % ou moins ?</p><div class="cp-opts"><button type="button" data-v="oui" aria-pressed="false">Oui</button><button type="button" data-v="non" aria-pressed="false">Non</button><button type="button" data-v="nsp" aria-pressed="false">Je ne sais pas</button></div></div>
+<div class="cp-q" data-tip="<b>Forfaits :</b> sans quantités ni prix unitaires, impossible de comparer. Demandez le détail des postes au forfait."><p>3. Chaque poste est-il détaillé (quantité, unité, prix unitaire) plutôt qu'au forfait ?</p><div class="cp-opts"><button type="button" data-v="oui" aria-pressed="false">Oui</button><button type="button" data-v="non" aria-pressed="false">Non</button><button type="button" data-v="nsp" aria-pressed="false">Je ne sais pas</button></div></div>
+<div class="cp-q" data-tip="<b>Dépose et gravats :</b> s'ils manquent, ils reviennent souvent en supplément une fois le chantier lancé."><p>4. La dépose de l'existant et l'évacuation des gravats sont-elles chiffrées ?</p><div class="cp-opts"><button type="button" data-v="oui" aria-pressed="false">Oui</button><button type="button" data-v="non" aria-pressed="false">Non</button><button type="button" data-v="nsp" aria-pressed="false">Je ne sais pas</button></div></div>
+<div class="cp-q" data-tip="<b>TVA :</b> le taux dépend des travaux et de l'âge du logement. Vérifiez-le avec <a href='guide-tva-travaux-renovation.html' style='color:#e8733c'>le guide TVA</a>."><p>5. Le taux de TVA est-il indiqué et adapté à vos travaux (5,5 %, 10 % ou 20 %) ?</p><div class="cp-opts"><button type="button" data-v="oui" aria-pressed="false">Oui</button><button type="button" data-v="non" aria-pressed="false">Non</button><button type="button" data-v="nsp" aria-pressed="false">Je ne sais pas</button></div></div>
+<div class="cp-q" data-tip="<b>Délais :</b> sans délai d'exécution ferme, difficile de réclamer quoi que ce soit en cas de retard."><p>6. Une date de début et une durée (ou une date de fin) des travaux sont-elles indiquées ?</p><div class="cp-opts"><button type="button" data-v="oui" aria-pressed="false">Oui</button><button type="button" data-v="non" aria-pressed="false">Non</button><button type="button" data-v="nsp" aria-pressed="false">Je ne sais pas</button></div></div>
+</div>
+<div class="cp-res" aria-live="polite"></div>
+</div>
+</section>
+
+
 <section id="rapport" style="background: #ffffff; border-top: 1px solid #ddd8ca; border-bottom: 1px solid #ddd8ca;">
 <div style="max-width: 1160px; margin: 0 auto; padding: 96px 24px; display: flex; flex-wrap: wrap; gap: 56px; align-items: flex-start;">
 <div style="flex: 1 1 360px; min-width: 0; display: flex; flex-direction: column; gap: 20px;">
@@ -112,10 +133,16 @@ a{color:#d4561f}a:hover{color:#b8461a}
 <li style="display: flex; gap: 14px; align-items: flex-start;"><svg aria-hidden="true" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#d4561f" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="flex: none;"><path d="M20 6 9 17l-5-5"></path></svg><div><div style="font-weight: 700; font-size: 20px;">Les questions à poser</div><div style="font-size: 17px; color: #4a5b7e; line-height: 1.45;">Prêtes à envoyer à l'artisan.</div></div></li>
 <li style="display: flex; gap: 14px; align-items: flex-start;"><svg aria-hidden="true" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#d4561f" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="flex: none;"><path d="M20 6 9 17l-5-5"></path></svg><div><div style="font-weight: 700; font-size: 20px;">Un échange de suivi</div><div style="font-size: 17px; color: #4a5b7e; line-height: 1.45;">Une question après lecture, incluse.</div></div></li>
 </ul>
-<figure style="flex: 1 1 100%; min-width: 0; max-width: 880px; margin: 8px auto 0; display: flex; flex-direction: column; gap: 12px;">
-<img src="exemple-rapport.jpg" width="1200" height="800" loading="lazy" alt="Exemple de rapport Contre-Plan pour un devis de salle de bain de 6 m² : verdict négociable, dépose jugée élevée, étanchéité et évacuation des gravats absentes, questions à poser à l'artisan." style="width: 100%; height: auto; border-radius: 8px; box-shadow: 0 12px 32px rgba(8,17,31,0.25);">
-<figcaption style="font-size: 15px; color: #4a5b7e;">Extrait d'un rapport, sur un exemple fictif.</figcaption>
-</figure>
+<div style="flex: 1 1 100%; min-width: 0; max-width: 880px; margin: 8px auto 0; display: flex; flex-direction: column; gap: 12px;">
+<div class="cp-ba-tags" aria-hidden="true"><span>Le devis reçu</span><span>Après relecture</span></div>
+<div class="cp-ba" id="cp-ba">
+<div class="cp-doc"><div class="dh"><b>DEVIS</b><span>Salle de bain 6 m²</span></div><div class="ln"><span>Dépose carrelage mur et sol</span><span>1 404,00 €</span><em class="ghost">À négocier : prix au m² au-dessus de la fourchette habituelle</em></div><div class="ln"><span>Receveur extra-plat 90×120</span><span>690,00 €</span><em class="ghost">Prix cohérent</em></div><div class="ln"><span>Étanchéité sous carrelage</span><span>—</span><em class="ghost">Obligatoire en douche : à faire chiffrer</em></div><div class="ln"><span>Plomberie (forfait)</span><span>1 150,00 €</span><em class="ghost">Forfait à détailler : alimentations, évacuation, robinets d'arrêt</em></div><div class="ln"><span class="ghost">Évacuation des gravats</span><span></span><em class="ghost">Oubli : à ajouter au devis</em></div><div class="ln"><span>Acompte à la commande : 50 %</span><span>3 661,90 €</span><em class="ghost">Usage : environ 30 % à la signature</em></div><div class="ln"><span><b>Total TTC</b></span><span><b>7 323,80 €</b></span><em class="ghost">3 points à négocier, 2 oublis à faire chiffrer</em></div></div>
+<div class="cp-doc cp-after"><div class="dh"><b>DEVIS</b><span class="cp-verdict">NÉGOCIABLE</span></div><div class="ln"><span>Dépose carrelage mur et sol</span><span class="warn">1 404,00 €</span><em class="warn">À négocier : prix au m² au-dessus de la fourchette habituelle</em></div><div class="ln"><span>Receveur extra-plat 90×120</span><span class="ok">690,00 €</span><em class="ok">Prix cohérent</em></div><div class="ln"><span>Étanchéité sous carrelage</span><span class="bad">non chiffrée</span><em class="bad">Obligatoire en douche : à faire chiffrer</em></div><div class="ln"><span>Plomberie (forfait)</span><span class="warn">1 150,00 €</span><em class="warn">Forfait à détailler : alimentations, évacuation, robinets d'arrêt</em></div><div class="ln"><span>Évacuation des gravats</span><span class="bad">absente</span><em class="bad">Oubli : à ajouter au devis</em></div><div class="ln"><span>Acompte à la commande : 50 %</span><span class="warn">3 661,90 €</span><em class="warn">Usage : environ 30 % à la signature</em></div><div class="ln"><span><b>Total TTC</b></span><span class=""><b>7 323,80 €</b></span><em class="">3 points à négocier, 2 oublis à faire chiffrer</em></div></div>
+<div class="cp-handle" aria-hidden="true"></div>
+<input type="range" min="0" max="100" value="50" aria-label="Comparer le devis reçu et le devis relu">
+</div>
+<p style="margin: 0; font-size: 15px; color: #4a5b7e;">Exemple fictif. Faites glisser pour comparer. <a href="exemple-rapport.jpg" target="_blank" rel="noopener">Voir un extrait de rapport</a></p>
+</div>
 </div>
 </section>
 
@@ -141,6 +168,7 @@ a{color:#d4561f}a:hover{color:#b8461a}
 <div style="background: #ffffff; border: 1px solid #ddd8ca; border-radius: 6px; padding: 32px; display: flex; flex-direction: column; gap: 10px;"><span style="font-size: 15px; letter-spacing: 1px; text-transform: uppercase; color: #b8461a; font-weight: 700;">Comparatif multi devis</span><span style="font-family: Archivo, Arial, sans-serif; font-weight: 800; font-size: 44px;">+ 16,50 €</span><span style="font-size: 17px; color: #4a5b7e; line-height: 1.45;">Tableau poste par poste et recommandation argumentée.</span></div>
 <div style="background: #ffffff; border: 1px solid #ddd8ca; border-radius: 6px; padding: 32px; display: flex; flex-direction: column; gap: 10px;"><span style="font-size: 15px; letter-spacing: 1px; text-transform: uppercase; color: #b8461a; font-weight: 700;">Express</span><span style="font-family: Archivo, Arial, sans-serif; font-weight: 800; font-size: 44px;">+ 5,50 €</span><span style="font-size: 17px; color: #4a5b7e; line-height: 1.45;">Rapport livré en 24 h.</span></div>
 </div>
+<div class="cp-calc" id="cp-calc" data-prix="16.50"><label for="cp-montant">Votre devis fait combien ?</label><div class="row"><input id="cp-montant" type="text" inputmode="decimal" placeholder="ex. 8 000" autocomplete="off"><span style="font-size: 20px; font-weight: 700; white-space: nowrap;">€ TTC</span></div><div class="out" aria-live="polite"></div></div>
 <a href="https://comeup.com/fr/@contreplan" data-goatcounter-click="clic-comeup" style="align-self: flex-start; background: #d4561f; color: #ffffff; text-decoration: none; font-weight: 700; font-size: 19px; padding: 18px 28px; border-radius: 4px;">Commander sur ComeUp</a>
 </section>
 

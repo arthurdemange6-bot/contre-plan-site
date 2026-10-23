@@ -49,6 +49,8 @@ h1{{font-size:clamp(32px,5.5vw,48px)!important}}
 {extra}
 <link rel="stylesheet" href="{root}anim.css">
 <script src="{root}anim.js" defer></script>
+<link rel="stylesheet" href="{root}site.css">
+<script src="{root}site.js" defer></script>
 {GC}
 </head>
 <body>
