@@ -75,25 +75,32 @@
       if (sp.style.textDecoration === 'line-through') sp.classList.add('cp-strike');
       if (/^Lancement/.test(sp.textContent.trim())) sp.classList.add('cp-badge');
     });
-    function countUp(sp) {
-      var tn = sp.firstChild; if (!tn || tn.nodeType !== 3) return;
-      var m = tn.nodeValue.match(/(\d+)(?:,(\d+))?/); if (!m) return;
-      var orig = tn.nodeValue, target = parseFloat(m[1] + '.' + (m[2] || '0')), dec = m[2] ? m[2].length : 0, t0 = null;
-      function step(t) {
-        if (!t0) t0 = t; var k = Math.min(1, (t - t0) / 900), e = 1 - Math.pow(1 - k, 3);
-        var v = (target * e).toFixed(dec).replace('.', ',');
-        tn.nodeValue = orig.replace(m[0], v);
-        if (k < 1) requestAnimationFrame(step); else tn.nodeValue = orig;
-      }
-      requestAnimationFrame(step);
+    // Prix qui montent au fil du défilement (et redescendent si l'on remonte)
+    var pr = prices.map(function (sp) {
+      var tn = sp.firstChild; if (!tn || tn.nodeType !== 3) return null;
+      var m = tn.nodeValue.match(/(\d+)(?:,(\d+))?/); if (!m) return null;
+      return { sp: sp, tn: tn, orig: tn.nodeValue, m: m, target: parseFloat(m[1] + '.' + (m[2] || '0')), dec: m[2] ? m[2].length : 0, last: '' };
+    }).filter(Boolean);
+    var tarifs = document.getElementById('tarifs'), pbusy = false;
+    function pupd() {
+      pbusy = false; if (!tarifs) return;
+      var r = tarifs.getBoundingClientRect(), vh = innerHeight;
+      var k = Math.max(0, Math.min(1, (vh - r.top) / (vh * 0.7)));
+      pr.forEach(function (o, i) {
+        var ki = Math.max(0, Math.min(1, k * 1.12 - i * 0.06));
+        var v = ki >= 1 ? o.orig : o.orig.replace(o.m[0], (o.target * ki).toFixed(o.dec).replace('.', ','));
+        if (v !== o.last) { o.tn.nodeValue = v; o.last = v; }
+      });
+      if (k > 0.2) each(document.querySelectorAll('#tarifs .cp-strike, #tarifs .cp-badge'), function (x) { x.closest('div').classList.add('cp-in'); });
     }
+    addEventListener('scroll', function () { if (!pbusy) { pbusy = true; requestAnimationFrame(pupd); } }, { passive: true });
+    addEventListener('resize', pupd); pupd();
     var once = new IntersectionObserver(function (entries) {
       entries.forEach(function (e) {
         if (!e.isIntersecting) return; once.unobserve(e.target);
-        if (e.target.classList.contains('cp-scanbox')) e.target.classList.add('cp-go'); else countUp(e.target);
+        if (e.target.classList.contains('cp-scanbox')) e.target.classList.add('cp-go');
       });
     }, { threshold: 0.4 });
-    prices.forEach(function (sp) { once.observe(sp); });
     // Balayage sur l'exemple de rapport
     var img = document.querySelector('img[src*="exemple-rapport"]');
     if (img && img.parentNode) { img.parentNode.classList.add('cp-scanbox'); once.observe(img.parentNode); }
@@ -173,6 +180,9 @@
       var bg = c.getAttribute('style') || '';
       if (/background:\s*#ffffff/i.test(bg)) c.style.background = 'rgba(255,255,255,.72)';
     });
+    function fmt(v) { var s = v.toFixed(2).split('.'), i = s[0].replace(/\B(?=(\d{3})+(?!\d))/g, ' '); return i + ',' + s[1]; }
+    // Les montants comptent plus longtemps : leur cellule s'étire jusqu'à la fin de la ligne suivante
+    typed.forEach(function (t) { if (/^[\d ]+,\d\d( €)?$/.test(t[1])) t[3] = t[3] + (t[3] - t[2]) * 2.5; });
     var busy = false, idle;
     function upd() {
       busy = false;
@@ -181,7 +191,9 @@
       var cur = null;
       typed.forEach(function (t) {
         var k = Math.max(0, Math.min(1, (p - t[2]) / (t[3] - t[2]))), n = Math.round(k * t[1].length);
-        var txt = t[1].slice(0, n);
+        var txt = t[1].slice(0, n), mm = t[1].match(/^([\d ]+),(\d\d)( €)?$/);
+        if (mm && k > 0 && k < 1) { var tv = parseFloat(mm[1].replace(/ /g, '') + '.' + mm[2]) * (1 - Math.pow(1 - k, 2)); txt = fmt(tv) + (mm[3] || ''); }
+        else if (mm && k === 0) txt = '';
         if (t[0].firstChild && t[0].firstChild.nodeType === 3) { if (t[0].firstChild.nodeValue !== txt) t[0].firstChild.nodeValue = txt; }
         else t[0].insertBefore(document.createTextNode(txt), t[0].firstChild);
         if (k > 0 && k < 1) cur = t[0];

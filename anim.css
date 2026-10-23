@@ -172,3 +172,4 @@ footer a[data-goatcounter-click^="clic-"][rel~="me"]:hover{background:#bf4a17;bo
 .anim .art h2::before{transform:scaleX(0);transition:transform .6s cubic-bezier(.6,0,.2,1) .15s}
 .anim .art h2.cp-drawn::before{transform:scaleX(1)}
 @media (prefers-reduced-motion: reduce){.anim .cp-band{clip-path:none;animation:none}.cp-lift:hover{transform:none}.anim .art h2::before{transform:none}.cp-pentip{display:none}}
+#tarifs span[style*="font-size: 44px"],.cp-sheet .cp-amt,.cp-sheet .t span:last-child{font-variant-numeric:tabular-nums}
