@@ -144,3 +144,7 @@ details[open] > summary::after{transform:rotate(135deg);background:#c44c19;borde
   .anim .cp-in .cp-mark{animation:none;background-size:100% 100%}
   .anim .art h2.cp-rv::before{transform:none}
 }
+
+footer a[data-goatcounter-click^="clic-"][rel~="me"]{transition:background .2s,border-color .2s}
+footer a[data-goatcounter-click^="clic-"][rel~="me"]:hover{background:#c44c19;border-color:#c44c19!important}
+/* clic-tiktok */
