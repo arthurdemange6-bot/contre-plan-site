@@ -328,4 +328,4 @@ a{color:var(--or-d)}a:hover{color:#9a330a}
 @media (max-width:520px){.cp-prediag a{white-space:normal!important;text-align:center;width:100%;box-sizing:border-box}}
 .logo{white-space:nowrap}
 @media (max-width:760px){.cp-topnav .lg{display:none}}
-.cp-topnav a.btn{gap:0}
+.cp-topnav a.btn{display:inline-block;gap:0}
