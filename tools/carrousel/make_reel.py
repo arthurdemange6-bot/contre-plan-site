@@ -121,6 +121,55 @@ for i,s in enumerate(sl):
         for dl in (0.75,1.3,1.85): add(t0+dl,0.2,thump,0.18)
         add(t0+2.3,0.5,noise_env(0.03,0.15),0.12)
     if ty=='end': add(t0+0.5,0.25,thump,0.15)
+# Fond musical original (généré ici, donc libre de droits) : lo-fi calme 96 bpm, La mineur (La m, Fa, Do, Sol),
+# nappe douce + basse + arpège + percussions légères, fondu d'entrée et de sortie, mixé sous les bruitages.
+# Désactivable avec "music": false dans spec.json.
+def musique(total, sr=SR, seed=7):
+    import numpy as np
+    bpm=96; beat=60/bpm; bar=4*beat
+    n=int(total*sr); t=np.arange(n)/sr; o=np.zeros(n)
+    f=lambda m: 440*2**((m-69)/12)
+    prog=[(57,[57,60,64]),(53,[53,57,60]),(48,[52,55,60]),(55,[55,59,62])]
+    for b in range(int(total/bar)+1):
+        root,ch=prog[b%4]; s0=b*bar; i0=int(s0*sr)
+        if i0>=n: break
+        i1=min(n,int((s0+bar+0.4)*sr)); u=t[i0:i1]-s0
+        env=np.minimum(1,u/0.7)*np.clip((bar+0.4-u)/0.6,0,1)
+        for m in ch:
+            for h,a in ((1,1),(2,0.28),(3,0.1)):
+                for d in (-0.0015,0.0015): o[i0:i1]+=0.02*a*env*np.sin(2*np.pi*f(m)*h*(1+d)*u)
+        for k in (0,2):
+            bs=s0+k*beat; j0=int(bs*sr); j1=min(n,int((bs+beat*1.7)*sr))
+            if j0<n:
+                v=t[j0:j1]-bs; o[j0:j1]+=0.10*np.sin(2*np.pi*f(root-12)*v)*np.minimum(1,v/0.02)*np.exp(-v/0.55)
+        arp=[ch[0]+12,ch[1]+12,ch[2]+12,ch[1]+12]
+        for k in range(8):
+            ps=s0+k*beat/2; j0=int(ps*sr); j1=min(n,int((ps+0.55)*sr))
+            if j0<n:
+                v=t[j0:j1]-ps; fr=f(arp[k%4])
+                o[j0:j1]+=0.03*(np.sin(2*np.pi*fr*v)+0.2*np.sin(4*np.pi*fr*v))*np.exp(-v/0.16)*np.minimum(1,v/0.005)
+        if b==0: continue
+        for k in (0,2):
+            ks=s0+k*beat; j0=int(ks*sr); j1=min(n,int((ks+0.3)*sr))
+            if j0<n:
+                v=t[j0:j1]-ks; o[j0:j1]+=0.12*np.sin(2*np.pi*(48*v+0.9*(1-np.exp(-v/0.03))))*np.exp(-v/0.13)
+        g=np.random.default_rng(seed+b)
+        for k in range(4):
+            hs=s0+k*beat+beat/2; j0=int(hs*sr); j1=min(n,int((hs+0.06)*sr))
+            if j0<n:
+                z=np.diff(g.uniform(-1,1,j1-j0+1)); o[j0:j1]+=0.010*z*np.exp(-(t[j0:j1]-hs)/0.018)
+    o*=np.minimum(1,t/0.8)*np.clip((total-0.3-t)/1.8,0,1)
+    pk=np.abs(o).max()
+    return o*(0.24/pk) if pk>0 else o
+if spec.get('music',True) is not False:
+    try:
+        import numpy as np
+        mix=np.asarray(buf)+musique(total)
+        rms=float(np.sqrt((mix**2).mean())) or 1.0; pk=float(np.abs(mix).max()) or 1.0
+        mix=0.95*np.tanh(mix*(10**(-18/20)/rms))  # volume global d'environ -19 dB RMS, limiteur doux (aucune saturation)
+        buf=mix.tolist()
+    except Exception as e:
+        print('fond musical ignoré :',e)
 wf=wave.open(f'{out}/_sfx.wav','wb'); wf.setnchannels(1); wf.setsampwidth(2); wf.setframerate(SR)
 wf.writeframes(b''.join(struct.pack('<h',int(max(-1,min(1,v))*30000)) for v in buf)); wf.close()
 cmd=[ff,'-y','-loglevel','error']
