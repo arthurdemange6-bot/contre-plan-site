@@ -318,3 +318,14 @@ a{color:var(--or-d)}a:hover{color:#9a330a}
 .tag{align-self:flex-start}
 .cp-ph{border:0!important;border-top:0!important;border-bottom:0!important}
 .cp-hd{background:var(--bp3);border-bottom:1px solid rgba(170,200,255,.12)}
+@media (max-width:760px){
+  .cp-topnav{display:flex!important;gap:0!important}
+  .cp-topnav a.btn{font-size:13px;padding:9px 12px;box-shadow:0 2px 0 #b23f12}
+  .logo{font-size:16px;letter-spacing:2px;gap:8px}
+  .cp-hd-in{flex-wrap:nowrap}
+}
+@media (max-width:360px){.cp-topnav a.btn{font-size:12px;padding:8px 10px}.logo{font-size:14px;letter-spacing:1.5px}}
+@media (max-width:520px){.cp-prediag a{white-space:normal!important;text-align:center;width:100%;box-sizing:border-box}}
+.logo{white-space:nowrap}
+@media (max-width:760px){.cp-topnav .lg{display:none}}
+.cp-topnav a.btn{gap:0}

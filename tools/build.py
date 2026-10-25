@@ -68,7 +68,7 @@ h1{{font-size:clamp(32px,5.5vw,48px)!important}}
 <a href="{root}index.html#travaux">Travaux</a>
 <a href="{root}comparer-ses-devis.html">Outils</a>
 <a href="{root}guides.html">Guides</a>
-<a class="btn" href="{COMEUP}" data-goatcounter-click="clic-comeup">Faire analyser mon devis</a>
+<a class="btn" href="{COMEUP}" data-goatcounter-click="clic-comeup">Faire analyser<span class="lg"> mon devis</span></a>
 </nav>
 </div>
 </header>
