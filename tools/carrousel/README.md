@@ -8,3 +8,8 @@ Scripts utilisés chaque nuit par l'agent carrousel (ne pas renommer) :
 Toute modification poussée sur `main` est utilisée dès l'épisode suivant.
 
 Fond musical : `make_reel.py` génère lui-même une musique originale (lo-fi calme, 96 bpm, La mineur), donc libre de droits, mixée sous les bruitages à un volume global d'environ -19 dB. Pour une vidéo sans musique, ajouter `"music": false` dans spec.json.
+
+
+## Format TikTok (3:4)
+
+TikTok affiche les carrousels photo dans une fenêtre 3:4 : la barre de recherche couvre le haut, les boutons (j'aime, commentaires…) le bas à droite, la légende le bas. `gen_carousel.py` génère donc aussi `tk1.png … tkN.png` en 1080x1440, contenu gardé dans la zone visible (haut ≥ 140 px, bas ≤ 1310 px, droite ≤ 910 px). Ce sont ces images qui partent sur TikTok (`tk*.jpg`). `slideN.png/html` (1080x1920) restent pour la vidéo.
