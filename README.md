@@ -23,3 +23,6 @@ Le texte « −50 % pour les 20 premières commandes » figure dans index.html (
 ## Typographie et image de partage
 - `tools/typo.py` ajoute les espaces insécables (avant ? : ; !, entre nombre et unité). Il est lancé automatiquement à la fin de `tools/build.py` ; après une modification manuelle de index.html, relancer `python3 tools/build.py`.
 - `og-image.jpg` (aperçu de partage 1200×630) est généré depuis `tools/og-image.html` par une capture Playwright.
+
+## Conseil devis du mois (emails)
+Le lien du formulaire d'inscription (Google Forms) est la constante `NEWS` de `tools/build.py` (encadré latéral et pied de page des pages générées). Il figure aussi en dur dans le pied de page de `index.html`. Les inscriptions arrivent dans le Google Sheets associé au formulaire. Le paragraphe correspondant est dans « Données personnelles » de `mentions-legales.html`.
