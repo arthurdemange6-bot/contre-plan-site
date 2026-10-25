@@ -164,6 +164,7 @@ body{width:%W%px;height:%H%px;overflow:hidden;background:#000}
 .sp b{display:block;font-family:Archivo,sans-serif;font-weight:800;font-size:54px;line-height:1.06} .sp span{display:block;font-size:40px;line-height:1.28;margin-top:8px}
 .dark .sp b{text-shadow:0 3px 12px rgba(0,0,0,.35)} .dark .sp span{color:#cdd7ec} .light .sp span{color:#4a5b7e} .dark .sp.bad b{color:#ff8f9a} .light .sp.bad b{color:%PEN%}
 """
+CSS+='\n.s.ig{height:1350px}\n.ig .in{top:175px;bottom:110px;right:84px} .ig .in.hk{top:165px}\n.ig .top{top:66px}\n.ig .t1{font-size:96px} .ig .t2{font-size:80px} .ig .t3{font-size:62px}\n.ig .p{font-size:44px;margin-top:26px} .ig .kick{margin-bottom:26px;font-size:28px}\n.ig .dwrap{margin-top:58px} .ig .doc{padding:34px 38px 28px} .ig .doc .r{font-size:34px;padding:14px 0}\n.ig .big{font-size:200px} .ig .bigl{margin-top:16px;font-size:40px}\n.ig .bars{margin-top:40px;gap:30px} .ig .bar .bt{height:56px}\n.ig .card{padding:42px 40px 40px 124px} .ig .it{margin-top:30px} .ig .it b{font-size:46px} .ig .it span{font-size:36px}\n.ig .st{margin-top:40px} .ig .sp{margin-top:32px} .ig .sp b{font-size:48px} .ig .sp span{font-size:36px}\n.ig .tr{margin-top:28px;padding:26px 30px}\n.ig .bm{width:90px;height:112px;margin-bottom:22px} .ig .save{margin-top:34px;padding:24px 30px;font-size:38px}\n.ig .foot{bottom:112px} .ig .postit{top:-64px;width:250px;font-size:54px;padding:24px 18px 28px} .ig .in.hk .dwrap{margin-top:96px} .ig .tape{bottom:36px;height:92px} .ig .plan{width:640px}\n.ig .swipe{margin-top:22px;padding:18px 30px;font-size:34px}\n'
 for k,v in {'%W%':str(W),'%H%':str(H),'%NAVY%':NAVY,'%INK%':INK,'%ORD%':ORD,'%OR%':OR,'%PEN%':PEN,'%FIBER%':FIBER,'%BLOTCH%':BLOTCH,'%INKMASK%':INKMASK,'%ZIG%':ZIG}.items(): CSS=CSS.replace(k,v)
 ARROW="<svg viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'><path d='M5 12h14M13 6l6 6-6 6'/></svg>"
 SAVE="<svg viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2.4' stroke-linejoin='round'><path d='M6 3h12v18l-6-4.5L6 21z'/></svg>"
@@ -202,7 +203,7 @@ def bars(bs,unit):
         val=(f'{v:g}'.replace('.',','))+(NB+unit if unit else '')
         o+=f"<div class='bar{' hot' if hot else ''}'><div class='bl'><span>{E(fr(lab))}</span><span>{E(val)}</span></div><div class='bt'><div class='bf' style='width:calc({max(6,v/mx*100):.0f}% + 6px)'></div></div></div>"
     return o+"</div>"
-def slide(s,i,n):
+def slide(s,i,n,ig=False):
     th=s.get('theme','dark'); ty=s.get('type','text')
     k=f"<div class='kick'>{E(fr(s['kicker']))}</div>" if s.get('kicker') else ''
     P=(lambda key:f"<div class='p'>{rich(s[key])}</div>" if s.get(key) else '')
@@ -234,11 +235,11 @@ def slide(s,i,n):
     deco=''
     if n:
         lab="<span style='right:0'>FIN</span>" if i==n else ''
-        deco+=f"<div class='cote' style='top:{H-385}px;left:{84 if i==1 else 0}px;right:{84 if i==n else 0}px;--o:{-84 if i==1 else 0}px'>{'<i class=a></i>' if i==1 else ''}{'<i class=b></i>' if i==n else ''}{lab}</div>"
+        deco+=f"<div class='cote' style='top:{1350-70 if ig else H-385}px;left:{84 if i==1 else 0}px;right:{84 if i==n else 0}px;--o:{-84 if i==1 else 0}px'>{'<i class=a></i>' if i==1 else ''}{'<i class=b></i>' if i==n else ''}{lab}</div>"
     if s.get('alert') or ty=='steps': deco+=f"<div class='tape'><b>{E(s.get('alert_text','ATTENTION'))}</b></div>"
     if th=='light': deco+="<div class='ruler'></div>"
     bg="<div class='L grid'></div><div class='L fib'></div><div class='L blot'></div><div class='L crease'></div>"
-    return f"<html><head><meta charset='utf-8'><style>{CSS}</style></head><body><div class='s {th}'>{bg}{pl}<div class='L vig' style='z-index:2'></div>{deco}<div class='top'><span class='lg'><i></i>CONTRE-PLAN</span>{cnt}</div><div class='{cls}'>{b}</div>{foot}</div></body></html>"
+    return f"<html><head><meta charset='utf-8'><style>{CSS}</style></head><body><div class='s {th}{" ig" if ig else ""}'>{bg}{pl}<div class='L vig' style='z-index:2'></div>{deco}<div class='top'><span class='lg'><i></i>CONTRE-PLAN</span>{cnt}</div><div class='{cls}'>{b}</div>{foot}</div></body></html>"
 with sync_playwright() as p:
     br=p.chromium.launch(); pg=br.new_page(viewport={'width':W,'height':H})
     sl=spec['slides']; n=len(sl); bad=[]
@@ -252,6 +253,13 @@ with sync_playwright() as p:
         if o[1]>W-90: bad.append(f'slide{i} dépasse à droite ({o[1]} px > {W-90} px)')
         pg.screenshot(path=f'{out}/slide{i}.png')
         if s.get('type')=='hook': shot(slide(dict(s,noswipe=True),i,n),f'{out}/cover.png')
+    pg.set_viewport_size({'width':W,'height':1350})
+    for i,s in enumerate(sl,1):
+        pg.set_content(slide(s,i,n,True)); pg.evaluate('document.fonts.ready'); pg.wait_for_timeout(300)
+        o=pg.evaluate("()=>{let m=0,r=0;document.querySelectorAll('.in *').forEach(e=>{if(e.closest('svg,.penw'))return;const b=e.getBoundingClientRect();if(b.width&&b.bottom>m)m=b.bottom;if(b.width&&b.right>r)r=b.right});return [Math.round(m),Math.round(r)]}")
+        if o[0]>1350-50 or o[1]>W-50: bad.append(f'ig{i} (Instagram) dépasse ({o[0]} px en bas, {o[1]} px à droite)')
+        pg.screenshot(path=f'{out}/ig{i}.png')
+    pg.set_viewport_size({'width':W,'height':H})
     if spec.get('story'): shot(slide(dict(spec['story'],type=spec['story'].get('type','hook'),noswipe=True),0,0),f'{out}/story.png')
     br.close()
 print('OK' if not bad else 'A CORRIGER : '+' ; '.join(bad))
