@@ -310,6 +310,80 @@ article("guide-bien-demander-ses-devis",
 <p>Une fois les devis reçus, mettez-les côte à côte avec <a href="comparer-ses-devis.html">le tableau comparatif gratuit</a>. Pour les points à faire préciser, utilisez <a href="modeles-messages-artisan.html">les modèles de messages</a>, et vérifiez les mentions obligatoires avec <a href="guide-mentions-obligatoires-devis.html">ce guide</a>.</p>''',
  6, date="2026-10-23")
 
+article("guide-reception-travaux-reserves",
+ "Réception des travaux : PV, réserves et solde, mode d'emploi",
+ "Réception des travaux et réserves : comment ne rien laisser passer",
+ "Procès-verbal, réserves, retenue de garantie de 5 %, solde, garantie de parfait achèvement : comment réceptionner vos travaux sans perdre vos recours.",
+ "L'artisan annonce que le chantier est fini et vous tend un papier à signer avec la facture du solde. Ce que vous écrivez, ou n'écrivez pas, ce jour-là décide de ce que vous pourrez encore lui réclamer.",
+ '''<h2>La réception, c'est quoi exactement ?</h2>
+<p>La réception est l'acte par lequel vous, le maître de l'ouvrage, déclarez <strong>accepter les travaux, avec ou sans réserves</strong> (article 1792-6 du Code civil). Elle a lieu à la demande de la partie la plus diligente, vous ou l'entreprise, à l'amiable ou, à défaut, par décision du juge. Elle est toujours <strong>contradictoire</strong> : les deux parties sont présentes ou dûment convoquées.</p>
+<p>En pratique, elle se fait lors d'une visite du chantier terminé et se formalise par un <strong>procès-verbal de réception</strong> écrit, daté et signé, normalement par les deux parties. Un simple « bon de fin de travaux » glissé avec la facture ne remplace pas cette visite : je vois souvent des particuliers le signer sans avoir fait le tour des pièces.</p>
+<h2>Pourquoi cette signature compte autant</h2>
+<p>La date de réception fait basculer plusieurs choses à la fois :</p>
+<ul>
+<li>elle fait démarrer les <strong>garanties légales</strong> : parfait achèvement (1 an), bon fonctionnement des équipements dissociables (2 ans minimum), décennale (10 ans) ;</li>
+<li>la <strong>garde de l'ouvrage et ses risques</strong> vous sont transférés ;</li>
+<li>le <strong>solde</strong> devient en principe payable, selon l'échéancier prévu au contrat ;</li>
+<li>le délai d'un an de la <strong>retenue de garantie</strong>, si elle est prévue, commence à courir.</li>
+</ul>
+<div class="note"><p><strong>Le point qui coûte cher :</strong> un défaut visible le jour de la réception et que vous ne notez pas est considéré comme accepté. Vous ne pourrez en principe plus le réclamer à l'entreprise au titre des garanties. Les défauts invisibles ce jour-là restent, eux, couverts selon leur nature.</p></div>
+<h2>Préparer la visite</h2>
+<p>Ne faites pas la réception en dix minutes entre deux rendez-vous. Prévoyez une heure, en plein jour, et apportez :</p>
+<ul>
+<li>le <strong>devis signé</strong> et les éventuels avenants, pour vérifier que tout ce qui est payé est bien posé, avec les bonnes références ;</li>
+<li>un téléphone pour <strong>photographier</strong> chaque défaut, avec un élément qui permet de le situer ;</li>
+<li>un mètre, un niveau à bulle si vous en avez un, et une lampe ;</li>
+<li>un modèle de procès-verbal si l'entreprise n'en propose pas : une feuille datée qui identifie le chantier, les parties, la liste des réserves et les signatures suffit.</li>
+</ul>
+<p>Si vos travaux ont été suivis par un architecte ou un maître d'œuvre et que sa mission comprend l'assistance à la réception (c'est courant, vérifiez son contrat), il doit vous assister et vous conseiller à ce moment-là.</p>
+<h2>Ce que je regarde pendant la visite</h2>
+<p>Je fais le tour pièce par pièce, du sol au plafond, puis je teste tout ce qui fonctionne. Concrètement :</p>
+<ul>
+<li><strong>les finitions</strong> : éclats de carrelage, joints manquants ou fissurés, traces de peinture, plinthes mal fixées, raccords visibles ;</li>
+<li><strong>les menuiseries</strong> : chaque porte, fenêtre et volet doit s'ouvrir, se fermer et se verrouiller sans forcer ;</li>
+<li><strong>l'eau</strong> : ouvrir chaque robinet, remplir et vider le bac de douche ou la baignoire, chercher une fuite sous les siphons, vérifier que l'eau s'écoule bien vers la bonde ;</li>
+<li><strong>l'électricité</strong> : actionner chaque interrupteur, tester les prises avec un petit appareil, regarder le tableau électrique ;</li>
+<li><strong>les équipements</strong> : faire démarrer le chauffage, la ventilation, le chauffe-eau, et demander qu'on vous montre les réglages ;</li>
+<li><strong>la conformité au devis</strong> : quantités, matériaux, marques et coloris annoncés ;</li>
+<li><strong>le chantier rendu</strong> : gravats évacués, abords et parties communes propres, dégâts éventuels sur l'existant.</li>
+</ul>
+<h2>Rédiger des réserves utiles</h2>
+<p>Une réserve doit être <strong>précise</strong>. « Finitions à reprendre » ne sert à rien en cas de désaccord. Écrivez plutôt :</p>
+<ul>
+<li>où : « salle de bain, mur de la douche, à gauche du mitigeur » ;</li>
+<li>quoi : « deux carreaux fêlés, joint silicone décollé sur 40 cm » ;</li>
+<li>ce qui est attendu : « remplacement des deux carreaux, reprise du joint ».</li>
+</ul>
+<p>Numérotez les réserves, renvoyez aux photos et prévoyez sur le procès-verbal un <strong>délai de levée</strong> fixé d'un commun accord. Gardez un exemplaire signé. Si l'entreprise refuse de signer avec des réserves, ne signez pas un procès-verbal sans réserves pour autant. Rédigez et signez vous-même le procès-verbal avec vos réserves, en indiquant que l'entreprise, présente ou dûment convoquée, a refusé de signer, joignez les photos et envoyez-le-lui en recommandé avec accusé de réception. En cas de blocage, la réception peut être demandée au juge.</p>
+<div class="note"><p><strong>Bon à savoir :</strong> des réserves ne vous empêchent pas d'occuper votre logement. En revanche, emménager sans procès-verbal et payer la totalité des travaux peut être considéré comme une réception tacite, éventuellement sans réserves. Faites la réception écrite avant d'occuper les lieux ou de solder.</p></div>
+<h2>Le solde et la retenue de garantie</h2>
+<p>Beaucoup de particuliers pensent pouvoir garder librement une partie du solde tant que tout n'est pas repris. La règle est plus encadrée.</p>
+<ul>
+<li>La loi du 16 juillet 1971 permet une <strong>retenue de garantie d'au plus 5 %</strong> du montant des travaux, pour couvrir les réserves faites à la réception. Elle n'est possible que si le <strong>contrat la prévoit</strong>, donc le devis signé.</li>
+<li>Cette somme n'est pas gardée chez vous : elle doit être <strong>consignée</strong> auprès d'un consignataire accepté par les deux parties (un notaire, par exemple) ou, à défaut, désigné par le juge. Si vous la gardez simplement de votre côté, vous risquez de devoir la reverser à l'entreprise même si les réserves ne sont pas levées. L'entreprise peut la remplacer par une <strong>caution bancaire</strong>.</li>
+<li>Elle est libérée un an après la réception, même sans levée formelle des réserves, sauf si vous avez notifié avant cette date, par <strong>lettre recommandée</strong> au consignataire ou à la caution, une opposition motivée par l'inexécution des obligations de l'entreprise.</li>
+</ul>
+<p>Pour le reste, le montant du solde payable à la réception, et ce que vous pouvez raisonnablement garder en proportion des réserves, se négocie avant la signature du devis. C'est l'objet de l'échéancier, détaillé dans <a href="guide-acompte-paiement-devis-travaux.html">le guide sur l'acompte et le paiement</a>.</p>
+<h2>Après la réception : faire lever les réserves</h2>
+<p>La garantie de parfait achèvement oblige l'entreprise à réparer, pendant un an, les désordres notés en réserve et ceux qui apparaissent dans l'année, hors usure normale ou mauvais usage.</p>
+<ul>
+<li>Si une réserve n'est pas reprise dans le délai convenu, écrivez à l'entreprise par <strong>lettre recommandée avec accusé de réception</strong>, en rappelant la réserve et en fixant un nouveau délai.</li>
+<li>Un défaut apparu après la réception se signale de la même façon, <strong>avant la fin de l'année</strong> qui suit la réception.</li>
+<li>Sans réponse, envoyez une <strong>mise en demeure</strong> et sollicitez le <strong>médiateur de la consommation</strong> dont relève l'entreprise. Si la mise en demeure reste sans effet, la loi permet en principe de faire réaliser les réparations par une autre entreprise, aux frais et risques de l'entreprise défaillante.</li>
+</ul>
+<p>Attention au calendrier : une lettre, une mise en demeure ou une médiation ne prolongent pas de façon sûre le délai d'un an de la garantie de parfait achèvement. En principe, seule une action en justice engagée avant la fin de l'année préserve vos droits. Si la date approche sans solution, prenez conseil rapidement auprès d'un juriste, d'une association de consommateurs ou de votre assurance protection juridique.</p>
+<h2>Ce que je vérifie sur votre devis, en pensant à la réception</h2>
+<p>La réception se prépare dès le devis. Quand je relis un devis, je regarde notamment :</p>
+<ul>
+<li>si l'échéancier garde un <strong>solde suffisant à la réception</strong>, et si une retenue de garantie est prévue ;</li>
+<li>si les ouvrages sont décrits assez précisément (marques, références, quantités) pour pouvoir vérifier, le jour venu, que ce qui est posé correspond à ce qui a été payé ;</li>
+<li>si le nettoyage, l'évacuation des gravats et la remise en état des abords sont bien inclus ;</li>
+<li>si un délai d'exécution ferme est indiqué, pour savoir à partir de quand vous pouvez demander la réception.</li>
+</ul>
+<p>Voir aussi <a href="guide-mentions-obligatoires-devis.html">les mentions obligatoires d'un devis</a> et <a href="modeles-messages-artisan.html">les modèles de messages à l'artisan</a>.</p>
+<p style="font-size: 15px !important; color: #5b6784 !important;">Article d'information générale, qui ne remplace pas un conseil juridique. Sources : article 1792-6 du Code civil, loi n° 71-584 du 16 juillet 1971 (retenue de garantie), service-public.gouv.fr (garanties après la réception des travaux), DGCCRF (Malfaçon : mettez en œuvre les garanties), ANIL (jurisprudence sur la consignation de la retenue de garantie).</p>''',
+ 7, date="2026-10-25")
+
 # ---------- Pages Méthode et Engagements
 page("methode",
  "Ma méthode : ce que je vérifie sur un devis | Contre-Plan",
