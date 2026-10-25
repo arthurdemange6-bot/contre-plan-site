@@ -26,3 +26,6 @@ Le texte « −50 % pour les 20 premières commandes » figure dans index.html (
 
 ## Conseil devis du mois (emails)
 Le lien du formulaire d'inscription (Google Forms) est la constante `NEWS` de `tools/build.py` (encadré latéral et pied de page des pages générées). Il figure aussi en dur dans le pied de page de `index.html`. Les inscriptions arrivent dans le Google Sheets associé au formulaire. Le paragraphe correspondant est dans « Données personnelles » de `mentions-legales.html`.
+
+## Assistant du site (chat.js)
+Le bouton « Une question ? » propose deux chemins : une orientation en 3 questions (travaux, montant, date de signature) qui renvoie vers ComeUp (express si signature cette semaine), l'appel gratuit (devis de plus de 20 000 €) ou les guides (pas encore de devis), et la FAQ habituelle. Aucune réponse n'est enregistrée : seuls des compteurs anonymes GoatCounter sont envoyés, sous les chemins `chat/…` (ex. `chat/travaux-sdb`, `chat/montant-plus-20k`, `chat/signature-semaine`, `chat/resultat-urgent`, `chat/clic-comeup-orientation-urgent`).

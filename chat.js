@@ -1,4 +1,4 @@
-/* Contre-Plan – assistant FAQ (100 % local, aucune donnée envoyée) */
+/* Contre-Plan – assistant : orientation en 3 questions + FAQ (100 % local ; seuls des compteurs anonymes GoatCounter sont envoyés, aucune réponse saisie) */
 (function () {
   var COMEUP = "https://comeup.com/fr/@contreplan";
   var KB = [
@@ -60,7 +60,7 @@
 
   var box = document.createElement("section");
   box.id = "cp-chat"; box.setAttribute("aria-label", "Assistant Contre-Plan");
-  box.innerHTML = '<header><div><b>CONTRE-PLAN</b><small>Réponses aux questions fréquentes</small></div><button id="cp-close" type="button" aria-label="Fermer">×</button></header>' +
+  box.innerHTML = '<header><div><b>CONTRE-PLAN</b><small>Orientation et questions fréquentes</small></div><button id="cp-close" type="button" aria-label="Fermer">×</button></header>' +
     '<div id="cp-log" aria-live="polite"></div>' +
     '<form id="cp-form"><label for="cp-in" style="position:absolute;left:-9999px">Votre question</label><input id="cp-in" type="text" placeholder="Posez votre question…" autocomplete="off"><button id="cp-send" type="submit">Envoyer</button></form>';
   document.body.appendChild(btn); document.body.appendChild(box);
@@ -98,9 +98,85 @@
       m.appendChild(document.createElement("br")); m.appendChild(a);
     }, 250);
   }
+  var BOOK = "https://calendar.app.google/6LCc6yKVHnbvA3WN7";
+  function gc(path) { try { window.goatcounter && window.goatcounter.count({ path: "chat/" + path, title: "Assistant : " + path, event: true }); } catch (x) {} }
+  function link(href, text, primary, ev) {
+    var a = document.createElement("a"); a.href = href; a.textContent = text;
+    if (/^https?:/.test(href)) { a.target = "_blank"; a.rel = "noopener"; }
+    a.style.cssText = primary ? "" : "display:block;margin-top:8px;color:#b8461a;font-weight:700";
+    if (primary) a.className = "cp-cta";
+    if (ev) a.onclick = function () { gc(ev); };
+    return a;
+  }
+  function choose(question, options, cb) {
+    add(question, "bot");
+    var w = document.createElement("div"); w.className = "cp-chips";
+    options.forEach(function (o) {
+      var c = document.createElement("button"); c.type = "button"; c.className = "cp-chip"; c.textContent = o[0];
+      c.onclick = function () { w.remove(); add(o[0], "user"); setTimeout(function () { cb(o); }, 250); };
+      w.appendChild(c);
+    });
+    log.appendChild(w); log.scrollTop = log.scrollHeight;
+  }
+  var PAGES = { sdb: ["/analyse-devis-salle-de-bain.html", "Ce que je vérifie sur un devis de salle de bain"],
+    iso: ["/analyse-devis-isolation.html", "Ce que je vérifie sur un devis d'isolation"],
+    toit: ["/analyse-devis-toiture.html", "Ce que je vérifie sur un devis de toiture"],
+    pac: ["/analyse-devis-pompe-a-chaleur.html", "Ce que je vérifie sur un devis de pompe à chaleur"] };
+  function qualify() {
+    gc("orientation-debut");
+    var r = {};
+    choose("C'est pour quels travaux ?", [["Salle de bain", "sdb"], ["Isolation", "iso"], ["Toiture", "toit"], ["Pompe à chaleur", "pac"], ["Cuisine", "cuisine"], ["Autre", "autre"]], function (t) {
+      r.t = t[1]; gc("travaux-" + t[1]);
+      choose("Le devis fait combien, à peu près ?", [["Moins de 5 000 €", "moins-5k"], ["De 5 000 à 20 000 €", "5-20k"], ["Plus de 20 000 €", "plus-20k"], ["Je n'ai pas encore de devis", "pas-de-devis"]], function (m) {
+        r.m = m[1]; gc("montant-" + m[1]);
+        if (r.m === "pas-de-devis") return result(r);
+        choose("Vous devez signer quand ?", [["Cette semaine", "semaine"], ["Ce mois-ci", "mois"], ["Pas de date pour l'instant", "sans-date"]], function (d) {
+          r.d = d[1]; gc("signature-" + d[1]); result(r);
+        });
+      });
+    });
+  }
+  function result(r) {
+    var m, page = PAGES[r.t];
+    if (r.m === "pas-de-devis") {
+      gc("resultat-preparer");
+      m = add("Vous êtes au bon moment : c'est avant de demander les devis qu'on évite le plus de pièges. Commencez par décrire votre projet de la même façon à chaque artisan, pour recevoir des offres comparables.", "bot");
+      m.appendChild(link("/guide-bien-demander-ses-devis.html", "Comment bien demander ses devis", false, "lien-guide-demander"));
+      m.appendChild(link("/checklist-devis-travaux.pdf", "La check-list à imprimer (PDF)", false, "lien-checklist"));
+      m.appendChild(link("https://docs.google.com/forms/d/e/1FAIpQLScS7zVctXEahK71wNv8hUGD-MjfyqH4h_l8EpJyYPLVM-ToAA/viewform", "Recevoir le conseil devis du mois", false, "lien-conseil-du-mois"));
+    } else if (r.d === "semaine") {
+      gc("resultat-urgent");
+      m = add("Vous signez bientôt : faites relire le devis avant. Choisissez l'option express : vous recevez le rapport sous 24 h, avec les points à négocier et les questions à envoyer à l'artisan.", "bot");
+      m.appendChild(document.createElement("br")); m.appendChild(link(COMEUP, "Faire analyser mon devis en express", true, "clic-comeup-orientation-urgent"));
+    } else if (r.m === "plus-20k") {
+      gc("resultat-gros-devis");
+      m = add("Sur un devis de plus de 20 000 €, chaque ligne compte. Vous pouvez commander l'analyse directement, ou en parler d'abord lors d'un appel gratuit de 15 minutes.", "bot");
+      m.appendChild(document.createElement("br")); m.appendChild(link(COMEUP, "Faire analyser mon devis", true, "clic-comeup-orientation-gros"));
+      m.appendChild(link(BOOK, "Réserver l'appel gratuit de 15 min", false, "clic-appel-orientation"));
+    } else {
+      gc("resultat-standard");
+      m = add("Le bon moment pour faire relire votre devis, c'est avant de le signer. Vous recevez sous 48 h un rapport avec le verdict, les prix poste par poste, les oublis et les questions à poser à l'artisan.", "bot");
+      m.appendChild(document.createElement("br")); m.appendChild(link(COMEUP, "Faire analyser mon devis", true, "clic-comeup-orientation"));
+      m.appendChild(link("/exemple-rapport-contre-plan.pdf", "Voir un exemple de rapport", false, "lien-exemple-rapport"));
+    }
+    if (page) m.appendChild(link(page[0], page[1], false, "lien-page-" + r.t));
+    var w = document.createElement("div"); w.className = "cp-chips";
+    var c = document.createElement("button"); c.type = "button"; c.className = "cp-chip"; c.textContent = "J'ai une autre question";
+    c.onclick = function () { w.remove(); add("Choisissez une question ou écrivez la vôtre.", "bot"); chips(); };
+    w.appendChild(c); log.appendChild(w); log.scrollTop = log.scrollHeight;
+  }
+  function welcome() {
+    add("Bonjour ! Je vous oriente en 3 questions, ou je réponds à vos questions sur l'analyse de devis.", "bot");
+    var w = document.createElement("div"); w.className = "cp-chips";
+    [["J'ai un devis à faire vérifier", function () { qualify(); }], ["J'ai une question", function () { gc("faq-debut"); add("Choisissez une question ou écrivez la vôtre.", "bot"); chips(); }]].forEach(function (o) {
+      var c = document.createElement("button"); c.type = "button"; c.className = "cp-chip"; c.textContent = o[0];
+      c.onclick = function () { w.remove(); add(o[0], "user"); setTimeout(o[1], 250); }; w.appendChild(c);
+    });
+    log.appendChild(w); log.scrollTop = log.scrollHeight;
+  }
   function open(v) {
     box.classList.toggle("open", v); btn.setAttribute("aria-expanded", v ? "true" : "false");
-    if (v && !started) { started = true; add("Bonjour ! Je réponds aux questions fréquentes sur l'analyse de devis. Choisissez une question ou écrivez la vôtre.", "bot"); chips(); }
+    if (v && !started) { started = true; gc("ouverture"); welcome(); }
     if (v) input.focus();
   }
   btn.onclick = function () { open(!box.classList.contains("open")); };
