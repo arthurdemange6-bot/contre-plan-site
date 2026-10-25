@@ -29,3 +29,7 @@ Le lien du formulaire d'inscription (Google Forms) est la constante `NEWS` de `t
 
 ## Assistant du site (chat.js)
 Le bouton « Une question ? » propose deux chemins : une orientation en 3 questions (travaux, montant, date de signature) qui renvoie vers ComeUp (express si signature cette semaine), l'appel gratuit (devis de plus de 20 000 €) ou les guides (pas encore de devis), et la FAQ habituelle. Aucune réponse n'est enregistrée : seuls des compteurs anonymes GoatCounter sont envoyés, sous les chemins `chat/…` (ex. `chat/travaux-sdb`, `chat/montant-plus-20k`, `chat/signature-semaine`, `chat/resultat-urgent`, `chat/clic-comeup-orientation-urgent`).
+
+## Identité visuelle (brand.css)
+
+`brand.css` aligne le site sur les carrousels : fond « plan bleu » quadrillé, devis papier scotché, surligneur jaune, feutre rouge, étiquettes orange. Il est chargé après `site.css` sur toutes les pages (accueil, pages générées par `tools/build.py`, mentions légales). Polices : Archivo, Source Sans 3, Caveat (annotations manuscrites). `anim.css` et `anim.js` ne sont plus chargés.

@@ -21,7 +21,7 @@ def head(title, desc, url, extra="", root=""):
 <link rel="icon" type="image/png" sizes="32x32" href="{root}favicon-32.png">
 <link rel="apple-touch-icon" href="{root}apple-touch-icon.png">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="theme-color" content="#0f2747">
+<meta name="theme-color" content="#0a1d3a">
 <title>{html.escape(title)}</title>
 <meta name="description" content="{html.escape(desc)}">
 <link rel="canonical" href="{url}">
@@ -39,8 +39,7 @@ def head(title, desc, url, extra="", root=""):
 <link rel="preload" href="{root}fonts/archivo-latin-800-normal.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="{root}fonts.css">
 <style>
-body{{margin:0;background:#0f2747}}
-a{{color:#b8461a}}a:hover{{color:#8f3612}}
+body{{margin:0;background:#0a1d3a}}
 h1{{font-size:clamp(32px,5.5vw,48px)!important}}
 .art h2{{font-family:Archivo,Arial,sans-serif;font-weight:800;font-size:clamp(22px,3.5vw,28px);line-height:1.2;color:#14284b;margin:40px 0 8px}}
 .art h3{{font-size:20px;color:#14284b;margin:24px 0 4px}}
@@ -49,28 +48,27 @@ h1{{font-size:clamp(32px,5.5vw,48px)!important}}
 .art ul,.art ol{{margin:0 0 14px;padding-left:24px}}
 .art li{{margin-bottom:8px}}
 .art strong{{color:#14284b}}
-.note{{background:#fff;border:1px solid #d8dee6;border-left:4px solid #bf4a17;border-radius:2px;padding:16px 20px;margin:20px 0}}
+.note{{margin:20px 0}}
 .note p{{margin:0}}
 </style>
 {extra}
-<link rel="stylesheet" href="{root}anim.css">
-<script src="{root}anim.js" defer></script>
 <link rel="stylesheet" href="{root}site.css">
+<link rel="stylesheet" href="{root}brand.css">
 <script src="{root}site.js" defer></script>
 {GC}
 </head>
 <body>
 <a class="cp-skip" href="#contenu">Aller au contenu</a>
-<div style="font-family: 'Source Sans 3', Arial, sans-serif; color: #14284b; background: #f6f7f9; width: 100%;">
-<header style="background: #0f2747;">
-<div style="max-width: 1160px; margin: 0 auto; padding: 24px; display: flex; flex-wrap: wrap; gap: 16px; align-items: center; justify-content: space-between;">
-<a href="{root or './'}" style="color: #ffffff; text-decoration: none; font-family: Archivo, Arial, sans-serif; font-weight: 800; font-size: 22px; letter-spacing: 2px;">CONTRE-PLAN</a>
-<nav class="cp-topnav" style="display: flex; flex-wrap: wrap; gap: 20px; align-items: center; font-size: 17px;">
-<a href="{root}methode.html" style="color: #c9d3ea; text-decoration: none;">Méthode</a>
-<a href="{root}index.html#travaux" style="color: #c9d3ea; text-decoration: none;">Travaux</a>
-<a href="{root}comparer-ses-devis.html" style="color: #c9d3ea; text-decoration: none;">Outils</a>
-<a href="{root}guides.html" style="color: #c9d3ea; text-decoration: none;">Guides</a>
-<a href="{COMEUP}" data-goatcounter-click="clic-comeup" style="background: #bf4a17; color: #ffffff; text-decoration: none; font-weight: 700; padding: 12px 20px; border-radius: 2px;">Faire analyser mon devis</a>
+<div class="cp-page">
+<header class="cp-hd">
+<div class="cp-hd-in">
+<a class="logo" href="{root or './'}"><i aria-hidden="true"></i>CONTRE-PLAN</a>
+<nav class="cp-topnav" aria-label="Navigation principale">
+<a href="{root}methode.html">Méthode</a>
+<a href="{root}index.html#travaux">Travaux</a>
+<a href="{root}comparer-ses-devis.html">Outils</a>
+<a href="{root}guides.html">Guides</a>
+<a class="btn" href="{COMEUP}" data-goatcounter-click="clic-comeup">Faire analyser mon devis</a>
 </nav>
 </div>
 </header>
@@ -98,11 +96,12 @@ def footer(root=""):
 </html>
 """
 
-CTA = f'''<aside style="margin-top: 48px; background-color: #0f2747; background-image: linear-gradient(#2a4a75 1px, transparent 1px), linear-gradient(90deg, #2a4a75 1px, transparent 1px); background-size: 80px 80px; color: #fff; border-radius: 2px; padding: 32px; display: flex; flex-direction: column; gap: 16px;">
-<p style="margin: 0; font-family: Archivo, Arial, sans-serif; font-weight: 800; font-size: 26px; line-height: 1.2; color: #fff;">Un devis à signer ? Faites-le relire par un ingénieur BTP.</p>
-<p style="margin: 0; font-size: 18px; line-height: 1.5; color: #c9d3ea;">Prix poste par poste, oublis, TVA, conditions de paiement : rapport PDF sous 48 h, 16,50 € au tarif de lancement.</p>
-<div style="display: flex; flex-wrap: wrap; gap: 12px;"><a href="{COMEUP}" data-goatcounter-click="clic-comeup" style="background: #bf4a17; color: #fff; text-decoration: none; font-weight: 700; font-size: 18px; padding: 16px 24px; border-radius: 2px;">Faire analyser mon devis</a><a href="{BOOK}" data-goatcounter-click="clic-appel" target="_blank" rel="noopener" style="color: #fff; font-weight: 700; font-size: 17px; padding: 14px 22px; border: 2px solid #fff; border-radius: 2px; text-decoration: none;">Appel gratuit de 15 min</a></div>
-<p style="margin: 0; font-size: 15px; color: #c9d3ea;">Paiement sécurisé sur ComeUp. Rapport PDF sous 48 h. Aucun engagement envers l'artisan.</p>
+CTA = f'''<aside class="cp-cta-box bp">
+<span class="tag">Avant de signer</span>
+<p class="t">Un devis à signer ? Faites-le relire par un ingénieur BTP.</p>
+<p>Prix poste par poste, oublis, TVA, conditions de paiement : rapport PDF sous 48 h, 16,50 € au tarif de lancement.</p>
+<div class="row"><a class="btn" href="{COMEUP}" data-goatcounter-click="clic-comeup">Faire analyser mon devis</a><a class="btn line" href="{BOOK}" data-goatcounter-click="clic-appel" target="_blank" rel="noopener">Appel gratuit de 15 min</a></div>
+<small>Paiement sécurisé sur ComeUp. Rapport PDF sous 48 h. Aucun engagement envers l'artisan.</small>
 </aside>'''
 
 SIDE = f"""<div class="cp-sidecard"><p class="t">Votre devis relu par un ingénieur BTP</p><p>Rapport PDF sous 48 h, prix poste par poste, oublis et questions à poser. Dès 16,50 €.</p><a class="cp-btn" href="{COMEUP}" data-goatcounter-click="clic-comeup-side">Faire analyser mon devis</a><a class="cp-sublink" href="exemple-rapport-contre-plan.pdf" target="_blank" rel="noopener" data-goatcounter-click="telechargement-exemple-rapport">Voir un exemple de rapport</a></div>
@@ -605,8 +604,8 @@ page("comparer-ses-devis",
  "Tableau gratuit pour comparer 2 ou 3 devis de travaux poste par poste : totaux, TVA, acompte, postes non chiffrés, garanties. Excel et PDF à imprimer.",
  "Deux devis ne se comparent pas sur le total : ils ne contiennent presque jamais les mêmes prestations. Ce tableau vous aide à les remettre à plat, poste par poste.",
  """<div style="display:flex;flex-wrap:wrap;gap:12px;margin:8px 0 24px;">
-<a href="tableau-comparatif-devis.xlsx" download data-goatcounter-click="telechargement-comparatif-xlsx" style="background:#bf4a17;color:#fff;text-decoration:none;font-weight:700;font-size:18px;padding:16px 24px;border-radius:2px;">Télécharger le tableau (Excel)</a>
-<a href="tableau-comparatif-devis.pdf" download data-goatcounter-click="telechargement-comparatif-pdf" style="background:#14284b;color:#fff;text-decoration:none;font-weight:700;font-size:18px;padding:16px 24px;border-radius:2px;">Version à imprimer (PDF)</a>
+<a href="tableau-comparatif-devis.xlsx" download data-goatcounter-click="telechargement-comparatif-xlsx" class="btn">Télécharger le tableau (Excel)</a>
+<a href="tableau-comparatif-devis.pdf" download data-goatcounter-click="telechargement-comparatif-pdf" class="btn dark">Version à imprimer (PDF)</a>
 </div>
 <p>Le fichier Excel s'ouvre aussi dans Google Sheets (Fichier, Importer) et dans Numbers. Une feuille d'exemple fictif montre un tableau rempli.</p>
 <h2>Ce que le tableau fait pour vous</h2>
@@ -715,13 +714,14 @@ merci = head("Message envoyé | Contre-Plan", "Votre message a bien été envoy�
 open(os.path.join(OUT, "merci.html"), "w").write(merci)
 
 # ---------- 404 (absolute paths: served at any URL)
-p404 = head("Page introuvable | Contre-Plan", "Cette page n'existe pas ou a été déplacée.", "https://contre-plan.com/404.html", root="/").replace('<meta property="og:type" content="article">','<meta name="robots" content="noindex">') + f'''<main id="contenu" style="background-color: #0f2747; background-image: linear-gradient(#2a4a75 1px, transparent 1px), linear-gradient(90deg, #2a4a75 1px, transparent 1px); background-size: 160px 160px; color:#fff; min-height: 60vh;">
-<div style="max-width: 760px; margin: 0 auto; padding: 120px 24px; display:flex; flex-direction:column; gap:24px;">
-<span style="align-self:flex-start;background:#bf4a17;color:#fff;font-weight:700;font-size:15px;padding:8px 14px;">Erreur 404</span>
-<h1 style="margin:0;font-family:Archivo,Arial,sans-serif;font-weight:800;line-height:1.1;">Ce poste ne figure pas <span style="color:#e8733c;">sur le plan.</span></h1>
-<p style="margin:0;font-size:20px;line-height:1.5;color:#c9d3ea;">La page que vous cherchez n'existe pas ou a été déplacée.</p>
-<div style="display:flex;flex-wrap:wrap;gap:14px;"><a href="/" style="background:#bf4a17;color:#fff;text-decoration:none;font-weight:700;font-size:18px;padding:16px 24px;border-radius:2px;">Retour à l'accueil</a><a href="/guides.html" style="color:#fff;font-weight:700;font-size:17px;padding:14px 22px;border:2px solid #fff;border-radius:2px;text-decoration:none;">Lire les guides</a></div>
+p404 = head("Page introuvable | Contre-Plan", "Cette page n'existe pas ou a été déplacée.", "https://contre-plan.com/404.html", root="/").replace('<meta property="og:type" content="article">','<meta name="robots" content="noindex">') + f'''<main id="contenu" class="bp" style="min-height:60vh">
+<div style="max-width: 760px; margin: 0 auto; padding: 120px 24px; display:flex; flex-direction:column; gap:24px; align-items:flex-start;">
+<span class="tag">Erreur 404</span>
+<h1 style="margin:0;font-family:Archivo,Arial,sans-serif;font-weight:800;line-height:1.05;color:#fff">Ce poste ne figure pas <span style="color:var(--or)">sur le plan.</span></h1>
+<p style="margin:0;font-size:20px;line-height:1.5;color:#d3ddf0;">La page que vous cherchez n'existe pas ou a été déplacée.</p>
+<div style="display:flex;flex-wrap:wrap;gap:14px;"><a class="btn" href="/">Retour à l'accueil</a><a class="btn line" href="/guides.html">Lire les guides</a></div>
 </div>
+<div class="ruler" aria-hidden="true"></div>
 </main>
 ''' + footer(root="/")
 open(os.path.join(OUT, "404.html"), "w").write(p404)
