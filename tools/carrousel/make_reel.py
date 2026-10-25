@@ -72,7 +72,8 @@ with sync_playwright() as p:
         h=open(f'{out}/slide{i}.html').read().replace('</body>',ANIM+JS+'</body>')
         pg.set_content(h); pg.evaluate('document.fonts.ready'); pg.wait_for_timeout(300)
         A=pg.evaluate('window.__end()')
-        dd=max(readtime(i,s),A+1.0)+(1.2 if i==n else 0); durs.append(round(dd,2))
+        vo=len(str(s.get('vo','')).split())
+        dd=max(readtime(i,s),A+1.0,vo/2.9+0.8)+(1.2 if i==n else 0); durs.append(round(dd,2))
         nf=int(math.ceil(A*FPS))+1
         for k in range(nf):
             pg.evaluate(f'window.__seek({k/FPS})'); pg.screenshot(path=f'{FR}/s{i}_{k:04d}.jpg',type='jpeg',quality=93)
@@ -96,6 +97,16 @@ def thump(t,d): return math.sin(2*math.pi*(95-40*t)*t)*math.exp(-t/0.07)+rnd.uni
 def scribble(t,d): return rnd.uniform(-1,1)*(0.55+0.45*math.sin(2*math.pi*9*t))*min(1,t/0.05)*min(1,(d-t)/0.08)
 off=0.0; starts=[]
 for i,dd in enumerate(durs): starts.append(off); off+=dd
+def tc(x):
+    ms=int(round(x*1000)); return f'{ms//3600000:02d}:{ms//60000%60:02d}:{ms//1000%60:02d},{ms%1000:03d}'
+srt=[]
+for i,s in enumerate(sl):
+    w=str(s.get('vo','')).split()
+    if not w: continue
+    ch=[w[j:j+5] for j in range(0,len(w),5)]; t0=starts[i]+(0.15 if i==0 else T); t1=starts[i]+durs[i]-0.15; step=(t1-t0)/len(w); pos=0
+    for c in ch:
+        srt.append(f'{len(srt)+1}'+chr(10)+tc(t0+pos*step)+' --> '+tc(t0+(pos+len(c))*step)+chr(10)+' '.join(c)+chr(10)); pos+=len(c)
+if srt: open(f'{out}/reel.srt','w').write(chr(10).join(srt))
 for i,s in enumerate(sl):
     t0=starts[i]; ty=s.get('type')
     if i>0: add(t0-0.05,0.35,noise_env(0.12,0.12),0.10)
@@ -127,4 +138,4 @@ f.append(f"[{prev}]noise=alls=7:allf=t+u,vignette=angle=0.5,eq=brightness='0.012
 cmd+=['-filter_complex',';'.join(f),'-map','[vout]','-map',f'{n}:a','-shortest','-c:v','libx264','-preset','medium','-crf','19','-r',str(FPS),'-c:a','aac','-b:a','128k','-movflags','+faststart',f'{out}/reel.mp4']
 subprocess.run(cmd,check=True)
 shutil.rmtree(FR,ignore_errors=True); os.remove(f'{out}/_sfx.wav')
-print('reel.mp4',round(sum(durs)+T,1),'s',durs)
+print('reel.mp4',round(sum(durs)+T,1),'s',durs,'+ reel.srt' if srt else '')
