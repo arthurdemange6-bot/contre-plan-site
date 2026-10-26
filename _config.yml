@@ -1,0 +1,4 @@
+# GitHub Pages : fichiers gardés dans le dépôt mais non publiés sur contre-plan.com
+exclude:
+  - tools/
+  - README.md
