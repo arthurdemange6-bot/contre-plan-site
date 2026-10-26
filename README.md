@@ -15,7 +15,7 @@ Les guides, la page Guides, la page 404 et le sitemap sont générés par `tools
 
 ## Si les prix changent
 
-Mettre à jour partout en même temps : `index.html` (cartes Tarifs, FAQ et ses données structurées, offres du JSON-LD, `data-prix` du calcul « Votre devis fait combien ? »), `site.js` (texte de la barre mobile « dès 16,50 € »), `tools/build.py` (encadré latéral SIDE et bloc CTA), `chat.js`, l'annonce ComeUp et l'agent carrousel.
+Mettre à jour partout en même temps : `tools/build.py` (constante `PRIX`, schéma Service des pages par type de travaux), `index.html` (cartes Tarifs, FAQ et ses données structurées, offres du JSON-LD, `data-prix` du calcul « Votre devis fait combien ? »), `site.js` (texte de la barre mobile « dès 16,50 € »), `tools/build.py` (encadré latéral SIDE et bloc CTA), `chat.js`, l'annonce ComeUp et l'agent carrousel.
 
 ## Offre de lancement
 Le « prix de lancement » (16,50 € au lieu de 33 €) figure dans index.html (badge des tarifs, FAQ et JSON-LD FAQ) et chat.js (réponse sur le prix). Le retirer à ces endroits quand l'offre se termine, et passer le prix à 33 €.
@@ -33,3 +33,11 @@ Le bouton « Une question ? » propose deux chemins : une orientation en 3 quest
 ## Identité visuelle (brand.css)
 
 `brand.css` aligne le site sur les carrousels : fond « plan bleu » quadrillé, devis papier scotché, surligneur jaune, feutre rouge, étiquettes orange. Il est chargé après `site.css` sur toutes les pages (accueil, pages générées par `tools/build.py`, mentions légales). Polices : Archivo, Source Sans 3, Caveat (annotations manuscrites). `anim.css` et `anim.js` ne sont plus chargés.
+
+## FAQ et données structurées des pages générées
+- Guides : la FAQ de chaque guide est dans le dictionnaire `FAQS` de `tools/build.py` (section « Questions fréquentes » visible + données structurées FAQPage). La date de mise à jour affichée et `dateModified` viennent de `UPDATED` : la changer quand un guide est réellement mis à jour.
+- Pages « Analyse de devis <travaux> » : nom du service, FAQ et schéma Service dans le dictionnaire `JOBS`.
+- Ne pas ajouter de FAQ à la main dans les fichiers HTML générés : elle disparaîtrait au prochain build.
+
+## IndexNow
+À chaque push sur `main` qui modifie des pages, `.github/workflows/indexnow.yml` attend le déploiement puis signale les URL modifiées à IndexNow (Bing, Yandex, Seznam…). La clé est le fichier `d3127bda26f9f2f864790c6bf08ae400.txt` à la racine : ne pas le supprimer. Pour renvoyer toutes les pages : onglet Actions, workflow « IndexNow », « Run workflow ».

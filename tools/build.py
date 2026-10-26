@@ -26,6 +26,7 @@ def head(title, desc, url, extra="", root=""):
 <meta name="description" content="{html.escape(desc)}">
 <link rel="canonical" href="{url}">
 <meta property="og:type" content="article">
+<meta property="og:locale" content="fr_FR">
 <meta property="og:url" content="{url}">
 <meta property="og:title" content="{html.escape(title)}">
 <meta property="og:description" content="{html.escape(desc)}">
@@ -133,20 +134,95 @@ def layout(body, toc_on=True):
     mob_toc = f'<details class="cp-toc-m"><summary>Sommaire</summary><ol>{tl}</ol></details>' if show else ''
     return f'<div class="cp-wrap" id="contenu"><main class="art">{mob_toc}{body}{CTA}</main><aside class="cp-side">{side_toc}{SIDE}</aside></div>'
 
+# FAQ des guides (section visible + données structurées FAQPage) et date de mise à jour
+FAQS = {
+    'guide-acompte-paiement-devis-travaux': [
+        ("Quel acompte verser à la signature d'un devis de travaux ?",
+         "Aucun texte ne fixe de plafond général chez un particulier. L'usage est d'environ 30 % à la signature, parfois un peu plus pour des matériaux sur mesure. Au-delà de 40 à 50 %, demandez pourquoi et proposez un échéancier."),
+        ('Quelle différence entre acompte et arrhes ?',
+         "Avec des arrhes, chacun peut renoncer : vous en perdant les arrhes, l'entreprise en vous rendant le double. Avec un acompte, le contrat est ferme des deux côtés. Sauf mention contraire, les sommes versées d'avance sont considérées comme des arrhes."),
+        ('Peut-on payer un artisan juste après avoir signé chez soi ?',
+         "En principe non : après une signature à domicile, l'entreprise ne peut rien encaisser pendant 7 jours, sauf exceptions, et vous disposez de 14 jours pour vous rétracter. Ne remettez ni chèque ni autorisation de prélèvement pendant ce délai."),
+    ],
+    'guide-bien-demander-ses-devis': [
+        ('Combien de devis demander pour des travaux ?',
+         'Trois devis suffisent en général pour situer les prix. Au-delà, la comparaison devient difficile et les artisans les plus demandés risquent de ne pas répondre.'),
+        ('Comment comparer des devis de travaux entre eux ?',
+         "Donnez la même description écrite à chaque artisan, demandez les quantités et prix unitaires de chaque prestation, puis comparez poste par poste. Demandez aussi que la dépose, l'évacuation des déchets, la protection du chantier et le nettoyage soient chiffrés."),
+        ("Que vérifier sur l'entreprise avant de signer ?",
+         "Son immatriculation sur annuaire-entreprises.data.gouv.fr, sa qualification RGE sur france-renov.gouv.fr si vous visez des aides, et son attestation d'assurance décennale."),
+    ],
+    'guide-mentions-obligatoires-devis': [
+        ("Quelles informations sur l'entreprise doivent figurer sur un devis ?",
+         "Son nom, sa forme juridique, son adresse, son numéro SIRET et son immatriculation, ainsi que son assurance professionnelle avec le nom de l'assureur et la zone couverte. Pour les travaux qui touchent au bâti, demandez aussi l'attestation décennale valable à l'ouverture du chantier."),
+        ('Le devis doit-il parler des déchets de chantier ?',
+         "Oui. Depuis le 1er juillet 2021, il doit indiquer l'estimation de la quantité de déchets, les modalités d'enlèvement et de tri, les points de collecte et le coût estimé de cette gestion."),
+        ('Que faire si une mention manque sur mon devis ?',
+         'Demandez un devis corrigé par écrit avant de signer. Un artisan sérieux le fait sans difficulté.'),
+    ],
+    'guide-oublis-devis-salle-de-bain': [
+        ("Quel est l'oubli le plus coûteux sur un devis de salle de bain ?",
+         "L'étanchéité sous carrelage, parce qu'on ne la voit qu'une fois les dégâts faits. En zone de douche, un système d'étanchéité au sol et sur les murs exposés est indispensable, et il doit être nommé sur le devis."),
+        ('Une plaque de plâtre hydrofuge suffit-elle dans une douche ?',
+         "Non. La plaque hydrofuge résiste à l'humidité mais elle n'est pas étanche : dans la douche, elle doit être recouverte par un système d'étanchéité."),
+        ('Faut-il un repérage amiante avant de rénover une salle de bain ?',
+         "Si le permis de construire date d'avant le 1er juillet 1997, colles, carrelages, enduits ou faux plafonds peuvent contenir de l'amiante, et un repérage avant travaux est en principe requis avant de les démolir. Voyez avec l'artisan qui le commande et à quel prix."),
+    ],
+    'guide-reception-travaux-reserves': [
+        ('Que se passe-t-il si je ne note pas un défaut à la réception ?',
+         'Un défaut visible le jour de la réception et non noté en réserve est considéré comme accepté. Vous ne pourrez en principe plus le réclamer au titre des garanties.'),
+        ('Puis-je garder une partie du solde tant que les réserves ne sont pas levées ?',
+         "Une retenue de garantie d'au plus 5 % est possible si le devis signé la prévoit. Elle doit être consignée auprès d'un tiers, un notaire par exemple, et non gardée chez vous. Elle est libérée un an après la réception, sauf opposition motivée notifiée avant."),
+        ("Que faire si l'entreprise refuse de signer le procès-verbal avec réserves ?",
+         "Ne signez pas un procès-verbal sans réserves. Rédigez-le vous-même avec vos réserves, indiquez le refus de l'entreprise présente ou dûment convoquée, joignez les photos et envoyez-le en recommandé avec accusé de réception."),
+    ],
+    'guide-tva-travaux-renovation': [
+        ('Quel taux de TVA pour une rénovation de salle de bain ?',
+         "En général 10 %, sur la main-d'œuvre et les fournitures posées par l'entreprise, si le logement est achevé depuis plus de deux ans. La fourniture des meubles standard simplement posés et de l'électroménager reste à 20 %."),
+        ("L'attestation de TVA 1301-SD est-elle encore nécessaire ?",
+         "Non. Depuis la loi de finances pour 2025, elle est remplacée par une mention sur le devis ou la facture, que vous signez pour certifier que les conditions du taux réduit sont remplies. Sans cette mention, le taux de 20 % s'applique."),
+        ('Un même devis peut-il avoir plusieurs taux de TVA ?',
+         "Oui, c'est normal et fréquent : par exemple isolation à 5,5 %, reprise des cloisons à 10 % et climatiseur à 20 %. Un taux unique de 20 % sur la rénovation d'un logement ancien, sans explication, mérite en revanche une question."),
+    ],
+}
+UPDATED = {'guide-acompte-paiement-devis-travaux': "2026-10-26", 'guide-bien-demander-ses-devis': "2026-10-26", 'guide-mentions-obligatoires-devis': "2026-10-26", 'guide-oublis-devis-salle-de-bain': "2026-10-26", 'guide-reception-travaux-reserves': "2026-10-26", 'guide-tva-travaux-renovation': "2026-10-26"}
+AUTEUR = "Rédigé par l'<a href=\"methode.html\">ingénieur BTP de Contre-Plan</a> (10 ans d'expérience, environ 1 000 devis lus)"
+
+def faq_html(qa):
+    return "<h2>Questions fréquentes</h2>\n" + "\n".join(f"<h3>{q}</h3>\n<p>{a}</p>" for q, a in qa)
+
+def faq_ld(qa):
+    return '<script type="application/ld+json">' + json.dumps({"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
+        {"@type":"Question","name":html.unescape(re.sub(r"<[^>]+>", "", q)),"acceptedAnswer":{"@type":"Answer","text":html.unescape(re.sub(r"<[^>]+>", "", a))}} for q, a in qa]}, ensure_ascii=False) + '</script>'
+
+def with_faq(body, qa, before='<p style="font-size: 15px'):
+    """Insère la FAQ avant le marqueur `before` (par défaut la note de sources en petit) s'il existe, sinon en fin de corps."""
+    block = faq_html(qa)
+    i = body.find(before)
+    if i == -1:
+        return body.rstrip("\n") + "\n" + block
+    return body[:i].rstrip("\n") + "\n" + block + "\n" + body[i:]
+
 ARTICLES = []
 def article(slug, title, h1, desc, lead, body, readtime, date=DATE):
     url = f"https://contre-plan.com/{slug}.html"
+    mod = UPDATED.get(slug, date)
+    qa = FAQS.get(slug)
     ld = {"@context":"https://schema.org","@type":"Article","headline":h1,"description":desc,
-          "datePublished":date,"dateModified":date,"inLanguage":"fr-FR",
-          "author":{"@type":"Organization","name":"Contre-Plan","url":"https://contre-plan.com/"},
+          "datePublished":date,"dateModified":mod,"inLanguage":"fr-FR",
+          "author":{"@type":"Organization","name":"Contre-Plan","url":"https://contre-plan.com/",
+                    "description":"Analyse de devis de travaux par un ingénieur BTP (10 ans d'expérience, environ 1 000 devis lus)"},
           "publisher":{"@type":"Organization","name":"Contre-Plan","logo":{"@type":"ImageObject","url":"https://contre-plan.com/logo-512.png"}},
           "mainEntityOfPage":url}
     extra = '<script type="application/ld+json">' + json.dumps(ld, ensure_ascii=False) + '</script>'
     crumbs = [("Accueil", "index.html"), ("Guides", "guides.html"), (h1, None)]
-    page = head(title, desc, url, extra + crumbs_ld(crumbs, url)) + pagehero("Guide", h1, lead, f"Mis à jour le {date_fr(date)}, lecture {readtime} min", crumbs) + layout(body) + footer()
+    extra += crumbs_ld(crumbs, url) + ("\n" + faq_ld(qa) if qa else "")
+    if qa:
+        body = with_faq(body, qa)
+    page = head(title, desc, url, extra) + pagehero("Guide", h1, lead, f"Mis à jour le {date_fr(mod)}, lecture {readtime} min · {AUTEUR}", crumbs) + layout(body) + footer()
     open(os.path.join(OUT, slug + ".html"), "w").write(page)
     ARTICLES.append((slug, h1, desc, readtime))
-    LASTMOD[slug + ".html"] = date
+    LASTMOD[slug + ".html"] = mod
 
 # ---------- Article 1
 article("guide-mentions-obligatoires-devis",
@@ -250,6 +326,44 @@ article("guide-oublis-devis-salle-de-bain",
 <p style="font-size: 15px !important; color: #5b6784 !important;">Article d'information générale. Chaque chantier est différent : en cas de doute sur un point technique, faites vérifier votre devis.</p>''', 5)
 
 
+PRIX = "16.50"  # prix de base de l'analyse (schéma Service des pages par type de travaux)
+
+# Pages « Analyse de devis <travaux> » : nom du service (schéma Service) et FAQ visible + FAQPage
+JOBS = {
+    "analyse-devis-salle-de-bain": ("Analyse de devis de salle de bain", [
+        ("Une plaque hydrofuge suffit-elle sous le carrelage de la douche ?",
+         "Non. Une plaque hydrofuge résiste à l'humidité mais n'est pas étanche. En zone de douche, le devis doit prévoir un système d'étanchéité sous carrelage (liquide ou natte, selon le support), avec des bandes d'angle et autour de l'évacuation."),
+        ("Pourquoi un forfait plomberie pose-t-il problème ?",
+         "Parce qu'il ne dit pas ce qui est fait. Demandez le détail : alimentations et évacuations refaites ou conservées, matériaux, raccordements, robinets d'arrêt accessibles. Sans ce détail, impossible de comparer deux devis ni de contester un oubli."),
+        ("Comment faire relire mon devis de salle de bain ?",
+         "Commandez l'analyse sur ComeUp et envoyez votre devis en PDF ou en photo. Vous recevez sous 48 h un rapport qui reprend chaque poste : prix, quantités, oublis, TVA et questions à poser à l'artisan avant de signer."),
+    ]),
+    "analyse-devis-pompe-a-chaleur": ("Analyse de devis de pompe à chaleur", [
+        ("Comment savoir si la puissance de la pompe à chaleur est adaptée ?",
+         "Demandez sur quelle base elle a été choisie. Un dimensionnement sérieux part des déperditions du logement (isolation, volume, zone climatique, température de départ des émetteurs), pas seulement de la surface habitable."),
+        ("L'entreprise doit-elle être RGE ?",
+         "Oui si vous comptez sur MaPrimeRénov' ou sur une prime CEE : la qualification RGE est obligatoire pour ces travaux. Vérifiez-la sur france-renov.gouv.fr, et vérifiez aussi que l'entreprise détient l'attestation de capacité pour manipuler les fluides frigorigènes."),
+        ("Comment faire relire mon devis de pompe à chaleur ?",
+         "Commandez l'analyse sur ComeUp et envoyez votre devis en PDF ou en photo. Le rapport, livré sous 48 h, vérifie le dimensionnement annoncé, les postes techniques oubliés, la TVA et les aides déduites."),
+    ]),
+    "analyse-devis-isolation": ("Analyse de devis d'isolation", [
+        ("Quelle résistance thermique doit figurer sur un devis d'isolation des combles ?",
+         "La résistance thermique (R, en m².K/W) de l'isolant posé doit être écrite noir sur blanc, avec la marque, la référence et l'épaisseur. Pour les aides, il faut au moins R = 7 en combles perdus et R = 6 en rampants."),
+        ("Le prix au m² suffit-il pour comparer deux devis d'isolation ?",
+         "Non. Sans résistance thermique, épaisseur après tassement et préparation prévue (retrait de l'ancien isolant, traitement des spots et des conduits), deux prix au m² ne parlent pas de la même chose."),
+        ("Comment faire relire mon devis d'isolation ?",
+         "Commandez l'analyse sur ComeUp et envoyez votre devis en PDF ou en photo. Le rapport, livré sous 48 h, vérifie les surfaces, la performance de l'isolant, l'éligibilité aux aides et la TVA."),
+    ]),
+    "analyse-devis-toiture": ("Analyse de devis de toiture", [
+        ("Que signifie « selon état » sur un devis de toiture ?",
+         "Que le prix final n'est pas connu. Demandez un prix unitaire (au mètre de chevron, de liteau, au m² de volige) et un plafond au-delà duquel l'entreprise doit vous prévenir avant d'engager des travaux supplémentaires."),
+        ("Faut-il une autorisation pour refaire sa toiture ?",
+         "Une réfection à l'identique n'en demande en général pas. Si l'aspect extérieur change (matériau, couleur, ajout de fenêtres de toit), une déclaration préalable en mairie est en principe nécessaire, et le PLU peut imposer des règles."),
+        ("Comment faire relire mon devis de toiture ?",
+         "Commandez l'analyse sur ComeUp et envoyez votre devis en PDF ou en photo. Le rapport, livré sous 48 h, vérifie les surfaces, l'échafaudage, la zinguerie, les lignes « selon état » et les questions à poser au couvreur."),
+    ]),
+}
+
 PAGES = []
 def page(slug, title, h1, desc, lead, body, kicker, toc=True):
     url = f"https://contre-plan.com/{slug}.html"
@@ -257,6 +371,14 @@ def page(slug, title, h1, desc, lead, body, kicker, toc=True):
           "publisher":{"@type":"Organization","name":"Contre-Plan","url":"https://contre-plan.com/"}}
     crumbs = [("Accueil", "index.html"), (kicker, None)]
     extra = '<script type="application/ld+json">' + json.dumps(ld, ensure_ascii=False) + '</script>' + crumbs_ld(crumbs, url)
+    if slug in JOBS:
+        service, qa = JOBS[slug]
+        svc = {"@context":"https://schema.org","@type":"Service","name":service,"serviceType":"Analyse de devis de travaux","description":desc,"url":url,
+               "areaServed":{"@type":"Country","name":"France"},
+               "provider":{"@type":"ProfessionalService","name":"Contre-Plan","url":"https://contre-plan.com/"},
+               "offers":{"@type":"Offer","price":PRIX,"priceCurrency":"EUR","url":COMEUP}}
+        extra += '\n<script type="application/ld+json">' + json.dumps(svc, ensure_ascii=False) + '</script>\n' + faq_ld(qa)
+        body = with_faq(body, qa, before='<div class="note"><p><b>Vous avez un devis')
     out = head(title, desc, url, extra).replace('<meta property="og:type" content="article">','<meta property="og:type" content="website">') + pagehero(kicker, h1, lead, None, crumbs) + layout(body, toc) + footer()
     open(os.path.join(OUT, slug + ".html"), "w").write(out)
     PAGES.append(slug)

@@ -1,0 +1,51 @@
+# Signale à IndexNow (Bing, Yandex, Seznam, Naver…) les pages modifiées à chaque mise à jour du site.
+# Clé : fichier d3127bda26f9f2f864790c6bf08ae400.txt à la racine (ne pas le supprimer).
+# Lancement manuel possible depuis l'onglet Actions (« Run workflow ») pour renvoyer toutes les pages.
+name: IndexNow
+
+on:
+  push:
+    branches: [main]
+    paths: ["**.html", "**.pdf"]
+  workflow_dispatch:
+
+jobs:
+  ping:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Lister les pages modifiées
+        env:
+          BEFORE: ${{ github.event.before }}
+          EVENT: ${{ github.event_name }}
+        run: |
+          if [ "$EVENT" = "workflow_dispatch" ] || ! git cat-file -e "$BEFORE^{commit}" 2>/dev/null; then
+            git ls-files '*.html' '*.pdf' > changed.txt
+          else
+            git diff --name-only --diff-filter=AM "$BEFORE" HEAD -- '*.html' '*.pdf' > changed.txt
+          fi
+          grep -v -E '^(tools/|404\.html$|merci\.html$|mentions-legales\.html$)' changed.txt > urls.txt || true
+          echo "Pages à signaler :"; cat urls.txt
+
+      - name: Attendre le déploiement GitHub Pages
+        run: sleep 120
+
+      - name: Envoyer à IndexNow
+        run: |
+          python3 - <<'PY'
+          import json, urllib.request
+          KEY = "d3127bda26f9f2f864790c6bf08ae400"
+          files = [l.strip() for l in open("urls.txt") if l.strip()]
+          urls = ["https://contre-plan.com/" + ("" if f == "index.html" else f) for f in files]
+          if not urls:
+              print("Rien à signaler."); raise SystemExit(0)
+          body = json.dumps({"host": "contre-plan.com", "key": KEY,
+                             "keyLocation": f"https://contre-plan.com/{KEY}.txt", "urlList": urls}).encode()
+          req = urllib.request.Request("https://api.indexnow.org/indexnow", data=body,
+                                       headers={"Content-Type": "application/json; charset=utf-8"})
+          with urllib.request.urlopen(req, timeout=30) as r:
+              print("IndexNow :", r.status, "-", len(urls), "URL envoyées")
+          PY
