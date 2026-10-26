@@ -1,0 +1,33 @@
+# Contre-Plan
+
+> Contre-Plan relit les devis de travaux des particuliers avant signature. L'analyse est faite par un ingénieur BTP (10 ans d'expérience, environ 1 000 devis lus et négociés), 100 % à distance, sans lien avec aucun artisan et sans commission. Le client reçoit un rapport PDF sous 48 h : prix poste par poste, oublis, TVA, conditions de paiement et questions à poser à l'artisan.
+
+Le service se commande sur ComeUp (https://comeup.com/fr/@contreplan), à partir de 16,50 € par devis au tarif de lancement. Les guides ci-dessous sont gratuits, rédigés en français et sourcés (Code de la consommation, Code civil, Code général des impôts, service-public.gouv.fr).
+
+## Guides
+- [Mentions obligatoires d'un devis de travaux : la check-list](https://contre-plan.com/guide-mentions-obligatoires-devis.html): Assurance décennale, détail des postes, déchets, TVA, délais : les mentions qu'un devis de travaux doit contenir, et quoi demander si elles manquent.
+- [TVA travaux 5,5 %, 10 % ou 20 % : quel taux sur votre devis ?](https://contre-plan.com/guide-tva-travaux-renovation.html): Rénovation énergétique, amélioration, neuf, agrandissement : quel taux de TVA sur votre devis, et la mention qui remplace l'attestation depuis 2025.
+- [Devis salle de bain : 7 oublis qui font exploser la facture](https://contre-plan.com/guide-oublis-devis-salle-de-bain.html): Dépose, étanchéité, évacuation, électricité, ventilation : les postes souvent absents d'un devis de salle de bain, qui reviennent en supplément.
+- [Acompte sur un devis de travaux : combien, quand, comment](https://contre-plan.com/guide-acompte-paiement-devis-travaux.html): Montant de l'acompte, arrhes ou acompte, démarchage, paiements à l'avancement, solde et réserves : les règles pour payer vos travaux sans risque.
+- [Comment bien demander ses devis de travaux](https://contre-plan.com/guide-bien-demander-ses-devis.html): Décrire son projet, donner les mêmes bases à chaque artisan, poser les bonnes questions : la méthode pour recevoir des devis vraiment comparables.
+- [Réception des travaux : PV, réserves et solde, mode d'emploi](https://contre-plan.com/guide-reception-travaux-reserves.html): Procès-verbal, réserves, retenue de garantie de 5 %, solde, garantie de parfait achèvement : comment réceptionner vos travaux sans perdre vos recours.
+- [Lexique du devis de travaux : les termes expliqués](https://contre-plan.com/lexique-devis-travaux.html): Acompte, arrhes, forfait, ml, P.U., ragréage, SPEC, RGE, résistance thermique : les mots d'un devis de travaux expliqués simplement.
+
+## Par type de travaux
+- [Analyse de devis salle de bain par un ingénieur BTP](https://contre-plan.com/analyse-devis-salle-de-bain.html): Étanchéité, dépose, plomberie au forfait, électricité, TVA : les points qu'un ingénieur BTP vérifie sur un devis de rénovation de salle de bain.
+- [Analyse de devis pompe à chaleur par un ingénieur BTP](https://contre-plan.com/analyse-devis-pompe-a-chaleur.html): Dimensionnement, fluides frigorigènes, liaisons, condensats, RGE, TVA : ce qu'un ingénieur BTP vérifie sur un devis de pompe à chaleur.
+- [Analyse de devis isolation par un ingénieur BTP](https://contre-plan.com/analyse-devis-isolation.html): Résistance thermique, épaisseur, surface, pare-vapeur, points singuliers, RGE et TVA : ce qu'un ingénieur BTP vérifie sur un devis d'isolation.
+- [Analyse de devis toiture par un ingénieur BTP](https://contre-plan.com/analyse-devis-toiture.html): Surface, échafaudage, dépose, écran sous-toiture, zinguerie, charpente, amiante : ce qu'un ingénieur BTP vérifie sur un devis de toiture.
+- [Cas fictifs : trois devis de travaux analysés](https://contre-plan.com/cas-fictifs.html): Salle de bain, pompe à chaleur, isolation des combles : trois exemples fictifs de devis analysés pour montrer ce qu'une relecture peut révéler.
+
+## Outils gratuits
+- [Tableau comparatif de devis gratuit (Excel et PDF)](https://contre-plan.com/comparer-ses-devis.html): Tableau gratuit pour comparer 2 ou 3 devis de travaux poste par poste : totaux, TVA, acompte, postes non chiffrés, garanties. Excel et PDF à imprimer.
+- [Modèles de messages à envoyer à un artisan](https://contre-plan.com/modeles-messages-artisan.html): Messages prêts à copier pour demander l'attestation décennale, négocier l'acompte, faire détailler un forfait ou ajouter un poste oublié.
+- [Check-list devis travaux (PDF)](https://contre-plan.com/checklist-devis-travaux.pdf): vingt points à cocher en relisant n'importe quel devis de travaux.
+- [Exemple de rapport Contre-Plan (PDF)](https://contre-plan.com/exemple-rapport-contre-plan.pdf): un rapport complet de 4 pages sur un devis fictif de salle de bain.
+
+## Le service
+- [Accueil](https://contre-plan.com/): Analyse de votre devis de travaux par un ingénieur BTP avant signature : prix, oublis, pièges. Rapport PDF sous 48 h, 100 % à distance.
+- [Ma méthode : ce que je vérifie sur un devis](https://contre-plan.com/methode.html): Recalcul, mentions obligatoires, TVA, oublis techniques, prix : la grille de contrôle appliquée à chaque devis de travaux analysé par Contre-Plan.
+- [Engagements de Contre-Plan : indépendance et confidentialité](https://contre-plan.com/engagements.html): Indépendance vis-à-vis des artisans, confidentialité de vos devis, délais et portée de l'analyse : ce sur quoi Contre-Plan s'engage.
+- [Contact](https://contre-plan.com/contact.html): Une question sur l'analyse de devis de travaux ? Écrivez à Contre-Plan via le formulaire de contact, réponse sous 24 h.
