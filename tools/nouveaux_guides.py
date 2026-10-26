@@ -82,3 +82,90 @@ GUIDE_FAQS["guide-negocier-devis-travaux"] = [
  ("Quel acompte verser à la signature ?",
   "Aucun plafond légal ne s'applique aux travaux chez un particulier. L'usage est de 20 à 30 %. Au-delà, demandez pourquoi et proposez un échéancier lié à l'avancement du chantier."),
 ]
+
+# ---------- Dépassement du devis
+GUIDES.append(dict(
+ slug="guide-depassement-devis-travaux-supplementaires",
+ title="Facture plus chère que le devis : que dit la loi sur les suppléments ?",
+ h1="L'artisan dépasse le devis : que faire face aux travaux supplémentaires",
+ desc="Devis signé, marché à forfait, imprévu de chantier, avenant écrit : quand un supplément est dû, quand il ne l'est pas, et les recours si la facture dépasse le devis.",
+ lead="Le devis disait 8 000 €, la facture en annonce 9 400 €. Avant de payer ou de refuser, il faut savoir une chose : qu'avez-vous accepté, et par écrit ?",
+ readtime=7,
+ body='''<h2>Un devis signé engage l'artisan</h2>
+<p>Une fois signé, le devis est un <strong>contrat</strong>. L'entreprise ne peut pas modifier seule ni le prix ni le contenu des travaux. Si elle facture plus, c'est à elle de prouver que vous avez accepté ce supplément. Pour un particulier, au-delà de 1 500 €, cette preuve doit en principe être écrite.</p>
+<h2>Le marché à forfait : la protection la plus forte</h2>
+<p>Quand le devis fixe un <strong>prix global et forfaitaire</strong> pour des travaux décrits précisément, la loi est très claire : l'entrepreneur ne peut demander aucune augmentation, ni pour la hausse de la main-d'œuvre ou des matériaux, ni pour des changements ou ajouts, <strong>sauf si ces changements ont été autorisés par écrit et leur prix convenu avec vous</strong> (article 1793 du Code civil).</p>
+<div class="note"><p><strong>En pratique :</strong> un supplément annoncé à l'oral sur le chantier, puis découvert sur la facture, n'est pas dû dans un marché à forfait. Votre silence ne vaut pas accord.</p></div>
+<h2>Devis au métré ou « selon état » : plus de marge pour l'artisan</h2>
+<p>Si le devis fixe des <strong>prix unitaires</strong> (au m², au mètre linéaire, à la pièce) plutôt qu'un prix global, la facture suit les quantités réellement exécutées. Elle peut donc dépasser le devis si les quantités augmentent, à condition qu'elles soient justifiées. Les lignes « selon état » ou « hors imprévus » ne sont pas un chèque en blanc, mais elles affaiblissent votre position : c'est pour cela qu'il faut les faire chiffrer avant de signer.</p>
+<h2>L'imprévu de chantier</h2>
+<p>Une poutre pourrie derrière un doublage, une canalisation en plomb sous un carrelage : les vraies surprises existent. Mais aucun texte ne permet à l'artisan de les facturer de son propre chef. La bonne pratique, et votre protection, c'est :</p>
+<ol><li>l'entreprise vous prévient <strong>avant</strong> d'engager les travaux supplémentaires, photos à l'appui ;</li>
+<li>elle vous remet un <strong>avenant ou un devis complémentaire chiffré</strong> ;</li>
+<li>vous le signez, ou vous le refusez et discutez d'une autre solution.</li></ol>
+<p>Une erreur de métré ou de chiffrage de l'entreprise n'est pas un imprévu : c'est à elle de l'assumer.</p>
+<h2>Révision de prix : seulement si le devis la prévoit</h2>
+<p>Le prix d'un devis ne s'indexe pas automatiquement sur la hausse des matériaux. Une révision n'est possible que si le contrat la prévoit expressément, avec une formule et un indice de référence en lien avec les travaux (les index BT du bâtiment, par exemple). Une telle clause joue aussi à la baisse.</p>
+<h2>La facture dépasse le devis : les étapes</h2>
+<ol><li><strong>Demandez par écrit le détail</strong> du supplément et le document par lequel vous l'auriez accepté.</li>
+<li><strong>Payez ce qui est dû selon le devis</strong> et contestez le reste par écrit, en expliquant pourquoi. Ne bloquez pas l'intégralité sans raison : ce serait vous mettre en tort.</li>
+<li><strong>Envoyez une mise en demeure</strong> par lettre recommandée avec accusé de réception si le désaccord persiste.</li>
+<li><strong>Saisissez le médiateur de la consommation</strong> de l'entreprise : tout professionnel doit en désigner un et indiquer ses coordonnées sur ses devis. Il faut d'abord avoir fait une réclamation écrite, et le saisir dans l'année qui suit.</li>
+<li><strong>Le conciliateur de justice</strong>, gratuit, est une autre voie. Pour un litige de 5 000 € ou moins, une tentative de règlement amiable est en principe obligatoire avant de saisir le tribunal.</li></ol>
+<p>Vous pouvez aussi faire un signalement sur SignalConso : il ne règle pas votre litige, mais il aide la DGCCRF à cibler ses contrôles.</p>
+<h2>Ce que je vérifie sur votre devis</h2>
+<p>Le type de prix (forfait ou unitaire), les lignes « selon état », « hors imprévus » ou « à définir », et les postes oubliés qui deviendront des suppléments. Chaque rapport les liste avec la question à poser pour les faire chiffrer avant de signer. Voir aussi <a href="modeles-messages-artisan.html">les modèles de messages à l'artisan</a>.</p>
+''' + SRC + '''Article d'information générale, à jour au 26 octobre 2026, qui ne remplace pas un conseil juridique sur votre situation. Sources : articles 1103, 1359 et 1793 du Code civil, articles L612-1 et L612-2 du Code de la consommation (médiation), article 750-1 du Code de procédure civile, economie.gouv.fr, inc-conso.fr.</p>''',
+))
+GUIDE_FAQS["guide-depassement-devis-travaux-supplementaires"] = [
+ ("Un artisan peut-il facturer plus cher que le devis signé ?",
+  "Pas de lui-même. Dans un marché à forfait, un supplément n'est dû que si vous l'avez autorisé par écrit et que son prix a été convenu avec vous. Avec des prix unitaires, la facture peut suivre les quantités réellement exécutées, à condition qu'elles soient justifiées."),
+ ("Un accord oral suffit-il pour des travaux supplémentaires ?",
+  "Dans un marché à forfait, non : la loi exige une autorisation écrite. Dans les autres cas, c'est à l'artisan de prouver votre accord, en principe par écrit au-delà de 1 500 €. Exigez toujours un avenant chiffré avant les travaux."),
+ ("Que faire si la facture dépasse le devis ?",
+  "Payez ce qui correspond au devis, contestez le supplément par écrit, puis envoyez une mise en demeure si le désaccord persiste. Ensuite, saisissez le médiateur de la consommation de l'entreprise ou un conciliateur de justice."),
+]
+
+# ---------- Annuler un devis signé
+GUIDES.append(dict(
+ slug="guide-annuler-devis-signe-retractation",
+ title="Annuler un devis signé : délai de rétractation et cas sans retour",
+ h1="Devis signé : peut-on encore annuler ou se rétracter ?",
+ desc="Signature à domicile, en magasin, sur un salon ou en ligne, crédit travaux, arrhes ou acompte : quand vous pouvez annuler un devis signé, et ce que ça coûte.",
+ lead="Vous avez signé, et vous le regrettez. Tout dépend d'un détail que l'on oublie souvent : l'endroit où vous avez signé.",
+ readtime=7,
+ body='''<h2>Signé chez vous : 14 jours pour changer d'avis</h2>
+<p>Un devis signé à votre domicile (ou ailleurs que dans les locaux de l'entreprise, à la suite d'une visite) est un contrat <strong>hors établissement</strong>. Vous disposez de <strong>14 jours</strong> pour vous rétracter, sans motif et sans frais. Pour des travaux, le délai court à partir du lendemain de la signature.</p>
+<ul><li>L'entreprise doit vous remettre un <strong>formulaire de rétractation</strong>. Vous pouvez l'utiliser, ou envoyer un courrier recommandé avec accusé de réception.</li>
+<li>Pendant les <strong>7 premiers jours</strong>, elle ne peut encaisser <strong>aucun paiement</strong> : ni acompte, ni chèque, même daté plus tard, ni autorisation de prélèvement.</li>
+<li>Si vous vous rétractez, elle doit vous rembourser sous 14 jours.</li></ul>
+<div class="note"><p><strong>Le formulaire manque ?</strong> Si l'entreprise ne vous a pas informé de votre droit de rétractation, le délai est prolongé de 12 mois. Et selon la Cour de justice de l'Union européenne (2023), si vous vous rétractez dans ce cas, vous ne devez rien pour les travaux déjà réalisés.</p></div>
+<h2>Les travaux ont commencé pendant le délai</h2>
+<p>Si vous avez demandé expressément que les travaux démarrent avant la fin des 14 jours, vous pouvez toujours vous rétracter, mais vous payez la part déjà réalisée. Plus de rétractation possible, en revanche, pour une prestation entièrement exécutée avec votre accord, pour des travaux d'entretien ou de réparation <strong>urgents</strong> que vous avez demandés, ou pour un bien fabriqué sur mesure.</p>
+<h2>Signé en magasin, en agence ou chez l'artisan : pas de rétractation</h2>
+<p>Si vous vous êtes déplacé pour signer, la loi ne prévoit <strong>aucun délai de rétractation</strong>. Le devis vous engage dès la signature, sauf si l'entreprise vous a accordé contractuellement un délai : vérifiez les conditions générales.</p>
+<h2>Signé sur une foire ou un salon : pas de rétractation non plus</h2>
+<p>C'est le piège classique des salons de l'habitat. Aucun délai de rétractation, et le vendeur doit l'afficher clairement sur son stand et l'écrire en tête du contrat. Seule exception : si les travaux sont financés par un <strong>crédit affecté</strong> souscrit sur place.</p>
+<h2>Signé à distance (internet, téléphone) : 14 jours</h2>
+<p>Un devis accepté en ligne ou par téléphone, sans rencontre physique, ouvre droit au même délai de 14 jours.</p>
+<h2>Les travaux sont financés par un crédit</h2>
+<p>Vous pouvez renoncer au crédit affecté dans les <strong>14 jours</strong> suivant l'acceptation de l'offre. Cette rétractation <strong>annule automatiquement le contrat de travaux</strong>, sans indemnité. Attention, si vous avez demandé une exécution immédiate des travaux, ce délai peut être réduit à 3 jours.</p>
+<h2>Hors de ces cas : annuler a un coût</h2>
+<p>Tout dépend de ce que vous avez versé, et du mot employé sur le devis :</p>
+<ul><li><strong>Des arrhes</strong> : vous pouvez renoncer en les perdant (l'entreprise, elle, rembourserait le double). Si le devis ne précise rien, les sommes versées d'avance sont considérées comme des arrhes.</li>
+<li><strong>Un acompte</strong> : le contrat est ferme. Annuler vous expose à indemniser l'entreprise.</li></ul>
+<p>Pour un <strong>marché à forfait</strong>, la loi vous permet de résilier à tout moment, même travaux commencés, mais vous devez alors dédommager l'entreprise : ses dépenses, les travaux déjà faits et le bénéfice qu'elle aurait tiré du chantier (article 1794 du Code civil). Si l'entreprise a commis une faute, la situation est différente : faites-vous conseiller.</p>
+<h2>Démarchage pour la rénovation énergétique</h2>
+<p>Le démarchage téléphonique pour des travaux de rénovation énergétique est interdit, et depuis juillet 2025 l'interdiction s'étend aux SMS, courriels et réseaux sociaux : un contrat conclu dans ces conditions est nul. Depuis le 11 août 2026, tout démarchage téléphonique suppose en outre votre accord préalable.</p>
+<h2>Le meilleur moment pour annuler, c'est avant de signer</h2>
+<p>Un devis relu à tête reposée, c'est un regret en moins. Je vérifie la présence du formulaire de rétractation quand il est obligatoire, la nature des sommes demandées (arrhes ou acompte), l'échéancier et les conditions de résiliation. Voir aussi <a href="guide-acompte-paiement-devis-travaux.html">le guide sur l'acompte</a>.</p>
+''' + SRC + '''Article d'information générale, à jour au 26 octobre 2026, qui ne remplace pas un conseil juridique sur votre situation. Sources : articles L221-10, L221-18, L221-20, L221-25, L221-28, L224-59, L312-19 et L214-1 du Code de la consommation, articles 1590 et 1794 du Code civil, loi n° 2025-594 du 30 juin 2025, CJUE 17 mai 2023 (C-97/22), service-public.gouv.fr (fiche F23224), anil.org.</p>''',
+))
+GUIDE_FAQS["guide-annuler-devis-signe-retractation"] = [
+ ("Peut-on se rétracter après avoir signé un devis ?",
+  "Oui si le devis a été signé à domicile ou à distance : vous avez 14 jours. Non s'il a été signé en magasin, chez l'artisan ou sur une foire ou un salon, sauf clause contraire ou crédit affecté."),
+ ("L'artisan peut-il encaisser un acompte juste après la signature à domicile ?",
+  "Non. Pendant les 7 jours qui suivent la signature hors établissement, il ne peut recevoir aucun paiement, sous aucune forme, sauf pour des travaux urgents de réparation demandés par le client."),
+ ("Que se passe-t-il si j'annule un devis signé en magasin ?",
+  "Vous n'avez pas de droit de rétractation. Si vous avez versé des arrhes, vous les perdez. Avec un acompte, le contrat est ferme et l'entreprise peut demander une indemnisation."),
+]
