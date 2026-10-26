@@ -10,9 +10,9 @@ GUIDE_FAQS = {}
 # ---------- Décennale
 GUIDES.append(dict(
  slug="guide-verifier-assurance-decennale",
- title="Assurance décennale : comment vérifier l'attestation d'un artisan",
+ title="Assurance décennale : vérifier l'attestation d'un artisan",
  h1="Assurance décennale : comment vérifier l'attestation de votre artisan",
- desc="Activités couvertes, période de validité, assureur, couverture géographique : les 5 points à contrôler sur l'attestation décennale avant de signer un devis.",
+ desc="Activités couvertes, validité, assureur, zone couverte : les 5 points à contrôler sur l'attestation décennale avant de signer un devis.",
  lead="Une attestation décennale jointe au devis ne prouve pas grand-chose si elle couvre une autre activité, une autre période ou une autre entreprise. Voici comment la lire en deux minutes.",
  readtime=6,
  body='''<h2>À quoi sert la garantie décennale</h2>
@@ -47,9 +47,9 @@ GUIDE_FAQS["guide-verifier-assurance-decennale"] = [
 # ---------- Négocier
 GUIDES.append(dict(
  slug="guide-negocier-devis-travaux",
- title="Devis de travaux trop cher : comment négocier sans se faire avoir",
+ title="Devis de travaux trop cher : comment le négocier",
  h1="Devis de travaux trop cher : comment le négocier intelligemment",
- desc="Faire détailler les forfaits, comparer poste par poste, vérifier TVA et aides, revoir l'échéancier : les leviers pour faire baisser un devis sans sacrifier la qualité.",
+ desc="Détailler les forfaits, comparer poste par poste, vérifier TVA et aides, revoir l'échéancier : les leviers pour faire baisser un devis.",
  lead="Demander « un geste » sur le total marche rarement, et quand ça marche, la différence se retrouve souvent ailleurs. On négocie mieux un devis quand on sait ligne par ligne ce qu'on paie.",
  readtime=6,
  body='''<h2>D'abord, savoir ce que vous payez</h2>
@@ -86,9 +86,9 @@ GUIDE_FAQS["guide-negocier-devis-travaux"] = [
 # ---------- Dépassement du devis
 GUIDES.append(dict(
  slug="guide-depassement-devis-travaux-supplementaires",
- title="Facture plus chère que le devis : que dit la loi sur les suppléments ?",
+ title="Facture supérieure au devis : les suppléments sont-ils dus ?",
  h1="L'artisan dépasse le devis : que faire face aux travaux supplémentaires",
- desc="Devis signé, marché à forfait, imprévu de chantier, avenant écrit : quand un supplément est dû, quand il ne l'est pas, et les recours si la facture dépasse le devis.",
+ desc="Devis signé, forfait, imprévu, avenant écrit : quand un supplément est dû ou non, et les recours si la facture dépasse le devis.",
  lead="Le devis disait 8 000 €, la facture en annonce 9 400 €. Avant de payer ou de refuser, il faut savoir une chose : qu'avez-vous accepté, et par écrit ?",
  readtime=7,
  body='''<h2>Un devis signé engage l'artisan</h2>
@@ -129,9 +129,9 @@ GUIDE_FAQS["guide-depassement-devis-travaux-supplementaires"] = [
 # ---------- Annuler un devis signé
 GUIDES.append(dict(
  slug="guide-annuler-devis-signe-retractation",
- title="Annuler un devis signé : délai de rétractation et cas sans retour",
+ title="Annuler un devis signé : rétractation et cas sans retour",
  h1="Devis signé : peut-on encore annuler ou se rétracter ?",
- desc="Signature à domicile, en magasin, sur un salon ou en ligne, crédit travaux, arrhes ou acompte : quand vous pouvez annuler un devis signé, et ce que ça coûte.",
+ desc="Signé à domicile, en magasin, sur un salon ou en ligne, avec un crédit : quand annuler un devis signé est possible, et ce que ça coûte.",
  lead="Vous avez signé, et vous le regrettez. Tout dépend d'un détail que l'on oublie souvent : l'endroit où vous avez signé.",
  readtime=7,
  body='''<h2>Signé chez vous : 14 jours pour changer d'avis</h2>
@@ -169,3 +169,182 @@ GUIDE_FAQS["guide-annuler-devis-signe-retractation"] = [
  ("Que se passe-t-il si j'annule un devis signé en magasin ?",
   "Vous n'avez pas de droit de rétractation. Si vous avez versé des arrhes, vous les perdez. Avec un acompte, le contrat est ferme et l'entreprise peut demander une indemnisation."),
 ]
+
+# ---------------------------------------------------------------- Pages par type de travaux
+# (slug, title, h1, desc, lead, body sans le bloc CTA, kicker, nom du service, FAQ, libellé court, résumé carte)
+JOB_PAGES = []
+
+JOB_PAGES.append(dict(
+ slug="analyse-devis-cuisine",
+ title="Analyse de devis cuisine par un ingénieur BTP",
+ h1="Analyse de devis cuisine",
+ desc="TVA 10 % ou 20 %, raccordements, circuits électriques, hotte, dépose, prise de cotes : ce qu'un ingénieur BTP vérifie sur un devis de cuisine.",
+ lead="Un devis de cuisine mélange du mobilier, de l'électroménager et des travaux. C'est là que se cachent les erreurs de TVA et les raccordements oubliés.",
+ kicker="Cuisine", cta="de cuisine", service="Analyse de devis de cuisine",
+ card="TVA mixte, raccordements, circuits spécialisés, hotte.",
+ body="""<h2>La TVA : 10 % pour certains éléments, 20 % pour d'autres</h2>
+<p>Dans un logement achevé depuis plus de 2 ans, une cuisine posée par une entreprise n'est pas taxée d'un bloc. Selon la doctrine fiscale :</p>
+<ul><li><b>Au taux réduit (10 %)</b> : le plan de travail, l'évier, les meubles sous plan adaptés à leur emplacement et solidement fixés au bâti, et leur pose, dans le cadre d'un aménagement complet.</li>
+<li><b>Au taux normal (20 %)</b> : l'électroménager, même encastré (four, plaque, hotte, lave-vaisselle, réfrigérateur), les meubles simplement posés ou fixés pour la stabilité, et la main-d'œuvre pour les installer.</li></ul>
+<p>Un devis qui applique 10 % sur l'ensemble, ou 20 % sur tout, mérite une question. L'entreprise doit répartir le prix ligne par ligne entre les deux taux. Détails dans <a href="guide-tva-travaux-renovation.html">le guide TVA</a>.</p>
+<h2>Les points techniques à retrouver sur le devis</h2>
+<ul><li><b>La prise de cotes sur place</b>, avant fabrication, par l'entreprise qui s'engage sur les dimensions.</li>
+<li><b>La dépose et l'évacuation de l'ancienne cuisine</b> : souvent oubliées, elles reviennent en supplément.</li>
+<li><b>Les raccordements</b> : arrivées d'eau, évacuation, et qui les réalise (le cuisiniste, un plombier, vous ?).</li>
+<li><b>L'électricité</b> : la plaque de cuisson exige un circuit dédié (32 A en monophasé) et le four, le lave-vaisselle et le lave-linge ont chacun leur circuit. Si votre tableau ne les a pas, le devis doit le prévoir.</li>
+<li><b>La hotte</b> : extraction vers l'extérieur (avec la gaine et la traversée de mur) ou recyclage. Une hotte à extraction sans gaine prévue, c'est un supplément assuré.</li>
+<li><b>La crédence et les finitions</b> : plinthes, joues, fileurs, éclairage sous meuble.</li>
+<li><b>Les références exactes</b> de l'électroménager et du plan de travail, pour comparer.</li></ul>
+<h2>Signé en magasin ou sur un salon : pas de rétractation</h2>
+<p>La plupart des cuisines se signent en magasin ou sur une foire. Dans ces deux cas, il n'y a <strong>pas de délai de rétractation</strong> légal : relisez le devis avant de signer, pas après. Voir <a href="guide-annuler-devis-signe-retractation.html">le guide sur l'annulation d'un devis</a>. Le contrat doit aussi indiquer une date ou un délai de livraison.</p>
+<h2>Exemple de ligne à faire préciser</h2>
+<p>« Pose et raccordements : forfait 1 200 € TTC. » Raccordement électrique compris ou non ? Création des circuits spécialisés ? Évacuation de la hotte ? À demander : la liste des raccordements inclus, et le taux de TVA appliqué à chaque partie.</p>
+""",
+ faq=[
+  ("Quelle TVA s'applique à une cuisine équipée ?",
+   "Dans un logement de plus de 2 ans, 10 % sur les éléments incorporés au bâti (plan de travail, évier, meubles sous plan fixés et adaptés) et leur pose, 20 % sur l'électroménager, même encastré, et sur les meubles simplement posés."),
+  ("La plaque de cuisson a-t-elle besoin d'un circuit électrique dédié ?",
+   "Oui. La norme NF C 15-100 impose un circuit spécialisé pour la plaque de cuisson (32 A en monophasé), et un circuit chacun pour le four et le lave-vaisselle. Vérifiez que le devis le prévoit si votre installation ne les a pas."),
+  ("Peut-on annuler une cuisine commandée en magasin ?",
+   "Non, il n'y a pas de délai de rétractation légal pour un achat en magasin ou sur une foire. Seule une clause du contrat, ou un crédit affecté auquel vous renoncez, permet d'annuler sans frais."),
+ ],
+))
+
+JOB_PAGES.append(dict(
+ slug="analyse-devis-electricite",
+ title="Analyse de devis électricité par un ingénieur BTP",
+ h1="Analyse de devis électricité",
+ desc="Norme NF C 15-100, tableau, différentiels, circuits spécialisés, terre, Consuel : ce qu'un ingénieur BTP vérifie sur un devis de rénovation électrique.",
+ lead="« Mise aux normes de l'installation : 6 500 € » ne dit rien de ce que vous allez obtenir. Un devis d'électricité se lit en nombre de circuits, de points et de protections.",
+ kicker="Électricité", cta="d'électricité", service="Analyse de devis d'électricité",
+ card="Tableau, différentiels, circuits, terre, Consuel.",
+ body="""<h2>La référence : la norme NF C 15-100</h2>
+<p>Une nouvelle version de la norme a été publiée en 2024. Elle s'applique aux travaux dont le permis, la déclaration ou le contrat est postérieur au 31 août 2025. Elle n'oblige pas à refaire une installation existante, mais tout ce qui est créé ou refait doit la respecter. Le devis devrait indiquer la version appliquée.</p>
+<h2>Les points à retrouver sur le devis</h2>
+<ul><li><b>Le tableau électrique</b> : type, nombre de rangées, et au moins 20 % de place libre pour les évolutions en maison individuelle. Il doit être placé dans une gaine technique logement, manettes entre 0,90 et 1,80 m du sol.</li>
+<li><b>Les interrupteurs différentiels 30 mA</b> : au moins deux, avec leur type. Le type A est exigé pour la plaque de cuisson, le lave-linge et une borne de recharge.</li>
+<li><b>Les circuits spécialisés</b> : plaque, four, lave-linge, lave-vaisselle, chauffe-eau, et le cas échéant pompe à chaleur ou borne de recharge.</li>
+<li><b>Le nombre de prises et de points lumineux par pièce</b>, plutôt qu'un total global.</li>
+<li><b>La prise de terre</b> et sa mesure, et la liaison équipotentielle de la salle de bain.</li>
+<li><b>Les saignées, rebouchages et finitions</b> : qui les fait, et sont-ils compris ?</li></ul>
+<h2>Le Consuel : obligatoire dans certains cas</h2>
+<p>L'attestation de conformité visée par le Consuel est exigée avant la mise sous tension par le gestionnaire de réseau pour une installation neuve, ou pour une rénovation complète lorsque l'alimentation a été coupée par le gestionnaire. Dans de nombreux départements, un arrêté préfectoral l'impose aussi pour toute rénovation totale. Si votre chantier est concerné, le devis doit dire qui la demande et qui la paie.</p>
+<h2>La TVA</h2>
+<p>Dans un logement achevé depuis plus de 2 ans, les travaux d'électricité relèvent en principe du taux de 10 %.</p>
+<h2>Exemple de ligne à faire préciser</h2>
+<p>« Remplacement du tableau électrique : forfait. » Combien de rangées, combien de différentiels et de quel type, combien de disjoncteurs, mise à la terre vérifiée ? À demander : le schéma du tableau prévu, circuit par circuit.</p>
+""",
+ faq=[
+  ("Faut-il refaire toute l'installation électrique aux normes ?",
+   "Non, la norme NF C 15-100 n'est pas rétroactive. Mais tout ce qui est créé ou refait doit la respecter, et une installation dangereuse (absence de terre, pas de différentiel 30 mA) doit être sécurisée en priorité."),
+  ("Quand l'attestation Consuel est-elle obligatoire ?",
+   "Pour une installation neuve, et pour une rénovation complète quand le gestionnaire de réseau a coupé l'alimentation. De nombreux départements l'imposent aussi pour toute rénovation totale. Une rénovation partielle n'en demande en principe pas."),
+  ("Comment comparer deux devis d'électricité ?",
+   "Comparez le nombre de circuits, de prises et de points lumineux, le nombre et le type de différentiels, et ce qui est compris en saignées et finitions. Un prix global sans ce détail ne se compare pas."),
+ ],
+))
+
+JOB_PAGES.append(dict(
+ slug="analyse-devis-fenetres",
+ title="Analyse de devis fenêtres par un ingénieur BTP",
+ h1="Analyse de devis fenêtres",
+ desc="Uw et Sw, TVA 5,5 %, pose en rénovation ou dépose totale, entrées d'air, aides 2026 : ce qu'un ingénieur BTP vérifie sur un devis de fenêtres.",
+ lead="Deux devis de fenêtres au même prix peuvent cacher des performances, une pose et une TVA très différentes. Et les aides ont changé à l'automne 2026.",
+ kicker="Fenêtres", cta="de fenêtres", service="Analyse de devis de fenêtres",
+ card="Uw/Sw, type de pose, entrées d'air, TVA, aides 2026.",
+ body="""<h2>Les performances : Uw et Sw</h2>
+<p>Le devis doit indiquer, pour chaque fenêtre, le <strong>coefficient Uw</strong> (isolation de la fenêtre entière, plus il est bas mieux c'est) et le <strong>facteur solaire Sw</strong> (apports de chaleur du soleil). Pour bénéficier de la TVA à 5,5 %, il faut au minimum Uw ≤ 1,3 W/m².K et Sw ≥ 0,3, ou Uw ≤ 1,7 et Sw ≥ 0,36. Sans ces valeurs, le taux réduit n'est pas justifié.</p>
+<h2>Pose en rénovation ou dépose totale</h2>
+<ul><li><b>Pose en rénovation</b> : la nouvelle fenêtre se fixe sur l'ancien dormant conservé. C'est plus rapide et moins cher, mais la surface vitrée diminue, et l'état du dormant conservé conditionne le résultat.</li>
+<li><b>Dépose totale</b> : l'ancien dormant est retiré. Plus de travaux (reprises de maçonnerie, d'enduit, de tableaux), mais un meilleur clair de vitrage et une étanchéité refaite à neuf.</li></ul>
+<p>Le devis doit dire clairement lequel des deux est prévu, et ce qui est compris en finitions intérieures et extérieures.</p>
+<h2>Ne pas oublier la ventilation</h2>
+<p>Des fenêtres neuves rendent le logement beaucoup plus étanche à l'air. Si le logement a une ventilation mécanique, les menuiseries des pièces principales doivent en général recevoir des <strong>entrées d'air</strong>. Sans ventilation adaptée, attention à la condensation et aux moisissures.</p>
+<h2>Les aides en 2026 : ce qui a changé</h2>
+<p>Depuis le 1er septembre 2026, <strong>MaPrimeRénov' par geste ne finance plus le remplacement des fenêtres</strong> pour les nouvelles demandes. Les fenêtres restent finançables dans une rénovation d'ampleur, et l'éco-prêt à taux zéro reste possible. La prime CEE ne concerne plus que le remplacement de fenêtres en <strong>simple vitrage</strong>, dormant compris, par une entreprise RGE. Méfiez-vous d'un devis qui déduit une aide sans préciser laquelle.</p>
+<h2>Les démarches</h2>
+<p>Changer l'aspect extérieur (matériau, couleur, dessin des petits-bois) demande en principe une déclaration préalable en mairie, et des règles plus strictes s'appliquent en secteur protégé.</p>
+<h2>Exemple de ligne à faire préciser</h2>
+<p>« Fourniture et pose de 6 fenêtres PVC double vitrage : 7 200 € TTC. » Quelles dimensions, quel Uw, quel Sw, quelle pose, quelles finitions ? À demander : une ligne par fenêtre avec ses dimensions et ses performances, et le type de pose.</p>
+""",
+ faq=[
+  ("Quelles performances pour la TVA à 5,5 % sur des fenêtres ?",
+   "Uw ≤ 1,3 W/m².K et Sw ≥ 0,3, ou Uw ≤ 1,7 W/m².K et Sw ≥ 0,36, dans un logement achevé depuis plus de 2 ans. Ces valeurs doivent figurer sur le devis."),
+  ("MaPrimeRénov' finance-t-elle encore les fenêtres ?",
+   "Plus en parcours par geste pour les demandes déposées depuis le 1er septembre 2026. Les fenêtres restent finançables dans une rénovation d'ampleur, et via l'éco-prêt à taux zéro. La prime CEE est réservée au remplacement de fenêtres en simple vitrage."),
+  ("Pose en rénovation ou dépose totale : que choisir ?",
+   "La pose en rénovation est moins chère mais réduit la surface vitrée et dépend de l'état de l'ancien dormant. La dépose totale coûte plus cher mais donne une meilleure luminosité et une étanchéité refaite à neuf."),
+ ],
+))
+
+JOB_PAGES.append(dict(
+ slug="analyse-devis-extension",
+ title="Analyse de devis extension de maison par un ingénieur BTP",
+ h1="Analyse de devis extension",
+ desc="Permis ou déclaration, architecte, RE2020, fondations, TVA à 20 %, dommages-ouvrage : ce qu'un ingénieur BTP vérifie sur un devis d'extension de maison.",
+ lead="Une extension, c'est un petit bâtiment neuf collé à l'ancien. Le devis doit couvrir tout ce qui va des fondations au raccordement avec l'existant, et c'est là que les oublis coûtent cher.",
+ kicker="Extension", cta="d'extension", service="Analyse de devis d'extension",
+ card="Démarches, fondations, jonction avec l'existant, RE2020.",
+ body="""<h2>Les démarches avant tout</h2>
+<ul><li><b>Moins de 5 m²</b> : aucune formalité en général.</li>
+<li><b>De 5 à 20 m²</b> : déclaration préalable, et jusqu'à 40 m² en zone urbaine d'un PLU.</li>
+<li><b>Au-delà</b> : permis de construire.</li>
+<li><b>Plus de 150 m² au total après travaux</b> : permis de construire et recours obligatoire à un architecte.</li></ul>
+<p>Le devis ne doit pas démarrer avant l'autorisation. Vérifiez qui prépare le dossier et si ce coût est inclus.</p>
+<h2>La réglementation thermique</h2>
+<p>Pour une maison individuelle, une extension de moins de 50 m² doit respecter des exigences élément par élément (isolation, menuiseries, ventilation). De 50 à 80 m², une partie des indicateurs de la RE2020 s'applique, et au-delà de 80 m², la RE2020 complète. Le devis doit préciser les isolants et leurs performances, comme pour une construction neuve.</p>
+<h2>Les postes à retrouver sur le devis</h2>
+<ul><li><b>Les terrassements et les fondations</b>, dimensionnés selon le sol. Dans les zones exposées au retrait-gonflement des argiles, demandez sur quelle base les fondations ont été conçues.</li>
+<li><b>La jonction avec l'existant</b> : ouverture dans le mur porteur (avec son linteau ou sa poutre et son étaiement), raccord de toiture, étanchéité entre l'ancien et le neuf. C'est le poste le plus souvent sous-estimé.</li>
+<li><b>Les réseaux</b> : prolongement de l'électricité, du chauffage, de la plomberie et des évacuations.</li>
+<li><b>Le clos et couvert complet</b> : murs, isolation, menuiseries, toiture, gouttières.</li>
+<li><b>Les finitions intérieures</b> : sont-elles comprises, ou s'arrête-t-on au hors d'eau, hors d'air ?</li></ul>
+<h2>TVA, assurances et taxe</h2>
+<p>Une extension qui augmente la surface de plancher de plus de 10 % est au <strong>taux de TVA de 20 %</strong>, même dans un logement ancien. Exigez l'attestation décennale de chaque entreprise (<a href="guide-verifier-assurance-decennale.html">voir le guide</a>), et posez-vous la question de l'assurance dommages-ouvrage, obligatoire pour ce type de travaux. Prévoyez aussi la taxe d'aménagement, calculée sur la surface créée.</p>
+<h2>Exemple de ligne à faire préciser</h2>
+<p>« Création d'une ouverture dans le mur existant : forfait. » Quelle largeur, quel linteau ou quelle poutre, qui le dimensionne, étaiement compris ? À demander : la description de la reprise en sous-œuvre et la note de calcul si le mur est porteur.</p>
+""",
+ faq=[
+  ("Faut-il un permis de construire pour une extension ?",
+   "Au-delà de 20 m² (40 m² en zone urbaine d'un PLU), oui. En dessous, une déclaration préalable suffit en général, et rien n'est demandé sous 5 m². Si la surface totale dépasse 150 m² après travaux, le permis et l'architecte sont obligatoires."),
+  ("Quelle TVA pour une extension de maison ?",
+   "20 % si l'extension augmente la surface de plancher de plus de 10 %, même dans un logement ancien. Les taux réduits ne s'appliquent pas dans ce cas."),
+  ("Quel poste est le plus souvent oublié sur un devis d'extension ?",
+   "La jonction avec l'existant : ouverture dans le mur porteur avec sa poutre et son étaiement, raccord de toiture et étanchéité entre l'ancien et le neuf."),
+ ],
+))
+
+JOB_PAGES.append(dict(
+ slug="analyse-devis-ravalement-facade",
+ title="Analyse de devis ravalement de façade par un ingénieur BTP",
+ h1="Analyse de devis ravalement de façade",
+ desc="Surfaces, diagnostic du support, fissures, enduit, échafaudage, obligation d'isoler, TVA : ce qu'un ingénieur BTP vérifie sur un devis de ravalement.",
+ lead="Sur un ravalement, l'écart entre deux devis vient souvent des mètres carrés comptés et de ce qui est fait avant la peinture. Ce sont les deux premières choses à vérifier.",
+ kicker="Ravalement", cta="de ravalement", service="Analyse de devis de ravalement de façade",
+ card="Surfaces, fissures, enduit, échafaudage, isolation.",
+ body="""<h2>Les surfaces : ouvertures déduites ?</h2>
+<p>Le ravalement se facture au m². Le devis doit indiquer la surface de chaque façade et préciser si les ouvertures (fenêtres, portes) sont déduites. Recalculez-la grossièrement : longueur × hauteur, moins les ouvertures. Un écart de 15 % sur les surfaces, c'est 15 % sur la facture.</p>
+<h2>Ce qui se passe avant la finition</h2>
+<ul><li><b>Le diagnostic du support</b> : nature du mur, état de l'enduit existant, humidité. Il conditionne tout le reste.</li>
+<li><b>Le nettoyage</b> : lavage, traitement anti-mousse, décapage si nécessaire.</li>
+<li><b>Le traitement des fissures</b> : au mètre linéaire, avec la méthode (simple rebouchage ou ouverture, pontage, armature). Un forfait « reprise des fissures » est à faire préciser.</li>
+<li><b>La finition</b> : peinture, revêtement semi-épais ou enduit, avec la marque, la référence et la classe du produit.</li>
+<li><b>Les points singuliers</b> : appuis de fenêtre, corniches, soubassement, descentes d'eau à démonter et reposer.</li></ul>
+<h2>L'échafaudage et le chantier</h2>
+<p>Montage, démontage, durée de location, protections des sols et des menuiseries, nettoyage final. Si l'échafaudage empiète sur la voie publique, une autorisation de la mairie est nécessaire : le devis doit dire qui la demande.</p>
+<h2>Obligation d'isoler et démarches</h2>
+<p>Lorsque l'enduit est refait ou le parement remplacé sur <strong>plus de 50 % d'une façade</strong> (hors ouvertures), la loi impose en principe d'en profiter pour isoler, sauf exceptions (impossibilité technique, contrainte patrimoniale, retour sur investissement de plus de 10 ans). Un simple nettoyage ou une remise en peinture ne déclenche pas cette obligation. Le ravalement demande une déclaration préalable en secteur protégé ou si la commune l'impose : renseignez-vous en mairie.</p>
+<h2>La TVA</h2>
+<p>Dans un logement achevé depuis plus de 2 ans, un ravalement relève en principe du taux de 10 %. Une isolation thermique par l'extérieur peut être à 5,5 % si l'isolant atteint une résistance thermique R ≥ 3,7 m².K/W. Attention : depuis le 1er septembre 2026, l'isolation des murs n'est plus aidée par MaPrimeRénov' par geste.</p>
+<h2>Exemple de ligne à faire préciser</h2>
+<p>« Ravalement complet façades : 180 m², 48 € le m². » Quelles façades, ouvertures déduites ou non, quel traitement des fissures, quelle finition, échafaudage compris ? À demander : une ligne par opération, avec les surfaces façade par façade.</p>
+""",
+ faq=[
+  ("Faut-il isoler lors d'un ravalement de façade ?",
+   "En principe oui, si l'enduit est refait ou le parement remplacé sur plus de 50 % de la façade hors ouvertures, sauf exceptions (impossibilité technique, contrainte patrimoniale ou retour sur investissement trop long). Un nettoyage ou une peinture ne déclenche pas cette obligation."),
+  ("Faut-il une autorisation pour un ravalement ?",
+   "Une déclaration préalable est nécessaire en secteur protégé ou si la commune l'a imposée par délibération. Si l'échafaudage empiète sur la voie publique, une autorisation de la mairie est aussi requise."),
+  ("Pourquoi deux devis de ravalement sont-ils si différents ?",
+   "Le plus souvent à cause des surfaces comptées (ouvertures déduites ou non) et de la préparation : nettoyage, traitement des fissures, type de finition. Comparez poste par poste et recalculez les surfaces."),
+ ],
+))

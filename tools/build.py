@@ -1,4 +1,6 @@
-import json, html, os, re
+import json, html, os, re, sys
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+import nouveaux_guides as NG  # guides et pages ajoutés en octobre 2026
 OUT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))  # racine du site
 GC = '<script data-goatcounter="https://contreplan.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>'
 COMEUP = "https://comeup.com/fr/@contreplan"
@@ -85,7 +87,7 @@ def FOOTER(root=""):
     return f"""<footer class="cp-foot"><div class="cp-foot-in">
 <div class="cp-foot-brand"><div class="cp-foot-logo">CONTRE-PLAN</div><p>Votre devis de travaux relu par un ingénieur BTP avant que vous signiez. 100 % à distance, indépendant de tout artisan.</p><div class="cp-socs">{soc}</div></div>
 <div class="cp-foot-col"><p>Le service</p>{L("methode.html","Ma méthode")}{L("engagements.html","Mes engagements")}{L("exemple-rapport-contre-plan.pdf","Exemple de rapport","telechargement-exemple-rapport")}{L("index.html#tarifs","Tarifs")}{L("contact.html","Contact")}<a href="{COMEUP}" data-goatcounter-click="clic-comeup">Commander sur ComeUp</a></div>
-<div class="cp-foot-col"><p>Par travaux</p>{L("analyse-devis-salle-de-bain.html","Salle de bain")}{L("analyse-devis-pompe-a-chaleur.html","Pompe à chaleur")}{L("analyse-devis-isolation.html","Isolation")}{L("analyse-devis-toiture.html","Toiture")}{L("cas-fictifs.html","Cas fictifs")}</div>
+<div class="cp-foot-col"><p>Par travaux</p>{L("analyse-devis-salle-de-bain.html","Salle de bain")}{L("analyse-devis-pompe-a-chaleur.html","Pompe à chaleur")}{L("analyse-devis-isolation.html","Isolation")}{L("analyse-devis-toiture.html","Toiture")}{''.join(L(j['slug'] + '.html', j['kicker']) for j in NG.JOB_PAGES)}{L("cas-fictifs.html","Cas fictifs")}</div>
 <div class="cp-foot-col"><p>Ressources</p>{L("guides.html","Guides")}{L("comparer-ses-devis.html","Tableau comparatif")}{L("modeles-messages-artisan.html","Modèles de messages")}{L("lexique-devis-travaux.html","Lexique")}{L("checklist-devis-travaux.pdf","Check-list PDF","telechargement-checklist")}<a href="{NEWS}" target="_blank" rel="noopener" data-goatcounter-click="clic-conseil-du-mois">Le conseil du mois par email</a></div>
 </div><div class="cp-foot-bottom"><span>© 2026 Contre-Plan</span><a href="{root}mentions-legales.html" class="cp-ml">Mentions légales</a></div></footer>"""
 
@@ -507,6 +509,11 @@ article("guide-reception-travaux-reserves",
  7, date="2026-10-25")
 
 # ---------- Pages Méthode et Engagements
+# ---------- Nouveaux guides (tools/nouveaux_guides.py)
+FAQS.update(NG.GUIDE_FAQS)
+for g in NG.GUIDES:
+    article(g["slug"], g["title"], g["h1"], g["desc"], g["lead"], g["body"], g["readtime"], date="2026-10-26")
+
 page("methode",
  "Ma méthode : ce que je vérifie sur un devis | Contre-Plan",
  "Ma méthode : ce que je vérifie sur chaque devis",
@@ -645,6 +652,11 @@ page("analyse-devis-toiture",
 """ + cta_type("de toiture"),
  "Toiture")
 
+# ---------- Nouvelles pages par type de travaux (tools/nouveaux_guides.py)
+for j in NG.JOB_PAGES:
+    JOBS[j["slug"]] = (j["service"], j["faq"])
+    page(j["slug"], j["title"], j["h1"], j["desc"], j["lead"], j["body"] + cta_type(j["cta"]), j["kicker"])
+
 # ---------- Lexique
 LEX = [
  ("Acompte", "Somme versée à la signature. Elle engage les deux parties : vous ne pouvez pas renoncer en la perdant, comme avec des arrhes."),
@@ -779,7 +791,8 @@ t_cards = "".join(rcard(h_, "Par travaux", t_, d_, "Ce que je vérifie") for h_,
  ("analyse-devis-salle-de-bain.html", "Salle de bain", "Étanchéité, dépose, plomberie au forfait, volumes électriques."),
  ("analyse-devis-pompe-a-chaleur.html", "Pompe à chaleur", "Dimensionnement, liaisons, condensats, RGE et TVA."),
  ("analyse-devis-isolation.html", "Isolation", "Résistance thermique, surface, pare-vapeur, points singuliers."),
- ("analyse-devis-toiture.html", "Toiture", "Surface, échafaudage, zinguerie, charpente, amiante.")])
+ ("analyse-devis-toiture.html", "Toiture", "Surface, échafaudage, zinguerie, charpente, amiante.")] + [
+ (j["slug"] + ".html", j["kicker"], j["card"]) for j in NG.JOB_PAGES])
 o_cards = "".join([
  rcard("index.html#test", "Outil gratuit", "Test : votre devis est-il complet ?", "Six questions pour repérer en une minute ce qu'il faut faire préciser.", "Faire le test"),
  rcard("comparer-ses-devis.html", "Outil gratuit", "Tableau comparatif de devis", "Excel et PDF : totaux, TVA, acompte et postes manquants calculés pour vous.", "Télécharger"),

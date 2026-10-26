@@ -41,3 +41,6 @@ Le bouton « Une question ? » propose deux chemins : une orientation en 3 quest
 
 ## IndexNow
 À chaque push sur `main` qui modifie des pages, `.github/workflows/indexnow.yml` attend le déploiement puis signale les URL modifiées à IndexNow (Bing, Yandex, Seznam…). La clé est le fichier `d3127bda26f9f2f864790c6bf08ae400.txt` à la racine : ne pas le supprimer. Pour renvoyer toutes les pages : onglet Actions, workflow « IndexNow », « Run workflow ».
+
+## Guides et pages ajoutés en octobre 2026
+Les 4 guides (décennale, négocier, dépassement de devis, annulation) et les 5 pages par type de travaux (cuisine, électricité, fenêtres, extension, ravalement) sont rédigés dans `tools/nouveaux_guides.py` (listes `GUIDES` et `JOB_PAGES`, FAQ comprises), et générés par `tools/build.py`. Ils apparaissent automatiquement dans la page Guides, le pied de page des pages générées et le sitemap. Sur `index.html` (grille « Par type de chantier » et pied de page) et dans `llms.txt`, les liens sont écrits en dur.
