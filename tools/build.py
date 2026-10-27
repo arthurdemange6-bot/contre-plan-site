@@ -223,8 +223,34 @@ def links_html(slug):
     items = " · ".join(f'<a href="{u}" target="_blank" rel="noopener">{html.escape(t)}</a>' for u, t in L)
     return f'<p class="cp-src"><strong>Sources officielles pour aller plus loin :</strong> {items}</p>'
 
+# Liens internes ajoutés en fin de page « analyse de devis » (maillage vers les guides récents)
+SEE_ALSO = {
+    "guide-verifier-assurance-decennale": "vérifier l'assurance décennale de l'artisan",
+    "guide-annuler-devis-signe-retractation": "annuler un devis signé ou se rétracter",
+    "guide-negocier-devis-travaux": "négocier un devis sans se fâcher avec l'artisan",
+}
+SEE_ALSO_PAGES = {
+    "analyse-devis-cuisine": ["guide-verifier-assurance-decennale", "guide-negocier-devis-travaux"],
+    "analyse-devis-electricite": ["guide-verifier-assurance-decennale", "guide-negocier-devis-travaux"],
+    "analyse-devis-extension": ["guide-negocier-devis-travaux"],
+    "analyse-devis-fenetres": ["guide-verifier-assurance-decennale", "guide-annuler-devis-signe-retractation"],
+    "analyse-devis-ravalement-facade": ["guide-verifier-assurance-decennale", "guide-negocier-devis-travaux"],
+    "analyse-devis-salle-de-bain": ["guide-verifier-assurance-decennale", "guide-negocier-devis-travaux"],
+    "analyse-devis-pompe-a-chaleur": ["guide-verifier-assurance-decennale", "guide-annuler-devis-signe-retractation"],
+    "analyse-devis-isolation": ["guide-verifier-assurance-decennale", "guide-annuler-devis-signe-retractation"],
+    "analyse-devis-toiture": ["guide-verifier-assurance-decennale", "guide-negocier-devis-travaux"],
+}
+
+def see_also_html(slug, body):
+    items = [g for g in SEE_ALSO_PAGES.get(slug, []) if g + ".html" not in body]
+    if not items:
+        return ""
+    return "<p>À lire aussi : " + ", ".join(f'<a href="{g}.html">{SEE_ALSO[g]}</a>' for g in items) + ".</p>"
+
+    block = see_also_html(slug, body) + ("\n" if slug in SEE_ALSO_PAGES else "") + links_html(slug)
+    block = block.strip()
 def with_links(body, slug, before='<p style="font-size: 15px'):
-    block = links_html(slug)
+    block = (see_also_html(slug, body) + "\n" + links_html(slug)).strip()
     if not block:
         return body
     i = body.rfind(before)
