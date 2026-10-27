@@ -89,7 +89,7 @@ def FOOTER(root=""):
 <div class="cp-foot-col"><p>Le service</p>{L("methode.html","Ma méthode")}{L("engagements.html","Mes engagements")}{L("exemple-rapport-contre-plan.pdf","Exemple de rapport","telechargement-exemple-rapport")}{L("index.html#tarifs","Tarifs")}{L("contact.html","Contact")}<a href="{COMEUP}" data-goatcounter-click="clic-comeup">Commander sur ComeUp</a></div>
 <div class="cp-foot-col"><p>Par travaux</p>{L("analyse-devis-salle-de-bain.html","Salle de bain")}{L("analyse-devis-pompe-a-chaleur.html","Pompe à chaleur")}{L("analyse-devis-isolation.html","Isolation")}{L("analyse-devis-toiture.html","Toiture")}{''.join(L(j['slug'] + '.html', j['kicker']) for j in NG.JOB_PAGES)}{L("cas-fictifs.html","Cas fictifs")}</div>
 <div class="cp-foot-col"><p>Ressources</p>{L("guides.html","Guides")}{L("comparer-ses-devis.html","Tableau comparatif")}{L("modeles-messages-artisan.html","Modèles de messages")}{L("lexique-devis-travaux.html","Lexique")}{L("checklist-devis-travaux.pdf","Check-list PDF","telechargement-checklist")}<a href="{NEWS}" target="_blank" rel="noopener" data-goatcounter-click="clic-conseil-du-mois">Le conseil du mois par email</a></div>
-</div><div class="cp-foot-bottom"><span>© 2026 Contre-Plan</span><a href="{root}mentions-legales.html" class="cp-ml">Mentions légales</a></div></footer>"""
+</div><div class="cp-foot-bottom"><span>© 2026 Contre-Plan</span><a href="{root}mentions-legales.html" class="cp-ml">Mentions légales</a><a href="{root}cgv.html" class="cp-ml">CGV</a><a href="{root}confidentialite.html" class="cp-ml">Confidentialité</a></div></footer>"""
 
 def footer(root=""):
     return FOOTER(root) + f"""
@@ -938,6 +938,15 @@ p404 = head("Page introuvable | Contre-Plan", "Cette page n'existe pas ou a ét�
 </main>
 ''' + footer(root="/")
 open(os.path.join(OUT, "404.html"), "w").write(p404)
+
+# ---------- pages légales (CGV, confidentialité) : noindex, hors sitemap
+import pages_legales as PL
+for _slug, _title, _h1, _desc, _lead, _body in [
+    ("cgv", "Conditions générales de vente | Contre-Plan", "Conditions générales de vente", "Conditions générales de vente des analyses de devis de travaux Contre-Plan : prestation, prix, délais, rétractation, responsabilité, médiation.", "Ce que comprend l'analyse de votre devis, ce qu'elle ne comprend pas, et vos droits.", PL.CGV_BODY),
+    ("confidentialite", "Politique de confidentialité | Contre-Plan", "Politique de confidentialité", "Quelles données Contre-Plan collecte, pourquoi, combien de temps elles sont conservées et comment exercer vos droits.", "Vos devis et vos coordonnées servent uniquement à vous répondre et à réaliser l'analyse.", PL.CONF_BODY)]:
+    _url = f"https://contre-plan.com/{_slug}.html"
+    _out = head(_title, _desc, _url).replace('<meta property="og:type" content="article">','<meta name="robots" content="noindex">') + pagehero("Informations légales", _h1, _lead, None, [("Accueil", "index.html"), (_h1, None)]) + layout(_body, False) + footer()
+    open(os.path.join(OUT, _slug + ".html"), "w").write(_out)
 
 # ---------- sitemap
 urls = [("", "1.0"), ("guides.html","0.8")] + [(s+".html","0.7") for s,_,_,_ in ARTICLES] + [(s+".html","0.7") for s in PAGES] + [("checklist-devis-travaux.pdf","0.6"),("exemple-rapport-contre-plan.pdf","0.6"),("tableau-comparatif-devis.pdf","0.5")]
