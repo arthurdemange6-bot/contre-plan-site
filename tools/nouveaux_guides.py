@@ -25,15 +25,15 @@ GUIDES.append(dict(
 <ol><li><strong>Le nom de l'assuré</strong> : c'est exactement l'entreprise qui signe le devis (même raison sociale, même numéro SIREN). Une attestation au nom d'un confrère ou d'une ancienne société ne vous couvre pas.</li>
 <li><strong>Les activités couvertes</strong> : l'attestation liste des activités précises. Une attestation « plomberie » ne couvre pas la pose de carrelage ou la reprise d'une charpente. Chaque poste important du devis doit correspondre à une activité listée.</li>
 <li><strong>La période de validité</strong> : c'est l'assurance en vigueur <strong>à l'ouverture du chantier</strong> qui compte. Si l'attestation expire avant le démarrage prévu, demandez la nouvelle.</li>
-<li><strong>La couverture géographique</strong> : la plupart des contrats couvrent la France métropolitaine. Vérifiez-le si vos travaux sont ailleurs.</li>
+<li><strong>La couverture géographique</strong> : elle porte en général sur la France métropolitaine. Vérifiez qu'elle inclut le lieu de vos travaux.</li>
 <li><strong>L'assureur</strong> : son nom et ses coordonnées doivent figurer. Méfiez-vous des assureurs étrangers inconnus : plusieurs ont fait faillite ces dernières années, laissant les clients sans couverture. En cas de doute, appelez l'assureur avec le numéro de contrat.</li></ol>
 <h2>Les travaux qui ne sont pas concernés</h2>
 <p>Tous les travaux ne relèvent pas de la décennale. La peinture purement décorative ou le simple entretien, par exemple, n'en dépendent pas forcément. En revanche, dès que les travaux touchent au clos et couvert, à la structure, à l'étanchéité ou à des équipements indissociables du bâti (plomberie encastrée, chape, carrelage collé), l'attestation est attendue.</p>
 <h2>Et l'assurance dommages-ouvrage ?</h2>
-<p>C'est l'assurance du <strong>maître d'ouvrage</strong>, donc la vôtre. Elle préfinance les réparations relevant de la décennale sans attendre de savoir qui est responsable. Elle est obligatoire avant des travaux de construction, y compris pour un particulier, mais le particulier qui fait construire pour lui-même n'encourt pas de sanction pénale s'il ne la souscrit pas. En pratique, elle concerne surtout les extensions et les rénovations lourdes, et son coût est élevé : posez la question pour ces chantiers-là.</p>
+<p>C'est l'assurance du <strong>maître d'ouvrage</strong>, donc la vôtre. Elle préfinance les réparations relevant de la décennale sans attendre de savoir qui est responsable. Elle est obligatoire avant des travaux de construction, y compris pour un particulier, mais le particulier qui fait construire pour lui-même n'encourt pas de sanction pénale s'il ne la souscrit pas. En pratique, elle concerne la construction d'une maison, les extensions et les rénovations lourdes (structure, étanchéité). Son coût est élevé : posez la question pour ces chantiers-là.</p>
 <h2>Ce que je vérifie sur votre devis</h2>
 <p>La présence de l'attestation, la concordance entre l'entreprise, les activités couvertes et les postes du devis, et les dates de validité. Voir aussi <a href="guide-mentions-obligatoires-devis.html">les mentions obligatoires d'un devis</a> et <a href="modeles-messages-artisan.html">le message type pour demander l'attestation</a>.</p>
-''' + SRC + '''Article d'information générale, à jour au 26 octobre 2026. Sources : articles 1792 à 1792-6 du Code civil, articles L241-1, L242-1 et L243-2 du Code des assurances, article 22-2 de la loi n° 96-603 du 5 juillet 1996, arrêté du 5 janvier 2016 (modèle d'attestation), INC (inc-conso.fr).</p>''',
+''' + SRC + '''Article d'information générale, à jour au 27 octobre 2026. Sources : articles 1792 à 1792-6 du Code civil, articles L241-1, L242-1 et L243-2 du Code des assurances, article 22-2 de la loi n° 96-603 du 5 juillet 1996, arrêté du 5 janvier 2016 (modèle d'attestation), INC (inc-conso.fr).</p>''',
 ))
 GUIDE_FAQS["guide-verifier-assurance-decennale"] = [
  ("L'attestation décennale est-elle obligatoire sur un devis ?",
@@ -59,20 +59,20 @@ GUIDES.append(dict(
 <p>Deux devis à 12 000 € et 14 000 € ne décrivent souvent pas les mêmes travaux. Mettez-les côte à côte avec <a href="comparer-ses-devis.html">le tableau comparatif gratuit</a> : vous verrez qu'un des deux oublie la dépose, l'autre compte une étanchéité complète. Le moins cher n'est pas forcément le plus avantageux une fois les oublis réintégrés.</p>
 <p>Un écart de prix sur un même poste, à prestation égale, est en revanche un vrai argument : « L'autre entreprise chiffre la même faïence, même surface, 20 % moins cher. Pouvez-vous vous aligner sur ce poste ? »</p>
 <h2>Vérifier la TVA et les aides avant de négocier</h2>
-<p>Un taux de TVA mal appliqué peut peser plus lourd qu'une remise. Dans un logement achevé depuis plus de 2 ans, la plupart des travaux relèvent du taux de 10 %, et la rénovation énergétique de 5,5 %, sous réserve d'une mention que vous certifiez sur le devis. Détails dans <a href="guide-tva-travaux-renovation.html">le guide TVA</a>.</p>
+<p>Un taux de TVA mal appliqué peut peser plus lourd qu'une remise. Dans un logement achevé depuis plus de 2 ans, la plupart des travaux relèvent du taux de 10 %, et la rénovation énergétique de 5,5 %, sous réserve d'une mention que vous certifiez sur le devis ou la facture. Détails dans <a href="guide-tva-travaux-renovation.html">le guide TVA</a>.</p>
 <p>Pour les travaux d'économie d'énergie, vérifiez aussi les aides (MaPrimeRénov', primes CEE) et la qualification RGE de l'entreprise, qui conditionne ces aides. Leurs règles ont beaucoup changé en 2026 : faites le point avec un conseiller France Rénov', gratuit, avant de signer.</p>
 <h2>Les leviers qui fonctionnent</h2>
 <ul><li><strong>Ajuster le périmètre</strong> : faire vous-même la dépose ou la peinture finale, conserver un équipement en bon état, choisir une gamme de faïence plus courante.</li>
 <li><strong>Grouper les travaux</strong> : un chantier plus gros, ou deux lots confiés à la même entreprise, réduit ses frais fixes (déplacements, installation).</li>
 <li><strong>Être souple sur la date</strong> : une entreprise qui a un trou dans son planning acceptera plus facilement un effort.</li>
-<li><strong>Négocier les conditions plutôt que le prix</strong> : un acompte plus faible (l'usage est de 20 à 30 %), un échéancier calé sur l'avancement, une retenue de garantie de 5 % jusqu'à la levée des réserves. Voir <a href="guide-acompte-paiement-devis-travaux.html">le guide sur l'acompte</a>.</li></ul>
+<li><strong>Négocier les conditions plutôt que le prix</strong> : un acompte plus faible (l'usage est d'environ 30 % à la signature), un échéancier calé sur l'avancement, une retenue de garantie de 5 % au plus, prévue au devis et consignée chez un tiers (voir <a href="guide-reception-travaux-reserves.html">le guide sur la réception</a>). Voir <a href="guide-acompte-paiement-devis-travaux.html">le guide sur l'acompte</a>.</li></ul>
 <h2>Ce qu'il ne faut pas négocier</h2>
 <p>L'étanchéité, la ventilation, la protection électrique, l'épaisseur d'isolant : ce sont les postes qui coûtent cher à reprendre et que l'entreprise sera tentée de rogner si vous serrez trop le prix global. Une remise obtenue en supprimant un poste indispensable n'est pas une économie.</p>
 <h2>Et si l'entreprise refuse ?</h2>
 <p>Un refus argumenté n'est pas mauvais signe : il montre souvent que le prix a été calculé, pas gonflé pour laisser de la marge à la négociation. Si l'écart reste important avec d'autres devis à prestation égale, demandez simplement ce qui le justifie, avec <a href="modeles-messages-artisan.html">les modèles de messages</a>.</p>
 <h2>Ce que je vérifie sur votre devis</h2>
 <p>Les quantités, les prix unitaires comparés à des ordres de grandeur récents, la TVA, les oublis et les postes à faire préciser. Le rapport se termine par les questions à poser à l'artisan, que vous pouvez utiliser telles quelles pour négocier.</p>
-''' + SRC + '''Article d'information générale, à jour au 26 octobre 2026. Sources : arrêté du 24 janvier 2017 relatif à la publicité des prix des prestations de dépannage, de réparation et d'entretien dans le secteur du bâtiment, article L111-1 du Code de la consommation, articles 278-0 bis A et 279-0 bis du Code général des impôts, ecologie.gouv.fr (MaPrimeRénov' 2026).</p>''',
+''' + SRC + '''Article d'information générale, à jour au 27 octobre 2026. Sources : arrêté du 24 janvier 2017 relatif à la publicité des prix des prestations de dépannage, de réparation et d'entretien dans le secteur du bâtiment, article L111-1 du Code de la consommation, articles 278-0 bis A et 279-0 bis du Code général des impôts, ecologie.gouv.fr (MaPrimeRénov' 2026).</p>''',
 ))
 GUIDE_FAQS["guide-negocier-devis-travaux"] = [
  ("Peut-on négocier un devis de travaux ?",
@@ -80,7 +80,7 @@ GUIDE_FAQS["guide-negocier-devis-travaux"] = [
  ("Un artisan peut-il faire payer son devis ?",
   "Oui, à condition de vous en informer avant de l'établir. Son montant est souvent déduit si vous signez. Pour un dépannage, le devis doit indiquer s'il est gratuit ou payant, et son prix."),
  ("Quel acompte verser à la signature ?",
-  "Aucun plafond légal ne s'applique aux travaux chez un particulier. L'usage est de 20 à 30 %. Au-delà, demandez pourquoi et proposez un échéancier lié à l'avancement du chantier."),
+  "Il n'existe pas de plafond général pour l'acompte, mais si vous avez signé chez vous, aucun paiement n'est possible pendant 7 jours. L'usage est d'environ 30 % à la signature. Au-delà de 40 à 50 %, demandez pourquoi et proposez un échéancier lié à l'avancement du chantier."),
 ]
 
 # ---------- Dépassement du devis
@@ -94,8 +94,8 @@ GUIDES.append(dict(
  body='''<h2>Un devis signé engage l'artisan</h2>
 <p>Une fois signé, le devis est un <strong>contrat</strong>. L'entreprise ne peut pas modifier seule ni le prix ni le contenu des travaux. Si elle facture plus, c'est à elle de prouver que vous avez accepté ce supplément. Pour un particulier, au-delà de 1 500 €, cette preuve doit en principe être écrite.</p>
 <h2>Le marché à forfait : la protection la plus forte</h2>
-<p>Quand le devis fixe un <strong>prix global et forfaitaire</strong> pour des travaux décrits précisément, la loi est très claire : l'entrepreneur ne peut demander aucune augmentation, ni pour la hausse de la main-d'œuvre ou des matériaux, ni pour des changements ou ajouts, <strong>sauf si ces changements ont été autorisés par écrit et leur prix convenu avec vous</strong> (article 1793 du Code civil).</p>
-<div class="note"><p><strong>En pratique :</strong> un supplément annoncé à l'oral sur le chantier, puis découvert sur la facture, n'est pas dû dans un marché à forfait. Votre silence ne vaut pas accord.</p></div>
+<p>Quand le devis fixe un <strong>prix global et forfaitaire</strong> pour des travaux décrits précisément, la loi vous protège fortement : en principe, l'entrepreneur ne peut demander aucune augmentation, ni pour la hausse de la main-d'œuvre ou des matériaux, ni pour des changements ou ajouts, <strong>sauf si ces changements ont été autorisés par écrit et leur prix convenu avec vous</strong> (article 1793 du Code civil). Pour une rénovation, les juges vérifient au cas par cas qu'il s'agit bien d'un forfait.</p>
+<div class="note"><p><strong>En pratique :</strong> un supplément annoncé à l'oral sur le chantier, puis découvert sur la facture, n'est en principe pas dû dans un marché à forfait. Votre silence ne vaut pas accord.</p></div>
 <h2>Devis au métré ou « selon état » : plus de marge pour l'artisan</h2>
 <p>Si le devis fixe des <strong>prix unitaires</strong> (au m², au mètre linéaire, à la pièce) plutôt qu'un prix global, la facture suit les quantités réellement exécutées. Elle peut donc dépasser le devis si les quantités augmentent, à condition qu'elles soient justifiées. Les lignes « selon état » ou « hors imprévus » ne sont pas un chèque en blanc, mais elles affaiblissent votre position : c'est pour cela qu'il faut les faire chiffrer avant de signer.</p>
 <h2>L'imprévu de chantier</h2>
@@ -105,17 +105,17 @@ GUIDES.append(dict(
 <li>vous le signez, ou vous le refusez et discutez d'une autre solution.</li></ol>
 <p>Une erreur de métré ou de chiffrage de l'entreprise n'est pas un imprévu : c'est à elle de l'assumer.</p>
 <h2>Révision de prix : seulement si le devis la prévoit</h2>
-<p>Le prix d'un devis ne s'indexe pas automatiquement sur la hausse des matériaux. Une révision n'est possible que si le contrat la prévoit expressément, avec une formule et un indice de référence en lien avec les travaux (les index BT du bâtiment, par exemple). Une telle clause joue aussi à la baisse.</p>
+<p>Le prix d'un devis ne s'indexe pas automatiquement sur la hausse des matériaux. Une révision n'est possible que si le contrat la prévoit expressément, avec une formule et un indice de référence en lien avec les travaux (les index BT du bâtiment, par exemple). En principe, une telle clause joue aussi à la baisse.</p>
 <h2>La facture dépasse le devis : les étapes</h2>
 <ol><li><strong>Demandez par écrit le détail</strong> du supplément et le document par lequel vous l'auriez accepté.</li>
 <li><strong>Payez ce qui est dû selon le devis</strong> et contestez le reste par écrit, en expliquant pourquoi. Ne bloquez pas l'intégralité sans raison : ce serait vous mettre en tort.</li>
 <li><strong>Envoyez une mise en demeure</strong> par lettre recommandée avec accusé de réception si le désaccord persiste.</li>
-<li><strong>Saisissez le médiateur de la consommation</strong> de l'entreprise : tout professionnel doit en désigner un et indiquer ses coordonnées sur ses devis. Il faut d'abord avoir fait une réclamation écrite, et le saisir dans l'année qui suit.</li>
+<li><strong>Saisissez le médiateur de la consommation</strong> de l'entreprise : tout professionnel doit en désigner un et vous communiquer ses coordonnées (site internet, conditions générales, devis ou bon de commande). Il faut d'abord avoir fait une réclamation écrite, et le saisir dans l'année qui suit.</li>
 <li><strong>Le conciliateur de justice</strong>, gratuit, est une autre voie. Pour un litige de 5 000 € ou moins, une tentative de règlement amiable est en principe obligatoire avant de saisir le tribunal.</li></ol>
 <p>Vous pouvez aussi faire un signalement sur SignalConso : il ne règle pas votre litige, mais il aide la DGCCRF à cibler ses contrôles.</p>
 <h2>Ce que je vérifie sur votre devis</h2>
 <p>Le type de prix (forfait ou unitaire), les lignes « selon état », « hors imprévus » ou « à définir », et les postes oubliés qui deviendront des suppléments. Chaque rapport les liste avec la question à poser pour les faire chiffrer avant de signer. Voir aussi <a href="modeles-messages-artisan.html">les modèles de messages à l'artisan</a>.</p>
-''' + SRC + '''Article d'information générale, à jour au 26 octobre 2026, qui ne remplace pas un conseil juridique sur votre situation. Sources : articles 1103, 1359 et 1793 du Code civil, articles L612-1 et L612-2 du Code de la consommation (médiation), article 750-1 du Code de procédure civile, economie.gouv.fr, inc-conso.fr.</p>''',
+''' + SRC + '''Article d'information générale, à jour au 27 octobre 2026, qui ne remplace pas un conseil juridique sur votre situation. Sources : articles 1103, 1359 et 1793 du Code civil, articles L612-1 et L612-2 du Code de la consommation (médiation), Code de procédure civile (tentative amiable préalable), economie.gouv.fr, inc-conso.fr.</p>''',
 ))
 GUIDE_FAQS["guide-depassement-devis-travaux-supplementaires"] = [
  ("Un artisan peut-il facturer plus cher que le devis signé ?",
@@ -135,9 +135,9 @@ GUIDES.append(dict(
  lead="Vous avez signé, et vous le regrettez. Tout dépend d'un détail que l'on oublie souvent : l'endroit où vous avez signé.",
  readtime=7,
  body='''<h2>Signé chez vous : 14 jours pour changer d'avis</h2>
-<p>Un devis signé à votre domicile (ou ailleurs que dans les locaux de l'entreprise, à la suite d'une visite) est un contrat <strong>hors établissement</strong>. Vous disposez de <strong>14 jours</strong> pour vous rétracter, sans motif et sans frais. Pour des travaux, le délai court à partir du lendemain de la signature.</p>
+<p>Un devis signé à votre domicile (ou ailleurs que dans les locaux de l'entreprise, à la suite d'une visite) est un contrat <strong>hors établissement</strong>. Vous disposez de <strong>14 jours</strong> pour vous rétracter, sans motif et sans frais. Pour des travaux, le délai court en principe à partir du lendemain de la signature. Si le devis porte surtout sur la livraison d'un équipement, il peut courir à partir de sa livraison.</p>
 <ul><li>L'entreprise doit vous remettre un <strong>formulaire de rétractation</strong>. Vous pouvez l'utiliser, ou envoyer un courrier recommandé avec accusé de réception.</li>
-<li>Pendant les <strong>7 premiers jours</strong>, elle ne peut encaisser <strong>aucun paiement</strong> : ni acompte, ni chèque, même daté plus tard, ni autorisation de prélèvement.</li>
+<li>Pendant les <strong>7 premiers jours</strong>, elle ne peut encaisser <strong>aucun paiement</strong> : ni acompte, ni chèque, même daté plus tard, ni autorisation de prélèvement, sauf pour des réparations urgentes que vous avez demandées.</li>
 <li>Si vous vous rétractez, elle doit vous rembourser sous 14 jours.</li></ul>
 <div class="note"><p><strong>Le formulaire manque ?</strong> Si l'entreprise ne vous a pas informé de votre droit de rétractation, le délai est prolongé de 12 mois. Et selon la Cour de justice de l'Union européenne (2023), si vous vous rétractez dans ce cas, vous ne devez rien pour les travaux déjà réalisés.</p></div>
 <h2>Les travaux ont commencé pendant le délai</h2>
@@ -156,10 +156,10 @@ GUIDES.append(dict(
 <li><strong>Un acompte</strong> : le contrat est ferme. Annuler vous expose à indemniser l'entreprise.</li></ul>
 <p>Pour un <strong>marché à forfait</strong>, la loi vous permet de résilier à tout moment, même travaux commencés, mais vous devez alors dédommager l'entreprise : ses dépenses, les travaux déjà faits et le bénéfice qu'elle aurait tiré du chantier (article 1794 du Code civil). Si l'entreprise a commis une faute, la situation est différente : faites-vous conseiller.</p>
 <h2>Démarchage pour la rénovation énergétique</h2>
-<p>Le démarchage téléphonique pour des travaux de rénovation énergétique est interdit, et depuis juillet 2025 l'interdiction s'étend aux SMS, courriels et réseaux sociaux : un contrat conclu dans ces conditions est nul. Depuis le 11 août 2026, tout démarchage téléphonique suppose en outre votre accord préalable.</p>
+<p>Le démarchage téléphonique pour des travaux de rénovation énergétique est interdit depuis 2020, sauf contrat en cours, et un contrat conclu en violation de cette règle est nul. La loi du 30 juin 2025 contre la fraude aux aides publiques a étendu ces interdictions aux SMS, courriels et réseaux sociaux. Depuis le 11 août 2026, tout démarchage téléphonique suppose en outre votre accord préalable.</p>
 <h2>Le meilleur moment pour annuler, c'est avant de signer</h2>
 <p>Un devis relu à tête reposée, c'est un regret en moins. Je vérifie la présence du formulaire de rétractation quand il est obligatoire, la nature des sommes demandées (arrhes ou acompte), l'échéancier et les conditions de résiliation. Voir aussi <a href="guide-acompte-paiement-devis-travaux.html">le guide sur l'acompte</a>.</p>
-''' + SRC + '''Article d'information générale, à jour au 26 octobre 2026, qui ne remplace pas un conseil juridique sur votre situation. Sources : articles L221-10, L221-18, L221-20, L221-25, L221-28, L224-59, L312-19 et L214-1 du Code de la consommation, articles 1590 et 1794 du Code civil, loi n° 2025-594 du 30 juin 2025, CJUE 17 mai 2023 (C-97/22), service-public.gouv.fr (fiche F23224), anil.org.</p>''',
+''' + SRC + '''Article d'information générale, à jour au 27 octobre 2026, qui ne remplace pas un conseil juridique sur votre situation. Sources : articles L221-10, L221-18, L221-20, L221-25, L221-28, L224-59, L312-19 et L214-1 du Code de la consommation, articles 1590 et 1794 du Code civil, loi n° 2025-594 du 30 juin 2025, CJUE 17 mai 2023 (C-97/22), service-public.gouv.fr (fiche F23224), anil.org.</p>''',
 ))
 GUIDE_FAQS["guide-annuler-devis-signe-retractation"] = [
  ("Peut-on se rétracter après avoir signé un devis ?",

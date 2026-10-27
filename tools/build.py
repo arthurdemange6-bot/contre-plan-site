@@ -188,7 +188,35 @@ FAQS = {
     ],
 }
 UPDATED = {'guide-acompte-paiement-devis-travaux': "2026-10-26", 'guide-bien-demander-ses-devis': "2026-10-26", 'guide-mentions-obligatoires-devis': "2026-10-26", 'guide-oublis-devis-salle-de-bain': "2026-10-26", 'guide-reception-travaux-reserves': "2026-10-26", 'guide-tva-travaux-renovation': "2026-10-26"}
+for _s in ['guide-mentions-obligatoires-devis','guide-reception-travaux-reserves','guide-verifier-assurance-decennale','guide-negocier-devis-travaux','guide-depassement-devis-travaux-supplementaires','guide-annuler-devis-signe-retractation']:
+    UPDATED[_s] = "2026-10-27"  # relecture et corrections du 27/10/2026
 AUTEUR = "Rédigé par l'<a href=\"methode.html\">ingénieur BTP de Contre-Plan</a> (10 ans d'expérience, environ 1 000 devis lus)"
+
+# Liens vers les sources officielles (bloc « Pour aller plus loin », vérifiés le 27/10/2026)
+SP = "https://www.service-public.gouv.fr/particuliers/vosdroits/"
+LINKS = {
+    'guide-verifier-assurance-decennale': [(SP + "F2034", "Garantie décennale des constructeurs"), (SP + "F2032", "Assurance dommages-ouvrage")],
+    'guide-negocier-devis-travaux': [(SP + "F2533", "Devis et contrat avant des travaux")],
+    'guide-depassement-devis-travaux-supplementaires': [(SP + "F2533", "Devis et contrat avant des travaux"), (SP + "R24080", "Modèle de lettre : contester une facture qui dépasse le devis")],
+    'guide-annuler-devis-signe-retractation': [(SP + "F23224", "Démarchage à domicile : règles à respecter"), (SP + "F2434", "Crédit affecté")],
+    'guide-reception-travaux-reserves': [(SP + "F2958", "Garanties après la réception des travaux")],
+}
+
+def links_html(slug):
+    L = LINKS.get(slug)
+    if not L:
+        return ""
+    items = " · ".join(f'<a href="{u}" target="_blank" rel="noopener">{html.escape(t)}</a>' for u, t in L)
+    return f'<p class="cp-src"><strong>Pour aller plus loin (service-public.gouv.fr) :</strong> {items}</p>'
+
+def with_links(body, slug, before='<p style="font-size: 15px'):
+    block = links_html(slug)
+    if not block:
+        return body
+    i = body.rfind(before)
+    if i == -1:
+        return body.rstrip("\n") + "\n" + block
+    return body[:i].rstrip("\n") + "\n" + block + "\n" + body[i:]
 
 def faq_html(qa):
     return "<h2>Questions fréquentes</h2>\n" + "\n".join(f"<h3>{q}</h3>\n<p>{a}</p>" for q, a in qa)
@@ -215,12 +243,13 @@ def article(slug, title, h1, desc, lead, body, readtime, date=DATE):
           "author":{"@type":"Organization","name":"Contre-Plan","url":"https://contre-plan.com/",
                     "description":"Analyse de devis de travaux par un ingénieur BTP (10 ans d'expérience, environ 1 000 devis lus)"},
           "publisher":{"@type":"Organization","name":"Contre-Plan","logo":{"@type":"ImageObject","url":"https://contre-plan.com/logo-512.png"}},
-          "mainEntityOfPage":url}
+          "mainEntityOfPage":url,"image":"https://contre-plan.com/og-image.jpg"}
     extra = '<script type="application/ld+json">' + json.dumps(ld, ensure_ascii=False) + '</script>'
     crumbs = [("Accueil", "index.html"), ("Guides", "guides.html"), (h1, None)]
     extra += crumbs_ld(crumbs, url) + ("\n" + faq_ld(qa) if qa else "")
     if qa:
         body = with_faq(body, qa)
+    body = with_links(body, slug)
     page = head(title, desc, url, extra) + pagehero("Guide", h1, lead, f"Mis à jour le {date_fr(mod)}, lecture {readtime} min · {AUTEUR}", crumbs) + layout(body) + footer()
     open(os.path.join(OUT, slug + ".html"), "w").write(page)
     ARTICLES.append((slug, h1, desc, readtime))
@@ -235,7 +264,7 @@ article("guide-mentions-obligatoires-devis",
  '''<h2>1. L'entreprise et son assurance</h2>
 <ul>
 <li><strong>Nom, forme juridique, adresse, numéro SIRET</strong> et <strong>immatriculation</strong> de l'entreprise (RCS et ville du greffe pour une société commerciale, Registre national des entreprises pour un artisan). Vérifiez le SIRET sur l'annuaire des entreprises de l'État : une entreprise radiée ou créée la veille est un signal à prendre au sérieux.</li>
-<li><strong>L'assurance professionnelle</strong> : nom et coordonnées de l'assureur et zone géographique couverte. Pour les travaux qui touchent au bâti (gros œuvre, étanchéité, toiture, menuiseries, plomberie encastrée…), demandez l'<strong>attestation d'assurance décennale</strong> valable à la date d'ouverture du chantier, et vérifiez qu'elle couvre bien l'activité concernée.</li>
+<li><strong>L'assurance professionnelle</strong> : nom et coordonnées de l'assureur et zone géographique couverte. Pour les travaux qui touchent au bâti (gros œuvre, étanchéité, toiture, menuiseries, plomberie encastrée…), demandez l'<strong>attestation d'assurance décennale</strong> valable à la date d'ouverture du chantier, et vérifiez qu'elle couvre bien l'activité concernée (<a href="guide-verifier-assurance-decennale.html">comment lire l'attestation décennale</a>).</li>
 </ul>
 <h2>2. Vous et le chantier</h2>
 <ul>
@@ -257,10 +286,10 @@ article("guide-mentions-obligatoires-devis",
 <p>Si vous visez MaPrimeRénov', les CEE ou un éco-PTZ, le devis doit aussi mentionner la <strong>qualification RGE</strong> de l'entreprise (organisme et numéro), les <strong>caractéristiques de performance</strong> des équipements et matériaux (résistance thermique de l'isolant, coefficient de performance d'une pompe à chaleur…) et les <strong>surfaces traitées</strong>. Un oubli peut faire perdre l'aide.</p>
 <h2>6. Paiement et garanties</h2>
 <ul>
-<li>Les <strong>conditions de paiement</strong> : montant de l'acompte et échéancier. La loi ne fixe pas de plafond général, mais un acompte au-delà de 30 % avant le démarrage mérite d'être discuté.</li>
-<li>Si le devis a été signé chez vous à la suite d'un démarchage, vous disposez en principe d'un <strong>délai de rétractation de 14 jours</strong>, et l'artisan ne peut en principe pas encaisser de paiement avant 7 jours (des exceptions existent, notamment pour les dépannages urgents que vous avez demandés).</li>
-<li>Les <strong>garanties</strong> : garanties légales de conformité et des vices cachés, et pour le bâtiment la garantie de parfait achèvement (1 an), la garantie de bon fonctionnement des équipements (2 ans) et la garantie décennale.</li>
-<li>Les <strong>conditions générales</strong>, au dos ou en annexe : lisez-les, notamment les clauses de <strong>révision de prix</strong> (hausse des matériaux) et de pénalités.</li>
+<li>Les <strong>conditions de paiement</strong> : montant de l'acompte et échéancier. La loi ne fixe pas de plafond général, mais l'usage est d'environ 30 % à la signature : au-delà de 40 à 50 %, demandez pourquoi.</li>
+<li>Si le devis a été signé chez vous à la suite d'un démarchage, vous disposez en principe d'un <strong>délai de rétractation de 14 jours</strong>, et l'artisan ne peut en principe pas encaisser de paiement avant 7 jours (des exceptions existent, notamment pour les dépannages urgents que vous avez demandés). Le détail est dans <a href="guide-annuler-devis-signe-retractation.html">le guide pour annuler un devis signé</a>.</li>
+<li>Les <strong>garanties</strong> : garanties légales de conformité et des vices cachés, et pour le bâtiment la garantie de parfait achèvement (1 an), la garantie de bon fonctionnement des équipements (2 ans) et la garantie décennale. Elles démarrent toutes à la <a href="guide-reception-travaux-reserves.html">réception des travaux</a>.</li>
+<li>Les <strong>conditions générales</strong>, au dos ou en annexe : lisez-les, notamment les clauses de <strong>révision de prix</strong> (hausse des matériaux) et de pénalités. Un supplément en cours de chantier doit passer par un avenant écrit : voir <a href="guide-depassement-devis-travaux-supplementaires.html">dépassement de devis et travaux supplémentaires</a>.</li>
 <li>Les coordonnées du <strong>médiateur de la consommation</strong> dont relève l'entreprise : elle doit vous les communiquer, souvent sur le devis ou dans ses conditions générales. C'est votre recours amiable gratuit en cas de litige.</li>
 <li>Si l'entreprise recueille votre numéro de téléphone, elle doit vous informer de votre droit de vous inscrire sur <strong>Bloctel</strong>, la liste d'opposition au démarchage téléphonique.</li>
 </ul>
@@ -324,7 +353,7 @@ article("guide-oublis-devis-salle-de-bain",
 <p>Joints silicone, profilés d'angle, raccords de peinture, habillage de baignoire, plinthes, pose des accessoires : chaque poste est petit, mais leur absence cumulée peut représenter plusieurs centaines d'euros, ou une salle de bain « terminée » qui ne l'est pas.</p>
 <div class="note"><p><strong>Et les conditions de paiement ?</strong> Un acompte d'environ 30 % à la signature est l'usage. Ensuite, privilégiez des paiements liés à l'avancement réel du chantier, et gardez un solde à régler à la réception, une fois les réserves levées.</p></div>
 <h2>Comment l'utiliser</h2>
-<p>Reprenez votre devis avec cette liste et cochez chaque point. Pour chaque absence, posez la question à l'artisan <strong>par écrit</strong> : soit le poste est inclus et il le précise, soit il le chiffre. Dans les deux cas, vous signez en sachant ce que vous payez.</p>
+<p>Reprenez votre devis avec cette liste et cochez chaque point. Pour chaque absence, posez la question à l'artisan <strong>par écrit</strong> : soit le poste est inclus et il le précise, soit il le chiffre. Dans les deux cas, vous signez en sachant ce que vous payez. Si le total vous paraît élevé, voyez <a href="guide-negocier-devis-travaux.html">comment négocier un devis</a> sans braquer l'artisan.</p>
 <p style="font-size: 15px !important; color: #5b6784 !important;">Article d'information générale. Chaque chantier est différent : en cas de doute sur un point technique, faites vérifier votre devis.</p>''', 5)
 
 
@@ -367,10 +396,17 @@ JOBS = {
 }
 
 PAGES = []
+# Date de dernière mise à jour réelle des pages (date visible, dateModified et lastmod du sitemap)
+PAGE_UPDATED = {s: "2026-10-27" for s in ["analyse-devis-salle-de-bain", "analyse-devis-pompe-a-chaleur", "analyse-devis-isolation", "analyse-devis-toiture", "analyse-devis-cuisine", "analyse-devis-electricite", "analyse-devis-extension", "analyse-devis-fenetres", "analyse-devis-ravalement-facade"]}
+
 def page(slug, title, h1, desc, lead, body, kicker, toc=True):
     url = f"https://contre-plan.com/{slug}.html"
+    mod = PAGE_UPDATED.get(slug)
     ld = {"@context":"https://schema.org","@type":"WebPage","name":h1,"description":desc,"url":url,"inLanguage":"fr-FR",
           "publisher":{"@type":"Organization","name":"Contre-Plan","url":"https://contre-plan.com/"}}
+    if mod:
+        ld["dateModified"] = mod
+        LASTMOD[slug + ".html"] = mod
     crumbs = [("Accueil", "index.html"), (kicker, None)]
     extra = '<script type="application/ld+json">' + json.dumps(ld, ensure_ascii=False) + '</script>' + crumbs_ld(crumbs, url)
     if slug in JOBS:
@@ -381,7 +417,7 @@ def page(slug, title, h1, desc, lead, body, kicker, toc=True):
                "offers":{"@type":"Offer","price":PRIX,"priceCurrency":"EUR","url":COMEUP}}
         extra += '\n<script type="application/ld+json">' + json.dumps(svc, ensure_ascii=False) + '</script>\n' + faq_ld(qa)
         body = with_faq(body, qa, before='<div class="note"><p><b>Vous avez un devis')
-    out = head(title, desc, url, extra).replace('<meta property="og:type" content="article">','<meta property="og:type" content="website">') + pagehero(kicker, h1, lead, None, crumbs) + layout(body, toc) + footer()
+    out = head(title, desc, url, extra).replace('<meta property="og:type" content="article">','<meta property="og:type" content="website">') + pagehero(kicker, h1, lead, (f"Mis à jour le {date_fr(mod)} · {AUTEUR}" if mod and slug in JOBS else None), crumbs) + layout(body, toc) + footer()
     open(os.path.join(OUT, slug + ".html"), "w").write(out)
     PAGES.append(slug)
 
@@ -396,17 +432,17 @@ article("guide-acompte-paiement-devis-travaux",
 <h2>Acompte ou arrhes : ce n'est pas la même chose</h2>
 <p>Avec des <strong>arrhes</strong>, chacun peut renoncer : vous en perdant les arrhes, l'entreprise en vous rendant le double. Avec un <strong>acompte</strong>, le contrat est ferme des deux côtés. Sauf mention contraire, les sommes versées d'avance sont considérées comme des arrhes. Vérifiez le mot employé sur le devis.</p>
 <h2>Devis signé chez vous : attention au démarchage</h2>
-<p>Si le devis a été signé à votre domicile, vous disposez en principe d'un <strong>délai de rétractation de 14 jours</strong>, et l'entreprise ne peut rien encaisser pendant les <strong>7 jours</strong> qui suivent la signature, sauf exceptions. Le devis doit comporter un formulaire de rétractation. Ne remettez ni chèque, même daté plus tard, ni autorisation de prélèvement pendant ce délai.</p>
+<p>Si le devis a été signé à votre domicile, vous disposez en principe d'un <strong>délai de rétractation de 14 jours</strong>, et l'entreprise ne peut rien encaisser pendant les <strong>7 jours</strong> qui suivent la signature, sauf exceptions. Le devis doit comporter un formulaire de rétractation. Ne remettez ni chèque, même daté plus tard, ni autorisation de prélèvement pendant ce délai. Pour revenir sur votre signature, voir <a href="guide-annuler-devis-signe-retractation.html">comment annuler un devis signé</a>.</p>
 <h2>Un échéancier lié à l'avancement</h2>
 <p>Le plus sain est de payer au rythme du chantier. Par exemple, pour une salle de bain :</p>
 <ul><li>30 % à la signature ;</li><li>30 % à la fin de la dépose et des réseaux (plomberie, électricité) ;</li><li>30 % à la fin de la pose des revêtements ;</li><li>le solde à la réception.</li></ul>
 <p>Chaque étape doit être décrite pour être vérifiable : « fin de la plomberie », plutôt qu'une date fixe sans rapport avec l'avancement.</p>
 <h2>Le solde et la réception</h2>
-<p>La <strong>réception</strong> est le moment où vous acceptez les travaux, avec ou sans réserves. Notez par écrit chaque défaut constaté : ce sont les réserves, que l'entreprise doit corriger. La réception fait aussi démarrer les garanties (parfait achèvement, biennale, décennale). Si le contrat le prévoit, une <strong>retenue de garantie</strong> limitée à 5 % du prix peut être conservée jusqu'à la levée des réserves, dans la limite d'un an.</p>
+<p>La <strong>réception</strong> (<a href="guide-reception-travaux-reserves.html">mode d'emploi ici</a>) est le moment où vous acceptez les travaux, avec ou sans réserves. Notez par écrit chaque défaut constaté : ce sont les réserves, que l'entreprise doit corriger. La réception fait aussi démarrer les garanties (parfait achèvement, biennale, décennale). Si le contrat le prévoit, une <strong>retenue de garantie</strong> limitée à 5 % du prix peut être conservée jusqu'à la levée des réserves, dans la limite d'un an.</p>
 <h2>Les travaux supplémentaires</h2>
-<p>Tout ajout en cours de chantier doit faire l'objet d'un <strong>avenant écrit et chiffré</strong>, signé avant d'être réalisé. Un supplément annoncé oralement puis découvert sur la facture est la première source de litige.</p>
+<p>Tout ajout en cours de chantier doit faire l'objet d'un <strong>avenant écrit et chiffré</strong>, signé avant d'être réalisé. Un supplément annoncé oralement puis découvert sur la facture est la première source de litige. Voir <a href="guide-depassement-devis-travaux-supplementaires.html">que faire face à un dépassement de devis</a>.</p>
 <h2>Ce que je vérifie sur votre devis</h2>
-<p>Le montant et la nature de l'acompte, l'échéancier, la cohérence avec l'avancement réel du chantier et les conditions de paiement en cas de démarchage. Voir aussi <a href="guide-mentions-obligatoires-devis.html">les mentions obligatoires d'un devis</a> et <a href="lexique-devis-travaux.html">le lexique du devis</a>.</p>''',
+<p>Le montant et la nature de l'acompte, l'échéancier, la cohérence avec l'avancement réel du chantier et les conditions de paiement en cas de démarchage. Voir aussi <a href="guide-mentions-obligatoires-devis.html">les mentions obligatoires d'un devis</a>, <a href="guide-negocier-devis-travaux.html">comment négocier un devis</a> et <a href="lexique-devis-travaux.html">le lexique du devis</a>.</p>''',
  6, date="2026-10-23")
 
 article("guide-bien-demander-ses-devis",
@@ -431,7 +467,7 @@ article("guide-bien-demander-ses-devis",
 <h2>5. Ne signez rien le jour de la visite</h2>
 <p>Un devis se relit au calme. Méfiez-vous des remises valables « seulement aujourd'hui ». Si vous signez chez vous, vous disposez en principe d'un délai de rétractation de 14 jours, et aucun paiement ne peut être exigé pendant 7 jours, sauf exceptions.</p>
 <h2>6. Comparez poste par poste</h2>
-<p>Une fois les devis reçus, mettez-les côte à côte avec <a href="comparer-ses-devis.html">le tableau comparatif gratuit</a>. Pour les points à faire préciser, utilisez <a href="modeles-messages-artisan.html">les modèles de messages</a>, et vérifiez les mentions obligatoires avec <a href="guide-mentions-obligatoires-devis.html">ce guide</a>.</p>''',
+<p>Une fois les devis reçus, mettez-les côte à côte avec <a href="comparer-ses-devis.html">le tableau comparatif gratuit</a>. Pour les points à faire préciser, utilisez <a href="modeles-messages-artisan.html">les modèles de messages</a>, et vérifiez les mentions obligatoires avec <a href="guide-mentions-obligatoires-devis.html">ce guide</a>. Ensuite seulement, <a href="guide-negocier-devis-travaux.html">négociez</a> sur des bases claires.</p>''',
  6, date="2026-10-23")
 
 article("guide-reception-travaux-reserves",
@@ -485,7 +521,7 @@ article("guide-reception-travaux-reserves",
 <ul>
 <li>La loi du 16 juillet 1971 permet une <strong>retenue de garantie d'au plus 5 %</strong> du montant des travaux, pour couvrir les réserves faites à la réception. Elle n'est possible que si le <strong>contrat la prévoit</strong>, donc le devis signé.</li>
 <li>Cette somme n'est pas gardée chez vous : elle doit être <strong>consignée</strong> auprès d'un consignataire accepté par les deux parties (un notaire, par exemple) ou, à défaut, désigné par le juge. Si vous la gardez simplement de votre côté, vous risquez de devoir la reverser à l'entreprise même si les réserves ne sont pas levées. L'entreprise peut la remplacer par une <strong>caution bancaire</strong>.</li>
-<li>Elle est libérée un an après la réception, même sans levée formelle des réserves, sauf si vous avez notifié avant cette date, par <strong>lettre recommandée</strong> au consignataire ou à la caution, une opposition motivée par l'inexécution des obligations de l'entreprise.</li>
+<li>Elle est libérée dès la levée des réserves, et au plus tard un an après la réception, même sans levée formelle, sauf si vous avez notifié avant cette date, par <strong>lettre recommandée</strong> au consignataire ou à la caution, une opposition motivée par l'inexécution des obligations de l'entreprise.</li>
 </ul>
 <p>Pour le reste, le montant du solde payable à la réception, et ce que vous pouvez raisonnablement garder en proportion des réserves, se négocie avant la signature du devis. C'est l'objet de l'échéancier, détaillé dans <a href="guide-acompte-paiement-devis-travaux.html">le guide sur l'acompte et le paiement</a>.</p>
 <h2>Après la réception : faire lever les réserves</h2>
@@ -504,8 +540,8 @@ article("guide-reception-travaux-reserves",
 <li>si le nettoyage, l'évacuation des gravats et la remise en état des abords sont bien inclus ;</li>
 <li>si un délai d'exécution ferme est indiqué, pour savoir à partir de quand vous pouvez demander la réception.</li>
 </ul>
-<p>Voir aussi <a href="guide-mentions-obligatoires-devis.html">les mentions obligatoires d'un devis</a> et <a href="modeles-messages-artisan.html">les modèles de messages à l'artisan</a>.</p>
-<p style="font-size: 15px !important; color: #5b6784 !important;">Article d'information générale, qui ne remplace pas un conseil juridique. Sources : article 1792-6 du Code civil, loi n° 71-584 du 16 juillet 1971 (retenue de garantie), service-public.gouv.fr (garanties après la réception des travaux), DGCCRF (Malfaçon : mettez en œuvre les garanties), ANIL (jurisprudence sur la consignation de la retenue de garantie).</p>''',
+<p>Voir aussi <a href="guide-mentions-obligatoires-devis.html">les mentions obligatoires d'un devis</a>, <a href="guide-depassement-devis-travaux-supplementaires.html">que faire en cas de travaux supplémentaires</a>, <a href="guide-verifier-assurance-decennale.html">comment vérifier l'attestation décennale</a> et <a href="modeles-messages-artisan.html">les modèles de messages à l'artisan</a>.</p>
+<p style="font-size: 15px !important; color: #5b6784 !important;">Article d'information générale, à jour au 27 octobre 2026, qui ne remplace pas un conseil juridique. Sources : article 1792-6 du Code civil, loi n° 71-584 du 16 juillet 1971 (retenue de garantie), service-public.gouv.fr (garanties après la réception des travaux), DGCCRF (Malfaçon : mettez en œuvre les garanties), ANIL (jurisprudence sur la consignation de la retenue de garantie).</p>''',
  7, date="2026-10-25")
 
 # ---------- Pages Méthode et Engagements
@@ -753,6 +789,7 @@ page("comparer-ses-devis",
 <li><b>Les montants hors taxes.</b> La TVA peut différer d'un devis à l'autre si l'un des taux est mal appliqué : comparez d'abord en HT.</li>
 <li><b>Les quantités.</b> Si deux devis n'annoncent pas la même surface pour le même travail, demandez pourquoi avant de comparer les prix.</li>
 <li><b>Le moins cher n'est pas forcément le meilleur.</b> Un devis bas avec deux postes absents peut finir plus cher qu'un devis complet.</li></ul>
+<p>Une fois les écarts repérés, voyez <a href="guide-negocier-devis-travaux.html">comment négocier un devis de travaux</a> sur les postes qui coincent.</p>
 <div class="note"><p><b>Vous préférez un regard d'ingénieur ?</b> L'option « Comparatif multi devis » vous livre ce tableau rempli et commenté poste par poste, avec ce qui différencie vraiment les offres. Voir <a href="index.html#tarifs">les tarifs</a>.</p></div>
 <p>Pour demander des devis comparables dès le départ : <a href="guide-bien-demander-ses-devis.html">comment bien demander ses devis</a>. Pour écrire aux artisans : <a href="modeles-messages-artisan.html">les modèles de messages</a>.</p>""",
  "Outil gratuit")
