@@ -188,7 +188,7 @@ FAQS = {
     ],
 }
 UPDATED = {'guide-acompte-paiement-devis-travaux': "2026-10-26", 'guide-bien-demander-ses-devis': "2026-10-26", 'guide-mentions-obligatoires-devis': "2026-10-26", 'guide-oublis-devis-salle-de-bain': "2026-10-26", 'guide-reception-travaux-reserves': "2026-10-26", 'guide-tva-travaux-renovation': "2026-10-26"}
-for _s in ['guide-mentions-obligatoires-devis','guide-reception-travaux-reserves','guide-verifier-assurance-decennale','guide-negocier-devis-travaux','guide-depassement-devis-travaux-supplementaires','guide-annuler-devis-signe-retractation']:
+for _s in ['guide-tva-travaux-renovation','guide-mentions-obligatoires-devis','guide-reception-travaux-reserves','guide-verifier-assurance-decennale','guide-negocier-devis-travaux','guide-depassement-devis-travaux-supplementaires','guide-annuler-devis-signe-retractation']:
     UPDATED[_s] = "2026-10-27"  # relecture et corrections du 27/10/2026
 AUTEUR = "Rédigé par l'<a href=\"methode.html\">ingénieur BTP de Contre-Plan</a> (10 ans d'expérience, environ 1 000 devis lus)"
 
@@ -200,6 +200,20 @@ LINKS = {
     'guide-depassement-devis-travaux-supplementaires': [(SP + "F2533", "Devis et contrat avant des travaux"), (SP + "R24080", "Modèle de lettre : contester une facture qui dépasse le devis")],
     'guide-annuler-devis-signe-retractation': [(SP + "F23224", "Démarchage à domicile : règles à respecter"), (SP + "F2434", "Crédit affecté")],
     'guide-reception-travaux-reserves': [(SP + "F2958", "Garanties après la réception des travaux")],
+    'guide-mentions-obligatoires-devis': [(SP + "F2533", "Devis et contrat avant des travaux"), ("https://entreprendre.service-public.gouv.fr/vosdroits/F23568", "TVA des travaux dans les logements")],
+    'guide-acompte-paiement-devis-travaux': [(SP + "F31187", "Acompte, arrhes, avance : quelles différences ?"), ("https://www.economie.gouv.fr/dgccrf/les-fiches-pratiques/vente-hors-etablissement-soyez-vigilant", "Vente hors établissement (DGCCRF)")],
+    'guide-oublis-devis-salle-de-bain': [(SP + "F288", "Habitat contenant de l'amiante"), ("https://entreprendre.service-public.gouv.fr/vosdroits/F23568", "TVA des travaux dans les logements")],
+    'guide-bien-demander-ses-devis': [(SP + "F2533", "Devis et contrat avant des travaux"), ("https://entreprendre.service-public.gouv.fr/vosdroits/F32251", "Mention RGE : comment la vérifier"), ("https://annuaire-entreprises.data.gouv.fr/", "Annuaire des entreprises de l'État")],
+    'guide-tva-travaux-renovation': [("https://entreprendre.service-public.gouv.fr/vosdroits/F23568", "TVA des travaux dans les logements"), (SP.replace("vosdroits/", "actualites/") + "A19002", "TVA à 5,5 % pour les pompes à chaleur air/air")],
+    'analyse-devis-cuisine': [("https://bofip.impots.gouv.fr/bofip/1666-PGP.html/identifiant=BOI-TVA-LIQ-30-20-90-20-20260909", "TVA des cuisines (BOFiP, impots.gouv.fr)"), (SP + "F2533", "Devis, contrat et rétractation")],
+    'analyse-devis-electricite': [("https://www.consuel.com/questions-frequentes/", "Questions fréquentes du Consuel"), ("https://entreprendre.service-public.gouv.fr/vosdroits/F23568", "TVA des travaux dans les logements")],
+    'analyse-devis-extension': [(SP + "F36777", "Autorisation pour un agrandissement"), (SP + "F2032", "Assurance dommages-ouvrage")],
+    'analyse-devis-fenetres': [(SP + "F35083", "MaPrimeRénov'"), (SP + "F36762", "Autorisation pour changer des fenêtres")],
+    'analyse-devis-ravalement-facade': [(SP + "F36779", "Autorisation pour un ravalement"), (SP + "F33682", "Obligation d'isoler lors d'un ravalement ou d'une réfection de toiture")],
+    'analyse-devis-salle-de-bain': [("https://entreprendre.service-public.gouv.fr/vosdroits/F23568", "TVA des travaux dans les logements"), (SP + "F288", "Habitat contenant de l'amiante")],
+    'analyse-devis-pompe-a-chaleur': [(SP.replace("vosdroits/", "actualites/") + "A19002", "TVA à 5,5 % pour les pompes à chaleur air/air"), (SP + "F35083", "MaPrimeRénov'")],
+    'analyse-devis-isolation': [(SP + "F33682", "Obligation d'isoler"), (SP + "F35083", "MaPrimeRénov'")],
+    'analyse-devis-toiture': [(SP + "F36767", "Autorisation pour des travaux de toiture"), (SP + "F33682", "Obligation d'isoler lors d'une réfection de toiture")],
 }
 
 def links_html(slug):
@@ -207,7 +221,7 @@ def links_html(slug):
     if not L:
         return ""
     items = " · ".join(f'<a href="{u}" target="_blank" rel="noopener">{html.escape(t)}</a>' for u, t in L)
-    return f'<p class="cp-src"><strong>Pour aller plus loin (service-public.gouv.fr) :</strong> {items}</p>'
+    return f'<p class="cp-src"><strong>Sources officielles pour aller plus loin :</strong> {items}</p>'
 
 def with_links(body, slug, before='<p style="font-size: 15px'):
     block = links_html(slug)
@@ -317,7 +331,7 @@ article("guide-tva-travaux-renovation",
 <ul>
 <li>Les travaux dans un logement de <strong>moins de 2 ans</strong>, la <strong>construction neuve</strong> et les <strong>agrandissements</strong> au-delà du seuil de 10 %.</li>
 <li>La fourniture et la pose d'une <strong>chaudière fonctionnant aux énergies fossiles</strong> (gaz, fioul).</li>
-<li>La <strong>climatisation</strong>, y compris les pompes à chaleur air/air, pour la part équipement.</li>
+<li>La <strong>climatisation</strong> seule, pour la part équipement. Attention : depuis le 18 juillet 2026, les <strong>pompes à chaleur air/air réversibles</strong> fixes peuvent passer à 5,5 % si elles respectent des critères précis (classe énergétique, fluide frigorigène, pilotage à distance). Le devis doit alors les indiquer.</li>
 <li>Le nettoyage et les espaces verts.</li>
 <li>Les <strong>équipements que vous achetez vous-même</strong> : l'artisan ne peut appliquer le taux réduit qu'à la pose.</li>
 </ul>
@@ -326,7 +340,7 @@ article("guide-tva-travaux-renovation",
 <div class="note"><p><strong>Important :</strong> sans cette mention, ou si elle est incomplète, le taux normal de 20 % s'applique. Et si vos déclarations sont inexactes, vous pouvez être tenu de payer la différence de TVA. Conservez votre exemplaire signé jusqu'à la fin de la 5<sup>e</sup> année suivant les travaux.</p></div>
 <h2>Un devis peut mélanger plusieurs taux</h2>
 <p>C'est normal et fréquent : isolation à 5,5 %, reprise des cloisons à 10 %, climatiseur à 20 %. Ce qui ne l'est pas : un taux unique de 20 % sur une rénovation de logement ancien sans explication, ou au contraire un 5,5 % sur des travaux qui n'y ont pas droit. Dans le second cas, si l'erreur vient de ce que vous avez certifié (un logement de moins de 2 ans déclaré ancien, par exemple), vous pouvez être tenu de payer le complément de TVA avec l'entreprise.</p>
-<p style="font-size: 15px !important; color: #5b6784 !important;">Article d'information générale, à jour au 24 octobre 2026. Les règles fiscales évoluent : vérifiez sur impots.gouv.fr. Sources : articles 278-0 bis A et 279-0 bis du Code général des impôts, loi n° 2025-127 du 14 février 2025.</p>''', 5)
+<p style="font-size: 15px !important; color: #5b6784 !important;">Article d'information générale, à jour au 27 octobre 2026. Les règles fiscales évoluent : vérifiez sur impots.gouv.fr. Sources : articles 278-0 bis A et 279-0 bis du Code général des impôts, loi n° 2025-127 du 14 février 2025, arrêté du 13 juillet 2026 (pompes à chaleur air/air).</p>''', 5)
 
 # ---------- Article 3
 article("guide-oublis-devis-salle-de-bain",
@@ -417,6 +431,7 @@ def page(slug, title, h1, desc, lead, body, kicker, toc=True):
                "offers":{"@type":"Offer","price":PRIX,"priceCurrency":"EUR","url":COMEUP}}
         extra += '\n<script type="application/ld+json">' + json.dumps(svc, ensure_ascii=False) + '</script>\n' + faq_ld(qa)
         body = with_faq(body, qa, before='<div class="note"><p><b>Vous avez un devis')
+    body = with_links(body, slug, before='<div class="note"><p><b>Vous avez un devis')
     out = head(title, desc, url, extra).replace('<meta property="og:type" content="article">','<meta property="og:type" content="website">') + pagehero(kicker, h1, lead, (f"Mis à jour le {date_fr(mod)} · {AUTEUR}" if mod and slug in JOBS else None), crumbs) + layout(body, toc) + footer()
     open(os.path.join(OUT, slug + ".html"), "w").write(out)
     PAGES.append(slug)
@@ -641,7 +656,7 @@ page("analyse-devis-pompe-a-chaleur",
 <h2>Les aides et la qualification RGE</h2>
 <p>Pour bénéficier des aides à la rénovation énergétique (MaPrimeRénov', primes CEE), l'entreprise doit être qualifiée RGE pour ces travaux : vérifiez-le sur france-renov.gouv.fr. Si une prime est déduite sur le devis, son montant et son origine doivent être indiqués clairement.</p>
 <h2>La TVA</h2>
-<p>Dans un logement achevé depuis plus de 2 ans, les pompes à chaleur éligibles à la rénovation énergétique relèvent du taux de 5,5 %. La climatisation n'en bénéficie pas, et les chaudières fonctionnant au gaz ou au fioul sont au taux de 20 % depuis le 1er mars 2025. Vérifiez que le taux appliqué correspond bien à l'équipement.</p>
+<p>Dans un logement achevé depuis plus de 2 ans, les pompes à chaleur éligibles à la rénovation énergétique relèvent du taux de 5,5 %. Depuis le 18 juillet 2026, c'est aussi possible pour une pompe à chaleur air/air réversible fixe qui atteint les performances exigées (classe énergétique, fluide frigorigène, pilotage à distance). La climatisation seule n'en bénéficie pas, et les chaudières fonctionnant au gaz ou au fioul sont au taux de 20 % depuis le 1er mars 2025. Vérifiez que le taux appliqué correspond bien à l'équipement.</p>
 <h2>Exemple de ligne à faire préciser</h2>
 <p>« Liaisons frigorifiques : forfait. » Sans longueur indiquée, impossible de savoir si un supplément sera facturé le jour de la pose. À demander : la longueur incluse et le prix au mètre au-delà.</p>
 """ + cta_type("de pompe à chaleur"),
