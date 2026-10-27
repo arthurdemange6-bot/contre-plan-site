@@ -19,7 +19,7 @@
     { q: "Peut-on en parler par téléphone ?", k: ["appel", "téléphone", "telephone", "parler", "visio", "rendez-vous", "rdv", "joindre"],
       a: "Oui : vous pouvez réserver un appel gratuit de 15 min en visio pour présenter votre projet : https://calendar.app.google/6LCc6yKVHnbvA3WN7" },
     { q: "Quel acompte verser ?", k: ["acompte", "arrhes", "verser", "signature", "payer", "paiement", "échéancier", "echeancier", "solde", "avance"],
-      a: "L'usage est d'environ 30 % à la signature, puis des paiements liés à l'avancement et le solde à la réception. Un acompte de 50 % ou plus mérite d'être négocié.", l: ["/guide-acompte-paiement-devis-travaux.html", "Le guide acompte et paiement"] },
+      a: "L'usage est d'environ 30 % à la signature, puis des paiements liés à l'avancement et le solde à la réception. Au-delà de 40 à 50 %, demandez pourquoi et proposez un échéancier.", l: ["/guide-acompte-paiement-devis-travaux.html", "Le guide acompte et paiement"] },
     { q: "Quel taux de TVA ?", k: ["tva", "taux", "5,5", "10 %", "20 %", "taxe"],
       a: "5,5 % pour la rénovation énergétique, 10 % pour l'amélioration d'un logement de plus de 2 ans, 20 % dans les autres cas (neuf, agrandissement, certains équipements). Le taux doit correspondre à vos travaux.", l: ["/guide-tva-travaux-renovation.html", "Le guide TVA"] },
     { q: "Que veut dire ce mot ?", k: ["mot", "terme", "signifie", "veut dire", "définition", "definition", "lexique", "ragréage", "forfait", "ml"],
