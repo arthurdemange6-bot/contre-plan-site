@@ -119,6 +119,8 @@
       ev.preventDefault();
       var hp = document.getElementById('cp-hp'); if (hp && hp.value) return;   // robot
       var data = new FormData(f), saved = {};
+      var src = document.getElementById('cp-source'), msg = f.querySelector('textarea');
+      if (src && src.value && msg) { data.set(msg.name, msg.value + "\n\n[Comment m'avez-vous connu : " + src.value + "]"); gc('source-' + src.value.toLowerCase().replace(/[^a-z]+/g, '-')); }
       Array.prototype.forEach.call(f.elements, function (el) { if (el.name && el.type !== 'hidden') saved[el.name] = el.value; });
       // Le visiteur n'attend pas la réponse du service d'envoi (souvent plusieurs secondes)
       f.reset();
