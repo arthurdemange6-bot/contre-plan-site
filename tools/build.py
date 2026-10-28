@@ -200,6 +200,7 @@ LINKS = {
     'guide-depassement-devis-travaux-supplementaires': [(SP + "F2533", "Devis et contrat avant des travaux"), (SP + "R24080", "Modèle de lettre : contester une facture qui dépasse le devis")],
     'guide-annuler-devis-signe-retractation': [(SP + "F23224", "Démarchage à domicile : règles à respecter"), (SP + "F2434", "Crédit affecté")],
     'guide-reception-travaux-reserves': [(SP + "F2958", "Garanties après la réception des travaux")],
+    'guide-artisan-retard-chantier-que-faire': [(SP + "F2533", "Devis et contrat avant des travaux"), (SP + "F1736", "Conciliateur de justice"), ("https://www.inc-conso.fr/content/vous-mettez-en-demeure-un-artisan-de-terminer-les-travaux", "Mettre en demeure un artisan de terminer les travaux (INC)")],
     'guide-mentions-obligatoires-devis': [(SP + "F2533", "Devis et contrat avant des travaux"), ("https://entreprendre.service-public.gouv.fr/vosdroits/F23568", "TVA des travaux dans les logements")],
     'guide-acompte-paiement-devis-travaux': [(SP + "F31187", "Acompte, arrhes, avance : quelles différences ?"), ("https://www.economie.gouv.fr/dgccrf/les-fiches-pratiques/vente-hors-etablissement-soyez-vigilant", "Vente hors établissement (DGCCRF)")],
     'guide-oublis-devis-salle-de-bain': [(SP + "F288", "Habitat contenant de l'amiante"), ("https://entreprendre.service-public.gouv.fr/vosdroits/F23568", "TVA des travaux dans les logements")],
@@ -310,7 +311,7 @@ article("guide-mentions-obligatoires-devis",
 <ul>
 <li>Votre nom et <strong>l'adresse exacte du chantier</strong>.</li>
 <li>La <strong>date du devis</strong> et sa <strong>durée de validité</strong>.</li>
-<li>La <strong>date de début</strong> et la <strong>date de fin ou le délai d'exécution</strong> auquel l'entreprise s'engage (par exemple « 3 semaines à compter du démarrage »). Une simple « durée indicative » ne l'engage à rien : demandez un délai ferme, c'est lui qui vous permettra d'agir si le chantier traîne.</li>
+<li>La <strong>date de début</strong> et la <strong>date de fin ou le délai d'exécution</strong> auquel l'entreprise s'engage (par exemple « 3 semaines à compter du démarrage »). Une simple « durée indicative » ne l'engage à rien : demandez un délai ferme, c'est lui qui vous permettra d'agir si le chantier traîne (voir <a href="guide-artisan-retard-chantier-que-faire.html">que faire si l'artisan est en retard sur le chantier</a>).</li>
 </ul>
 <h2>3. Le détail des travaux</h2>
 <p>C'est la partie la plus importante, et celle où je trouve le plus de problèmes.</p>
@@ -477,7 +478,7 @@ article("guide-acompte-paiement-devis-travaux",
 <h2>Un échéancier lié à l'avancement</h2>
 <p>Le plus sain est de payer au rythme du chantier. Par exemple, pour une salle de bain :</p>
 <ul><li>30 % à la signature ;</li><li>30 % à la fin de la dépose et des réseaux (plomberie, électricité) ;</li><li>30 % à la fin de la pose des revêtements ;</li><li>le solde à la réception.</li></ul>
-<p>Chaque étape doit être décrite pour être vérifiable : « fin de la plomberie », plutôt qu'une date fixe sans rapport avec l'avancement.</p>
+<p>Chaque étape doit être décrite pour être vérifiable : « fin de la plomberie », plutôt qu'une date fixe sans rapport avec l'avancement. Si le chantier prend du retard, c'est aussi ce qui vous évite de payer une étape qui n'est pas faite : voir <a href="guide-artisan-retard-chantier-que-faire.html">que faire si l'artisan est en retard</a>.</p>
 <h2>Le solde et la réception</h2>
 <p>La <strong>réception</strong> (<a href="guide-reception-travaux-reserves.html">mode d'emploi ici</a>) est le moment où vous acceptez les travaux, avec ou sans réserves. Notez par écrit chaque défaut constaté : ce sont les réserves, que l'entreprise doit corriger. La réception fait aussi démarrer les garanties (parfait achèvement, biennale, décennale). Si le contrat le prévoit, une <strong>retenue de garantie</strong> limitée à 5 % du prix peut être conservée jusqu'à la levée des réserves, dans la limite d'un an.</p>
 <h2>Les travaux supplémentaires</h2>
@@ -579,11 +580,73 @@ article("guide-reception-travaux-reserves",
 <li>si l'échéancier garde un <strong>solde suffisant à la réception</strong>, et si une retenue de garantie est prévue ;</li>
 <li>si les ouvrages sont décrits assez précisément (marques, références, quantités) pour pouvoir vérifier, le jour venu, que ce qui est posé correspond à ce qui a été payé ;</li>
 <li>si le nettoyage, l'évacuation des gravats et la remise en état des abords sont bien inclus ;</li>
-<li>si un délai d'exécution ferme est indiqué, pour savoir à partir de quand vous pouvez demander la réception.</li>
+<li>si un délai d'exécution ferme est indiqué, pour savoir à partir de quand vous pouvez demander la réception, et pour agir si l'<a href="guide-artisan-retard-chantier-que-faire.html">artisan est en retard sur le chantier</a>.</li>
 </ul>
 <p>Voir aussi <a href="guide-mentions-obligatoires-devis.html">les mentions obligatoires d'un devis</a>, <a href="guide-depassement-devis-travaux-supplementaires.html">que faire en cas de travaux supplémentaires</a>, <a href="guide-verifier-assurance-decennale.html">comment vérifier l'attestation décennale</a> et <a href="modeles-messages-artisan.html">les modèles de messages à l'artisan</a>.</p>
 <p style="font-size: 15px !important; color: #5b6784 !important;">Article d'information générale, à jour au 27 octobre 2026, qui ne remplace pas un conseil juridique. Sources : article 1792-6 du Code civil, loi n° 71-584 du 16 juillet 1971 (retenue de garantie), service-public.gouv.fr (garanties après la réception des travaux), DGCCRF (Malfaçon : mettez en œuvre les garanties), ANIL (jurisprudence sur la consignation de la retenue de garantie).</p>''',
  7, date="2026-10-25")
+
+article("guide-artisan-retard-chantier-que-faire",
+ "Artisan en retard sur le chantier : que faire ?",
+ "Artisan en retard sur le chantier : que faire, étape par étape",
+ "Artisan en retard sur le chantier : que faire ? Délai du devis, mise en demeure, paiements, annulation, médiateur et conciliateur, les étapes dans l'ordre.",
+ "Votre artisan est en retard sur le chantier, la date de fin est passée et vous ne savez plus quoi faire ni jusqu'où vous pouvez aller. Voici les étapes dans l'ordre, du simple message à la médiation, en partant de ce que dit votre devis.",
+ '''<h2>Artisan en retard sur le chantier : que faire en premier ?</h2>
+<p>Avant d'écrire la moindre lettre, reprenez votre devis signé. Il devient un contrat dès qu'il est signé par les deux parties : c'est lui qui dit à quoi l'entreprise s'est engagée, et donc ce que vous pouvez exiger. Je regarde toujours cinq points.</p>
+<ul>
+<li><strong>Une date de début et une date de fin, ou un délai ferme</strong> (« 4 semaines à compter du démarrage ») : le retard se mesure sans discussion possible.</li>
+<li><strong>Une date « donnée à titre indicatif »</strong> ou un « dès que possible » : selon l'INC, ce type de clause est présumé abusif, et vous pouvez alors vous appuyer sur la règle des 30 jours ci-dessous.</li>
+<li><strong>Aucune date</strong> : en principe, le Code de la consommation impose alors au professionnel de fournir sa prestation sans retard injustifié et au plus tard 30 jours après la conclusion du contrat. Selon l'INC, ces règles valent aussi pour des travaux commandés par un particulier, pas seulement pour les achats à distance. Pour un chantier qui dure plusieurs mois, l'application de ce délai se discute : raison de plus pour exiger une date écrite.</li>
+<li><strong>Une clause de pénalités de retard</strong> (un montant par jour de retard, par exemple) : notez-la, vous la rappellerez dans vos courriers. Sans clause, il n'y a pas de pénalité automatique, mais vous pouvez en principe réclamer des dommages et intérêts si le retard vous cause un préjudice que vous pouvez prouver (un loyer payé en plus, par exemple), à condition d'avoir d'abord mis l'entreprise en demeure, et sauf force majeure.</li>
+<li><strong>Une clause sur les intempéries ou les causes de prolongation</strong> : lisez-la avant que l'entreprise ne l'invoque pour justifier le retard.</li>
+</ul>
+<h2>Un retard est-il toujours la faute de l'artisan ?</h2>
+<p>Non. Je vois souvent des retards qui viennent en partie du client : un carrelage choisi trois semaines trop tard, un accès au chantier impossible, des travaux ajoutés en cours de route sans que le nouveau délai soit écrit, un acompte versé après la date prévue.</p>
+<p>D'autres retards tiennent au chantier lui-même : une couverture ou un ravalement ne se font pas sous la pluie, un matériau peut être en rupture. Ce qui compte, c'est ce que prévoit le devis et la façon dont l'entreprise vous a prévenu.</p>
+<div class="note"><p><strong>Dès maintenant, gardez des traces :</strong> photos datées de l'avancement, liste des jours sans personne sur le chantier, copies des SMS et des courriels. L'INC conseille aussi, en parallèle de vos démarches, de faire établir un constat par un commissaire de justice (une prestation payante) pour vous constituer des preuves.</p></div>
+<h2>Étape 1 : un message écrit, calme et daté</h2>
+<p>Le premier contact se fait par écrit, même après un appel : un courriel ou un SMS suffit à ce stade. Rappelez la date prévue au devis, constatez le retard sans accuser, et demandez deux choses précises : <strong>la date de reprise</strong> et <strong>la nouvelle date de fin</strong>. Vous trouverez des formulations prêtes à copier dans <a href="modeles-messages-artisan.html">les modèles de messages à l'artisan</a>.</p>
+<p>Si l'artisan répond avec un planning crédible, confirmez-le par écrit. Ce nouvel engagement vous servira si le chantier dérape encore.</p>
+<h2>Étape 2 : la mise en demeure en recommandé</h2>
+<p>Si le message reste sans effet, passez à la <strong>lettre recommandée avec avis de réception</strong>. C'est une étape indispensable : sans mise en demeure, vous ne pourrez en principe ni annuler le contrat pour ce retard (sauf refus clair de l'entreprise ou date impérative, voir l'étape 3), ni faire terminer le chantier par une autre entreprise aux frais de la première, ni réclamer des dommages et intérêts pour le retard.</p>
+<p>La lettre doit contenir :</p>
+<ul>
+<li>la référence et la date du devis signé, la nature des travaux et la date de fin prévue ;</li>
+<li>le constat du retard, avec la date depuis laquelle le chantier n'avance plus ;</li>
+<li>la <strong>liste précise des travaux restant à faire</strong> ;</li>
+<li>les pénalités de retard prévues au devis, s'il y en a ;</li>
+<li>un <strong>délai pour terminer</strong>, et ce que vous ferez s'il n'est pas respecté.</li>
+</ul>
+<p>Quel délai laisser ? Le modèle de lettre de l'INC accorde huit jours. Pour un retard de livraison, l'administration indique qu'on estime en général un délai raisonnable entre 8 et 15 jours. Sur un chantier, fixez un délai réaliste au regard de ce qui reste à faire.</p>
+<h2>Pouvez-vous arrêter de payer l'artisan ?</h2>
+<p>En partie, et avec prudence. Si votre échéancier est lié à l'avancement (un paiement à la fin de la plomberie, un autre à la fin des revêtements), l'étape non réalisée n'est tout simplement pas due. Le Code civil permet aussi de suspendre sa propre obligation quand l'autre partie n'exécute pas la sienne, à condition que ce manquement soit <strong>suffisamment grave</strong>.</p>
+<p>En revanche, refuser de payer ce qui a été correctement réalisé vous expose à être vous-même en tort. Annoncez par écrit que vous suspendez le paiement du solde jusqu'à l'achèvement, et ne retenez pas plus que ce qui reste à faire. C'est aussi pour cela qu'un acompte modéré et un solde payé à la réception vous protègent : voir <a href="guide-acompte-paiement-devis-travaux.html">comment caler l'acompte et l'échéancier</a>.</p>
+<h2>Étape 3 : annuler le contrat ou faire terminer par une autre entreprise</h2>
+<p>Si le délai de la mise en demeure passe sans reprise sérieuse, deux voies s'ouvrent en principe.</p>
+<ul>
+<li><strong>Résoudre le contrat</strong> (y mettre fin) : vous l'indiquez à l'entreprise par lettre recommandée avec avis de réception ou par un écrit sur un autre support durable, et le contrat est résolu à la réception de ce courrier, sauf si l'entreprise s'exécute entre-temps. Vous pouvez le faire sans délai supplémentaire si l'entreprise refuse clairement d'exécuter, ou si la date était une condition essentielle du contrat : une date que vous aviez expressément demandée avant la signature (idéalement par écrit), ou qui découlait des circonstances. Le professionnel doit alors rembourser les sommes versées au plus tard 14 jours après la résolution ; en cas de retard, ces sommes sont majorées de plein droit (de 10 % à 50 % selon la durée du retard). Sur un chantier déjà bien avancé, le décompte de ce qui a été fait se discute souvent : faites-vous conseiller avant d'envoyer ce courrier.</li>
+<li><strong>Faire terminer par une autre entreprise</strong> : après mise en demeure, le Code civil permet de faire exécuter les travaux par un autre professionnel, dans un délai et à un coût raisonnables, puis d'en demander le remboursement à l'entreprise défaillante. L'autorisation préalable du juge n'est exigée que pour faire détruire ce qui a été mal fait. Le modèle de lettre de l'INC, plus prudent, évoque encore une autorisation des tribunaux : si le coût du remplaçant est élevé ou contesté, faites-vous conseiller avant de vous lancer.</li>
+</ul>
+<div class="note"><p><strong>Avant de faire venir une autre entreprise :</strong> faites constater l'état exact du chantier (photos datées, et si possible constat), conservez le devis du remplaçant et sa facture. Vous devrez prouver ce qui restait à faire et ce que cela vous a coûté.</p></div>
+<h2>L'artisan ne répond plus : médiateur, conciliateur, tribunal</h2>
+<p>Deux recours amiables et gratuits existent avant la justice.</p>
+<ul>
+<li><strong>Le médiateur de la consommation</strong> : l'entreprise doit vous communiquer ses coordonnées, en pratique sur le devis, dans ses conditions générales ou sur son site. Vous devez d'abord avoir adressé une réclamation écrite à l'entreprise, puis saisir le médiateur dans l'année qui suit. Il propose une solution en principe sous 90 jours, que chaque partie reste libre d'accepter ou de refuser.</li>
+<li><strong>Le conciliateur de justice</strong> : un auxiliaire de justice bénévole, que l'on contacte par écrit, par téléphone ou lors d'une permanence. Il écoute les deux parties et les aide à trouver un accord, que chacune reste libre d'accepter.</li>
+</ul>
+<p>Pour une demande en paiement de 5 000 € ou moins, une tentative de résolution amiable (conciliation, médiation ou procédure participative) est en principe obligatoire avant de saisir le tribunal, sauf exceptions. Au-delà, ou si l'enjeu est important, l'aide d'un juriste, d'une association de consommateurs ou de votre assurance protection juridique devient utile. Vous pouvez aussi signaler le problème à la DGCCRF sur SignalConso.</p>
+<h2>Ce que je vérifie sur un devis pour éviter ce scénario</h2>
+<p>La plupart des litiges de retard se jouent avant la signature. Sur chaque devis, je regarde :</p>
+<ul>
+<li>si une <strong>date de début</strong> et un <strong>délai d'exécution ferme</strong> sont écrits, et non une simple durée indicative ;</li>
+<li>si des <strong>pénalités de retard</strong> sont prévues, et ce que dit la clause sur les intempéries ou les délais de fourniture ;</li>
+<li>si l'<strong>échéancier suit l'avancement réel</strong> et garde un solde suffisant à la <a href="guide-reception-travaux-reserves.html">réception des travaux</a> ;</li>
+<li>si les coordonnées du <strong>médiateur de la consommation</strong> sont faciles à trouver (devis, conditions générales ou site) ;</li>
+<li>si les travaux supplémentaires passent par un avenant écrit qui fixe aussi le nouveau délai (voir <a href="guide-depassement-devis-travaux-supplementaires.html">dépassement de devis et travaux supplémentaires</a>).</li>
+</ul>
+<p>Pour la liste complète de ce qu'un devis doit contenir, voyez <a href="guide-mentions-obligatoires-devis.html">les mentions obligatoires d'un devis de travaux</a>.</p>
+<p style="font-size: 15px !important; color: #5b6784 !important;">Article d'information générale, à jour au 28 octobre 2026, qui ne remplace pas un conseil juridique. Sources : articles L216-1, L216-6, L216-7, L241-4 et R212-2 du Code de la consommation, articles 1217 à 1219, 1222, 1224 à 1226, 1231 et 1231-1 du Code civil, service-public.gouv.fr (devis et contrat de travaux, conciliateur de justice, médiation des litiges de la consommation, achat à distance : livraison ou exécution du service), economie.gouv.fr (livraison : quels sont vos droits), INC (la livraison : vos droits et recours, prestation de services non exécutée malgré la mise en demeure, mise en demeure d'un artisan de terminer les travaux).</p>''',
+ 7, date="2026-10-28")
 
 # ---------- Pages Méthode et Engagements
 # ---------- Nouveaux guides (tools/nouveaux_guides.py)
