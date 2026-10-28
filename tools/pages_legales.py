@@ -1,16 +1,17 @@
 # Pages légales générées par build.py : conditions générales de vente et politique de confidentialité.
 # Modèle d'information générale, à faire relire par un professionnel du droit.
-# À mettre à jour à réception du SIRET et de l'adresse, et après adhésion au médiateur de la consommation.
+# SIRET et adresse renseignés le 28/10/2026. À mettre à jour après adhésion au médiateur de la consommation.
 
 EDITEUR = "Arthur Demange, entrepreneur individuel (EI), exerçant sous le nom commercial Contre-Plan"
-ADRESSE = "en cours d'attribution"
-SIRET = "en cours d'attribution"
+ADRESSE = "10 rue du Point de Vue, 88000 Épinal"
+SIRET = "132 070 426 00011"
+TEL = "06 75 83 65 61"
 MEDIATEUR = "en cours de désignation : ses coordonnées seront indiquées ici dès l'adhésion"
 MAJ = "27 octobre 2026"
 
 CGV_BODY = f"""<p><em>Conditions en vigueur au {MAJ}.</em></p>
 <h2 id="vendeur">1. Qui vend</h2>
-<p>{EDITEUR}. Adresse : {ADRESSE}. SIRET : {SIRET}. E-mail : <a href="mailto:contact@contre-plan.com">contact@contre-plan.com</a>. TVA non applicable, article 293 B du Code général des impôts.</p>
+<p>{EDITEUR}. Adresse : {ADRESSE}. SIRET : {SIRET}. Téléphone : <a href="tel:+33675836561">{TEL}</a>. E-mail : <a href="mailto:contact@contre-plan.com">contact@contre-plan.com</a>. TVA non applicable, article 293 B du Code général des impôts.</p>
 
 <h2 id="champ">2. Champ d'application</h2>
 <p>Les présentes conditions générales de vente s'appliquent aux prestations de Contre-Plan commandées par un particulier. Lorsque la commande et le paiement passent par la plateforme ComeUp, ce sont les conditions de ComeUp qui régissent la commande, le paiement et la facturation ; les articles 3, 5, 7 et 8 ci-dessous s'appliquent aussi, pour décrire la prestation et son périmètre. Passer commande vaut acceptation des présentes conditions.</p>
