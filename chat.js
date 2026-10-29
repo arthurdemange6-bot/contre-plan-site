@@ -28,13 +28,18 @@
       a: "Comparez poste par poste, en HT, en mettant les prestations comparables sur la même ligne : un devis moins cher avec des postes absents peut finir plus cher. Un tableau gratuit est disponible, et l'option « Comparatif multi devis » vous le livre rempli et commenté.", l: ["/comparer-ses-devis.html", "Le tableau comparatif gratuit"] },
     { q: "Qui analyse mon devis ?", k: ["qui", "ingénieur", "ingenieur", "expérience", "experience", "compétent", "fiable", "commission", "indépendant"],
       a: "Un ingénieur BTP avec 10 ans d'expérience sur les chantiers et environ 1 000 devis lus et négociés. Indépendant : aucune commission d'artisan, aucune entreprise à vous revendre.", l: ["/methode.html", "Voir ma méthode"] },
+    { q: "Est-ce fiable ?", k: ["arnaque", "fiable", "confiance", "sérieux", "serieux", "escroquerie", "légal", "legal", "vrai", "siret", "garantie", "rassur"],
+      a: "Contre-Plan est une entreprise immatriculée (SIRET 132 070 426 00011), rattachée au médiateur de la consommation CM2C. Vous payez sur ComeUp, une plateforme de paiement sécurisé, et vous pouvez masquer votre nom et votre adresse sur le devis. Pas sûr que l'analyse vous serve ? Le pré-diagnostic gratuit vous le dit avant toute commande.", l: ["/mentions-legales.html", "Voir les mentions légales"] },
+    { q: "Mon devis me paraît trop cher", k: ["trop cher", "devis cher", "est cher", "paraît cher", "parait cher", "arnaqué", "arnaque moi", "surfactur", "abus", "gonflé", "gonfle", "normal ce prix", "prix normal", "est-ce normal"],
+      a: "C'est exactement ce que vérifie l'analyse : le prix de chaque poste comparé aux prix constatés, les postes oubliés ou comptés deux fois, et les points à négocier. Pour savoir d'abord si l'analyse vaut le coup sur votre devis, demandez le pré-diagnostic gratuit (réponse sous 24 h).", l: ["/contact.html?sujet=prediagnostic", "Demander le pré-diagnostic gratuit"] },
     { q: "Comment vous contacter ?", k: ["contact", "contacter", "joindre", "écrire", "ecrire", "mail", "email", "message", "formulaire"],
       a: "Par le formulaire de contact : je réponds sous 24 h. Pour faire analyser un devis, commandez directement sur ComeUp.", l: ["/contact.html", "Formulaire de contact"] }
   ];
-  var FALLBACK = "Je n'ai pas la réponse à cette question. Écrivez-moi via le formulaire de contact, ou réservez un appel gratuit de 15 min : https://calendar.app.google/6LCc6yKVHnbvA3WN7";
+  var FALLBACK = "Je n'ai pas de réponse toute prête à cette question, mais je vous réponds personnellement sous 24 h via le formulaire de contact. Vous pouvez aussi demander le pré-diagnostic gratuit de votre devis, ou réserver un appel gratuit de 15 min : https://calendar.app.google/6LCc6yKVHnbvA3WN7";
 
   var css = "#cp-chat-btn{position:fixed;right:20px;bottom:20px;z-index:9999;display:flex;align-items:center;gap:10px;background:#bf4a17;color:#fff;border:0;border-radius:2px;padding:14px 20px;font:700 16px 'Source Sans 3',Arial,sans-serif;box-shadow:0 8px 24px rgba(0,0,0,.3);cursor:pointer}" +
     "#cp-chat-btn:hover{background:#b8461a}" +
+    "@media (max-width:600px){#cp-chat-btn{right:12px;bottom:12px;padding:12px;border-radius:50%}#cp-chat-btn span{position:absolute;left:-9999px}body{padding-bottom:72px}}" +
     "#cp-chat{position:fixed;right:20px;bottom:86px;z-index:9999;width:min(380px,calc(100vw - 40px));max-height:min(560px,calc(100vh - 120px));display:none;flex-direction:column;background:#ffffff;color:#14284b;border-radius:10px;box-shadow:0 16px 48px rgba(0,0,0,.35);overflow:hidden;font-family:'Source Sans 3',Arial,sans-serif}" +
     "#cp-chat.open{display:flex}" +
     "#cp-chat header{background:#0f2747;color:#fff;padding:14px 16px;display:flex;align-items:center;justify-content:space-between;gap:10px}" +
