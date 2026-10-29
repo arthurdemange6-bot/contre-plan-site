@@ -125,7 +125,7 @@ def crumbs_ld(crumbs, url):
     items = [{"@type":"ListItem","position":i+1,"name":t,"item":("https://contre-plan.com/" + (h if h != "index.html" else "")) if h else url} for i,(t,h) in enumerate(crumbs)]
     return '<script type="application/ld+json">' + json.dumps({"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":items}, ensure_ascii=False) + '</script>'
 
-def layout(body, toc_on=True):
+def layout(body, toc_on=True, cta=None):
     toc = []
     def rep(m):
         txt = html.unescape(re.sub(r"<[^>]+>", "", m.group(1))); i = slug_id(txt); toc.append((i, re.sub(r"^\d+\.\s*", "", txt))); return f'<h2 id="{i}">{m.group(1)}</h2>'
@@ -134,7 +134,7 @@ def layout(body, toc_on=True):
     tl = "".join(f'<li><a href="#{i}">{html.escape(t)}</a></li>' for i, t in toc)
     side_toc = f'<nav class="cp-toc" aria-label="Sommaire"><p>Sommaire</p><ol>{tl}</ol></nav>' if show else ''
     mob_toc = f'<details class="cp-toc-m"><summary>Sommaire</summary><ol>{tl}</ol></details>' if show else ''
-    return f'<div class="cp-wrap" id="contenu"><main class="art">{mob_toc}{body}{CTA}</main><aside class="cp-side">{side_toc}{SIDE}</aside></div>'
+    return f'<div class="cp-wrap" id="contenu"><main class="art">{mob_toc}{body}{CTA if cta is None else cta}</main><aside class="cp-side">{side_toc}{SIDE}</aside></div>'
 
 # FAQ des guides (section visible + données structurées FAQPage) et date de mise à jour
 FAQS = {
@@ -275,7 +275,19 @@ def with_faq(body, qa, before='<p style="font-size: 15px'):
     return body[:i].rstrip("\n") + "\n" + block + "\n" + body[i:]
 
 ARTICLES = []
+LITIGE_SLUGS = {"guide-depassement-devis-travaux-supplementaires"}
+LITIGE_CTA = '''<aside class="cp-cta-box bp">
+<span class="tag">Pour vos prochains travaux</span>
+<p class="t">Un prochain devis à signer ? Faites-le relire avant.</p>
+<p>La plupart des dépassements se jouent au moment de la signature : forfait flou, ligne « selon état », supplément non chiffré. L'analyse les repère avant que vous vous engagiez. Elle n'intervient pas sur un chantier déjà en cours.</p>
+<div class="row"><a class="btn" href="''' + COMEUP + '''" data-goatcounter-click="clic-comeup">Faire analyser un nouveau devis</a><a class="btn line" href="modeles-messages-artisan.html">Modèles de messages</a></div>
+</aside>'''
+LITIGE_NOTE = '''<aside class="cp-alert"><p class="t">Chantier en cours ou désaccord déjà engagé ?</p><p>Je n'interviens pas dans un litige en cours : l'analyse sert avant de signer. Ce guide vous donne les étapes à suivre vous-même (réclamation écrite, médiateur, conciliateur de justice), et un <a href="modeles-messages-artisan.html">modèle de message pour contester un supplément</a>.</p></aside>
+'''
+
 def article(slug, title, h1, desc, lead, body, readtime, date=DATE):
+    if slug in LITIGE_SLUGS:
+        body = LITIGE_NOTE + body
     url = f"https://contre-plan.com/{slug}.html"
     mod = UPDATED.get(slug, date)
     qa = FAQS.get(slug)
@@ -291,7 +303,7 @@ def article(slug, title, h1, desc, lead, body, readtime, date=DATE):
     if qa:
         body = with_faq(body, qa)
     body = with_links(body, slug)
-    page = head(title, desc, url, extra) + pagehero("Guide", h1, lead, f"Mis à jour le {date_fr(mod)}, lecture {readtime} min · {AUTEUR}", crumbs) + layout(body) + footer()
+    page = head(title, desc, url, extra) + pagehero("Guide", h1, lead, f"Mis à jour le {date_fr(mod)}, lecture {readtime} min · {AUTEUR}", crumbs) + layout(body, True, LITIGE_CTA if slug in LITIGE_SLUGS else None) + footer()
     open(os.path.join(OUT, slug + ".html"), "w").write(page)
     ARTICLES.append((slug, h1, desc, readtime))
     LASTMOD[slug + ".html"] = mod
@@ -764,8 +776,13 @@ page("analyse-devis-isolation",
 <li><b>Les points singuliers</b> : trappe d'accès, spots encastrés, conduits de cheminée (distances de sécurité), boîtiers électriques.</li>
 <li><b>La préparation</b> : retrait de l'ancien isolant si nécessaire, protection, repérage des gaines.</li>
 <li><b>Le certificat de l'isolant</b> (certification ACERMI ou équivalent) pour justifier les performances annoncées.</li></ul>
+<aside class="cp-alert"><p class="t">Démarché par téléphone ?</p><p>Le démarchage téléphonique pour des travaux de rénovation énergétique est interdit depuis 2020, sauf si vous êtes déjà client de l'entreprise. Une offre arrivée de cette façon, surtout avec des aides « déjà déduites », doit vous rendre prudent. Avant de signer, faites le point gratuitement avec un conseiller <a href="https://france-renov.gouv.fr/" target="_blank" rel="noopener">France Rénov'</a>. Si vous avez déjà signé, voyez <a href="guide-annuler-devis-signe-retractation.html">comment vous rétracter</a>.</p></aside>
 <h2>Les aides, le RGE et la TVA</h2>
-<p>Les aides à la rénovation énergétique exigent une entreprise qualifiée RGE pour ces travaux. Dans un logement achevé depuis plus de 2 ans, l'isolation relève du taux de TVA de 5,5 %. Si une prime est déduite du devis, son montant doit apparaître clairement.</p>
+<p>Les aides ont beaucoup changé : MaPrimeRénov' « par geste » ne finance plus l'isolation des murs depuis le 1<sup>er</sup> janvier 2026, ni celle des combles et de la toiture depuis le 1<sup>er</sup> septembre 2026. Ces travaux peuvent encore être aidés dans une rénovation d'ampleur accompagnée, ou par une prime CEE. Une MaPrimeRénov' « déduite » sur un devis d'isolation seule est donc à faire vérifier avant de signer.</p>
+<ul><li><b>Les seuils de résistance thermique</b> pour les primes CEE : R ≥ 7 en combles perdus, R ≥ 6 en rampants, R ≥ 3,7 pour les murs par l'extérieur ou l'intérieur.</li>
+<li><b>Le RGE</b> : vérifiez l'entreprise dans l'<a href="https://france-renov.gouv.fr/annuaire-rge" target="_blank" rel="noopener">annuaire officiel</a>, et que sa qualification couvre bien le type de travaux du devis (combles, murs par l'extérieur…).</li>
+<li><b>Les montants déduits</b> : chaque prime doit apparaître séparément, avec son nom et l'organisme qui la verse.</li></ul>
+<p>Dans un logement achevé depuis plus de 2 ans, l'isolation relève du taux de TVA de 5,5 %.</p>
 <h2>Exemple de ligne à faire préciser</h2>
 <p>« Isolation des combles, laine soufflée : 80 m², 22 € le m². » Sans résistance thermique ni épaisseur, impossible de comparer deux devis ni de savoir si vous êtes éligible aux aides. À demander : le produit exact, la résistance thermique, l'épaisseur après tassement.</p>
 """ + cta_type("d'isolation"),
@@ -811,6 +828,15 @@ page("professionnels",
 <li><b>Les questions exactes à poser</b> à l'entreprise avant de signer.</li>
 <li><b>Un échange de suivi</b> inclus pour éclaircir un point du rapport.</li></ul>
 <p>Voir un <a href="exemple-rapport-contre-plan.pdf" target="_blank" rel="noopener">exemple de rapport complet (PDF)</a>.</p>
+<h2>Qui relit les devis</h2>
+<p>Un ingénieur BTP, dix ans sur les chantiers et environ 1 000 devis lus et négociés, côté entreprise comme côté client. Contre-Plan est une entreprise individuelle immatriculée dans les Vosges (SIRET 132 070 426 00011), rattachée au médiateur de la consommation CM2C. La méthode de contrôle est décrite en détail sur la page <a href="methode.html">ma méthode</a>.</p>
+<h2>Comment ça se passe pour votre client</h2>
+<ol><li><b>Il commande sur ComeUp</b>, une plateforme française de services : compte gratuit en 2 minutes, paiement par carte sécurisé.</li>
+<li><b>Il envoie son devis</b> dans la messagerie de la commande, en PDF ou en photo, nom et adresse masquables.</li>
+<li><b>Il reçoit le rapport</b> dans la même messagerie, sous 48 h.</li></ol>
+<p>Une hésitation ? Il peut d'abord demander un <a href="contact.html?sujet=prediagnostic">pré-diagnostic gratuit</a>, sans compte ni paiement.</p>
+<h2>Plusieurs devis ou plusieurs lots</h2>
+<p>Chaque devis transmis fait l'objet d'une analyse. Un acquéreur qui a un devis d'isolation, un d'électricité et un de salle de bain transmet donc trois devis dans la même commande, avec l'option « devis supplémentaire ». Pour plusieurs devis concurrents sur les mêmes travaux, l'option « comparatif » livre en plus un tableau poste par poste. Les tarifs détaillés sont sur la <a href="index.html#tarifs">page d'accueil</a>.</p>
 <h2>Délais</h2>
 <p>Rapport sous 48 h après réception du devis, ou 24 h avec l'option express. Pratique quand un compromis ou une offre de prêt approche.</p>
 <h2>Achat d'un bien avec travaux</h2>
@@ -819,8 +845,12 @@ page("professionnels",
 <p>Aucune commission n'est versée ni reçue : ni aux artisans, ni aux prescripteurs. Je ne revends aucune entreprise et je ne fais pas de travaux. Votre client peut masquer son nom et son adresse sur le devis.</p>
 <h2>Les limites</h2>
 <p>L'analyse est documentaire et à distance. Ce n'est ni une expertise judiciaire, ni un diagnostic technique du bâtiment, ni une mission de maîtrise d'œuvre, et elle n'intervient pas dans un litige déjà engagé.</p>
+<h2>Ce que vous y gagnez</h2>
+<ul><li><b>Un client mieux préparé</b> : il connaît le vrai budget de ses travaux avant le compromis ou l'offre de prêt.</li>
+<li><b>Moins de dossiers qui cassent</b> sur un budget travaux sous-estimé ou un poste oublié découvert trop tard.</li>
+<li><b>Aucun conflit d'intérêts</b> : vous recommandez un avis indépendant, sans lien avec un artisan ni rémunération.</li></ul>
 <h2>Nous contacter</h2>
-<p>Pour orienter vos clients ou poser une question : le <a href="contact.html?sujet=professionnel">formulaire de contact</a>, réponse sous 24 h. Vos clients commandent eux-mêmes leur analyse sur ComeUp, avec un paiement sécurisé.</p>
+<p>Pour orienter vos clients ou poser une question : le <a href="contact.html?sujet=professionnel">formulaire de contact</a>, réponse sous 24 h. Pour le transmettre à un client, il suffit de lui envoyer le lien de la page d'accueil : contre-plan.com.</p>
 """, "Professionnels", toc=False)
 
 # ---------- Mentions légales (seule page portant l'identité de l'exploitant), dans le gabarit du site, en petit
@@ -961,6 +991,8 @@ TPL = [
   "Bonjour,\n\nVotre devis indique une durée indicative de [durée]. Pourriez-vous préciser une date de début des travaux et un délai d'exécution sur lequel vous vous engagez ?\n\nMerci par avance.\n\nCordialement,\n[Votre nom]"),
  ("Demander les marques et références",
   "Bonjour,\n\nPour bien comparer les offres, pourriez-vous m'indiquer les marques et références des matériaux et équipements prévus, notamment [équipement : receveur, mitigeur, pompe à chaleur, isolant…] ?\n\nMerci beaucoup.\n\nCordialement,\n[Votre nom]"),
+ ("Contester un supplément non accepté par écrit",
+  "Bonjour,\n\nJ'ai bien reçu votre facture du [date], d'un montant de [montant] €, alors que le devis signé le [date du devis] s'élevait à [montant du devis] €.\n\nLa différence correspond à [travaux concernés], que je n'ai pas acceptés par écrit, ni pour leur contenu ni pour leur prix. Je vous propose donc de régler le montant prévu au devis, et je reste disponible pour examiner avec vous tout justificatif de ces travaux supplémentaires.\n\nSans accord de votre part, je me réserve la possibilité de saisir le médiateur de la consommation dont vous relevez.\n\nCordialement,\n[Votre nom]"),
  ("Refuser poliment un devis",
   "Bonjour,\n\nMerci pour le temps passé et pour votre devis du [date]. Après réflexion, j'ai choisi une autre proposition pour ce projet.\n\nJe garde vos coordonnées pour de futurs travaux.\n\nBien cordialement,\n[Votre nom]"),
 ]
@@ -987,7 +1019,7 @@ t_cards = "".join(rcard(h_, "Par travaux", t_, d_, "Ce que je vérifie") for h_,
 o_cards = "".join([
  rcard("index.html#test", "Outil gratuit", "Test : votre devis est-il complet ?", "Six questions pour repérer en une minute ce qu'il faut faire préciser.", "Faire le test"),
  rcard("comparer-ses-devis.html", "Outil gratuit", "Tableau comparatif de devis", "Excel et PDF : totaux, TVA, acompte et postes manquants calculés pour vous.", "Télécharger"),
- rcard("modeles-messages-artisan.html", "Outil gratuit", "Modèles de messages à l'artisan", "Sept messages prêts à copier pour demander, négocier ou refuser poliment.", "Voir les modèles"),
+ rcard("modeles-messages-artisan.html", "Outil gratuit", "Modèles de messages à l'artisan", "Huit messages prêts à copier pour demander, négocier ou refuser poliment.", "Voir les modèles"),
  rcard("checklist-devis-travaux.pdf", "Outil gratuit", "Check-list à imprimer", "Vingt points à cocher en relisant n'importe quel devis de travaux.", "Télécharger", ' download data-goatcounter-click="telechargement-checklist"')])
 c_cards = "".join([
  rcard("methode.html", "Comprendre", "Ma méthode", "La grille de contrôle appliquée à chaque devis, en cinq temps.", "Découvrir"),

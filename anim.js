@@ -182,7 +182,7 @@
     var tt = [['Total HT', '6 704,00 €'], ['TVA 10 %', '670,40 €'], ['Total TTC', '7 374,40 €'], ['Acompte à la commande : 50 %', '3 687,20 €']], t4;
     tt.forEach(function (t, i) { var a = 0.57 + i * 0.035; t4 = line('t', t, a, a + 0.032); });
     t4.lastChild.className = 'cp-amt';
-    var ring4 = el('i', 'cp-ring2'); t4.lastChild.appendChild(ring4); var n4 = el('span', 'cp-n', '→ 30 % suffit'); t4.appendChild(n4); marks.push([ring4, 0.72], [n4, 0.73]);
+    var ring4 = el('i', 'cp-ring2'); t4.lastChild.appendChild(ring4); var n4 = el('span', 'cp-n', '→ plutôt 30 %'); t4.appendChild(n4); marks.push([ring4, 0.72], [n4, 0.73]);
     var sig = line('sig', ['Bon pour accord, le …', 'Signature :'], 0.74, 0.79); sig.style.position = 'relative';
     var tampon = el('div', 'cp-tampon', 'RELU'); sig.appendChild(tampon); marks.push([tampon, 0.93]);
     sheet.appendChild(pen);
