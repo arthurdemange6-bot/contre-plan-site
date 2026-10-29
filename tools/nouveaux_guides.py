@@ -278,6 +278,42 @@ JOB_PAGES.append(dict(
 ))
 
 JOB_PAGES.append(dict(
+ slug="analyse-devis-terrasse",
+ title="Analyse de devis terrasse par un ingénieur BTP",
+ h1="Analyse de devis terrasse",
+ desc="Dalle béton, carrelage, bois ou composite : préparation du sol, épaisseur, pente, évacuation des eaux, structure et démarches. Ce qu'un ingénieur BTP vérifie sur un devis de terrasse.",
+ lead="Une terrasse se juge sur ce qu'on ne voit plus une fois finie : le sol préparé, la dalle ou la structure, la pente. C'est aussi là que les devis sont les plus vagues.",
+ kicker="Terrasse", cta="de terrasse", service="Analyse de devis de terrasse",
+ card="Préparation du sol, dalle ou structure, pente, évacuation, démarches.",
+ body="""<h2>La préparation du sol</h2>
+<p>C'est le poste le plus souvent noyé dans un forfait. Le devis doit dire si le <strong>décaissement</strong> (terrassement) est prévu, sur quelle profondeur, et si l'<strong>évacuation des terres</strong> est comprise : quelques mètres cubes de terre à sortir et à mettre en décharge pèsent vite dans la facture.</p>
+<h2>Terrasse béton ou carrelée</h2>
+<ul><li><b>Le support</b> : hérisson (couche de cailloux) et son épaisseur, film, puis dalle béton avec son <b>épaisseur</b> et son <b>ferraillage</b> (treillis soudé).</li>
+<li><b>La pente</b> : une légère pente, de l'ordre de 1 à 2 %, éloignée de la maison, évite que l'eau stagne ou rentre sous la porte-fenêtre.</li>
+<li><b>Les joints de fractionnement</b> sur les grandes surfaces, pour limiter les fissures.</li>
+<li><b>Le carrelage</b> : collé sur dalle ou posé sur plots, et un carrelage adapté à l'extérieur (résistance au gel, antidérapant).</li></ul>
+<h2>Terrasse bois ou composite</h2>
+<ul><li><b>La structure</b> : plots, pieux ou longrines, et l'entraxe des lambourdes, à adapter à l'épaisseur des lames.</li>
+<li><b>Le bois</b> : essence et classe d'emploi adaptée à l'extérieur (classe 4 pour un bois en contact avec le sol ou l'humidité), ou la référence exacte du composite.</li>
+<li><b>La ventilation sous les lames</b> et la visserie inox : deux oublis qui réduisent beaucoup la durée de vie.</li></ul>
+<h2>L'évacuation des eaux</h2>
+<p>Où part l'eau de pluie ? Caniveau, drain, regard : si la terrasse est contre la maison ou au-dessus d'une pièce, ce point doit être traité et chiffré, pas laissé « selon besoin ».</p>
+<h2>Les démarches et l'assurance</h2>
+<p>Une terrasse de plain-pied non couverte ne demande en principe pas d'autorisation, sous réserve des règles de votre commune (PLU, secteur protégé). Une terrasse <strong>surélevée de plus de 60 cm</strong> ou <strong>couverte</strong> crée de l'emprise au sol : déclaration préalable à partir de 5 m², permis au-delà de 20 m² (40 m² dans certaines zones couvertes par un PLU). Pour une terrasse maçonnée, demandez l'attestation d'assurance décennale couvrant cette activité. Une terrasse surélevée doit prévoir un garde-corps.</p>
+<h2>Exemple de ligne à faire préciser</h2>
+<p>« Réalisation d'une terrasse béton 25 m² : forfait 4 500 €. » Quelle préparation, quelle épaisseur de dalle, quel ferraillage, quelle pente, qui évacue les terres ? À demander : le détail par poste (terrassement, hérisson, dalle, finition) avec les quantités.</p>
+""",
+ faq=[
+  ("Faut-il une autorisation pour construire une terrasse ?",
+   "Une terrasse de plain-pied non couverte n'en demande en principe pas, sauf règles locales (PLU, secteur protégé). Surélevée de plus de 60 cm ou couverte, elle crée de l'emprise au sol : déclaration préalable à partir de 5 m², permis de construire au-delà de 20 m² (40 m² dans certaines zones d'un PLU)."),
+  ("Que doit détailler un devis de terrasse béton ?",
+   "Le décaissement et l'évacuation des terres, le hérisson, l'épaisseur et le ferraillage de la dalle, la pente, les joints et la finition, avec une quantité et un prix pour chaque poste."),
+  ("Comment faire relire mon devis de terrasse ?",
+   "Envoyez-le en PDF ou en photo après avoir commandé l'analyse sur ComeUp : vous recevez sous 48 h un rapport avec les postes manquants, les prix à vérifier et les questions à poser."),
+ ],
+))
+
+JOB_PAGES.append(dict(
  slug="analyse-devis-extension",
  title="Analyse de devis extension de maison par un ingénieur BTP",
  h1="Analyse de devis extension",
