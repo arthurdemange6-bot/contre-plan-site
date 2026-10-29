@@ -11,7 +11,7 @@
     { c: 1, q: "Comment ça marche ?", k: ["comment ça marche", "comment ca marche", "marche", "fonctionne", "étapes", "etapes", "commander", "procédure", "envoyer mon devis", "envoie mon devis", "envoyer le devis", "j'envoie"],
       a: "1. Vous commandez sur ComeUp (compte gratuit, paiement par carte). 2. Vous envoyez votre devis dans la messagerie de la commande, en PDF ou en photo. 3. Vous recevez dans la même messagerie un rapport avec un verdict, les prix poste par poste, les oublis et les questions à poser à l'artisan." },
     { c: 1, q: "Faut-il créer un compte ?", k: ["compte", "inscri", "comeup", "come up", "chèque", "cheque", "carte bancaire", "carte bleue", "paypal", "payer en ligne", "paiement", "payer", "dollar", "$"],
-      a: "Oui : ComeUp est une plateforme française de services en ligne, et la commande passe par un compte gratuit (2 minutes). Vous payez en ligne par carte, et ComeUp conserve le paiement jusqu'à la livraison et à la validation du rapport. Si vous n'êtes pas connecté, ComeUp peut afficher le prix en dollars : une fois connecté en France, c'est bien 16,50 € frais compris. Pas prêt à créer un compte ? Le pré-diagnostic gratuit se demande sans compte ni paiement.", l: PREDIAG },
+      a: "Oui : ComeUp est une plateforme française de services en ligne, et la commande passe par un compte gratuit (2 minutes). Vous payez en ligne par carte, et ComeUp conserve le paiement jusqu'à la livraison et à la validation du rapport. Le prix est en euros : 16,50 € frais compris. Avant d'être connecté, ComeUp l'affiche parfois en dollars, c'est seulement un réglage d'affichage. Pas prêt à créer un compte ? Le pré-diagnostic gratuit se demande sans compte ni paiement.", l: PREDIAG },
     { c: 1, q: "Que contient le rapport ?", k: ["rapport", "contient", "reçois", "recois", "livrable", "pdf", "exemple"],
       a: "Un verdict global (cohérent, négociable ou signaux d'alerte), le contrôle des prix poste par poste, les postes oubliés, les incohérences d'enchaînement des travaux, les questions à poser avant de signer, et un échange de suivi inclus.", l: ["/exemple-rapport-contre-plan.pdf", "Voir un exemple de rapport complet (PDF)"] },
     { c: 1, w: 2, q: "J'ai plusieurs devis", k: ["même prix", "meme prix", "quel que soit le montant", "pour 2 devis", "pour 3 devis", "plusieurs devis", "2 devis", "3 devis", "4 devis", "deux devis", "trois devis", "quatre devis", "plusieurs lots", "lots", "tous corps", "rénovation complète", "renovation complete", "gros devis"],
@@ -19,7 +19,7 @@
     { w: 2, q: "Le rapport sert-il pour ma banque ?", k: ["pret", "banque", "prêt", "pret immo", "crédit", "credit", "financement", "dossier de prêt", "acquisition", "compromis", "achat"],
       a: "Le rapport n'est pas une expertise et n'a pas de valeur officielle pour une banque. Il vous sert à faire corriger les oublis et les imprécisions des devis avant de les joindre à votre dossier, pour ne pas sous-estimer le budget travaux. Avec plusieurs devis, voyez l'option « 2e devis » ou le pré-diagnostic gratuit.", l: PREDIAG },
     { w: 0.5, q: "Quels travaux analysez-vous ?", k: ["quels travaux", "type de travaux", "salle de bain", "cuisine", "isolation", "toiture", "pompe", "pac", "électricité", "electricite", "plomberie", "maçonnerie", "extension", "fenêtre", "menuiserie", "terrasse", "carrelage", "vmc", "ventilation", "chauffe-eau", "ballon", "photovolta", "panneaux solaires", "solaire", "mur porteur"],
-      a: "Rénovation et construction : salle de bain, cuisine, isolation, toiture, pompe à chaleur, électricité, plomberie, maçonnerie, menuiseries, extension, terrasse…", l: ["/#travaux", "Ce que je vérifie selon vos travaux"] },
+      a: "Rénovation et construction : salle de bain, cuisine, isolation, toiture, pompe à chaleur, électricité, plomberie, maçonnerie, menuiseries, extension, terrasse, véranda, piscine, poêle…", l: ["/#travaux", "Ce que je vérifie selon vos travaux"] },
     { w: 3, q: "Et pour une cuisine de grande enseigne ?", k: ["ixina", "schmidt", "mobalpa", "cuisinella", "leroy", "castorama", "ikea", "cuisiniste", "enseigne", "marque"],
       a: "Oui, quelle que soit l'enseigne : l'analyse porte sur le contenu du devis (meubles, plan de travail, électroménager, pose, raccordements, TVA), pas sur la marque.", l: ["/analyse-devis-cuisine.html", "Ce que je vérifie sur un devis de cuisine"] },
     { c: 1, q: "Mes données sont-elles protégées ?", k: ["données", "donnees", "confidentiel", "nom", "adresse", "personnel", "sécurité", "partag", "anonyme"],
@@ -39,7 +39,7 @@
     { q: "Structure, mur porteur", k: ["mur porteur", "structure", "porteur", "note de calcul", "bureau d'études", "bureau d'etudes", "ipn", "poutre", "fondation"],
       a: "Je vérifie que le devis prévoit et chiffre ce qu'il faut : étude ou note de calcul d'un bureau d'études, étaiement, poutre ou linteau dimensionné, reprise des fondations. Je ne fais pas le calcul de structure moi-même : c'est le rôle d'un bureau d'études, et le rapport vous dit s'il manque." },
     { w: 2, q: "D'où viennent vos prix ?", k: ["viennent vos prix", "vos prix de", "comparaison", "d'où viennent", "d'ou viennent", "source", "base de prix", "comment vous savez", "prix du marché", "prix du marche", "fourchette", "référence de prix"],
-      a: "Les prix unitaires sont comparés à des ordres de grandeur récents, issus de dix ans de chantier et d'environ 1 000 devis lus, en tenant compte de la région quand je la connais. Ce sont des fourchettes indicatives, jamais un « bon prix » au centime.", l: ["/methode.html", "Voir ma méthode"] },
+      a: "Les prix unitaires sont comparés aux fourchettes publiques 2025-2026 affichées sur chaque page Travaux (deux guides de prix recoupés par ligne), et à mon expérience de chantier, en tenant compte de la région quand je la connais. Ce sont des fourchettes indicatives, jamais un « bon prix » au centime.", l: ["/methode.html", "Voir ma méthode"] },
     { q: "Je suis artisan", nocta: 1, k: ["je suis artisan", "suis plombier", "suis électricien", "suis electricien", "suis maçon", "suis macon", "suis chauffagiste", "dénigr", "denigr", "contre les artisans", "mon client veut", "mon devis relu"],
       a: "Je ne juge pas l'entreprise, je fais préciser le devis. La plupart des devis ne sont pas malhonnêtes, juste incomplets : un devis clair et détaillé sort renforcé de l'analyse. Le rapport donne au client des questions à vous poser, pas un verdict sur votre travail.", l: ["/methode.html", "Voir ma méthode"] },
     { q: "Que veut dire ce mot ?", k: ["mot", "terme", "signifie", "veut dire", "définition", "definition", "lexique", "ragréage", "forfait", "ml"],
@@ -58,8 +58,10 @@
       a: "La page « Votre cas est-il couvert ? » fait le point type par type : ce que j'analyse, ce qui se voit au cas par cas avec le pré-diagnostic gratuit, et vers qui aller quand ce n'est pas pour moi.", l: ["/votre-cas.html", "Votre cas est-il couvert ?"], l2: PREDIAG },
     { w: 2, q: "Vous êtes un professionnel ?", k: ["agent immobilier", "agents immobiliers", "agence", "courtier", "notaire", "syndic", "professionnel", "partenariat", "prescripteur", "mes clients"],
       a: "Agents immobiliers, courtiers, notaires, syndics : vos clients peuvent faire relire leurs devis de travaux, sans commission versée ni reçue. La page dédiée explique ce qu'ils reçoivent et comment ça se passe.", l: ["/professionnels.html", "La page professionnels"] },
+    { w: 2, q: "Véranda, piscine ou poêle ?", k: ["véranda", "veranda", "piscine", "bassin", "poêle", "poele", "granulés", "granules", "insert", "conduit de fumée", "tubage"],
+      a: "Oui, j'analyse ces devis. Chaque page explique ce que je vérifie : dalle et raccord au mur pour une véranda, terrassement et sécurité pour une piscine, conduit et sortie de toit pour un poêle.", l: ["/analyse-devis-veranda.html", "Véranda", "/analyse-devis-piscine.html", "Piscine", "/analyse-devis-poele.html", "Poêle"] },
     { c: 1, q: "Comment vous contacter ?", k: ["contact", "contacter", "écrire", "ecrire", "mail", "email", "message", "formulaire"],
-      a: "Par le formulaire de contact : je réponds sous 24 h. Pour faire analyser un devis, commandez directement sur ComeUp.", l: ["/contact.html", "Formulaire de contact"] }
+      a: "Par le formulaire de contact, réponse sous 24 h, ou en réservant un appel gratuit de 15 min. Le numéro de téléphone de l'entreprise figure aussi dans les mentions légales. Pour faire analyser un devis, commandez directement sur ComeUp.", l: ["/contact.html", "Formulaire de contact"], l2: [BOOK, "Réserver l'appel gratuit de 15 min"] }
   ];
 
   var css = "#cp-chat-btn{position:fixed;right:20px;bottom:20px;z-index:9999;display:flex;align-items:center;gap:10px;background:#bf4a17;color:#fff;border:0;border-radius:2px;padding:14px 20px;font:700 16px 'Source Sans 3',Arial,sans-serif;box-shadow:0 8px 24px rgba(0,0,0,.3);cursor:pointer}" +
@@ -131,7 +133,7 @@
     setTimeout(function () {
       var m = m0 = add(e ? e.a : FALLBACK, "bot");
       if (!e) { sub("/contact.html", "Formulaire de contact"); sub(PREDIAG[0], PREDIAG[1]); sub(BOOK, "Réserver l'appel gratuit de 15 min"); }
-      if (e && e.l) sub(e.l[0], e.l[1]);
+      if (e && e.l) for (var li = 0; li < e.l.length; li += 2) sub(e.l[li], e.l[li + 1]);
       if (e && e.l2) sub(e.l2[0], e.l2[1]);
       if (!(e && e.nocta)) {
         if (!ctaShown) { ctaShown = true; m.appendChild(document.createElement("br")); m.appendChild(link(COMEUP, "Faire analyser mon devis", true, "clic-comeup-chat")); }

@@ -138,7 +138,7 @@ a{color:var(--or-d)}a:hover{color:#9a330a}
 .cp-ba{box-shadow:0 24px 50px -18px rgba(0,0,0,.6)!important;border-radius:3px!important;border:0!important}
 .rep .note-s{color:#c3cfe6;font-size:14px;margin:10px 0 22px}
 .rep .pdf{display:inline-flex;gap:10px;align-items:center;color:#fff;font-weight:700;font-size:17px}
-.rep .pdf small{color:#9fb0d0;font-weight:600}
+.rep .pdf small{color:#d3dbec;font-weight:600}
 .cp-thumbs span{color:#d3ddf0!important}
 .cp-thumbs img{border-radius:2px;box-shadow:0 14px 30px -14px rgba(0,0,0,.6)}
 

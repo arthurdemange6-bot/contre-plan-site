@@ -546,3 +546,106 @@ JOB_PAGES.append(dict(
    "Envoyez-le en PDF ou en photo après avoir commandé l'analyse sur ComeUp : vous recevez sous 48 h un rapport avec les postes manquants et les questions à poser."),
  ],
 ))
+
+JOB_PAGES.append(dict(
+ slug="analyse-devis-veranda",
+ title="Analyse de devis véranda par un ingénieur BTP",
+ h1="Analyse de devis véranda",
+ desc="Fondations, dalle, raccord au mur, vitrages, surchauffe, autorisation d'urbanisme, TVA à 20 % : ce qu'un ingénieur BTP vérifie sur un devis de véranda.",
+ lead="Une véranda est un agrandissement de la maison : elle a besoin de fondations, d'un raccord étanche au mur existant et souvent d'une autorisation. Le devis doit couvrir tout cela, pas seulement la structure vitrée.",
+ kicker="Véranda", cta="de véranda", service="Analyse de devis de véranda",
+ card="Dalle, raccord au mur, vitrages, urbanisme, TVA.",
+ body="""<h2>Une véranda, c'est un agrandissement</h2>
+<p>Close et couverte, une véranda crée de la surface. En principe, il faut une <strong>déclaration préalable</strong> entre 5 et 20 m² d'emprise au sol ou de surface de plancher, seuil porté à 40 m² dans les zones urbaines couvertes par un plan local d'urbanisme, et un <strong>permis de construire</strong> au-delà. Si la surface de la maison dépasse 150 m² après travaux, le permis et le recours à un architecte deviennent obligatoires. Votre mairie confirme les règles de votre terrain ; le devis doit dire qui prépare le dossier.</p>
+<h2>Les points à retrouver sur le devis</h2>
+<ul><li><b>Les fondations et la dalle</b> : nature, épaisseur, isolant sous dalle. Un devis « structure seule » laisse souvent la dalle à votre charge.</li>
+<li><b>Le raccord au mur existant</b> : solin ou bande d'étanchéité, et la reprise de la toiture ou de la gouttière si la véranda vient dessous.</li>
+<li><b>La structure</b> : matériau (aluminium à rupture de pont thermique, bois, PVC) et sections adaptées à la neige et au vent de votre région.</li>
+<li><b>Les vitrages</b> : coefficient Ug, vitrage feuilleté de sécurité en toiture, et protection contre la surchauffe (vitrage à contrôle solaire, stores, ouvrants).</li>
+<li><b>La ventilation</b>, pour limiter la condensation l'hiver et la chaleur l'été.</li>
+<li><b>Les eaux pluviales</b> : chéneau, descentes et raccordement.</li>
+<li><b>L'électricité et le chauffage</b> s'ils sont prévus, et ce que devient la porte ou la fenêtre qui donnait sur l'extérieur.</li></ul>
+<h2>Taxe et impôts</h2>
+<p>Une véranda close et couverte entre en principe dans le calcul de la taxe d'aménagement, et elle se déclare aux impôts dans les 90 jours qui suivent l'achèvement. Le devis ne la chiffre pas, mais votre budget doit la prévoir.</p>
+<h2>Assurance et TVA</h2>
+<p>La véranda relève de la garantie décennale : demandez l'attestation de l'entreprise, avec cette activité couverte. Comme toute extension, elle est taxée au taux normal de 20 %, quel que soit l'âge de la maison (voir <a href="guide-tva-travaux-renovation.html">le guide TVA</a>).</p>
+<h2>Exemple de ligne à faire préciser</h2>
+<p>« Véranda aluminium 15 m², fourniture et pose : 24 000 € TTC. » Dalle comprise ? Raccord d'étanchéité au mur ? Quel vitrage en toiture ? Évacuation des eaux pluviales ? Dossier d'urbanisme ? À demander : le détail par poste et les références des vitrages.</p>
+""",
+ faq=[
+  ("Faut-il un permis de construire pour une véranda ?",
+   "En principe, une déclaration préalable suffit entre 5 et 20 m², ou jusqu'à 40 m² en zone urbaine d'un PLU. Au-delà, ou si la maison dépasse 150 m² après travaux, il faut un permis de construire. La mairie confirme les règles de votre terrain."),
+  ("Quelle TVA pour une véranda ?",
+   "20 %, comme toute extension qui crée de la surface, quel que soit l'âge de la maison."),
+  ("Comment faire relire mon devis de véranda ?",
+   "Envoyez-le en PDF ou en photo après avoir commandé l'analyse sur ComeUp : vous recevez sous 48 h un rapport avec les postes manquants, les points d'étanchéité à vérifier et les questions à poser."),
+ ],
+))
+
+JOB_PAGES.append(dict(
+ slug="analyse-devis-piscine",
+ title="Analyse de devis piscine par un ingénieur BTP",
+ h1="Analyse de devis piscine",
+ desc="Terrassement, évacuation des terres, structure, filtration, sécurité obligatoire, autorisation, TVA à 20 % : ce qu'un ingénieur BTP vérifie sur un devis de piscine.",
+ lead="Un devis de piscine annonce souvent un prix « bassin ». Le terrassement, l'évacuation des terres, les plages, les raccordements et la sécurité peuvent pourtant peser autant que le bassin lui-même.",
+ kicker="Piscine", cta="de piscine", service="Analyse de devis de piscine",
+ card="Terrassement, structure, filtration, sécurité, urbanisme.",
+ body="""<h2>Ce que couvre vraiment le prix</h2>
+<ul><li><b>Le terrassement et l'évacuation des terres</b> : volume, accès des engins, et ce qui se passe si le sol est rocheux ou humide. Un « selon terrain » sans prix ouvre la porte aux suppléments.</li>
+<li><b>La structure du bassin</b> : béton, blocs, panneaux ou coque, le radier, et le revêtement (liner, membrane armée, carrelage).</li>
+<li><b>La filtration</b> : pompe, filtre, skimmers, refoulements, local technique, et le chauffage ou le traitement s'ils sont prévus.</li>
+<li><b>Les raccordements</b> : électricité avec sa protection dédiée, arrivée d'eau, évacuation des eaux de lavage du filtre.</li>
+<li><b>Les plages et margelles</b>, souvent chiffrées à part.</li>
+<li><b>La mise en eau et la mise en route</b>.</li></ul>
+<h2>La sécurité est obligatoire</h2>
+<p>Une piscine enterrée privative non close doit être équipée d'au moins un <strong>dispositif de sécurité normalisé</strong> contre la noyade : barrière (NF P90-306), alarme (NF P90-307), couverture (NF P90-308) ou abri (NF P90-309). Le devis doit dire lequel est prévu, avec sa norme, ou préciser que vous le prenez en charge.</p>
+<h2>Autorisation, taxe et impôts</h2>
+<p>En principe, un bassin de plus de 10 m² et jusqu'à 100 m² demande une déclaration préalable en mairie, et un permis de construire au-delà ou avec un abri de plus de 1,80 m de haut. Le plan local d'urbanisme peut ajouter des règles, comme la distance aux limites du terrain. La piscine entre dans le calcul de la taxe d'aménagement et se déclare aux impôts dans les 90 jours qui suivent l'achèvement.</p>
+<h2>Assurance et TVA</h2>
+<p>Une piscine enterrée relève de la garantie décennale : demandez l'attestation de l'entreprise, avec cette activité couverte. La construction d'une piscine est taxée au taux normal de 20 %.</p>
+<h2>Exemple de ligne à faire préciser</h2>
+<p>« Piscine 8 × 4 m clés en main : 32 000 € TTC. » Terrassement et évacuation des terres compris, sur quelle hypothèse de sol ? Plages, local technique, dispositif de sécurité ? À demander : le détail par poste, et le prix prévu si le sol est rocheux.</p>
+""",
+ faq=[
+  ("Faut-il une autorisation pour construire une piscine ?",
+   "En principe, une déclaration préalable pour un bassin de plus de 10 m² et jusqu'à 100 m², un permis de construire au-delà ou avec un abri de plus de 1,80 m. Le PLU de votre commune peut ajouter des règles."),
+  ("Quelle sécurité est obligatoire autour d'une piscine ?",
+   "Pour une piscine enterrée privative non close, au moins un dispositif normalisé : barrière, alarme, couverture ou abri. Le devis doit préciser lequel."),
+  ("Comment faire relire mon devis de piscine ?",
+   "Envoyez-le en PDF ou en photo après avoir commandé l'analyse sur ComeUp : vous recevez sous 48 h un rapport avec les postes manquants et les questions à poser. Pour un devis de plus de 30 000 €, demandez d'abord le pré-diagnostic gratuit."),
+ ],
+))
+
+JOB_PAGES.append(dict(
+ slug="analyse-devis-poele",
+ title="Analyse de devis poêle à bois ou à granulés par un ingénieur BTP",
+ h1="Analyse de devis poêle à bois ou à granulés",
+ desc="Conduit de fumée, tubage, sortie de toit, amenée d'air, performances, TVA 5,5 %, RGE : ce qu'un ingénieur BTP vérifie sur un devis de poêle.",
+ lead="Sur un devis de poêle, l'appareil n'est qu'une partie du prix. Le conduit de fumée, son raccordement et sa sortie de toit font la sécurité de l'installation.",
+ kicker="Poêle", cta="de poêle", service="Analyse de devis de poêle à bois ou à granulés",
+ card="Conduit, tubage, sortie de toit, amenée d'air, TVA.",
+ body="""<h2>Le conduit de fumée, cœur du devis</h2>
+<p>La pose d'un poêle et de son conduit suit le DTU 24.1 (travaux de fumisterie) et la notice du fabricant. Le devis doit préciser :</p>
+<ul><li><b>Conduit existant ou neuf</b> : tubage d'un conduit maçonné, ou conduit isolé neuf, avec sa référence.</li>
+<li><b>Le contrôle du conduit existant</b> avant tubage : ramonage, état, étanchéité.</li>
+<li><b>Les distances de sécurité</b> aux matériaux combustibles (charpente, plancher, cloisons), données par le fabricant du conduit.</li>
+<li><b>La sortie de toit</b> : en principe au moins 40 cm au-dessus du faîtage, ou de tout obstacle situé à moins de 8 m, et la reprise d'étanchéité de la couverture.</li>
+<li><b>L'amenée d'air</b> : une entrée d'air dédiée, ou un appareil étanche raccordé à l'extérieur, surtout si le logement a une VMC.</li>
+<li><b>La plaque de protection du sol</b> si le sol est combustible, et pour un poêle à granulés, l'alimentation électrique.</li></ul>
+<p>À la réception, demandez la notice de l'appareil et la plaque signalétique du conduit. Le ramonage est ensuite obligatoire, souvent deux fois par an selon le règlement sanitaire de votre département.</p>
+<h2>Les performances et la TVA</h2>
+<p>Dans un logement achevé depuis plus de 2 ans, un poêle fourni et posé par l'entreprise relève de 5,5 % s'il respecte des critères de performance : efficacité énergétique saisonnière d'au moins 65 % pour un appareil à bûches, d'au moins 79 % pour un appareil à granulés, et des émissions plafonnées. Sinon, c'est 10 %. Le devis doit indiquer ces valeurs ou joindre la fiche du produit, et vous certifiez vous-même sur le devis ou la facture que les conditions sont remplies. Le conduit posé avec l'appareil suit en principe le même taux.</p>
+<h2>Aides et RGE</h2>
+<p>Les aides (MaPrimeRénov', primes CEE) exigent un installateur RGE, avec une qualification adaptée au bois, et leurs règles changent souvent. Vérifiez la qualification dans l'annuaire officiel des entreprises RGE et les montants en vigueur sur france-renov.gouv.fr avant de signer, et ne signez pas sur la seule promesse d'une prime.</p>
+<h2>Exemple de ligne à faire préciser</h2>
+<p>« Poêle à granulés 8 kW posé, tubage compris : 5 900 € TTC. » Quel modèle, quelle efficacité saisonnière ? Tubage sur combien de mètres, quelle sortie de toit ? Amenée d'air prévue ? À demander : la fiche technique du poêle, le détail du conduit et le taux de TVA ligne par ligne.</p>
+""",
+ faq=[
+  ("Quelle TVA pour un poêle à bois ou à granulés ?",
+   "Dans un logement de plus de 2 ans, 5,5 % si l'appareil fourni et posé par l'entreprise respecte les critères de performance (efficacité saisonnière d'au moins 65 % en bûches, 79 % en granulés, émissions plafonnées), sinon 10 %."),
+  ("Que doit dire le devis sur le conduit de fumée ?",
+   "S'il est tubé ou neuf, sa référence, les distances de sécurité aux matériaux combustibles, la sortie de toit et la reprise d'étanchéité, ainsi que l'amenée d'air du poêle."),
+  ("Comment faire relire mon devis de poêle ?",
+   "Envoyez-le en PDF ou en photo après avoir commandé l'analyse sur ComeUp : vous recevez sous 48 h un rapport avec les postes manquants et les questions à poser."),
+ ],
+))
