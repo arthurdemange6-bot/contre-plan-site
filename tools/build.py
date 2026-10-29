@@ -90,7 +90,7 @@ def FOOTER(root=""):
         ("https://www.pinterest.fr/contreplan/", "Pinterest", "clic-pinterest")])
     return f"""<footer class="cp-foot"><div class="cp-foot-in">
 <div class="cp-foot-brand"><div class="cp-foot-logo">CONTRE-PLAN</div><p>Votre devis de travaux relu par un ingénieur BTP avant que vous signiez. 100 % à distance, indépendant de tout artisan.</p><div class="cp-socs">{soc}</div></div>
-<div class="cp-foot-col"><p>Le service</p>{L("methode.html","Ma méthode")}{L("engagements.html","Mes engagements")}{L("votre-cas.html","Votre cas est-il couvert ?")}{L("professionnels.html","Professionnels")}{L("exemple-rapport-contre-plan.pdf","Exemple de rapport","telechargement-exemple-rapport")}{L("index.html#tarifs","Tarifs")}{L("contact.html","Contact")}<a href="{COMEUP}" data-goatcounter-click="clic-comeup">Commander sur ComeUp</a></div>
+<div class="cp-foot-col"><p>Le service</p>{L("methode.html","Ma méthode")}{L("engagements.html","Mes engagements")}{L("votre-cas.html","Votre cas est-il couvert ?")}{L("achat-avec-travaux.html","Achat avec travaux")}{L("professionnels.html","Professionnels")}{L("exemple-rapport-contre-plan.pdf","Exemple de rapport","telechargement-exemple-rapport")}{L("index.html#tarifs","Tarifs")}{L("contact.html","Contact")}<a href="{COMEUP}" data-goatcounter-click="clic-comeup">Commander sur ComeUp</a></div>
 <div class="cp-foot-col"><p>Par travaux</p>{L("analyse-devis-salle-de-bain.html","Salle de bain")}{L("analyse-devis-pompe-a-chaleur.html","Pompe à chaleur")}{L("analyse-devis-isolation.html","Isolation")}{L("analyse-devis-toiture.html","Toiture")}{''.join(L(j['slug'] + '.html', j['kicker']) for j in NG.JOB_PAGES)}{L("cas-fictifs.html","Cas fictifs")}</div>
 <div class="cp-foot-col"><p>Ressources</p>{L("guides.html","Guides")}{L("comparer-ses-devis.html","Tableau comparatif")}{L("modeles-messages-artisan.html","Modèles de messages")}{L("lexique-devis-travaux.html","Lexique")}{L("checklist-devis-travaux.pdf","Check-list PDF","telechargement-checklist")}<a href="{NEWS}" target="_blank" rel="noopener" data-goatcounter-click="clic-conseil-du-mois">Le conseil du mois par email</a></div>
 </div><div class="cp-foot-bottom"><span>© 2026 Contre-Plan</span><a href="{root}mentions-legales.html" class="cp-ml">Mentions légales</a><a href="{root}cgv.html" class="cp-ml">CGV</a><a href="{root}confidentialite.html" class="cp-ml">Confidentialité</a></div></footer>"""
@@ -457,7 +457,7 @@ JOBS = {
 PAGES = []
 # Date de dernière mise à jour réelle des pages (date visible, dateModified et lastmod du sitemap)
 PAGE_UPDATED = {s: "2026-10-27" for s in ["analyse-devis-terrasse", "analyse-devis-salle-de-bain", "analyse-devis-pompe-a-chaleur", "analyse-devis-isolation", "analyse-devis-toiture", "analyse-devis-cuisine", "analyse-devis-electricite", "analyse-devis-extension", "analyse-devis-fenetres", "analyse-devis-ravalement-facade"]}
-for _s in ["analyse-devis-terrasse", "analyse-devis-salle-de-bain", "analyse-devis-toiture", "analyse-devis-fenetres", "analyse-devis-isolation"]: PAGE_UPDATED[_s] = "2026-10-29"
+for _s in ["analyse-devis-plomberie-chauffe-eau", "analyse-devis-carrelage", "analyse-devis-panneaux-solaires", "analyse-devis-vmc", "analyse-devis-mur-porteur", "analyse-devis-terrasse", "analyse-devis-salle-de-bain", "analyse-devis-toiture", "analyse-devis-fenetres", "analyse-devis-isolation"]: PAGE_UPDATED[_s] = "2026-10-29"
 
 def page(slug, title, h1, desc, lead, body, kicker, toc=True):
     url = f"https://contre-plan.com/{slug}.html"
@@ -831,10 +831,10 @@ page("votre-cas",
  "Quels devis de travaux Contre-Plan analyse, lesquels se voient au cas par cas, et vers qui aller quand ce n'est pas le bon service.",
  "Avant de commander, vérifiez que l'analyse correspond à votre situation. En cas de doute, le pré-diagnostic gratuit vous répond sous 24 h, sans compte ni paiement.",
  """<h2>Oui, j'analyse ces devis</h2>
-<ul><li><b>Rénovation intérieure</b> : salle de bain, douche, cuisine (y compris de grande enseigne), sols, carrelage, peinture, plomberie, chauffe-eau, électricité.</li>
+<ul><li><b>Rénovation intérieure</b> : salle de bain, douche, cuisine (y compris de grande enseigne), sols, <a href="analyse-devis-carrelage.html">carrelage</a>, peinture, <a href="analyse-devis-plomberie-chauffe-eau.html">plomberie, chauffe-eau</a>, électricité.</li>
 <li><b>Énergie</b> : isolation, pompe à chaleur, climatisation, poêle, chaudière, fenêtres, ventilation, avec la vérification de la TVA, du RGE et des primes annoncées.</li>
 <li><b>Extérieur</b> : toiture, ravalement, terrasse, clôture, portail, véranda.</li>
-<li><b>Structure et agrandissement</b> : ouverture de mur porteur, extension, surélévation, aménagement de combles. Je vérifie que le devis prévoit et chiffre l'étude d'un bureau d'études et les ouvrages nécessaires ; je ne fais pas le calcul de structure moi-même.</li>
+<li><b>Structure et agrandissement</b> : <a href="analyse-devis-mur-porteur.html">ouverture de mur porteur</a>, extension, surélévation, aménagement de combles. Je vérifie que le devis prévoit et chiffre l'étude d'un bureau d'études et les ouvrages nécessaires ; je ne fais pas le calcul de structure moi-même.</li>
 <li><b>Outre-mer</b> : les devis de Guadeloupe, de Martinique, de La Réunion, de Guyane et de Mayotte, au même prix, avec les règles de TVA propres à ces territoires (<a href="guide-tva-travaux-renovation.html#outre-mer">voir le guide TVA</a>).</li>
 <li><b>Devis déjà signé</b>, tant que vous êtes dans le délai de rétractation : l'analyse vous aide à décider de confirmer ou non (<a href="guide-annuler-devis-signe-retractation.html">vos droits</a>).</li></ul>
 <h2>Au cas par cas : demandez d'abord le pré-diagnostic</h2>
@@ -842,7 +842,7 @@ page("votre-cas",
 <ul><li><b>Rénovation complète en plusieurs lots</b> : chaque devis est analysé ; le pré-diagnostic permet de fixer le périmètre et le prix avant de commander.</li>
 <li><b>Maison neuve avec un constructeur (CCMI)</b> : je peux relire la notice descriptive et les travaux laissés à votre charge. Pour le contrat lui-même, très encadré, l'ADIL de votre département vous conseille gratuitement.</li>
 <li><b>Copropriété</b> : je peux analyser un devis soumis au vote de l'assemblée générale ; la décision et le choix de l'entreprise restent ceux du syndicat des copropriétaires.</li>
-<li><b>Panneaux photovoltaïques</b> : je relis le devis ; méfiez-vous du démarchage et vérifiez la qualification de l'installateur dans l'annuaire officiel des entreprises RGE.</li>
+<li><b>Panneaux photovoltaïques</b> : je relis le devis (<a href="analyse-devis-panneaux-solaires.html">ce que je vérifie</a>) ; méfiez-vous du démarchage et vérifiez la qualification de l'installateur dans l'annuaire officiel des entreprises RGE.</li>
 <li><b>Assainissement non collectif</b> : la filière doit être validée par le SPANC de votre commune avant les travaux ; je vérifie que le devis correspond à l'étude.</li>
 <li><b>Piscine</b> : terrassement, structure, filtration, raccordements et démarches se vérifient sur le devis, au cas par cas.</li>
 <li><b>Désamiantage</b> : le retrait de matériaux amiantés est réservé à des entreprises certifiées, et un repérage préalable indique ce qu'il faut retirer ; je vérifie que le devis s'appuie sur ce repérage.</li></ul>
@@ -851,6 +851,25 @@ page("votre-cas",
 <li><b>Travaux terminés, facture à contester</b> : comparez la facture au devis signé avec le même guide, et utilisez le <a href="modeles-messages-artisan.html">modèle de message pour contester un supplément</a>.</li>
 <li><b>Fissures, humidité, malfaçon à constater sur place</b> : il faut un expert en bâtiment qui se déplace. L'analyse se fait à distance, sur la base du devis.</li></ul>
 """, "Votre cas", toc=True)
+
+# ---------- Achat immobilier avec travaux
+page("achat-avec-travaux",
+ "Achat immobilier avec travaux : faire relire les devis avant de s'engager | Contre-Plan",
+ "Achat avec travaux : faire relire les devis avant de s'engager",
+ "Vous achetez un bien à rénover : faites relire les devis de travaux pendant le délai de rétractation, avant l'offre de prêt, pour ne pas sous-estimer le budget.",
+ "Quand on achète un bien à rénover, le budget travaux se décide souvent sur des devis obtenus vite, entre deux visites. C'est le meilleur moment pour les faire relire.",
+ """<h2>Le bon moment : avant de vous engager pour de bon</h2>
+<p>Après la signature du compromis, un acquéreur non professionnel d'un logement dispose en principe d'un délai de rétractation de 10 jours. C'est souvent aussi le moment où la banque demande les devis de travaux pour l'offre de prêt. Une analyse sous 48 h, ou 24 h en express, tient dans ce calendrier.</p>
+<h2>Ce que l'analyse vous apporte</h2>
+<ul><li><b>Un budget travaux complet</b> : les postes oubliés (dépose, évacuation, reprises, raccordements) sont repérés avant que le prêt soit dimensionné.</li>
+<li><b>Des devis comparables</b> : si vous avez plusieurs devis pour les mêmes travaux, l'option comparatif les met face à face, poste par poste.</li>
+<li><b>Les bonnes questions</b> à poser aux entreprises avant de les retenir.</li></ul>
+<p>Le rapport n'est pas une expertise et n'a pas de valeur officielle pour la banque : il vous sert à faire corriger les devis avant de les joindre à votre dossier.</p>
+<h2>Plusieurs lots de travaux</h2>
+<p>Chaque devis transmis est analysé : jusqu'à 3 devis dans la même commande, avec les options « Devis supplémentaire » et « Troisième devis ». Pour une rénovation complète en plusieurs lots ou un devis tous corps d'état, demandez d'abord le <a href="contact.html?sujet=prediagnostic">pré-diagnostic gratuit</a> : je vous dis comment ils seront traités avant toute commande.</p>
+<h2>Ce que l'analyse ne remplace pas</h2>
+<p>Elle se fait sur les devis, à distance. Elle ne remplace ni la visite du bien, ni les diagnostics immobiliers obligatoires, ni l'avis d'un expert en bâtiment si vous soupçonnez un désordre (fissures, humidité, charpente).</p>
+""", "Achat avec travaux", toc=True)
 
 # ---------- Page professionnels (agents, courtiers, notaires, syndics)
 page("professionnels",
@@ -880,6 +899,9 @@ page("professionnels",
 <p>Aucune commission n'est versée ni reçue : ni aux artisans, ni aux prescripteurs. Je ne revends aucune entreprise et je ne fais pas de travaux. Votre client peut masquer son nom et son adresse sur le devis.</p>
 <h2>Les limites</h2>
 <p>L'analyse est documentaire et à distance. Ce n'est ni une expertise judiciaire, ni un diagnostic technique du bâtiment, ni une mission de maîtrise d'œuvre, et elle n'intervient pas dans un litige déjà engagé.</p>
+<h2>Vous orientez régulièrement des clients ?</h2>
+<p>Écrivez-moi par le <a href="contact.html?sujet=professionnel">formulaire de contact</a> : je vous transmets une présentation à remettre à vos clients et nous convenons d'un fonctionnement adapté à votre volume (agence, courtier, syndic). Aucune commission n'est versée ni reçue.</p>
+<p>Pour un acquéreur, la page <a href="achat-avec-travaux.html">achat avec travaux</a> explique tout en une fois.</p>
 <h2>Ce que vous y gagnez</h2>
 <ul><li><b>Un client mieux préparé</b> : il connaît le vrai budget de ses travaux avant le compromis ou l'offre de prêt.</li>
 <li><b>Moins de mauvaises surprises</b> sur un budget travaux sous-estimé ou un poste oublié découvert trop tard.</li>
