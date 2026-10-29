@@ -730,7 +730,7 @@ page("methode",
 <ul><li>La date, la durée de validité, la date de début et un délai d'exécution ferme.</li><li>L'identité de l'entreprise : raison sociale, adresse, SIRET, immatriculation.</li><li>L'assurance décennale : assureur et zone géographique couverte, et je vous dis quelle attestation demander.</li><li>La gestion des déchets, le détail fourniture et main-d'œuvre, les marques et références.</li><li>Les conditions de paiement et l'acompte, les garanties, le médiateur de la consommation.</li><li>Le droit de rétractation si le devis a été signé chez vous.</li></ul>
 <p>Le détail est expliqué dans le guide <a href="guide-mentions-obligatoires-devis.html">des mentions obligatoires d'un devis</a>.</p>
 <h2>3. Je contrôle la TVA et les aides</h2>
-<p>Je vérifie que le taux appliqué (5,5 %, 10 % ou 20 %) correspond à vos travaux et à votre logement, et que la mention à signer est prévue. Si vous visez des aides, je vérifie la qualification RGE de l'entreprise pour les travaux concernés. Voir aussi <a href="guide-tva-travaux-renovation.html">le guide TVA</a>.</p>
+<p>Je signale un taux de TVA qui ne paraît pas correspondre aux travaux décrits, et je vérifie que la mention à signer est prévue. Ce n'est pas un conseil fiscal personnalisé : en cas de doute, l'entreprise ou le service des impôts tranche. Si vous visez des aides, je vérifie la qualification RGE de l'entreprise pour les travaux concernés. Voir aussi <a href="guide-tva-travaux-renovation.html">le guide TVA</a>.</p>
 <h2>4. Je cherche ce qui manque et ce qui est flou</h2>
 <p>C'est le cœur de mon travail d'ingénieur : repérer ce qui n'est pas écrit et qui coûtera cher plus tard.</p>
 <ul><li>Les forfaits sans détail (« plomberie », « divers », « finitions ») et les unités inadaptées.</li><li>Les oublis classiques : préparation des supports, dépose et évacuation, protection du chantier, raccordements, mises en conformité, accès en hauteur, nettoyage.</li><li>Les points propres à chaque type de travaux : étanchéité et volumes électriques en salle de bain, liaisons frigorifiques et évacuation des condensats pour une pompe à chaleur, repérage amiante pour un logement ancien.</li><li>Les enchaînements de travaux incohérents entre les lots.</li></ul>
@@ -750,7 +750,7 @@ page("engagements",
  """<h2>Indépendance</h2>
 <ul><li>Je ne touche aucune commission, d'aucune entreprise.</li><li>Je ne vous recommande ni ne vous revends aucun artisan.</li><li>Mon seul intérêt est que vous signiez un devis juste, quel que soit l'artisan que vous choisissez.</li></ul>
 <h2>Confidentialité de vos devis</h2>
-<ul><li>Vous pouvez masquer votre nom, votre adresse et vos coordonnées avant de m'envoyer le devis : ils ne sont pas nécessaires à l'analyse.</li><li>Votre devis sert uniquement à réaliser votre analyse. Il n'est jamais transmis à un artisan ni à un tiers à des fins commerciales.</li><li>Les documents sont conservés dans un espace professionnel sécurisé. Vous pouvez demander leur suppression à tout moment en écrivant à contact@contre-plan.com.</li><li>Pour certaines vérifications (recalculs, recherche de prix et de textes de référence), je m'aide d'outils logiciels. Chaque rapport est relu, corrigé et validé par moi avant de vous être envoyé.</li></ul>
+<ul><li>Vous pouvez masquer votre nom, votre adresse et vos coordonnées avant de m'envoyer le devis : ils ne sont pas nécessaires à l'analyse.</li><li>Votre devis sert uniquement à réaliser votre analyse. Il n'est jamais transmis à un artisan ni à un tiers à des fins commerciales.</li><li>Les documents sont conservés dans un espace professionnel sécurisé. Vous pouvez demander leur suppression à tout moment en écrivant à contact@contre-plan.com.</li><li>Pour certaines vérifications (recalculs, recherche de prix et de textes de référence), je m'aide d'outils logiciels, dont des outils d'intelligence artificielle. Chaque rapport est relu, corrigé et validé par moi avant de vous être envoyé.</li></ul>
 <h2>Délais</h2>
 <ul><li>Rapport sous 48 h, ou 24 h avec l'option express, à compter de la réception de votre devis complet.</li><li>Un échange de suivi est inclus : vous pouvez me poser une question après lecture du rapport.</li><li>Si un document manque ou est illisible, je vous le signale dès réception.</li></ul>
 <h2>Commande et paiement</h2>
@@ -765,7 +765,7 @@ page("engagements",
 
 # ---------- Pages par type de travaux
 def cta_type(t):
-    return f"""<div class="note"><p><b>Vous avez un devis {t} sous les yeux ?</b> Faites d'abord <a href="index.html#test">le test en 1 minute</a>, puis envoyez-le moi : je le relis ligne par ligne et vous dites quoi demander à l'artisan. <a href="exemple-rapport-contre-plan.pdf" target="_blank" rel="noopener">Voir un exemple de rapport</a>.</p></div>"""
+    return f"""<div class="note"><p><b>Vous avez un devis {t} sous les yeux ?</b> Faites d'abord <a href="index.html#test">le test en 1 minute</a>, puis envoyez-le-moi : je le relis ligne par ligne et je vous dis quoi demander à l'artisan. <a href="exemple-rapport-contre-plan.pdf" target="_blank" rel="noopener">Voir un exemple de rapport</a>.</p></div>"""
 
 page("analyse-devis-salle-de-bain",
  "Analyse de devis salle de bain par un ingénieur BTP",
@@ -942,14 +942,19 @@ page("professionnels",
 <h2>Les limites</h2>
 <p>L'analyse est documentaire et à distance. Ce n'est ni une expertise judiciaire, ni un diagnostic technique du bâtiment, ni une mission de maîtrise d'œuvre, et elle n'intervient pas dans un litige déjà engagé.</p>
 <h2>Vous orientez régulièrement des clients ?</h2>
-<p>Écrivez-moi par le <a href="contact.html?sujet=professionnel">formulaire de contact</a> : je vous transmets une présentation à remettre à vos clients et nous convenons d'un fonctionnement adapté à votre volume (agence, courtier, syndic). Aucune commission n'est versée ni reçue.</p>
+<p>Écrivez-moi par le <a href="contact.html?sujet=professionnel">formulaire de contact</a> : nous convenons d'un fonctionnement adapté à votre volume (agence, courtier, syndic). Aucune commission n'est versée ni reçue.</p>
 <p>Pour un acquéreur, la page <a href="achat-avec-travaux.html">achat avec travaux</a> explique tout en une fois.</p>
 <h2>Ce que vous y gagnez</h2>
 <ul><li><b>Un client mieux préparé</b> : il connaît le vrai budget de ses travaux avant le compromis ou l'offre de prêt.</li>
 <li><b>Moins de mauvaises surprises</b> sur un budget travaux sous-estimé ou un poste oublié découvert trop tard.</li>
 <li><b>Aucun conflit d'intérêts</b> : vous recommandez un avis indépendant, sans lien avec un artisan ni rémunération.</li></ul>
+<h2>Le message à transmettre à votre client</h2>
+<div class="cp-tpl"><pre id="tpl-pro">Bonjour,
+Avant de signer vos devis de travaux, vous pouvez les faire relire par un ingénieur BTP indépendant : rapport PDF sous 48 h (24 h en express), avec les oublis, les prix à vérifier et les questions à poser à l'entreprise. 16,50 € par devis, sans lien avec aucun artisan.
+Tout est expliqué ici : contre-plan.com/achat-avec-travaux.html</pre><button type="button" class="cp-copy" data-copy="tpl-pro" data-goatcounter-click="copie-message-pro">Copier le message</button></div>
+<p>À imprimer ou à joindre à un e-mail : <a href="fiche-professionnels-contre-plan.pdf" target="_blank" rel="noopener" data-goatcounter-click="telechargement-fiche-pro">la fiche de présentation (PDF, 1 page)</a>, avec un QR code vers la page achat avec travaux.</p>
 <h2>Nous contacter</h2>
-<p>Pour orienter vos clients ou poser une question : le <a href="contact.html?sujet=professionnel">formulaire de contact</a>, réponse sous 24 h. Pour le transmettre à un client, il suffit de lui envoyer le lien de la page d'accueil : contre-plan.com.</p>
+<p>Pour poser une question : le <a href="contact.html?sujet=professionnel">formulaire de contact</a>, réponse sous 24 h.</p>
 """, "Professionnels", toc=False)
 
 # ---------- Mentions légales (seule page portant l'identité de l'exploitant), dans le gabarit du site, en petit
@@ -1168,11 +1173,12 @@ contact_body = f"""<p>Une question sur le service, sur un devis ou sur un guide 
 <option>ComeUp</option>
 <option>Bouche-à-oreille</option>
 <option>Assistant IA (ChatGPT, Gemini…)</option>
+<option>Un professionnel (agence, courtier, notaire)</option>
 <option>Autre</option>
 </select></label>
 <label>Votre message<textarea name="entry.881289893" required minlength="10" maxlength="4000" rows="7"></textarea></label>
 <button type="submit" data-goatcounter-click="envoi-formulaire-contact">Envoyer le message</button>
-<p class="cp-form-rgpd">Vos nom, e-mail et message servent uniquement à vous répondre. Ils sont enregistrés via Google Forms (Google) et conservés au plus 12 mois. Vous pouvez demander leur suppression à tout moment : voir les <a href="mentions-legales.html">mentions légales</a>.</p>
+<p class="cp-form-rgpd">Vos nom, e-mail et message servent uniquement à vous répondre. Ils sont enregistrés via Google Forms (Google) et conservés au plus 12 mois. Vous pouvez demander leur suppression à tout moment : voir la <a href="confidentialite.html">politique de confidentialité</a>.</p>
 </form>
 <p>Vous préférez en parler de vive voix ? <a href="https://calendar.app.google/6LCc6yKVHnbvA3WN7" target="_blank" rel="noopener" data-goatcounter-click="clic-rdv-contact">Réservez un appel gratuit de 15 min</a>.</p>"""
 page("contact", "Contact | Contre-Plan", "Me contacter",

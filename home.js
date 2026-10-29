@@ -7,6 +7,7 @@
   function gc(path) { try { if (window.goatcounter && goatcounter.count) goatcounter.count({ path: path, title: path, event: true }); } catch (e) {} }
 
   function start() {
+    window.cpReady = 1;
     /* En-tête qui se compacte */
     var bar = document.querySelector('.top-bar');
     function onScroll() { if (bar) bar.classList.toggle('scrolled', scrollY > 40); }
