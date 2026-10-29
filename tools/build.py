@@ -3,6 +3,9 @@ sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import nouveaux_guides as NG  # guides et pages ajoutés en octobre 2026
 OUT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))  # racine du site
 GC = '<script data-goatcounter="https://contreplan.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>'
+# Prix affiché partout : changer ici (et lancer tools/changer_prix.py pour index.html, chat.js, site.js)
+PRIX_TXT = "16,50 €"
+PRIX_MENTION = "au tarif de lancement"
 COMEUP = "https://comeup.com/fr/service/549064/verifier-votre-devis-de-travaux-avant-signature-et-reperer-les-prix-abusifs-et-les-oublis"
 BOOK = "https://calendar.app.google/6LCc6yKVHnbvA3WN7"
 NEWS = "https://docs.google.com/forms/d/e/1FAIpQLScS7zVctXEahK71wNv8hUGD-MjfyqH4h_l8EpJyYPLVM-ToAA/viewform"  # formulaire « Le conseil devis du mois »
@@ -69,6 +72,7 @@ h1{{font-size:clamp(32px,5.5vw,48px)!important}}
 <nav class="cp-topnav" aria-label="Navigation principale">
 <a href="{root}methode.html">Méthode</a>
 <a href="{root}index.html#travaux">Travaux</a>
+<a href="{root}index.html#tarifs">Tarifs</a>
 <a href="{root}comparer-ses-devis.html">Outils</a>
 <a href="{root}guides.html">Guides</a>
 <a class="btn" href="{COMEUP}" data-goatcounter-click="clic-comeup">Faire analyser<span class="lg"> mon devis</span></a>
@@ -102,12 +106,12 @@ def footer(root=""):
 CTA = f'''<aside class="cp-cta-box bp">
 <span class="tag">Avant de signer</span>
 <p class="t">Un devis à signer ? Faites-le relire par un ingénieur BTP.</p>
-<p>Prix poste par poste, oublis, TVA, conditions de paiement : rapport PDF sous 48 h, 16,50 € au tarif de lancement.</p>
+<p>Prix poste par poste, oublis, TVA, conditions de paiement : rapport PDF sous 48 h, {PRIX_TXT} {PRIX_MENTION}.</p>
 <div class="row"><a class="btn" href="{COMEUP}" data-goatcounter-click="clic-comeup">Faire analyser mon devis</a><a class="btn line" href="{BOOK}" data-goatcounter-click="clic-appel" target="_blank" rel="noopener">Appel gratuit de 15 min</a></div>
-<small>Paiement sécurisé sur ComeUp. Rapport PDF sous 48 h. Aucun engagement envers l'artisan.</small>
+<small>Commande sur ComeUp : compte gratuit, paiement conservé jusqu'à la livraison du rapport. Rapport PDF sous 48 h, aucun engagement envers l'artisan.</small>
 </aside>'''
 
-SIDE = f"""<div class="cp-sidecard"><p class="t">Votre devis relu par un ingénieur BTP</p><p>Rapport PDF sous 48 h, prix poste par poste, oublis et questions à poser. Dès 16,50 €.</p><a class="cp-btn" href="{COMEUP}" data-goatcounter-click="clic-comeup-side">Faire analyser mon devis</a><a class="cp-sublink" href="exemple-rapport-contre-plan.pdf" target="_blank" rel="noopener" data-goatcounter-click="telechargement-exemple-rapport">Voir un exemple de rapport</a></div>
+SIDE = f"""<div class="cp-sidecard"><p class="t">Votre devis relu par un ingénieur BTP</p><p>Rapport PDF sous 48 h, prix poste par poste, oublis et questions à poser. Dès {PRIX_TXT}.</p><a class="cp-btn" href="{COMEUP}" data-goatcounter-click="clic-comeup-side">Faire analyser mon devis</a><a class="cp-sublink" href="exemple-rapport-contre-plan.pdf" target="_blank" rel="noopener" data-goatcounter-click="telechargement-exemple-rapport">Voir un exemple de rapport</a></div>
 <div class="cp-sidelinks"><p>Outils gratuits</p><a href="index.html#test">Test : votre devis est-il complet ?</a><a href="comparer-ses-devis.html">Tableau comparatif de devis</a><a href="modeles-messages-artisan.html">Modèles de messages</a><a href="checklist-devis-travaux.pdf" download data-goatcounter-click="telechargement-checklist">Check-list à imprimer</a><a href="{NEWS}" target="_blank" rel="noopener" data-goatcounter-click="clic-conseil-du-mois">Le conseil du mois par email</a></div>"""
 
 def slug_id(t):
@@ -359,7 +363,7 @@ article("guide-tva-travaux-renovation",
  "Sur un devis de 15 000 € HT, passer de 10 % à 20 % de TVA, c'est 1 500 € de plus. Pourtant, je vois régulièrement des taux mal appliqués, dans les deux sens. Voici comment vérifier le vôtre.",
  '''<h2>La condition de base : un logement achevé depuis plus de 2 ans</h2>
 <p>Les taux réduits ne s'appliquent qu'aux travaux dans des <strong>locaux d'habitation achevés depuis plus de deux ans</strong>. Ils sont exclus si les travaux, sur deux ans, aboutissent à un <strong>immeuble neuf</strong> ou <strong>augmentent la surface de plancher de plus de 10 %</strong>.</p>
-<div class="note"><p><strong>Le piège de la rénovation lourde :</strong> même sans gagner un mètre carré, des travaux sont fiscalement considérés comme produisant un immeuble neuf s'ils remettent à neuf la majorité des fondations ou des éléments porteurs (murs, planchers, charpente), ou plus des deux tiers de <em>chacun</em> des éléments de second œuvre : planchers non porteurs, menuiseries extérieures, cloisons intérieures, plomberie et sanitaires, électricité et, en métropole, chauffage. Dans ce cas, tout passe à 20 %.</p></div>
+<div class="note"><p><strong>Le piège de la rénovation lourde :</strong> même sans gagner un mètre carré, des travaux sont fiscalement considérés comme produisant un immeuble neuf s'ils remettent à neuf la majorité des fondations ou des éléments porteurs (murs, planchers, charpente), la majorité de la consistance des façades (hors ravalement), ou au moins les deux tiers de <em>chacun</em> des éléments de second œuvre : planchers non porteurs, menuiseries extérieures, cloisons intérieures, plomberie et sanitaires, électricité et, en métropole, chauffage. Dans ce cas, tout passe à 20 %.</p></div>
 <h2>5,5 % : la rénovation énergétique</h2>
 <p>Le taux réduit concerne les travaux qui améliorent la performance énergétique et respectent des critères techniques précis : <strong>isolation</strong> (murs, toiture, planchers, fenêtres, portes d'entrée, volets isolants), certains <strong>équipements de chauffage et d'eau chaude utilisant les énergies renouvelables</strong>, certaines <strong>VMC</strong>, la régulation du chauffage, ainsi que les travaux indissociablement liés.</p>
 <p>Attention : chaque équipement doit atteindre les performances minimales fixées par la réglementation. Le devis doit donc les préciser.</p>
@@ -412,7 +416,7 @@ article("guide-oublis-devis-salle-de-bain",
 <p style="font-size: 15px !important; color: #5b6784 !important;">Article d'information générale. Chaque chantier est différent : en cas de doute sur un point technique, faites vérifier votre devis.</p>''', 5)
 
 
-PRIX = "16.50"  # prix de base de l'analyse (schéma Service des pages par type de travaux)
+PRIX = "16.50"  # (doublon historique) prix de base de l'analyse (schéma Service des pages par type de travaux)
 
 # Pages « Analyse de devis <travaux> » : nom du service (schéma Service) et FAQ visible + FAQPage
 JOBS = {
@@ -452,7 +456,8 @@ JOBS = {
 
 PAGES = []
 # Date de dernière mise à jour réelle des pages (date visible, dateModified et lastmod du sitemap)
-PAGE_UPDATED = {s: "2026-10-27" for s in ["analyse-devis-salle-de-bain", "analyse-devis-pompe-a-chaleur", "analyse-devis-isolation", "analyse-devis-toiture", "analyse-devis-cuisine", "analyse-devis-electricite", "analyse-devis-extension", "analyse-devis-fenetres", "analyse-devis-ravalement-facade"]}
+PAGE_UPDATED = {s: "2026-10-27" for s in ["analyse-devis-terrasse", "analyse-devis-salle-de-bain", "analyse-devis-pompe-a-chaleur", "analyse-devis-isolation", "analyse-devis-toiture", "analyse-devis-cuisine", "analyse-devis-electricite", "analyse-devis-extension", "analyse-devis-fenetres", "analyse-devis-ravalement-facade"]}
+for _s in ["analyse-devis-terrasse", "analyse-devis-salle-de-bain", "analyse-devis-toiture", "analyse-devis-fenetres", "analyse-devis-isolation"]: PAGE_UPDATED[_s] = "2026-10-29"
 
 def page(slug, title, h1, desc, lead, body, kicker, toc=True):
     url = f"https://contre-plan.com/{slug}.html"
@@ -735,7 +740,7 @@ page("analyse-devis-salle-de-bain",
 <h2>La TVA sur une salle de bain</h2>
 <p>Dans un logement achevé depuis plus de 2 ans, les travaux d'amélioration relèvent en principe du taux de 10 %. Les meubles non intégrés au bâti et l'électroménager restent à 20 %. Détails dans <a href="guide-tva-travaux-renovation.html">le guide TVA</a>.</p>
 <h2>Logement ancien : pensez à l'amiante</h2>
-<p>Si le permis de construire date d'avant le 1er juillet 1997, un repérage amiante avant travaux est en principe requis pour la démolition. Demandez qui le prend en charge.</p>
+<p>Si le permis de construire date d'avant le 1er juillet 1997, des matériaux peuvent contenir de l'amiante (colles de faïence et de carrelage, dalles de sol, enduits). Un repérage avant travaux permet de le savoir avant toute dépose, et pas seulement en cas de démolition : demandez s'il a été fait et qui le prend en charge.</p>
 <h2>Ce que je vérifie en plus</h2>
 <p>Les quantités (surfaces de faïence et de sol cohérentes avec la pièce), les prix unitaires comparés à des ordres de grandeur récents, les références des équipements, l'enchaînement des travaux et les conditions de paiement. Voir aussi <a href="guide-oublis-devis-salle-de-bain.html">les 7 oublis qui font grimper la facture</a> et <a href="methode.html">ma méthode</a>.</p>
 """ + cta_type("de salle de bain"),
@@ -778,7 +783,7 @@ page("analyse-devis-isolation",
 <li><b>Les points singuliers</b> : trappe d'accès, spots encastrés, conduits de cheminée (distances de sécurité), boîtiers électriques.</li>
 <li><b>La préparation</b> : retrait de l'ancien isolant si nécessaire, protection, repérage des gaines.</li>
 <li><b>Le certificat de l'isolant</b> (certification ACERMI ou équivalent) pour justifier les performances annoncées.</li></ul>
-<aside class="cp-alert"><p class="t">Démarché par téléphone ?</p><p>Le démarchage téléphonique pour des travaux de rénovation énergétique est interdit depuis 2020, sauf si vous êtes déjà client de l'entreprise. Une offre arrivée de cette façon, surtout avec des aides « déjà déduites », doit vous rendre prudent. Avant de signer, faites le point gratuitement avec un conseiller <a href="https://france-renov.gouv.fr/" target="_blank" rel="noopener">France Rénov'</a>. Si vous avez déjà signé, voyez <a href="guide-annuler-devis-signe-retractation.html">comment vous rétracter</a>.</p></aside>
+<aside class="cp-alert"><p class="t">Démarché par téléphone ?</p><p>Le démarchage pour des travaux de rénovation énergétique est interdit par téléphone, et depuis la loi du 30 juin 2025 aussi par message, e-mail et réseaux sociaux, sauf dans le cadre d'un contrat en cours. Un contrat conclu de cette façon est nul. Une offre arrivée de cette façon, surtout avec des aides « déjà déduites », doit vous rendre prudent. Avant de signer, faites le point gratuitement avec un conseiller <a href="https://france-renov.gouv.fr/" target="_blank" rel="noopener">France Rénov'</a>. Si vous avez déjà signé, voyez <a href="guide-annuler-devis-signe-retractation.html">comment vous rétracter</a>.</p></aside>
 <h2>Les aides, le RGE et la TVA</h2>
 <p>Les aides ont beaucoup changé : MaPrimeRénov' « par geste » ne finance plus l'isolation des murs depuis le 1<sup>er</sup> janvier 2026, ni celle des combles et de la toiture depuis le 1<sup>er</sup> septembre 2026. Ces travaux peuvent encore être aidés dans une rénovation d'ampleur accompagnée, ou par une prime CEE. Une MaPrimeRénov' « déduite » sur un devis d'isolation seule est donc à faire vérifier avant de signer.</p>
 <ul><li><b>Les seuils de résistance thermique</b> pour les primes CEE : R ≥ 7 en combles perdus, R ≥ 6 en rampants, R ≥ 3,7 pour les murs par l'extérieur ou l'intérieur.</li>
@@ -800,12 +805,12 @@ page("analyse-devis-toiture",
 <li><b>L'échafaudage et la sécurité</b> : souvent un poste important, parfois oublié.</li>
 <li><b>La dépose et l'évacuation</b> de l'ancienne couverture.</li>
 <li><b>L'écran sous-toiture, les liteaux et contre-liteaux</b> : remplacés ou conservés ?</li>
-<li><b>La zinguerie</b> : gouttières, descentes, noues, faîtage, solins autour des cheminées et fenêtres de toit.</li>
+<li><b>La zinguerie et les finitions</b> : gouttières, descentes, noues, solins autour des cheminées et fenêtres de toit, et le faîtage (en tuiles scellées ou à sec selon le cas).</li>
 <li><b>La charpente</b> : traitement, remplacement de pièces abîmées, avec un prix au mètre ou à la pièce plutôt qu'un forfait « selon état ».</li></ul>
 <h2>L'amiante dans les anciennes couvertures</h2>
-<p>Les plaques de fibres-ciment posées avant 1997 peuvent contenir de l'amiante. Leur retrait obéit à des règles strictes et doit être confié à une entreprise habilitée. Le repérage et la filière d'élimination doivent apparaître sur le devis.</p>
+<p>Les plaques de fibres-ciment posées avant 1997 peuvent contenir de l'amiante. Leur retrait obéit à des règles strictes et doit être confié à une entreprise certifiée pour le retrait de l'amiante. Le repérage et la filière d'élimination doivent apparaître sur le devis.</p>
 <h2>Les démarches et la TVA</h2>
-<p>Une réfection qui change l'aspect extérieur (matériau, couleur, fenêtres de toit) peut nécessiter une déclaration préalable en mairie. Dans un logement achevé depuis plus de 2 ans, la réfection relève en principe du taux de 10 %, et l'isolation de la toiture de 5,5 % si les conditions sont réunies. Vérifiez aussi l'attestation d'assurance décennale : c'est elle qui vous couvre en cas d'infiltration.</p>
+<p>Une réfection qui change l'aspect extérieur (matériau, couleur, fenêtres de toit) peut nécessiter une déclaration préalable en mairie. Dans un logement achevé depuis plus de 2 ans, la réfection relève en principe du taux de 10 %, et l'isolation de la toiture de 5,5 % si les conditions sont réunies. Vérifiez aussi l'attestation d'assurance décennale : après la réception, elle couvre les dommages graves, comme des infiltrations qui rendent le logement impropre à son usage ; la première année, la garantie de parfait achèvement s'applique aussi.</p>
 <h2>Deux devis toiture très différents ?</h2>
 <p>Un écart de 30 à 50 % entre deux devis de toiture est fréquent, et il s'explique presque toujours par le contenu plutôt que par la marge. Avant de comparer les totaux, vérifiez poste par poste : la même surface en m² (mesurée en rampant), l'échafaudage inclus ou non, l'écran sous-toiture remplacé ou conservé, la zinguerie refaite ou seulement reprise, et le traitement de la charpente chiffré ou laissé « selon état ». Le devis le moins cher est souvent celui qui oublie un de ces postes.</p>
 <p>Pour mettre les postes face à face, utilisez le <a href="comparer-ses-devis.html">tableau comparatif gratuit</a>, ou demandez l'option comparatif : je vous livre le tableau rempli et commenté.</p>
@@ -877,7 +882,7 @@ page("professionnels",
 <p>L'analyse est documentaire et à distance. Ce n'est ni une expertise judiciaire, ni un diagnostic technique du bâtiment, ni une mission de maîtrise d'œuvre, et elle n'intervient pas dans un litige déjà engagé.</p>
 <h2>Ce que vous y gagnez</h2>
 <ul><li><b>Un client mieux préparé</b> : il connaît le vrai budget de ses travaux avant le compromis ou l'offre de prêt.</li>
-<li><b>Moins de dossiers qui cassent</b> sur un budget travaux sous-estimé ou un poste oublié découvert trop tard.</li>
+<li><b>Moins de mauvaises surprises</b> sur un budget travaux sous-estimé ou un poste oublié découvert trop tard.</li>
 <li><b>Aucun conflit d'intérêts</b> : vous recommandez un avis indépendant, sans lien avec un artisan ni rémunération.</li></ul>
 <h2>Nous contacter</h2>
 <p>Pour orienter vos clients ou poser une question : le <a href="contact.html?sujet=professionnel">formulaire de contact</a>, réponse sous 24 h. Pour le transmettre à un client, il suffit de lui envoyer le lien de la page d'accueil : contre-plan.com.</p>
@@ -896,7 +901,7 @@ _ml = f"""<style>.cp-ml-page,.cp-ml-page p{{font-size:11px!important;line-height
 <p style="margin:0">TVA non applicable, article 293 B du Code général des impôts.</p>
 <p style="margin:0">Directeur de la publication : {PL.NOM_EXPLOITANT}.</p>
 <h2 style="font-size:12px;margin:12px 0 2px;color:#14284b">Hébergement</h2>
-<p style="margin:0">GitHub, Inc. (service GitHub Pages), 88 Colin P. Kelly Jr. Street, San Francisco, CA 94107, États-Unis.</p>
+<p style="margin:0">GitHub, Inc. (service GitHub Pages), 88 Colin P. Kelly Jr. Street, San Francisco, CA 94107, États-Unis. Téléphone : +1 415 857 5430.</p>
 <h2 style="font-size:12px;margin:12px 0 2px;color:#14284b">Commandes</h2>
 <p style="margin:0">Les prestations sont commandées et payées sur la plateforme ComeUp, selon ses conditions générales, et selon les <a href="cgv.html">conditions générales de vente</a> de Contre-Plan. Médiateur de la consommation : CM2C (Centre de la Médiation de la Consommation de Conciliateurs de Justice), 49 rue de Ponthieu, 75008 Paris, <a href="https://www.cm2c.net/declarer-un-litige.php" target="_blank" rel="noopener">www.cm2c.net</a>, litiges@cm2c.net. Après une réclamation écrite restée sans réponse satisfaisante, vous pouvez recourir gratuitement à cette médiation.</p>
 <h2 style="font-size:12px;margin:12px 0 2px;color:#14284b">Données personnelles</h2>

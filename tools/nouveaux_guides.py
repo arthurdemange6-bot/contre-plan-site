@@ -259,7 +259,7 @@ JOB_PAGES.append(dict(
 <li><b>Dépose totale</b> : l'ancien dormant est retiré. Plus de travaux (reprises de maçonnerie, d'enduit, de tableaux), mais un meilleur clair de vitrage et une étanchéité refaite à neuf.</li></ul>
 <p>Le devis doit dire clairement lequel des deux est prévu, et ce qui est compris en finitions intérieures et extérieures.</p>
 <h2>Ne pas oublier la ventilation</h2>
-<p>Des fenêtres neuves rendent le logement beaucoup plus étanche à l'air. Avec une VMC simple flux, les fenêtres des pièces principales doivent recevoir des <strong>entrées d'air</strong>. Avec une double flux, non. Sans ventilation adaptée, attention à la condensation et aux moisissures.</p>
+<p>Des fenêtres neuves rendent le logement beaucoup plus étanche à l'air. Avec une VMC simple flux, les pièces principales doivent disposer d'<strong>entrées d'air</strong>, placées sur la fenêtre, le coffre de volet roulant ou le mur. Avec une double flux, non. Sans ventilation adaptée, attention à la condensation et aux moisissures.</p>
 <h2>Les aides en 2026 : ce qui a changé</h2>
 <p>Depuis le 1er septembre 2026, <strong>MaPrimeRénov' par geste ne finance plus le remplacement des fenêtres</strong> pour les nouvelles demandes. Les fenêtres restent finançables dans une rénovation d'ampleur, et l'éco-prêt à taux zéro reste possible. La prime CEE est réservée au remplacement de fenêtres en <strong>simple vitrage</strong> (dormant compris) ou à la pose d'une double fenêtre, par une entreprise RGE, dans un logement de plus de 2 ans. Méfiez-vous d'un devis qui déduit une aide sans préciser laquelle.</p>
 <h2>Les démarches</h2>
@@ -289,17 +289,17 @@ JOB_PAGES.append(dict(
 <p>C'est le poste le plus souvent noyé dans un forfait. Le devis doit dire si le <strong>décaissement</strong> (terrassement) est prévu, sur quelle profondeur, et si l'<strong>évacuation des terres</strong> est comprise : quelques mètres cubes de terre à sortir et à mettre en décharge pèsent vite dans la facture.</p>
 <h2>Terrasse béton ou carrelée</h2>
 <ul><li><b>Le support</b> : hérisson (couche de cailloux) et son épaisseur, film, puis dalle béton avec son <b>épaisseur</b> et son <b>ferraillage</b> (treillis soudé).</li>
-<li><b>La pente</b> : une légère pente, de l'ordre de 1 à 2 %, éloignée de la maison, évite que l'eau stagne ou rentre sous la porte-fenêtre.</li>
+<li><b>La pente</b> : une pente éloignée de la maison, en général d'au moins 1,5 % pour un carrelage collé (selon la norme de pose), évite que l'eau stagne ou rentre sous la porte-fenêtre.</li>
 <li><b>Les joints de fractionnement</b> sur les grandes surfaces, pour limiter les fissures.</li>
 <li><b>Le carrelage</b> : collé sur dalle ou posé sur plots, et un carrelage adapté à l'extérieur (résistance au gel, antidérapant).</li></ul>
 <h2>Terrasse bois ou composite</h2>
 <ul><li><b>La structure</b> : plots, pieux ou longrines, et l'entraxe des lambourdes, à adapter à l'épaisseur des lames.</li>
-<li><b>Le bois</b> : essence et classe d'emploi adaptée à l'extérieur (classe 4 pour un bois en contact avec le sol ou l'humidité), ou la référence exacte du composite.</li>
+<li><b>Le bois</b> : essence et classe d'emploi adaptée à l'extérieur (classe 3 au minimum pour des lames hors sol bien ventilées, classe 4 pour les lambourdes et tout bois en contact avec le sol ou l'eau), ou la référence exacte du composite.</li>
 <li><b>La ventilation sous les lames</b> et la visserie inox : deux oublis qui réduisent beaucoup la durée de vie.</li></ul>
 <h2>L'évacuation des eaux</h2>
 <p>Où part l'eau de pluie ? Caniveau, drain, regard : si la terrasse est contre la maison ou au-dessus d'une pièce, ce point doit être traité et chiffré, pas laissé « selon besoin ».</p>
 <h2>Les démarches et l'assurance</h2>
-<p>Une terrasse de plain-pied non couverte ne demande en principe pas d'autorisation, sous réserve des règles de votre commune (PLU, secteur protégé). Une terrasse <strong>surélevée de plus de 60 cm</strong> ou <strong>couverte</strong> crée de l'emprise au sol : déclaration préalable à partir de 5 m², permis au-delà de 20 m² (40 m² dans certaines zones couvertes par un PLU). Pour une terrasse maçonnée, demandez l'attestation d'assurance décennale couvrant cette activité. Une terrasse surélevée doit prévoir un garde-corps.</p>
+<p>Une terrasse de plain-pied non couverte ne demande en principe pas d'autorisation, sous réserve des règles de votre commune (PLU, secteur protégé). Une terrasse <strong>surélevée de plus de 60 cm</strong> ou <strong>couverte</strong> crée de l'emprise au sol : déclaration préalable à partir de 5 m², permis au-delà de 20 m² (40 m² dans certaines zones couvertes par un PLU). Pour une terrasse maçonnée, demandez l'attestation d'assurance décennale couvrant cette activité. Au-delà d'environ 1 m de hauteur de chute, un garde-corps est à prévoir (norme NF P01-012).</p>
 <h2>Exemple de ligne à faire préciser</h2>
 <p>« Réalisation d'une terrasse béton 25 m² : forfait 4 500 €. » Quelle préparation, quelle épaisseur de dalle, quel ferraillage, quelle pente, qui évacue les terres ? À demander : le détail par poste (terrassement, hérisson, dalle, finition) avec les quantités.</p>
 """,
