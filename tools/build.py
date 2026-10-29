@@ -459,7 +459,39 @@ PAGES = []
 PAGE_UPDATED = {s: "2026-10-27" for s in ["analyse-devis-terrasse", "analyse-devis-salle-de-bain", "analyse-devis-pompe-a-chaleur", "analyse-devis-isolation", "analyse-devis-toiture", "analyse-devis-cuisine", "analyse-devis-electricite", "analyse-devis-extension", "analyse-devis-fenetres", "analyse-devis-ravalement-facade"]}
 for _s in ["analyse-devis-plomberie-chauffe-eau", "analyse-devis-carrelage", "analyse-devis-panneaux-solaires", "analyse-devis-vmc", "analyse-devis-mur-porteur", "analyse-devis-terrasse", "analyse-devis-salle-de-bain", "analyse-devis-toiture", "analyse-devis-fenetres", "analyse-devis-isolation"]: PAGE_UPDATED[_s] = "2026-10-29"
 
+
+# Fourchettes de prix indicatives (tools/fourchettes_prix.csv : 2 sources publiques par ligne, € HT)
+import csv as _csv
+from urllib.parse import urlparse as _up
+_PMAP = {"Salle de bain":"analyse-devis-salle-de-bain","Cuisine":"analyse-devis-cuisine","Isolation":"analyse-devis-isolation","Toiture":"analyse-devis-toiture","Pompe à chaleur":"analyse-devis-pompe-a-chaleur","Électricité":"analyse-devis-electricite","Fenêtres":"analyse-devis-fenetres","Extension":"analyse-devis-extension","Ravalement":"analyse-devis-ravalement-facade","Terrasse":"analyse-devis-terrasse","Plomberie":"analyse-devis-plomberie-chauffe-eau","Carrelage":"analyse-devis-carrelage","VMC":"analyse-devis-vmc","Panneaux solaires":"analyse-devis-panneaux-solaires","Mur porteur":"analyse-devis-mur-porteur"}
+FOURCH = {}
+def _src(cell):
+    m = re.search(r"https?://[^\s)]+", cell or "")
+    return _up(m.group(0)).netloc.replace("www.", "") if m else None
+with open(os.path.join(os.path.dirname(os.path.abspath(__file__)), "fourchettes_prix.csv"), encoding="utf-8") as _f:
+    for _r in _csv.DictReader(_f, delimiter=";"):
+        if not _r["Basse € HT"] or not _r["Haute € HT"]: continue
+        _srcs = [x for x in (_src(_r["Source 1 (titre + URL)"]), _src(_r["Source 2 (titre + URL)"])) if x]
+        if len(_srcs) < 2: continue
+        _slug = _PMAP.get(_r["Page"]);
+        if not _slug: continue
+        FOURCH.setdefault(_slug, []).append((_r["Poste"], _r["Unité"], int(float(_r["Basse € HT"])), int(float(_r["Haute € HT"])), _srcs))
+def _fmt(n): return f"{n:,}".replace(",", " ")
+def fourch_html(slug):
+    rows = FOURCH.get(slug)
+    if not rows: return ""
+    u = {"m²":"€ HT / m²","u":"€ HT","forfait":"€ HT (forfait)","ml":"€ HT / ml","m² habitable":"€ HT / m² habitable"}
+    tr = "".join(f"<tr><td>{html.escape(p)}</td><td class='n'>{_fmt(a)} à {_fmt(b)} {u.get(un, '€ HT / ' + un)}</td></tr>" for p, un, a, b, _ in rows)
+    srcs = sorted({x for *_, ss in rows for x in ss})
+    return ('<h2>Ordres de grandeur de prix en 2026</h2>'
+            '<p>Fourchettes indicatives constatées en France métropolitaine, fourniture et pose sauf mention contraire, avant aides. Les prix varient selon la région, l’accès au chantier, l’état de l’existant et les produits choisis : un devis hors de ces fourchettes n’est pas forcément anormal, mais il mérite une explication.</p>'
+            f'<table class="cp-fourch"><thead><tr><th>Poste</th><th>Ordre de grandeur</th></tr></thead><tbody>{tr}</tbody></table>'
+            f'<p class="cp-src">Sources : guides de prix publics 2025-2026 ({", ".join(srcs)}), recoupés ; montants convertis en HT.</p>')
+
 def page(slug, title, h1, desc, lead, body, kicker, toc=True):
+    _fh = fourch_html(slug)
+    if _fh:
+        body = body.replace("<h2>Exemple de ligne", _fh + "<h2>Exemple de ligne", 1) if "<h2>Exemple de ligne" in body else body + _fh
     url = f"https://contre-plan.com/{slug}.html"
     mod = PAGE_UPDATED.get(slug)
     ld = {"@context":"https://schema.org","@type":"WebPage","name":h1,"description":desc,"url":url,"inLanguage":"fr-FR",
