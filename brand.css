@@ -349,3 +349,10 @@ a{color:var(--or-d)}a:hover{color:#9a330a}
 
 .cp-also{margin:22px 0 0;font-size:16px;line-height:1.7;color:var(--ink2)}
 .cp-also a{color:#b8461a;font-weight:700}
+
+.cp-fourch{width:100%;border-collapse:collapse;margin:8px 0 6px;font-size:16px}
+.cp-fourch th,.cp-fourch td{text-align:left;padding:9px 10px;border-bottom:1px solid #d8dee6;vertical-align:top}
+.cp-fourch th{font-size:14px;color:var(--mute)}
+.cp-fourch td.n{white-space:nowrap;font-weight:700}
+@media (max-width:560px){.cp-fourch td.n{white-space:normal}}
+.cp-src{font-size:14px!important;color:var(--mute)}
