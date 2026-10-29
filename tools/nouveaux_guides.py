@@ -384,3 +384,165 @@ JOB_PAGES.append(dict(
    "Le plus souvent à cause des surfaces comptées (ouvertures déduites ou non) et de la préparation : nettoyage, traitement des fissures, type de finition. Comparez poste par poste et recalculez les surfaces."),
  ],
 ))
+
+JOB_PAGES.append(dict(
+ slug="analyse-devis-plomberie-chauffe-eau",
+ title="Analyse de devis plomberie et chauffe-eau par un ingénieur BTP",
+ h1="Analyse de devis plomberie et chauffe-eau",
+ desc="Chauffe-eau électrique ou thermodynamique, groupe de sécurité, évacuations, forfaits, TVA 10 % ou 5,5 % : ce qu'un ingénieur BTP vérifie sur un devis de plomberie.",
+ lead="En plomberie, le devis tient souvent en une ligne au forfait. C'est justement ce qu'il faut ouvrir avant de signer.",
+ kicker="Plomberie", cta="de plomberie", service="Analyse de devis de plomberie et de chauffe-eau",
+ card="Forfaits, chauffe-eau, groupe de sécurité, évacuations, TVA.",
+ body="""<h2>Le forfait, à faire détailler</h2>
+<p>« Plomberie : forfait 1 500 € » ne permet de rien vérifier. Le devis doit lister ce qui est prévu : alimentations (cuivre, multicouche, PER), évacuations (diamètres, pentes), nombre de points d'eau, robinets d'arrêt, raccordements des appareils, et ce qui reste à votre charge.</p>
+<h2>Le remplacement d'un chauffe-eau</h2>
+<ul><li><b>La capacité</b> en litres, adaptée au nombre de personnes, et la référence exacte de l'appareil.</li>
+<li><b>Le groupe de sécurité</b> neuf, obligatoire sur un chauffe-eau à accumulation, avec son raccordement à l'évacuation.</li>
+<li><b>La dépose et l'évacuation de l'ancien ballon</b>, souvent oubliées.</li>
+<li><b>Le support</b> : fixation murale adaptée au poids, ou trépied, et l'accès pour l'entretien.</li>
+<li><b>Pour un chauffe-eau thermodynamique</b> : l'emplacement (volume du local, gaines vers l'extérieur si nécessaire), l'évacuation des condensats et le bruit.</li></ul>
+<h2>La TVA et les aides</h2>
+<p>Dans un logement achevé depuis plus de 2 ans, un chauffe-eau électrique classique et sa pose relèvent en principe du taux de 10 %. Un chauffe-eau thermodynamique répondant aux critères de performance peut relever de 5,5 %. Depuis le 1<sup>er</sup> septembre 2026, MaPrimeRénov' « par geste » ne finance plus l'installation seule d'un système d'eau chaude : une prime CEE peut rester possible. Voir <a href="guide-tva-travaux-renovation.html">le guide TVA</a>.</p>
+<h2>Exemple de ligne à faire préciser</h2>
+<p>« Remplacement chauffe-eau 200 L, fourniture et pose : 1 450 € TTC. » Quelle marque et quelle référence ? Groupe de sécurité neuf ? Dépose et évacuation de l'ancien ballon ? Mise aux normes du raccordement électrique ? À demander : le détail fourniture, pose et accessoires.</p>
+""",
+ faq=[
+  ("Le groupe de sécurité doit-il être changé avec le chauffe-eau ?",
+   "Oui, un groupe de sécurité neuf est à poser avec un chauffe-eau à accumulation neuf. Vérifiez qu'il figure sur le devis, avec son raccordement à l'évacuation."),
+  ("Quelle TVA pour un remplacement de chauffe-eau ?",
+   "Dans un logement de plus de 2 ans, en principe 10 % pour un chauffe-eau électrique classique et sa pose, et 5,5 % pour un chauffe-eau thermodynamique qui répond aux critères de performance."),
+  ("Comment faire relire mon devis de plomberie ?",
+   "Envoyez-le en PDF ou en photo après avoir commandé l'analyse sur ComeUp : vous recevez sous 48 h un rapport avec les postes à détailler, les oublis et les questions à poser."),
+ ],
+))
+
+JOB_PAGES.append(dict(
+ slug="analyse-devis-carrelage",
+ title="Analyse de devis carrelage par un ingénieur BTP",
+ h1="Analyse de devis carrelage",
+ desc="Préparation du support, ragréage, colle, surfaces et chutes, plinthes, joints, carrelage extérieur : ce qu'un ingénieur BTP vérifie sur un devis de carrelage.",
+ lead="Le prix au m² du carreau n'est qu'une partie du devis. Ce qui fait la différence, c'est la préparation du support et ce qui est compté autour.",
+ kicker="Carrelage", cta="de carrelage", service="Analyse de devis de carrelage",
+ card="Support, ragréage, surfaces, chutes, plinthes, joints.",
+ body="""<h2>La préparation du support</h2>
+<p>C'est le poste le plus souvent oublié ou laissé « selon état ». Le devis doit dire ce qui est prévu : dépose de l'ancien revêtement, piquage, ragréage (avec l'épaisseur), primaire d'accrochage, traitement des fissures. Un carrelage posé sur un support mal préparé finit par sonner creux ou se fissurer.</p>
+<h2>Les quantités</h2>
+<ul><li><b>La surface</b> en m², cohérente avec la pièce, sans compter deux fois les zones occupées par un receveur, une baignoire ou des meubles fixes.</li>
+<li><b>Les chutes</b> : une marge de quelques pour cent est normale, davantage pour une pose en diagonale ou un grand format. Elle doit être visible, pas cachée dans la surface.</li>
+<li><b>Les plinthes</b> en mètres linéaires, et les découpes particulières (seuils, marches, nez de marche).</li></ul>
+<h2>Les produits et la pose</h2>
+<ul><li><b>La référence du carrelage</b> (format, épaisseur, classement d'usage et antidérapant si besoin), ou un prix de fourniture plafond si vous le choisissez plus tard.</li>
+<li><b>La colle</b> adaptée au support et au format, le type de pose (simple ou double encollage pour les grands formats) et les joints.</li>
+<li><b>En pièce humide</b> : l'étanchéité sous carrelage en zone de douche, à chiffrer à part.</li>
+<li><b>En extérieur</b> : un carrelage résistant au gel et une pente pour l'écoulement des eaux. Voir aussi <a href="analyse-devis-terrasse.html">la page terrasse</a>.</li></ul>
+<h2>La TVA</h2>
+<p>Dans un logement achevé depuis plus de 2 ans, la pose de carrelage relève en principe du taux de 10 %, fourniture comprise quand elle est facturée par l'entreprise.</p>
+<h2>Exemple de ligne à faire préciser</h2>
+<p>« Pose carrelage 45 m², fourniture et pose : 3 600 € TTC. » Quel carrelage ? Ragréage compris ? Plinthes ? Dépose de l'ancien sol ? À demander : le détail préparation, fourniture, pose, plinthes, avec les quantités.</p>
+""",
+ faq=[
+  ("Le ragréage est-il toujours nécessaire ?",
+   "Non, mais il est indispensable quand le support n'est pas plan. Le devis doit dire s'il est prévu, sur quelle surface et quelle épaisseur, plutôt que « selon état »."),
+  ("Faut-il compter des chutes sur un devis de carrelage ?",
+   "Oui, une marge est normale, plus forte pour une pose en diagonale ou en grand format. Elle doit apparaître clairement, en quantité ou en pourcentage."),
+  ("Comment faire relire mon devis de carrelage ?",
+   "Envoyez-le en PDF ou en photo après avoir commandé l'analyse sur ComeUp : vous recevez sous 48 h un rapport avec les postes manquants, les quantités à vérifier et les questions à poser."),
+ ],
+))
+
+JOB_PAGES.append(dict(
+ slug="analyse-devis-panneaux-solaires",
+ title="Analyse de devis panneaux solaires photovoltaïques par un ingénieur BTP",
+ h1="Analyse de devis panneaux solaires",
+ desc="Puissance, production estimée, onduleur, raccordement, démarches, TVA 5,5 % sous conditions, démarchage : ce qu'un ingénieur BTP vérifie sur un devis de photovoltaïque.",
+ lead="Le photovoltaïque est le secteur où les devis promettent le plus. Avant de signer, vérifiez ce qui est vraiment fourni, et ce que l'installation produira chez vous.",
+ kicker="Photovoltaïque", cta="de panneaux solaires", service="Analyse de devis de panneaux solaires",
+ card="Puissance, production, onduleur, démarches, TVA, démarchage.",
+ body="""<aside class="cp-alert"><p class="t">Démarché pour des panneaux solaires ?</p><p>Les offres « autofinancées » ou « rentables dès la première année » sont des signaux d'alerte classiques. Avant de signer, comparez avec au moins un autre devis, et prenez le temps de vérifier la qualification de l'installateur dans l'<a href="https://france-renov.gouv.fr/annuaire-rge" target="_blank" rel="noopener">annuaire officiel des entreprises RGE</a>.</p></aside>
+<h2>Ce que le devis doit préciser</h2>
+<ul><li><b>La puissance</b> en kWc, le nombre, la marque et la référence des panneaux.</li>
+<li><b>L'onduleur</b> (central ou micro-onduleurs), sa marque, sa référence et sa garantie.</li>
+<li><b>La production estimée</b> en kWh par an, avec l'orientation et l'inclinaison de votre toiture, et l'hypothèse d'autoconsommation retenue.</li>
+<li><b>La pose</b> : intégration ou surimposition, fixations, étanchéité de la toiture, câblage et protections électriques.</li>
+<li><b>Les démarches</b> : déclaration préalable en mairie, demande de raccordement, attestation de conformité électrique, et qui s'en charge.</li></ul>
+<h2>La TVA et les aides</h2>
+<p>Depuis le 1<sup>er</sup> octobre 2025, une installation de 9 kWc ou moins sur un logement peut relever du taux de 5,5 %, à des conditions précises : empreinte carbone des panneaux, faible teneur en métaux, système de gestion de l'énergie, certification. Le devis doit justifier ces conditions s'il applique 5,5 %. La prime à l'autoconsommation et le rachat du surplus dépendent aussi de règles précises : demandez-en le détail par écrit plutôt que des montants « garantis ».</p>
+<h2>Exemple de ligne à faire préciser</h2>
+<p>« Centrale solaire 6 kWc clés en main : 14 900 € TTC. » Quels panneaux, quel onduleur ? Quelle production estimée et sur quelle base ? Démarches et raccordement inclus ? Taux de TVA justifié ? À demander : le détail matériel, pose, démarches, et l'étude de production.</p>
+""",
+ faq=[
+  ("Quelle TVA pour des panneaux solaires en 2026 ?",
+   "Depuis le 1er octobre 2025, 5,5 % pour une installation de 9 kWc ou moins sur un logement, si les panneaux et l'installation remplissent des conditions précises (empreinte carbone, métaux, gestion de l'énergie, certification). Le devis doit le justifier."),
+  ("Comment repérer un devis photovoltaïque douteux ?",
+   "Une production ou des économies présentées comme garanties, une offre « autofinancée », un financement signé le jour même ou l'absence de détail sur le matériel sont des signaux d'alerte."),
+  ("Comment faire relire mon devis de panneaux solaires ?",
+   "Envoyez-le en PDF ou en photo après avoir commandé l'analyse sur ComeUp : vous recevez sous 48 h un rapport avec les points à vérifier et les questions à poser."),
+ ],
+))
+
+JOB_PAGES.append(dict(
+ slug="analyse-devis-vmc",
+ title="Analyse de devis VMC par un ingénieur BTP",
+ h1="Analyse de devis VMC",
+ desc="Simple flux autoréglable ou hygroréglable, double flux, bouches, entrées d'air, rejet, entretien, TVA : ce qu'un ingénieur BTP vérifie sur un devis de ventilation.",
+ lead="Une ventilation mal choisie ou mal posée, c'est de l'humidité, de la condensation et des moisissures. Le devis doit dire exactement quel système, et comment il sera installé.",
+ kicker="VMC", cta="de VMC", service="Analyse de devis de VMC",
+ card="Simple ou double flux, bouches, entrées d'air, rejet, entretien.",
+ body="""<h2>Quel système ?</h2>
+<ul><li><b>Simple flux autoréglable</b> : débit constant, le plus simple.</li>
+<li><b>Simple flux hygroréglable</b> (type A ou B) : le débit s'adapte à l'humidité. En type B, les entrées d'air sont aussi hygroréglables.</li>
+<li><b>Double flux</b> : récupère la chaleur de l'air extrait, mais demande un réseau de gaines pour l'insufflation, de la place et un entretien régulier des filtres.</li></ul>
+<p>Le devis doit donner la marque et la référence du caisson, son type, et sa consommation.</p>
+<h2>Les points à retrouver sur le devis</h2>
+<ul><li><b>Les bouches d'extraction</b> dans chaque pièce humide (cuisine, salle de bain, WC), et leur type.</li>
+<li><b>Les entrées d'air</b> dans les pièces principales, sur les fenêtres, les coffres de volets ou les murs, pour une simple flux.</li>
+<li><b>Le réseau de gaines</b> : longueurs, isolation des gaines en combles froids, accessibilité du caisson.</li>
+<li><b>Le rejet</b> vers l'extérieur (sortie de toiture ou de mur), jamais dans les combles.</li>
+<li><b>Le raccordement électrique</b> et la dépose de l'ancienne VMC.</li></ul>
+<h2>La TVA</h2>
+<p>Dans un logement achevé depuis plus de 2 ans, certaines VMC liées à la rénovation énergétique peuvent relever du taux de 5,5 % si elles répondent aux critères de performance, sinon le taux de 10 % s'applique en principe. Voir <a href="guide-tva-travaux-renovation.html">le guide TVA</a>.</p>
+<h2>Exemple de ligne à faire préciser</h2>
+<p>« Installation VMC hygro, fourniture et pose : 1 200 € TTC. » Hygro A ou B ? Combien de bouches, où ? Entrées d'air comprises ? Sortie de toiture ? À demander : la référence du caisson et le détail des bouches, entrées d'air, gaines et rejet.</p>
+""",
+ faq=[
+  ("VMC hygroréglable A ou B : quelle différence ?",
+   "En hygro A, seules les bouches d'extraction s'adaptent à l'humidité. En hygro B, les entrées d'air des pièces principales sont aussi hygroréglables. Le devis doit préciser le type."),
+  ("La VMC peut-elle rejeter l'air dans les combles ?",
+   "Non, l'air extrait doit être rejeté vers l'extérieur, par une sortie de toiture ou de mur. Vérifiez que le devis prévoit ce rejet."),
+  ("Comment faire relire mon devis de VMC ?",
+   "Envoyez-le en PDF ou en photo après avoir commandé l'analyse sur ComeUp : vous recevez sous 48 h un rapport avec les points à vérifier et les questions à poser."),
+ ],
+))
+
+JOB_PAGES.append(dict(
+ slug="analyse-devis-mur-porteur",
+ title="Analyse de devis ouverture de mur porteur par un ingénieur BTP",
+ h1="Analyse de devis ouverture de mur porteur",
+ desc="Étude de structure, note de calcul, étaiement, poutre ou IPN, appuis, autorisations, décennale : ce qu'un ingénieur BTP vérifie sur un devis d'ouverture de mur porteur.",
+ lead="Ouvrir un mur porteur, c'est modifier la structure de la maison. Le devis doit montrer que ce qui tient la maison pendant et après les travaux a été prévu et chiffré.",
+ kicker="Mur porteur", cta="d'ouverture de mur porteur", service="Analyse de devis d'ouverture de mur porteur",
+ card="Étude de structure, étaiement, poutre, appuis, autorisations.",
+ body="""<h2>L'étude de structure, avant tout</h2>
+<p>Le dimensionnement de la poutre et de ses appuis relève d'une <strong>note de calcul</strong>, établie par un bureau d'études structure ou par l'entreprise si elle en a la compétence. Le devis doit dire qui la réalise et si elle est comprise. Une ouverture « dimensionnée à l'œil » est un risque, pour vous comme pour l'entreprise.</p>
+<h2>Les points à retrouver sur le devis</h2>
+<ul><li><b>L'étaiement</b> provisoire pendant les travaux, avec sa durée.</li>
+<li><b>La poutre</b> : matériau (acier, béton, bois lamellé), profil et dimensions issus de la note de calcul, et sa protection (peinture, protection au feu si nécessaire).</li>
+<li><b>Les appuis</b> : sommiers ou poteaux, et leur fondation si les charges l'imposent.</li>
+<li><b>La démolition et l'évacuation des gravats</b>, et la protection du logement.</li>
+<li><b>Les finitions</b> : reprise des enduits, des sols, de l'électricité ou des réseaux qui passaient dans le mur.</li></ul>
+<h2>Autorisations et assurance</h2>
+<p>En copropriété, toucher un mur porteur demande en principe l'autorisation de l'assemblée générale. Si l'ouverture modifie une façade, une déclaration préalable en mairie peut être nécessaire. Demandez l'attestation d'assurance décennale de l'entreprise et vérifiez qu'elle couvre les travaux de gros œuvre.</p>
+<h2>Ce que je vérifie, et ce que je ne fais pas</h2>
+<p>Je vérifie que le devis prévoit et chiffre l'étude, l'étaiement, la poutre, les appuis et les reprises, et que rien d'essentiel n'est laissé « selon état ». Je ne réalise pas moi-même le calcul de structure : c'est le rôle du bureau d'études.</p>
+<h2>Exemple de ligne à faire préciser</h2>
+<p>« Ouverture mur porteur 2,40 m avec IPN : forfait 3 800 € TTC. » Note de calcul comprise ? Quel profil ? Étaiement, sommiers, reprises d'enduit ? À demander : le détail par poste et la note de calcul avant le démarrage.</p>
+""",
+ faq=[
+  ("Faut-il une étude de structure pour ouvrir un mur porteur ?",
+   "Oui, le dimensionnement de la poutre et des appuis relève d'une note de calcul. Le devis doit dire qui la réalise et si elle est comprise."),
+  ("Faut-il une autorisation pour ouvrir un mur porteur ?",
+   "En copropriété, en principe celle de l'assemblée générale. Si la façade est modifiée, une déclaration préalable en mairie peut aussi être nécessaire."),
+  ("Comment faire relire mon devis d'ouverture de mur porteur ?",
+   "Envoyez-le en PDF ou en photo après avoir commandé l'analyse sur ComeUp : vous recevez sous 48 h un rapport avec les postes manquants et les questions à poser."),
+ ],
+))
