@@ -1,45 +1,65 @@
 /* Contre-Plan – assistant : orientation en 3 questions + FAQ (100 % local ; seuls des compteurs anonymes GoatCounter sont envoyés, aucune réponse saisie) */
 (function () {
   var COMEUP = "https://comeup.com/fr/service/549064/verifier-votre-devis-de-travaux-avant-signature-et-reperer-les-prix-abusifs-et-les-oublis";
+  var BOOK = "https://calendar.app.google/6LCc6yKVHnbvA3WN7";
+  var PREDIAG = ["/contact.html?sujet=prediagnostic", "Demander le pré-diagnostic gratuit"];
   var KB = [
-    { q: "Combien ça coûte ?", k: ["prix", "tarif", "coût", "cout", "combien", "€", "euro", "cher"],
-      a: "L'analyse d'un devis coûte 16,50 € sur ComeUp (prix de lancement). Options : 2e devis + 11 €, comparatif de plusieurs devis + 16,50 €, livraison express en 24 h + 5,50 €. Pas de TVA." },
-    { q: "Quel est le délai ?", k: ["délai", "délai ", "delai", "quand", "recevoir", "sous combien", "combien de temps", "rapide", "express", "24", "48", "jours"],
+    { c: 1, q: "Combien ça coûte ?", k: ["prix", "tarif", "coût", "cout", "combien", "€", "euro", "payer combien", "ça coute", "ca coute"],
+      a: "L'analyse d'un devis coûte 16,50 € sur ComeUp (prix de lancement, frais de la plateforme compris). Options : 2e devis + 11 €, comparatif de plusieurs devis + 16,50 €, livraison express en 24 h + 5,50 €. Pas de TVA." },
+    { c: 1, q: "Quel est le délai ?", k: ["délai", "delai", "quand", "recevoir", "sous combien", "combien de temps", "rapide", "express", "24", "48", "jours", "vite"],
       a: "Vous recevez votre rapport PDF sous 48 h après l'envoi du devis, ou 24 h avec l'option express." },
-    { q: "Comment ça marche ?", k: ["comment", "marche", "fonctionne", "étapes", "etapes", "commander", "procédure"],
-      a: "1. Vous commandez sur ComeUp. 2. Vous envoyez votre devis en PDF ou en photo. 3. Vous recevez un rapport avec un verdict, les prix poste par poste, les oublis et les questions à poser à l'artisan." },
-    { q: "Que contient le rapport ?", k: ["rapport", "contient", "reçois", "recois", "livrable", "pdf", "exemple"],
+    { c: 1, q: "Comment ça marche ?", k: ["comment ça marche", "comment ca marche", "marche", "fonctionne", "étapes", "etapes", "commander", "procédure", "envoyer mon devis", "envoie mon devis", "envoyer le devis", "j'envoie"],
+      a: "1. Vous commandez sur ComeUp (compte gratuit, paiement par carte). 2. Vous envoyez votre devis dans la messagerie de la commande, en PDF ou en photo. 3. Vous recevez dans la même messagerie un rapport avec un verdict, les prix poste par poste, les oublis et les questions à poser à l'artisan." },
+    { c: 1, q: "Faut-il créer un compte ?", k: ["compte", "inscri", "comeup", "come up", "chèque", "cheque", "carte bancaire", "carte bleue", "paypal", "payer en ligne", "paiement", "payer", "dollar", "$"],
+      a: "Oui : ComeUp est une plateforme française de services en ligne, et la commande passe par un compte gratuit (2 minutes). Vous payez en ligne par carte, et ComeUp conserve le paiement jusqu'à la livraison du rapport. Si vous n'êtes pas connecté, ComeUp peut afficher le prix en dollars : une fois connecté en France, c'est bien 16,50 € frais compris. Pas prêt à créer un compte ? Le pré-diagnostic gratuit se demande sans compte ni paiement.", l: PREDIAG },
+    { c: 1, q: "Que contient le rapport ?", k: ["rapport", "contient", "reçois", "recois", "livrable", "pdf", "exemple"],
       a: "Un verdict global (cohérent, négociable ou signaux d'alerte), le contrôle des prix poste par poste, les postes oubliés, les incohérences d'enchaînement des travaux, les questions à poser avant de signer, et un échange de suivi inclus.", l: ["/exemple-rapport-contre-plan.pdf", "Voir un exemple de rapport complet (PDF)"] },
-    { q: "Quels travaux analysez-vous ?", k: ["travaux", "type", "salle de bain", "cuisine", "isolation", "toiture", "pompe", "pac", "électricité", "electricite", "plomberie", "maçonnerie", "extension", "fenêtre", "menuiserie"],
+    { c: 1, w: 2, q: "J'ai plusieurs devis", k: ["même prix", "meme prix", "quel que soit le montant", "pour 2 devis", "pour 3 devis", "plusieurs devis", "2 devis", "3 devis", "4 devis", "deux devis", "trois devis", "quatre devis", "plusieurs lots", "lots", "tous corps", "rénovation complète", "renovation complete", "gros devis"],
+      a: "Chaque devis transmis est analysé. Pour un 2e devis dans la même commande, ajoutez l'option « 2e devis » (+ 11 €). Pour des devis concurrents sur les mêmes travaux, l'option « comparatif » ajoute un tableau poste par poste. Plusieurs lots ou un gros devis tous corps d'état ? Décrivez-les dans le pré-diagnostic gratuit : je vous dis avant toute commande comment ils seront traités.", l: PREDIAG },
+    { w: 2, q: "Le rapport sert-il pour ma banque ?", k: ["pret", "banque", "prêt", "pret immo", "crédit", "credit", "financement", "dossier de prêt", "acquisition", "compromis", "achat"],
+      a: "Le rapport n'est pas une expertise et n'a pas de valeur officielle pour une banque. Il vous sert à faire corriger les oublis et les imprécisions des devis avant de les joindre à votre dossier, pour ne pas sous-estimer le budget travaux. Avec plusieurs devis, voyez l'option « 2e devis » ou le pré-diagnostic gratuit.", l: PREDIAG },
+    { w: 0.5, q: "Quels travaux analysez-vous ?", k: ["quels travaux", "type de travaux", "salle de bain", "cuisine", "isolation", "toiture", "pompe", "pac", "électricité", "electricite", "plomberie", "maçonnerie", "extension", "fenêtre", "menuiserie"],
       a: "Rénovation et construction : salle de bain, cuisine, isolation, toiture, pompe à chaleur, électricité, plomberie, maçonnerie, menuiseries, extension…", l: ["/#travaux", "Ce que je vérifie selon vos travaux"] },
-    { q: "Mes données sont-elles protégées ?", k: ["données", "donnees", "confidentiel", "nom", "adresse", "personnel", "sécurité", "partag"],
+    { w: 3, q: "Et pour une cuisine de grande enseigne ?", k: ["ixina", "schmidt", "mobalpa", "cuisinella", "leroy", "castorama", "ikea", "cuisiniste", "enseigne", "marque"],
+      a: "Oui, quelle que soit l'enseigne : l'analyse porte sur le contenu du devis (meubles, plan de travail, électroménager, pose, raccordements, TVA), pas sur la marque.", l: ["/analyse-devis-cuisine.html", "Ce que je vérifie sur un devis de cuisine"] },
+    { c: 1, q: "Mes données sont-elles protégées ?", k: ["données", "donnees", "confidentiel", "nom", "adresse", "personnel", "sécurité", "partag", "anonyme"],
       a: "Vous pouvez masquer votre nom et votre adresse sur le devis : seuls les postes, quantités et prix sont utiles. Votre devis n'est jamais partagé.", l: ["/engagements.html", "Mes engagements de confidentialité"] },
-    { q: "Vous déplacez-vous ?", k: ["déplace", "deplace", "visite", "chantier", "venir", "sur place", "expertise", "litige", "avocat"],
-      a: "Non, le service est 100 % à distance. Ce n'est ni une expertise judiciaire ni une maîtrise d'œuvre, et je n'interviens pas dans un litige déjà en cours." },
-    { q: "Peut-on en parler par téléphone ?", k: ["appel", "téléphone", "telephone", "parler", "visio", "rendez-vous", "rdv", "joindre"],
-      a: "Oui : vous pouvez réserver un appel gratuit de 15 min en visio pour présenter votre projet : https://calendar.app.google/6LCc6yKVHnbvA3WN7" },
-    { q: "Quel acompte verser ?", k: ["acompte", "arrhes", "verser", "signature", "payer", "paiement", "échéancier", "echeancier", "solde", "avance"],
-      a: "L'usage est d'environ 30 % à la signature, puis des paiements liés à l'avancement et le solde à la réception. Au-delà de 40 à 50 %, demandez pourquoi et proposez un échéancier.", l: ["/guide-acompte-paiement-devis-travaux.html", "Le guide acompte et paiement"] },
-    { q: "Quel taux de TVA ?", k: ["tva", "taux", "5,5", "10 %", "20 %", "taxe"],
+    { q: "Vous déplacez-vous ?", k: ["déplace", "deplace", "visite", "sur place", "venir", "expertise"],
+      a: "Non, le service est 100 % à distance, sur la base du devis. Ce n'est ni une expertise judiciaire ni une maîtrise d'œuvre." },
+    { q: "Mon chantier est en cours", nocta: 1, k: ["litige", "en cours", "supplément", "supplement", "réclame", "reclame", "conflit", "dépasse", "depasse", "avocat", "malfaçon", "malfacon", "abandon", "facture plus", "mise en demeure", "porter plainte"],
+      a: "Je n'interviens pas sur un chantier en cours ni dans un litige : l'analyse sert avant de signer. Si l'artisan vous réclame un supplément, le guide ci-dessous explique vos droits et les étapes à suivre (réclamation écrite, médiateur, conciliateur de justice), avec un modèle de message.", l: ["/guide-depassement-devis-travaux-supplementaires.html", "Le guide : l'artisan dépasse le devis"], l2: ["/modeles-messages-artisan.html", "Modèle : contester un supplément"] },
+    { q: "Peut-on en parler par téléphone ?", k: ["appel", "téléphone", "telephone", "parler", "visio", "rendez-vous", "rdv", "joindre quelqu"],
+      a: "Oui : vous pouvez réserver un appel gratuit de 15 min pour présenter votre projet.", l: [BOOK, "Réserver l'appel gratuit de 15 min"] },
+    { q: "Quel acompte verser ?", k: ["acompte", "arrhes", "verser", "échéancier", "echeancier", "solde", "avance"],
+      a: "L'usage est souvent autour de 30 % à la signature, parfois plus quand du matériel est commandé sur mesure, puis des paiements liés à l'avancement et le solde à la réception. Au-delà de 40 à 50 %, demandez pourquoi et proposez un échéancier.", l: ["/guide-acompte-paiement-devis-travaux.html", "Le guide acompte et paiement"] },
+    { w: 2, q: "Quel taux de TVA ?", k: ["tva", "taux", "5,5", "10 %", "20 %", "taxe"],
       a: "5,5 % pour la rénovation énergétique, 10 % pour l'amélioration d'un logement de plus de 2 ans, 20 % dans les autres cas (neuf, agrandissement, certains équipements). Le taux doit correspondre à vos travaux.", l: ["/guide-tva-travaux-renovation.html", "Le guide TVA"] },
+    { w: 2, q: "Démarchage, aides, RGE", k: ["démarch", "demarch", "rge", "maprimerenov", "ma prime", "prime", "aide", "cee", "subvention", "anah", "france rénov", "france renov"],
+      a: "Le démarchage téléphonique pour des travaux de rénovation énergétique est interdit depuis 2020, sauf si vous êtes déjà client. Vérifiez l'entreprise dans l'annuaire RGE officiel (france-renov.gouv.fr) et faites le point gratuitement avec un conseiller France Rénov' avant de signer. Attention : MaPrimeRénov' « par geste » ne finance plus l'isolation seule des murs (depuis janvier 2026) ni des combles (depuis septembre 2026). L'analyse vérifie la qualification RGE annoncée, les performances exigées et le détail des primes déduites.", l: ["/analyse-devis-isolation.html", "Ce que je vérifie sur un devis d'isolation"] },
+    { q: "Structure, mur porteur", k: ["mur porteur", "structure", "porteur", "note de calcul", "bureau d'études", "bureau d'etudes", "ipn", "poutre", "fondation"],
+      a: "Je vérifie que le devis prévoit et chiffre ce qu'il faut : étude ou note de calcul d'un bureau d'études, étaiement, poutre ou linteau dimensionné, reprise des fondations. Je ne fais pas le calcul de structure moi-même : c'est le rôle d'un bureau d'études, et le rapport vous dit s'il manque." },
+    { w: 2, q: "D'où viennent vos prix ?", k: ["viennent vos prix", "vos prix de", "comparaison", "d'où viennent", "d'ou viennent", "source", "base de prix", "comment vous savez", "prix du marché", "prix du marche", "fourchette", "référence de prix"],
+      a: "Les prix unitaires sont comparés à des ordres de grandeur récents, issus de dix ans de chantier et d'environ 1 000 devis lus, en tenant compte de la région quand je la connais. Ce sont des fourchettes indicatives, jamais un « bon prix » au centime.", l: ["/methode.html", "Voir ma méthode"] },
+    { q: "Je suis artisan", nocta: 1, k: ["je suis artisan", "suis plombier", "suis électricien", "suis electricien", "suis maçon", "suis macon", "suis chauffagiste", "dénigr", "denigr", "contre les artisans", "mon client veut", "mon devis relu"],
+      a: "Je ne juge pas l'entreprise, je fais préciser le devis. La plupart des devis ne sont pas malhonnêtes, juste incomplets : un devis clair et détaillé sort renforcé de l'analyse. Le rapport donne au client des questions à vous poser, pas un verdict sur votre travail.", l: ["/methode.html", "Voir ma méthode"] },
     { q: "Que veut dire ce mot ?", k: ["mot", "terme", "signifie", "veut dire", "définition", "definition", "lexique", "ragréage", "forfait", "ml"],
       a: "Les termes courants d'un devis (forfait, ml, P.U., ragréage, SPEC, RGE, réception…) sont expliqués simplement dans le lexique.", l: ["/lexique-devis-travaux.html", "Ouvrir le lexique"] },
-    { q: "Comment comparer mes devis ?", k: ["comparer", "comparatif", "plusieurs devis", "deux devis", "trois devis", "tableau"],
+    { q: "Comment comparer mes devis ?", k: ["comparer", "comparatif", "tableau", "lequel choisir"],
       a: "Comparez poste par poste, en HT, en mettant les prestations comparables sur la même ligne : un devis moins cher avec des postes absents peut finir plus cher. Un tableau gratuit est disponible, et l'option « Comparatif multi devis » vous le livre rempli et commenté.", l: ["/comparer-ses-devis.html", "Le tableau comparatif gratuit"] },
-    { q: "Qui analyse mon devis ?", k: ["qui", "ingénieur", "ingenieur", "expérience", "experience", "compétent", "fiable", "commission", "indépendant"],
+    { q: "Qui analyse mon devis ?", k: ["qui", "ingénieur", "ingenieur", "expérience", "experience", "compétent", "competent", "commission", "indépendant"],
       a: "Un ingénieur BTP avec 10 ans d'expérience sur les chantiers et environ 1 000 devis lus et négociés. Indépendant : aucune commission d'artisan, aucune entreprise à vous revendre.", l: ["/methode.html", "Voir ma méthode"] },
-    { q: "Est-ce fiable ?", k: ["arnaque", "fiable", "confiance", "sérieux", "serieux", "escroquerie", "légal", "legal", "vrai", "siret", "garantie", "rassur"],
+    { c: 1, q: "Est-ce fiable ?", k: ["arnaque", "fiable", "confiance", "sérieux", "serieux", "escroquerie", "légal", "legal", "siret", "garantie", "rassur"],
       a: "Contre-Plan est une entreprise immatriculée (SIRET 132 070 426 00011), rattachée au médiateur de la consommation CM2C. Vous payez sur ComeUp, une plateforme de paiement sécurisé, et vous pouvez masquer votre nom et votre adresse sur le devis. Pas sûr que l'analyse vous serve ? Le pré-diagnostic gratuit vous le dit avant toute commande.", l: ["/mentions-legales.html", "Voir les mentions légales"] },
-    { q: "Mon devis me paraît trop cher", k: ["trop cher", "devis cher", "est cher", "paraît cher", "parait cher", "arnaqué", "arnaque moi", "surfactur", "abus", "gonflé", "gonfle", "normal ce prix", "prix normal", "est-ce normal"],
-      a: "C'est exactement ce que vérifie l'analyse : le prix de chaque poste comparé aux prix constatés, les postes oubliés ou comptés deux fois, et les points à négocier. Pour savoir d'abord si l'analyse vaut le coup sur votre devis, demandez le pré-diagnostic gratuit (réponse sous 24 h).", l: ["/contact.html?sujet=prediagnostic", "Demander le pré-diagnostic gratuit"] },
-    { q: "Comment vous contacter ?", k: ["contact", "contacter", "joindre", "écrire", "ecrire", "mail", "email", "message", "formulaire"],
+    { w: 2, q: "Mon devis me paraît trop cher", k: ["est-ce cher", "est ce cher", "c'est cher", "trop élevé", "trop cher", "devis cher", "est cher", "paraît cher", "parait cher", "surfactur", "abus", "gonflé", "gonfle", "normal ce prix", "prix normal", "est-ce normal", "c'est cher"],
+      a: "C'est exactement ce que vérifie l'analyse : le prix de chaque poste comparé à des ordres de grandeur, les postes oubliés ou comptés deux fois, et les points à négocier. Pour savoir d'abord si l'analyse vaut le coup sur votre devis, demandez le pré-diagnostic gratuit (réponse sous 24 h).", l: PREDIAG },
+    { w: 2, q: "Vous êtes un professionnel ?", k: ["agent immobilier", "agents immobiliers", "agence", "courtier", "notaire", "syndic", "professionnel", "partenariat", "prescripteur", "mes clients"],
+      a: "Agents immobiliers, courtiers, notaires, syndics : vos clients peuvent faire relire leurs devis de travaux, sans commission versée ni reçue. La page dédiée explique ce qu'ils reçoivent et comment ça se passe.", l: ["/professionnels.html", "La page professionnels"] },
+    { c: 1, q: "Comment vous contacter ?", k: ["contact", "contacter", "écrire", "ecrire", "mail", "email", "message", "formulaire"],
       a: "Par le formulaire de contact : je réponds sous 24 h. Pour faire analyser un devis, commandez directement sur ComeUp.", l: ["/contact.html", "Formulaire de contact"] }
   ];
-  var FALLBACK = "Je n'ai pas de réponse toute prête à cette question, mais je vous réponds personnellement sous 24 h via le formulaire de contact. Vous pouvez aussi demander le pré-diagnostic gratuit de votre devis, ou réserver un appel gratuit de 15 min : https://calendar.app.google/6LCc6yKVHnbvA3WN7";
 
   var css = "#cp-chat-btn{position:fixed;right:20px;bottom:20px;z-index:9999;display:flex;align-items:center;gap:10px;background:#bf4a17;color:#fff;border:0;border-radius:2px;padding:14px 20px;font:700 16px 'Source Sans 3',Arial,sans-serif;box-shadow:0 8px 24px rgba(0,0,0,.3);cursor:pointer}" +
     "#cp-chat-btn:hover{background:#b8461a}" +
-    "@media (max-width:600px){#cp-chat-btn{right:12px;bottom:12px;padding:12px;border-radius:50%}#cp-chat-btn span{position:absolute;left:-9999px}body{padding-bottom:72px}}" +
     "#cp-chat{position:fixed;right:20px;bottom:86px;z-index:9999;width:min(380px,calc(100vw - 40px));max-height:min(560px,calc(100vh - 120px));display:none;flex-direction:column;background:#ffffff;color:#14284b;border-radius:10px;box-shadow:0 16px 48px rgba(0,0,0,.35);overflow:hidden;font-family:'Source Sans 3',Arial,sans-serif}" +
     "#cp-chat.open{display:flex}" +
     "#cp-chat header{background:#0f2747;color:#fff;padding:14px 16px;display:flex;align-items:center;justify-content:space-between;gap:10px}" +
@@ -47,7 +67,7 @@
     "#cp-chat header small{display:block;color:#c9d3ea;font-size:13px;font-weight:400;letter-spacing:0}" +
     "#cp-close{background:none;border:0;color:#fff;font-size:26px;line-height:1;cursor:pointer;width:44px;height:44px}" +
     "#cp-log{flex:1;overflow-y:auto;padding:14px;display:flex;flex-direction:column;gap:10px}" +
-    ".cp-m{max-width:85%;padding:10px 13px;border-radius:12px;font-size:15px;line-height:1.45}" +
+    ".cp-m{max-width:85%;padding:10px 13px;border-radius:12px;font-size:15px;line-height:1.45;overflow-wrap:anywhere}" +
     ".cp-bot{background:#fff;border:1px solid #d8dee6;align-self:flex-start}" +
     ".cp-user{background:#14284b;color:#fff;align-self:flex-end}" +
     ".cp-chips{display:flex;flex-wrap:wrap;gap:6px}" +
@@ -56,7 +76,8 @@
     ".cp-cta{display:inline-block;margin-top:6px;background:#bf4a17;color:#fff!important;text-decoration:none;font-weight:700;padding:9px 14px;border-radius:2px}" +
     "#cp-form{display:flex;gap:8px;padding:10px;border-top:1px solid #e6e9ee;background:#fff}" +
     "#cp-in{flex:1;border:1px solid #c5ccd6;border-radius:2px;padding:10px;font:15px 'Source Sans 3',Arial,sans-serif;min-width:0}" +
-    "#cp-send{background:#14284b;color:#fff;border:0;border-radius:2px;padding:0 14px;font-weight:700;cursor:pointer;min-height:44px}";
+    "#cp-send{background:#14284b;color:#fff;border:0;border-radius:2px;padding:0 14px;font-weight:700;cursor:pointer;min-height:44px}" +
+    "@media (max-width:600px){#cp-chat-btn{right:12px;bottom:12px;padding:12px;border-radius:50%}#cp-chat-btn span{position:absolute;left:-9999px}body{padding-bottom:72px}#cp-chat{left:0;right:0;top:0;bottom:0!important;width:100%;max-height:none;border-radius:0}}";
   var st = document.createElement("style"); st.textContent = css; document.head.appendChild(st);
 
   var btn = document.createElement("button");
@@ -77,33 +98,45 @@
     if (html) d.innerHTML = text; else d.textContent = text;
     log.appendChild(d); log.scrollTop = log.scrollHeight; return d;
   }
+  var FALLBACK = "Je n'ai pas de réponse toute prête à cette question. Je vous réponds personnellement sous 24 h par le formulaire de contact. Vous pouvez aussi demander le pré-diagnostic gratuit de votre devis, ou réserver un appel gratuit de 15 min.";
+  var ctaShown = false;
+  function focusNext() {
+    setTimeout(function () { var w = log.querySelectorAll(".cp-chips"), last = w[w.length - 1]; var f = last && last.parentNode && last.querySelector(".cp-chip"); (f || input).focus({ preventScroll: true }); }, 30);
+  }
   function chips() {
     var w = document.createElement("div"); w.className = "cp-chips";
     KB.forEach(function (e) {
+      if (!e.c) return;
       var c = document.createElement("button"); c.type = "button"; c.className = "cp-chip"; c.textContent = e.q;
       c.onclick = function () { ask(e.q, e); }; w.appendChild(c);
     });
     log.appendChild(w); log.scrollTop = log.scrollHeight;
   }
-  function norm(s) { return s.toLowerCase(); }
+  function norm(s) { s = s.toLowerCase(); try { s = s.normalize("NFD").replace(/[̀-ͯ]/g, ""); } catch (x) {} return s.replace(/[’]/g, "'"); }
   function find(t) {
     var n = norm(t), best = null, score = 0;
-    KB.forEach(function (e) { var s = 0; e.k.forEach(function (k) { if (n.indexOf(k) !== -1) s += k.length; }); if (s > score) { score = s; best = e; } });
+    KB.forEach(function (e) { var s = 0; e.k.forEach(function (k) { if (n.indexOf(norm(k)) !== -1) s += k.length; }); s *= (e.w || 1); if (s > score) { score = s; best = e; } });
     return best;
   }
+  function sub(href, text) { var l = link(href, text, false); m0.appendChild(l); }
+  var m0 = null;
   function ask(text, entry) {
     add(text, "user");
     var e = entry || find(text);
+    gc(e ? "faq-" + e.q : "faq-sans-reponse");
     setTimeout(function () {
-      var m = add(e ? e.a : FALLBACK, "bot");
-      var a = document.createElement("a"); a.href = COMEUP; a.className = "cp-cta"; a.target = "_blank"; a.rel = "noopener"; a.textContent = "Faire analyser mon devis";
-      a.onclick = function () { try { window.goatcounter && window.goatcounter.count({ path: "clic-comeup-chat", event: true }); } catch (x) {} };
-      if (!e) { var lc = document.createElement("a"); lc.href = "/contact.html"; lc.textContent = "Formulaire de contact"; lc.style.cssText = "display:block;margin-top:8px;color:#b8461a;font-weight:700"; m.appendChild(lc); }
-      if (e && e.l) { var l = document.createElement("a"); l.href = e.l[0]; l.textContent = e.l[1] + ""; l.style.cssText = "display:block;margin-top:8px;color:#b8461a;font-weight:700"; m.appendChild(l); }
-      m.appendChild(document.createElement("br")); m.appendChild(a);
+      var m = m0 = add(e ? e.a : FALLBACK, "bot");
+      if (!e) { sub("/contact.html", "Formulaire de contact"); sub(PREDIAG[0], PREDIAG[1]); sub(BOOK, "Réserver l'appel gratuit de 15 min"); }
+      if (e && e.l) sub(e.l[0], e.l[1]);
+      if (e && e.l2) sub(e.l2[0], e.l2[1]);
+      if (!(e && e.nocta)) {
+        if (!ctaShown) { ctaShown = true; m.appendChild(document.createElement("br")); m.appendChild(link(COMEUP, "Faire analyser mon devis", true, "clic-comeup-chat")); }
+        else sub(COMEUP, "Commander sur ComeUp");
+      }
+      log.scrollTop = log.scrollHeight;
+      input.focus({ preventScroll: true });
     }, 250);
   }
-  var BOOK = "https://calendar.app.google/6LCc6yKVHnbvA3WN7";
   function gc(path) { try { window.goatcounter && window.goatcounter.count({ path: "chat/" + path, title: "Assistant : " + path, event: true }); } catch (x) {} }
   function link(href, text, primary, ev) {
     var a = document.createElement("a"); a.href = href; a.textContent = text;
@@ -121,7 +154,7 @@
       c.onclick = function () { w.remove(); add(o[0], "user"); setTimeout(function () { cb(o); }, 250); };
       w.appendChild(c);
     });
-    log.appendChild(w); log.scrollTop = log.scrollHeight;
+    log.appendChild(w); log.scrollTop = log.scrollHeight; focusNext();
   }
   var PAGES = { sdb: ["/analyse-devis-salle-de-bain.html", "Ce que je vérifie sur un devis de salle de bain"],
     iso: ["/analyse-devis-isolation.html", "Ce que je vérifie sur un devis d'isolation"],
@@ -167,13 +200,13 @@
     if (page) m.appendChild(link(page[0], page[1], false, "lien-page-" + r.t));
     var w = document.createElement("div"); w.className = "cp-chips";
     var c = document.createElement("button"); c.type = "button"; c.className = "cp-chip"; c.textContent = "J'ai une autre question";
-    c.onclick = function () { w.remove(); add("Choisissez une question ou écrivez la vôtre.", "bot"); chips(); };
-    w.appendChild(c); log.appendChild(w); log.scrollTop = log.scrollHeight;
+    c.onclick = function () { w.remove(); add("Choisissez une question ou écrivez la vôtre.", "bot"); chips(); focusNext(); };
+    w.appendChild(c); log.appendChild(w); log.scrollTop = log.scrollHeight; focusNext();
   }
   function welcome() {
     add("Bonjour ! Je vous oriente en 3 questions, ou je réponds à vos questions sur l'analyse de devis.", "bot");
     var w = document.createElement("div"); w.className = "cp-chips";
-    [["J'ai un devis à faire vérifier", function () { qualify(); }], ["J'ai une question", function () { gc("faq-debut"); add("Choisissez une question ou écrivez la vôtre.", "bot"); chips(); }]].forEach(function (o) {
+    [["J'ai un devis à faire vérifier", function () { qualify(); }], ["J'ai une question", function () { gc("faq-debut"); add("Choisissez une question ou écrivez la vôtre.", "bot"); chips(); focusNext(); }]].forEach(function (o) {
       var c = document.createElement("button"); c.type = "button"; c.className = "cp-chip"; c.textContent = o[0];
       c.onclick = function () { w.remove(); add(o[0], "user"); setTimeout(o[1], 250); }; w.appendChild(c);
     });
@@ -181,10 +214,13 @@
   }
   function open(v) {
     box.classList.toggle("open", v); btn.setAttribute("aria-expanded", v ? "true" : "false");
+    document.body.classList.toggle("cp-chat-open", v);
     if (v && !started) { started = true; gc("ouverture"); welcome(); }
     if (v) input.focus();
   }
   btn.onclick = function () { open(!box.classList.contains("open")); };
   box.querySelector("#cp-close").onclick = function () { open(false); btn.focus(); };
+  document.addEventListener("keydown", function (ev) { if ((ev.key === "Escape" || ev.key === "Esc") && box.classList.contains("open")) { open(false); btn.focus(); } });
+  if (/\/(contact|merci)(\.html)?$/.test(location.pathname)) btn.style.display = "none";
   box.querySelector("#cp-form").onsubmit = function (ev) { ev.preventDefault(); var t = input.value.trim(); if (!t) return; input.value = ""; ask(t); };
 })();

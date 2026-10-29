@@ -76,7 +76,10 @@
     document.body.appendChild(b);
     var top = document.getElementById('top') || document.querySelector('header');
     var past = false, hide = 0;
-    function show() { var on = past && hide === 0; b.classList.toggle('on', on); document.body.classList.toggle('cp-bar-on', on); }
+    var typing = false;
+    function show() { var on = past && hide === 0 && !typing; b.classList.toggle('on', on); document.body.classList.toggle('cp-bar-on', on); }
+    document.addEventListener('focusin', function (e) { typing = !!(e.target.closest && e.target.closest('#cp-calc, form, #cp-chat')); show(); });
+    document.addEventListener('focusout', function () { setTimeout(function () { var a = document.activeElement; typing = !!(a && a.closest && a.closest('#cp-calc, form, #cp-chat')); show(); }, 0); });
     if (top) new IntersectionObserver(function (en) { past = !en[0].isIntersecting && en[0].boundingClientRect.top < 0; show(); }).observe(top);
     var ends = document.querySelectorAll('footer, section:last-of-type');
     var vis = new Set();

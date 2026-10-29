@@ -14,7 +14,7 @@ html{scroll-behavior:smooth}
 body{margin:0;background:var(--bp3);color:var(--ink);font-family:'Source Sans 3',Arial,sans-serif}
 .cp-page{background:var(--paper2);color:var(--ink);width:100%;font-family:'Source Sans 3',Arial,sans-serif}
 a{color:var(--or-d)}a:hover{color:#9a330a}
-:focus-visible{outline:3px solid var(--hl);outline-offset:3px}
+:focus-visible{outline:3px solid var(--hl);outline-offset:3px;box-shadow:0 0 0 7px #0a1d3a}
 
 /* Fonds */
 .bp{position:relative;color:#fff;background:
@@ -339,3 +339,8 @@ a{color:var(--or-d)}a:hover{color:#9a330a}
 .cp-trust{list-style:none;margin:14px 0 0;padding:12px 14px;border-left:3px solid #bf4a17;background:rgba(20,40,75,.04);font-size:14px;line-height:1.5;color:var(--mute,#5b6784)}
 .cp-trust li{margin:2px 0}
 .cp-trust a{color:inherit;font-weight:700}
+
+.cp-alert{margin:0 0 28px;padding:16px 18px;border-left:4px solid #bf4a17;background:#fdf1ea;color:var(--ink)}
+.cp-alert .t{margin:0 0 6px;font-weight:800;font-size:18px}
+.cp-alert p{margin:0}
+.cp-alert a{color:#a33d12;font-weight:700}
