@@ -86,7 +86,7 @@ def FOOTER(root=""):
         ("https://www.pinterest.fr/contreplan/", "Pinterest", "clic-pinterest")])
     return f"""<footer class="cp-foot"><div class="cp-foot-in">
 <div class="cp-foot-brand"><div class="cp-foot-logo">CONTRE-PLAN</div><p>Votre devis de travaux relu par un ingénieur BTP avant que vous signiez. 100 % à distance, indépendant de tout artisan.</p><div class="cp-socs">{soc}</div></div>
-<div class="cp-foot-col"><p>Le service</p>{L("methode.html","Ma méthode")}{L("engagements.html","Mes engagements")}{L("professionnels.html","Professionnels")}{L("exemple-rapport-contre-plan.pdf","Exemple de rapport","telechargement-exemple-rapport")}{L("index.html#tarifs","Tarifs")}{L("contact.html","Contact")}<a href="{COMEUP}" data-goatcounter-click="clic-comeup">Commander sur ComeUp</a></div>
+<div class="cp-foot-col"><p>Le service</p>{L("methode.html","Ma méthode")}{L("engagements.html","Mes engagements")}{L("votre-cas.html","Votre cas est-il couvert ?")}{L("professionnels.html","Professionnels")}{L("exemple-rapport-contre-plan.pdf","Exemple de rapport","telechargement-exemple-rapport")}{L("index.html#tarifs","Tarifs")}{L("contact.html","Contact")}<a href="{COMEUP}" data-goatcounter-click="clic-comeup">Commander sur ComeUp</a></div>
 <div class="cp-foot-col"><p>Par travaux</p>{L("analyse-devis-salle-de-bain.html","Salle de bain")}{L("analyse-devis-pompe-a-chaleur.html","Pompe à chaleur")}{L("analyse-devis-isolation.html","Isolation")}{L("analyse-devis-toiture.html","Toiture")}{''.join(L(j['slug'] + '.html', j['kicker']) for j in NG.JOB_PAGES)}{L("cas-fictifs.html","Cas fictifs")}</div>
 <div class="cp-foot-col"><p>Ressources</p>{L("guides.html","Guides")}{L("comparer-ses-devis.html","Tableau comparatif")}{L("modeles-messages-artisan.html","Modèles de messages")}{L("lexique-devis-travaux.html","Lexique")}{L("checklist-devis-travaux.pdf","Check-list PDF","telechargement-checklist")}<a href="{NEWS}" target="_blank" rel="noopener" data-goatcounter-click="clic-conseil-du-mois">Le conseil du mois par email</a></div>
 </div><div class="cp-foot-bottom"><span>© 2026 Contre-Plan</span><a href="{root}mentions-legales.html" class="cp-ml">Mentions légales</a><a href="{root}cgv.html" class="cp-ml">CGV</a><a href="{root}confidentialite.html" class="cp-ml">Confidentialité</a></div></footer>"""
@@ -190,7 +190,7 @@ FAQS = {
 UPDATED = {'guide-acompte-paiement-devis-travaux': "2026-10-26", 'guide-bien-demander-ses-devis': "2026-10-26", 'guide-mentions-obligatoires-devis': "2026-10-26", 'guide-oublis-devis-salle-de-bain': "2026-10-26", 'guide-reception-travaux-reserves': "2026-10-26", 'guide-tva-travaux-renovation': "2026-10-26"}
 for _s in ['guide-tva-travaux-renovation','guide-mentions-obligatoires-devis','guide-reception-travaux-reserves','guide-verifier-assurance-decennale','guide-negocier-devis-travaux','guide-depassement-devis-travaux-supplementaires','guide-annuler-devis-signe-retractation']:
     UPDATED[_s] = "2026-10-27"  # relecture et corrections du 27/10/2026
-AUTEUR = "Rédigé par l'<a href=\"methode.html\">ingénieur BTP de Contre-Plan</a> (10 ans d'expérience, environ 1 000 devis lus)"
+AUTEUR = "Rédigé par l'<a href=\"methode.html\">ingénieur BTP de Contre-Plan</a> (10 ans dans le BTP avant la création de Contre-Plan, environ 1 000 devis lus)"
 
 # Liens vers les sources officielles (bloc « Pour aller plus loin », vérifiés le 27/10/2026)
 SP = "https://www.service-public.gouv.fr/particuliers/vosdroits/"
@@ -294,7 +294,7 @@ def article(slug, title, h1, desc, lead, body, readtime, date=DATE):
     ld = {"@context":"https://schema.org","@type":"Article","headline":h1,"description":desc,
           "datePublished":date,"dateModified":mod,"inLanguage":"fr-FR",
           "author":{"@type":"Organization","name":"Contre-Plan","url":"https://contre-plan.com/",
-                    "description":"Analyse de devis de travaux par un ingénieur BTP (10 ans d'expérience, environ 1 000 devis lus)"},
+                    "description":"Analyse de devis de travaux par un ingénieur BTP (10 ans dans le BTP avant la création de Contre-Plan, environ 1 000 devis lus)"},
           "publisher":{"@type":"Organization","name":"Contre-Plan","logo":{"@type":"ImageObject","url":"https://contre-plan.com/logo-512.png"}},
           "mainEntityOfPage":url,"image":"https://contre-plan.com/og-image.jpg"}
     extra = '<script type="application/ld+json">' + json.dumps(ld, ensure_ascii=False) + '</script>'
@@ -368,7 +368,7 @@ article("guide-tva-travaux-renovation",
 <p>Attention aux <strong>cuisines et meubles de salle de bain</strong> : la pose est à 10 %, mais la fourniture des meubles ne l'est que s'ils sont intégrés au bâti (sur mesure, encastrés). Des meubles standard simplement posés et l'<strong>électroménager</strong> restent à 20 % pour la fourniture.</p>
 <h2>20 % : ce qui reste au taux normal</h2>
 <ul>
-<li>Les travaux dans un logement de <strong>moins de 2 ans</strong>, la <strong>construction neuve</strong> et les <strong>agrandissements</strong> au-delà du seuil de 10 %.</li>
+<li>Les travaux dans un logement de <strong>moins de 2 ans</strong>, la <strong>construction neuve</strong>, les <strong>extensions et surélévations</strong> quelle que soit leur surface, et les travaux de rénovation qui augmentent de <strong>plus de 10 %</strong> la surface de plancher existante.</li>
 <li>La fourniture et la pose d'une <strong>chaudière fonctionnant aux énergies fossiles</strong> (gaz, fioul).</li>
 <li>La <strong>climatisation</strong> seule, pour la part équipement. Attention : depuis le 18 juillet 2026, les <strong>pompes à chaleur air/air réversibles</strong> fixes peuvent passer à 5,5 % si elles respectent des critères précis (classe énergétique, fluide frigorigène, pilotage à distance). Le devis doit alors les indiquer.</li>
 <li>Le nettoyage et les espaces verts.</li>
@@ -377,9 +377,11 @@ article("guide-tva-travaux-renovation",
 <h2>Fini l'attestation : une mention sur le devis</h2>
 <p>Depuis la loi de finances pour 2025, l'attestation simplifiée (formulaire 1301-SD) n'est plus nécessaire. Elle est remplacée par une <strong>mention sur le devis ou la facture</strong>, que vous signez, par laquelle vous certifiez que les conditions du taux réduit sont remplies (logement de plus de 2 ans, pas d'immeuble neuf, pas d'agrandissement de plus de 10 %).</p>
 <div class="note"><p><strong>Important :</strong> sans cette mention, ou si elle est incomplète, le taux normal de 20 % s'applique. Et si vos déclarations sont inexactes, vous pouvez être tenu de payer la différence de TVA. Conservez votre exemplaire signé jusqu'à la fin de la 5<sup>e</sup> année suivant les travaux.</p></div>
+<h2 id="outre-mer">En outre-mer : d'autres taux</h2>
+<p>Les taux de 5,5 %, 10 % et 20 % sont ceux de la métropole. <strong>En Guadeloupe, en Martinique et à La Réunion</strong>, les travaux d'amélioration, de transformation, d'aménagement et d'entretien d'un logement achevé depuis plus de 2 ans, y compris la rénovation énergétique, relèvent du taux de <strong>2,1 %</strong> ; le taux normal y est de <strong>8,5 %</strong>, et il s'applique notamment aux chaudières fonctionnant aux énergies fossiles depuis le 1<sup>er</sup> mars 2025. <strong>En Guyane et à Mayotte</strong>, la TVA ne s'applique pas pour l'instant : un devis qui y ajoute de la TVA doit être questionné.</p>
 <h2>Un devis peut mélanger plusieurs taux</h2>
 <p>C'est normal et fréquent : isolation à 5,5 %, reprise des cloisons à 10 %, climatiseur à 20 %. Ce qui ne l'est pas : un taux unique de 20 % sur une rénovation de logement ancien sans explication, ou au contraire un 5,5 % sur des travaux qui n'y ont pas droit. Dans le second cas, si l'erreur vient de ce que vous avez certifié (un logement de moins de 2 ans déclaré ancien, par exemple), vous pouvez être tenu de payer le complément de TVA avec l'entreprise.</p>
-<p style="font-size: 15px !important; color: #5b6784 !important;">Article d'information générale, à jour au 27 octobre 2026. Les règles fiscales évoluent : vérifiez sur impots.gouv.fr. Sources : articles 278-0 bis A et 279-0 bis du Code général des impôts, loi n° 2025-127 du 14 février 2025, arrêté du 13 juillet 2026 (pompes à chaleur air/air).</p>''', 5)
+<p style="font-size: 15px !important; color: #5b6784 !important;">Article d'information générale, à jour au 27 octobre 2026. Les règles fiscales évoluent : vérifiez sur impots.gouv.fr. Sources : articles 278-0 bis A, 279-0 bis, 294 et 296 du Code général des impôts, fiche service-public.fr « Taux de TVA pour les travaux de rénovation d'un logement », loi n° 2025-127 du 14 février 2025, arrêté du 13 juillet 2026 (pompes à chaleur air/air).</p>''', 5)
 
 # ---------- Article 3
 article("guide-oublis-devis-salle-de-bain",
@@ -708,7 +710,7 @@ page("engagements",
 <p>Cette analyse est un avis technique établi à distance, uniquement à partir des documents et informations que vous avez transmis. Elle ne comprend pas de visite du chantier : les éléments non visibles ou non communiqués (état réel des supports et des réseaux, présence d'amiante, contraintes de copropriété ou d'urbanisme…) ne peuvent pas être évalués.</p>
 <p>Les prix de référence cités sont des fourchettes indicatives. Ils varient selon la région, l'accès au chantier et les matériaux choisis.</p>
 <p>Cet avis n'est ni une expertise judiciaire ou d'assurance, ni une mission de maîtrise d'œuvre, ni un conseil juridique. Il ne remplace pas le devoir de conseil de l'entreprise qui réalisera les travaux.</p>
-<p>La décision de signer, de négocier ou de refuser le devis vous appartient. En cas de litige déjà engagé ou de travaux touchant la structure du bâtiment, faites appel à un expert ou à un professionnel qui pourra se rendre sur place.</p>
+<p>La décision de signer, de négocier ou de refuser le devis vous appartient. En cas de litige déjà engagé, faites appel à un expert ou à un professionnel qui pourra se rendre sur place. Pour les travaux qui touchent la structure (mur porteur, extension, surélévation), je vérifie que le devis prévoit et chiffre l'étude d'un bureau d'études et les ouvrages nécessaires ; je ne réalise pas moi-même de calcul de structure ni de diagnostic sur place.</p>
 <p>Pour savoir précisément ce que je contrôle, voir <a href="methode.html">ma méthode</a>.</p>""",
  "Engagements")
 
@@ -816,6 +818,34 @@ page("analyse-devis-toiture",
 for j in NG.JOB_PAGES:
     JOBS[j["slug"]] = (j["service"], j["faq"])
     page(j["slug"], j["title"], j["h1"], j["desc"], j["lead"], j["body"] + cta_type(j["cta"]), j["kicker"])
+
+# ---------- Votre cas est-il couvert ?
+page("votre-cas",
+ "Votre devis est-il couvert par l'analyse ? | Contre-Plan",
+ "Votre cas est-il couvert ?",
+ "Quels devis de travaux Contre-Plan analyse, lesquels se voient au cas par cas, et vers qui aller quand ce n'est pas le bon service.",
+ "Avant de commander, vérifiez que l'analyse correspond à votre situation. En cas de doute, le pré-diagnostic gratuit vous répond sous 24 h, sans compte ni paiement.",
+ """<h2>Oui, j'analyse ces devis</h2>
+<ul><li><b>Rénovation intérieure</b> : salle de bain, douche, cuisine (y compris de grande enseigne), sols, carrelage, peinture, plomberie, chauffe-eau, électricité.</li>
+<li><b>Énergie</b> : isolation, pompe à chaleur, climatisation, poêle, chaudière, fenêtres, ventilation, avec la vérification de la TVA, du RGE et des primes annoncées.</li>
+<li><b>Extérieur</b> : toiture, ravalement, terrasse, clôture, portail, véranda.</li>
+<li><b>Structure et agrandissement</b> : ouverture de mur porteur, extension, surélévation, aménagement de combles. Je vérifie que le devis prévoit et chiffre l'étude d'un bureau d'études et les ouvrages nécessaires ; je ne fais pas le calcul de structure moi-même.</li>
+<li><b>Outre-mer</b> : les devis de Guadeloupe, de Martinique, de La Réunion, de Guyane et de Mayotte, au même prix, avec les règles de TVA propres à ces territoires (<a href="guide-tva-travaux-renovation.html#outre-mer">voir le guide TVA</a>).</li>
+<li><b>Devis déjà signé</b>, tant que vous êtes dans le délai de rétractation : l'analyse vous aide à décider de confirmer ou non (<a href="guide-annuler-devis-signe-retractation.html">vos droits</a>).</li></ul>
+<h2>Au cas par cas : demandez d'abord le pré-diagnostic</h2>
+<p>Pour ces situations, une partie du dossier ne se lit pas comme un devis classique. Décrivez-la dans le <a href="contact.html?sujet=prediagnostic">pré-diagnostic gratuit</a> : je vous dis ce que je peux vérifier avant toute commande.</p>
+<ul><li><b>Rénovation complète en plusieurs lots</b> : chaque devis est analysé ; le pré-diagnostic permet de fixer le périmètre et le prix avant de commander.</li>
+<li><b>Maison neuve avec un constructeur (CCMI)</b> : je peux relire la notice descriptive et les travaux laissés à votre charge. Pour le contrat lui-même, très encadré, l'ADIL de votre département vous conseille gratuitement.</li>
+<li><b>Copropriété</b> : je peux analyser un devis soumis au vote de l'assemblée générale ; la décision et le choix de l'entreprise restent ceux du syndicat des copropriétaires.</li>
+<li><b>Panneaux photovoltaïques</b> : je relis le devis ; méfiez-vous du démarchage et vérifiez la qualification de l'installateur dans l'annuaire officiel des entreprises RGE.</li>
+<li><b>Assainissement non collectif</b> : la filière doit être validée par le SPANC de votre commune avant les travaux ; je vérifie que le devis correspond à l'étude.</li>
+<li><b>Piscine</b> : terrassement, structure, filtration, raccordements et démarches se vérifient sur le devis, au cas par cas.</li>
+<li><b>Désamiantage</b> : le retrait de matériaux amiantés est réservé à des entreprises certifiées, et un repérage préalable indique ce qu'il faut retirer ; je vérifie que le devis s'appuie sur ce repérage.</li></ul>
+<h2>Ce n'est pas pour moi, et vers qui aller</h2>
+<ul><li><b>Chantier en cours, supplément réclamé ou litige</b> : je n'interviens pas. Suivez les étapes du <a href="guide-depassement-devis-travaux-supplementaires.html">guide sur le dépassement de devis</a>, puis le médiateur dont relève l'entreprise ou un conciliateur de justice.</li>
+<li><b>Travaux terminés, facture à contester</b> : comparez la facture au devis signé avec le même guide, et utilisez le <a href="modeles-messages-artisan.html">modèle de message pour contester un supplément</a>.</li>
+<li><b>Fissures, humidité, malfaçon à constater sur place</b> : il faut un expert en bâtiment qui se déplace. L'analyse se fait à distance, sur la base du devis.</li></ul>
+""", "Votre cas", toc=True)
 
 # ---------- Page professionnels (agents, courtiers, notaires, syndics)
 page("professionnels",

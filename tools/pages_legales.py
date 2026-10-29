@@ -9,14 +9,15 @@ ADRESSE = "10 rue du Point de Vue, 88000 Épinal"
 SIRET = "132 070 426 00011"
 TEL = "06 75 83 65 61"
 MEDIATEUR = "CM2C (Centre de la Médiation de la Consommation de Conciliateurs de Justice), 49 rue de Ponthieu, 75008 Paris, tél. 01 89 47 00 14, litiges@cm2c.net. Saisine en ligne : <a href=\"https://www.cm2c.net/declarer-un-litige.php\" target=\"_blank\" rel=\"noopener\">www.cm2c.net/declarer-un-litige.php</a>"
-MAJ = "27 octobre 2026"
+MAJ = "29 octobre 2026"
 
 CGV_BODY = f"""<p><em>Conditions en vigueur au {MAJ}.</em></p>
 <h2 id="vendeur">1. Qui vend</h2>
 <p>{EDITEUR}. Adresse : {ADRESSE}. SIRET : {SIRET}. Téléphone : <a href="tel:+33675836561">{TEL}</a>. E-mail : <a href="mailto:contact@contre-plan.com">contact@contre-plan.com</a>. TVA non applicable, article 293 B du Code général des impôts.</p>
 
 <h2 id="champ">2. Champ d'application</h2>
-<p>Les présentes conditions générales de vente s'appliquent aux prestations de Contre-Plan commandées par un particulier. Lorsque la commande et le paiement passent par la plateforme ComeUp, ce sont les conditions de ComeUp qui régissent la commande, le paiement et la facturation ; les articles 3, 5, 7 et 8 ci-dessous s'appliquent aussi, pour décrire la prestation et son périmètre. Passer commande vaut acceptation des présentes conditions.</p>
+<p>Les présentes conditions générales de vente s'appliquent aux prestations de Contre-Plan commandées par un particulier ou par un professionnel (agent immobilier, syndic, gestionnaire de biens…). Les règles propres aux consommateurs, notamment le droit de rétractation (article 6) et la médiation de la consommation (article 9), bénéficient aux particuliers.</p>
+<p>Les commandes sont passées et payées sur la plateforme ComeUp : ses conditions générales régissent le parcours de commande, l'encaissement du paiement, la facturation et le versement des remboursements. Les présentes conditions s'appliquent pour tout le reste, notamment la prestation (article 3), les délais (article 5), le droit de rétractation (article 6), la responsabilité (article 7), la confidentialité (article 8), les réclamations et la médiation (article 9). Passer commande vaut acceptation des présentes conditions.</p>
 
 <h2 id="prestation">3. Ce que comprend la prestation</h2>
 <p>Contre-Plan réalise une <strong>analyse documentaire</strong> d'un devis de travaux transmis par le client : lecture ligne par ligne, cohérence des quantités et des prix unitaires, postes manquants ou flous, taux de TVA, mentions et conditions de paiement, questions à poser à l'entreprise. Le résultat est un rapport écrit (PDF) qui constitue un <strong>avis technique fondé uniquement sur les documents transmis</strong>.</p>
@@ -31,15 +32,15 @@ CGV_BODY = f"""<p><em>Conditions en vigueur au {MAJ}.</em></p>
 <p>Le client reste seul décisionnaire de la suite qu'il donne au devis. Les prix de comparaison cités sont des ordres de grandeur, qui varient selon la région, l'accès au chantier et l'état de l'existant.</p>
 
 <h2 id="prix">4. Prix et paiement</h2>
-<p>Les prix sont indiqués en euros, toutes taxes comprises (TVA non applicable), sur la page de commande au moment de la commande. Le paiement est dû à la commande. Une facture est remise au client.</p>
+<p>Les prix sont indiqués en euros, toutes taxes comprises (TVA non applicable), sur la page de commande ComeUp au moment de la commande. Le paiement est effectué en ligne à la commande ; ComeUp le conserve jusqu'à la livraison et à la validation de la prestation, selon ses conditions. La facture ou le justificatif de paiement est mis à disposition selon les modalités de ComeUp.</p>
 
 <h2 id="delais">5. Documents à fournir et délais</h2>
 <p>Le client transmet le devis complet et lisible (PDF ou photo nette) ; il peut masquer son nom et son adresse. Le délai de livraison annoncé (48 heures, ou 24 heures avec l'option express) court à partir de la réception de tous les documents nécessaires. Si un document manque ou est illisible, Contre-Plan le signale et le délai part de la réception du document complet. Une question de suivi sur le rapport est incluse dans les jours qui suivent la livraison.</p>
 
 <h2 id="retractation">6. Droit de rétractation</h2>
 <p>Pour une commande passée à distance, le client dispose d'un délai de <strong>14 jours</strong> à compter de la conclusion du contrat pour se rétracter, sans avoir à se justifier (article L221-18 du Code de la consommation).</p>
-<p>Pour recevoir son rapport avant la fin de ce délai, le client demande expressément que la prestation commence tout de suite. S'il se rétracte alors que l'analyse est commencée mais pas terminée, il paie la part déjà réalisée, proportionnellement au prix total (article L221-25). <strong>Le droit de rétractation ne peut plus être exercé une fois le rapport livré</strong>, lorsque le client a donné son accord préalable et exprès à l'exécution immédiate et reconnu qu'il perd ce droit une fois la prestation pleinement exécutée (article L221-28, 1°). Cet accord est recueilli au moment de la commande.</p>
-<p>Pour se rétracter, il suffit d'envoyer une déclaration claire, par exemple avec le formulaire ci-dessous, à <a href="mailto:contact@contre-plan.com?subject=R%C3%A9tractation">contact@contre-plan.com</a> (objet « Rétractation »). Un accusé de réception est envoyé par e-mail, et le remboursement intervient au plus tard 14 jours après la réception de la demande, par le même moyen de paiement.</p>
+<p>Pour recevoir son rapport avant la fin de ce délai, le client demande expressément que la prestation commence tout de suite. S'il se rétracte alors que l'analyse est commencée mais pas terminée, il paie la part déjà réalisée, proportionnellement au prix total (article L221-25). <strong>Le droit de rétractation ne peut plus être exercé une fois le rapport livré</strong>, lorsque le client a donné son accord préalable et exprès à l'exécution immédiate et reconnu qu'il perd ce droit une fois la prestation pleinement exécutée (article L221-28, 1°). Cet accord est recueilli par écrit dans la messagerie de la commande, avant le début de l'analyse.</p>
+<p>Pour se rétracter, il suffit d'envoyer une déclaration claire, par exemple avec le formulaire ci-dessous, à <a href="mailto:contact@contre-plan.com?subject=R%C3%A9tractation">contact@contre-plan.com</a> (objet « Rétractation ») ou dans la messagerie de la commande ComeUp. Un accusé de réception est envoyé, et le remboursement intervient au plus tard 14 jours après la réception de la demande, par l'intermédiaire de ComeUp, sur le moyen de paiement utilisé.</p>
 <div class="note"><p><strong>Formulaire de rétractation</strong> (à compléter et renvoyer seulement si vous souhaitez vous rétracter) : « À l'attention de Contre-Plan, contact@contre-plan.com. Je vous notifie par la présente ma rétractation du contrat portant sur la prestation suivante : … Commandée le : … Nom du client : … Date : … »</p></div>
 
 <h2 id="responsabilite">7. Responsabilité</h2>
