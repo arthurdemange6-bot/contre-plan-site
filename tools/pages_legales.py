@@ -2,7 +2,9 @@
 # Modèle d'information générale, à faire relire par un professionnel du droit.
 # SIRET et adresse renseignés le 28/10/2026. Médiateur CM2C : adhésion du 29/10/2026, valable jusqu'au 29/10/2029 (à renouveler).
 
-EDITEUR = "Arthur Demange, entrepreneur individuel (EI), exerçant sous le nom commercial Contre-Plan"
+EDITEUR = "Contre-Plan, entreprise individuelle (EI) dont l'identité complète de l'exploitant figure dans les <a href=\"mentions-legales.html\">mentions légales</a>"
+# Le nom de l'exploitant n'apparaît que sur mentions-legales.html (choix d'anonymat commercial).
+NOM_EXPLOITANT = "Arthur Demange"
 ADRESSE = "10 rue du Point de Vue, 88000 Épinal"
 SIRET = "132 070 426 00011"
 TEL = "06 75 83 65 61"

@@ -86,7 +86,7 @@ def FOOTER(root=""):
         ("https://www.pinterest.fr/contreplan/", "Pinterest", "clic-pinterest")])
     return f"""<footer class="cp-foot"><div class="cp-foot-in">
 <div class="cp-foot-brand"><div class="cp-foot-logo">CONTRE-PLAN</div><p>Votre devis de travaux relu par un ingénieur BTP avant que vous signiez. 100 % à distance, indépendant de tout artisan.</p><div class="cp-socs">{soc}</div></div>
-<div class="cp-foot-col"><p>Le service</p>{L("methode.html","Ma méthode")}{L("engagements.html","Mes engagements")}{L("exemple-rapport-contre-plan.pdf","Exemple de rapport","telechargement-exemple-rapport")}{L("index.html#tarifs","Tarifs")}{L("contact.html","Contact")}<a href="{COMEUP}" data-goatcounter-click="clic-comeup">Commander sur ComeUp</a></div>
+<div class="cp-foot-col"><p>Le service</p>{L("methode.html","Ma méthode")}{L("engagements.html","Mes engagements")}{L("professionnels.html","Professionnels")}{L("exemple-rapport-contre-plan.pdf","Exemple de rapport","telechargement-exemple-rapport")}{L("index.html#tarifs","Tarifs")}{L("contact.html","Contact")}<a href="{COMEUP}" data-goatcounter-click="clic-comeup">Commander sur ComeUp</a></div>
 <div class="cp-foot-col"><p>Par travaux</p>{L("analyse-devis-salle-de-bain.html","Salle de bain")}{L("analyse-devis-pompe-a-chaleur.html","Pompe à chaleur")}{L("analyse-devis-isolation.html","Isolation")}{L("analyse-devis-toiture.html","Toiture")}{''.join(L(j['slug'] + '.html', j['kicker']) for j in NG.JOB_PAGES)}{L("cas-fictifs.html","Cas fictifs")}</div>
 <div class="cp-foot-col"><p>Ressources</p>{L("guides.html","Guides")}{L("comparer-ses-devis.html","Tableau comparatif")}{L("modeles-messages-artisan.html","Modèles de messages")}{L("lexique-devis-travaux.html","Lexique")}{L("checklist-devis-travaux.pdf","Check-list PDF","telechargement-checklist")}<a href="{NEWS}" target="_blank" rel="noopener" data-goatcounter-click="clic-conseil-du-mois">Le conseil du mois par email</a></div>
 </div><div class="cp-foot-bottom"><span>© 2026 Contre-Plan</span><a href="{root}mentions-legales.html" class="cp-ml">Mentions légales</a><a href="{root}cgv.html" class="cp-ml">CGV</a><a href="{root}confidentialite.html" class="cp-ml">Confidentialité</a></div></footer>"""
@@ -787,6 +787,9 @@ page("analyse-devis-toiture",
 <p>Les plaques de fibres-ciment posées avant 1997 peuvent contenir de l'amiante. Leur retrait obéit à des règles strictes et doit être confié à une entreprise habilitée. Le repérage et la filière d'élimination doivent apparaître sur le devis.</p>
 <h2>Les démarches et la TVA</h2>
 <p>Une réfection qui change l'aspect extérieur (matériau, couleur, fenêtres de toit) peut nécessiter une déclaration préalable en mairie. Dans un logement achevé depuis plus de 2 ans, la réfection relève en principe du taux de 10 %, et l'isolation de la toiture de 5,5 % si les conditions sont réunies. Vérifiez aussi l'attestation d'assurance décennale : c'est elle qui vous couvre en cas d'infiltration.</p>
+<h2>Deux devis toiture très différents ?</h2>
+<p>Un écart de 30 à 50 % entre deux devis de toiture est fréquent, et il s'explique presque toujours par le contenu plutôt que par la marge. Avant de comparer les totaux, vérifiez poste par poste : la même surface en m² (mesurée en rampant), l'échafaudage inclus ou non, l'écran sous-toiture remplacé ou conservé, la zinguerie refaite ou seulement reprise, et le traitement de la charpente chiffré ou laissé « selon état ». Le devis le moins cher est souvent celui qui oublie un de ces postes.</p>
+<p>Pour mettre les postes face à face, utilisez le <a href="comparer-ses-devis.html">tableau comparatif gratuit</a>, ou demandez l'option comparatif : je vous livre le tableau rempli et commenté.</p>
 <h2>Exemple de ligne à faire préciser</h2>
 <p>« Remplacement des bois abîmés : selon état. » Cette ligne ouvre la porte à n'importe quel supplément. À demander : un prix unitaire par mètre de chevron ou de liteau, et un plafond au-delà duquel l'entreprise doit vous prévenir avant d'agir.</p>
 """ + cta_type("de toiture"),
@@ -796,6 +799,53 @@ page("analyse-devis-toiture",
 for j in NG.JOB_PAGES:
     JOBS[j["slug"]] = (j["service"], j["faq"])
     page(j["slug"], j["title"], j["h1"], j["desc"], j["lead"], j["body"] + cta_type(j["cta"]), j["kicker"])
+
+# ---------- Page professionnels (agents, courtiers, notaires, syndics)
+page("professionnels",
+ "Professionnels de l'immobilier : faire relire les devis de vos clients | Contre-Plan",
+ "Professionnels : faire relire les devis de vos clients",
+ "Agents immobiliers, courtiers, notaires, syndics : un ingénieur BTP relit les devis de travaux de vos clients. Rapport PDF sous 48 h, indépendant, sans commission.",
+ "Vos clients achètent un bien avec des travaux, ou doivent choisir entre plusieurs devis. Une relecture indépendante les aide à décider, sans vous mettre en porte-à-faux avec un artisan.",
+ """<h2>Ce que reçoit votre client</h2>
+<ul><li><b>Un rapport PDF</b> : verdict global, contrôle des prix poste par poste, postes oubliés, incohérences, taux de TVA, conditions de paiement.</li>
+<li><b>Les questions exactes à poser</b> à l'entreprise avant de signer.</li>
+<li><b>Un échange de suivi</b> inclus pour éclaircir un point du rapport.</li></ul>
+<p>Voir un <a href="exemple-rapport-contre-plan.pdf" target="_blank" rel="noopener">exemple de rapport complet (PDF)</a>.</p>
+<h2>Délais</h2>
+<p>Rapport sous 48 h après réception du devis, ou 24 h avec l'option express. Pratique quand un compromis ou une offre de prêt approche.</p>
+<h2>Achat d'un bien avec travaux</h2>
+<p>Quand un acquéreur a obtenu un ou plusieurs devis avant de signer, l'analyse vérifie que le budget travaux est complet et cohérent : postes manquants, quantités, prix au m², et ce qui reste « selon état ». C'est une lecture des devis, pas une visite du bien.</p>
+<h2>Indépendance</h2>
+<p>Aucune commission n'est versée ni reçue : ni aux artisans, ni aux prescripteurs. Je ne revends aucune entreprise et je ne fais pas de travaux. Votre client peut masquer son nom et son adresse sur le devis.</p>
+<h2>Les limites</h2>
+<p>L'analyse est documentaire et à distance. Ce n'est ni une expertise judiciaire, ni un diagnostic technique du bâtiment, ni une mission de maîtrise d'œuvre, et elle n'intervient pas dans un litige déjà engagé.</p>
+<h2>Nous contacter</h2>
+<p>Pour orienter vos clients ou poser une question : le <a href="contact.html?sujet=professionnel">formulaire de contact</a>, réponse sous 24 h. Vos clients commandent eux-mêmes leur analyse sur ComeUp, avec un paiement sécurisé.</p>
+""", "Professionnels", toc=False)
+
+# ---------- Mentions légales (seule page portant l'identité de l'exploitant), dans le gabarit du site, en petit
+import pages_legales as PL
+_ml = f"""<style>.cp-ml-page,.cp-ml-page p{{font-size:11px!important;line-height:1.5!important;color:#5b6784}}.cp-ml-page h1{{font-size:14px!important;line-height:1.3!important}}.cp-ml-page h2{{font-size:12px!important;line-height:1.3!important}}</style>
+<div class="cp-wrap" id="contenu"><main class="art cp-ml-page">
+<h1 style="font-size:14px;margin:0 0 10px;color:#14284b">Mentions légales</h1>
+<h2 style="font-size:12px;margin:12px 0 2px;color:#14284b">Éditeur du site</h2>
+<p style="margin:0">{PL.NOM_EXPLOITANT}, entrepreneur individuel (EI), micro-entreprise exerçant sous le nom commercial Contre-Plan.</p>
+<p style="margin:0">SIRET : {PL.SIRET} · Code APE : 71.12B (ingénierie, études techniques) · immatriculation au Registre national des entreprises le 27/10/2026</p>
+<p style="margin:0">Adresse : {PL.ADRESSE}</p>
+<p style="margin:0">Email : contact@contre-plan.com · Téléphone : <a href="tel:+33675836561" style="color:inherit;text-decoration:none">{PL.TEL}</a></p>
+<p style="margin:0">TVA non applicable, article 293 B du Code général des impôts.</p>
+<p style="margin:0">Directeur de la publication : {PL.NOM_EXPLOITANT}.</p>
+<h2 style="font-size:12px;margin:12px 0 2px;color:#14284b">Hébergement</h2>
+<p style="margin:0">GitHub, Inc. (service GitHub Pages), 88 Colin P. Kelly Jr. Street, San Francisco, CA 94107, États-Unis.</p>
+<h2 style="font-size:12px;margin:12px 0 2px;color:#14284b">Commandes</h2>
+<p style="margin:0">Les prestations sont commandées et payées sur la plateforme ComeUp, selon ses conditions générales, et selon les <a href="cgv.html">conditions générales de vente</a> de Contre-Plan. Médiateur de la consommation : CM2C (Centre de la Médiation de la Consommation de Conciliateurs de Justice), 49 rue de Ponthieu, 75008 Paris, <a href="https://www.cm2c.net/declarer-un-litige.php" target="_blank" rel="noopener">www.cm2c.net</a>, litiges@cm2c.net. Après une réclamation écrite restée sans réponse satisfaisante, vous pouvez recourir gratuitement à cette médiation.</p>
+<h2 style="font-size:12px;margin:12px 0 2px;color:#14284b">Données personnelles</h2>
+<p style="margin:0">Ce site ne dépose aucun cookie. Responsable du traitement : {PL.NOM_EXPLOITANT} (EI). Le détail des données collectées, de leur durée de conservation et de vos droits figure dans la <a href="confidentialite.html">politique de confidentialité</a>. Pour toute demande : contact@contre-plan.com.</p>
+<h2 style="font-size:12px;margin:12px 0 2px;color:#14284b">Propriété intellectuelle</h2>
+<p style="margin:0">Les textes et visuels de ce site sont la propriété de Contre-Plan. Toute reproduction sans autorisation est interdite.</p>
+</main></div>
+"""
+open(os.path.join(OUT, "mentions-legales.html"), "w").write(head("Mentions légales | Contre-Plan", "Mentions légales du site Contre-Plan.", "https://contre-plan.com/mentions-legales.html").replace('<meta property="og:type" content="article">','<meta name="robots" content="noindex">') + _ml + footer())
 
 # ---------- Lexique
 LEX = [
