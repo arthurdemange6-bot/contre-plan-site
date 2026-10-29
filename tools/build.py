@@ -369,7 +369,7 @@ article("guide-tva-travaux-renovation",
 <p>Attention : chaque équipement doit atteindre les performances minimales fixées par la réglementation. Le devis doit donc les préciser.</p>
 <h2>10 % : amélioration, transformation, entretien</h2>
 <p>C'est le taux de la plupart des rénovations : <strong>salle de bain, électricité, plomberie, peinture, carrelage, revêtements</strong>… Il s'applique à la main-d'œuvre et aux fournitures posées par l'entreprise.</p>
-<p>Attention aux <strong>cuisines et meubles de salle de bain</strong> : la pose est à 10 %, mais la fourniture des meubles ne l'est que s'ils sont intégrés au bâti (sur mesure, encastrés). Des meubles standard simplement posés et l'<strong>électroménager</strong> restent à 20 % pour la fourniture.</p>
+<p>Attention aux <strong>cuisines et meubles de salle de bain</strong> : les meubles intégrés au bâti (adaptés à la pièce et fixés, plan de travail, évier) sont à 10 %, fourniture et pose. Les meubles standard simplement posés et l'<strong>électroménager</strong>, même encastré, restent à 20 %, y compris la main-d'œuvre pour les installer. Détail sur <a href="analyse-devis-cuisine.html">la page cuisine</a>.</p>
 <h2>20 % : ce qui reste au taux normal</h2>
 <ul>
 <li>Les travaux dans un logement de <strong>moins de 2 ans</strong>, la <strong>construction neuve</strong>, les <strong>extensions et surélévations</strong> quelle que soit leur surface, et les travaux de rénovation qui augmentent de <strong>plus de 10 %</strong> la surface de plancher existante.</li>
@@ -476,6 +476,7 @@ with open(os.path.join(os.path.dirname(os.path.abspath(__file__)), "fourchettes_
         _slug = _PMAP.get(_r["Page"]);
         if not _slug: continue
         FOURCH.setdefault(_slug, []).append((_r["Poste"], _r["Unité"], int(float(_r["Basse € HT"])), int(float(_r["Haute € HT"])), _srcs))
+for _s in [k for k in list(PAGE_UPDATED)] + ["analyse-devis-veranda", "analyse-devis-piscine", "analyse-devis-poele", "analyse-devis-electricite", "analyse-devis-pompe-a-chaleur", "analyse-devis-extension", "analyse-devis-ravalement-facade", "analyse-devis-cuisine", "votre-cas", "guide-tva-travaux-renovation"]: PAGE_UPDATED[_s] = "2026-10-29"
 def _fmt(n): return f"{n:,}".replace(",", " ")
 def fourch_html(slug):
     rows = FOURCH.get(slug)
@@ -484,11 +485,22 @@ def fourch_html(slug):
     tr = "".join(f"<tr><td>{html.escape(p)}</td><td class='n'>{_fmt(a)} à {_fmt(b)} {u.get(un, '€ HT / ' + un)}</td></tr>" for p, un, a, b, _ in rows)
     srcs = sorted({x for *_, ss in rows for x in ss})
     return ('<h2>Ordres de grandeur de prix en 2026</h2>'
-            '<p>Fourchettes indicatives constatées en France métropolitaine, fourniture et pose sauf mention contraire, avant aides. Les prix varient selon la région, l’accès au chantier, l’état de l’existant et les produits choisis : un devis hors de ces fourchettes n’est pas forcément anormal, mais il mérite une explication.</p>'
+            '<p>Fourchettes indicatives constatées en France métropolitaine, fourniture et pose sauf mention contraire, avant aides. En outre-mer et en Corse, l’acheminement des matériaux rend souvent les prix plus élevés : ces fourchettes y restent un simple repère. Les prix varient selon la région, l’accès au chantier, l’état de l’existant et les produits choisis : un devis hors de ces fourchettes n’est pas forcément anormal, mais il mérite une explication.</p>'
             f'<table class="cp-fourch"><thead><tr><th>Poste</th><th>Ordre de grandeur</th></tr></thead><tbody>{tr}</tbody></table>'
             f'<p class="cp-src">Sources : guides de prix publics 2025-2026 ({", ".join(srcs)}), recoupés ; montants convertis en HT.</p>')
 
+def _om(slug, body):
+    if not slug.startswith("analyse-devis-") or "cp-om" in body: return body
+    m = re.search(r"<h2[^>]*>[^<]*TVA[^<]*</h2>", body)
+    if m:
+        n = body.find("<h2", m.end())
+        return body[:n] + OM_NOTE + body[n:] if n != -1 else body + OM_NOTE
+    n = body.find("<h2>Exemple de ligne")
+    return body[:n] + OM_NOTE + body[n:] if n != -1 else body + OM_NOTE
+OM_NOTE = '<p class="cp-om"><b>En outre-mer</b> : en Guadeloupe, en Martinique et à La Réunion, les travaux de rénovation d\'un logement de plus de 2 ans relèvent en principe du taux de 2,1 %, et le taux normal y est de 8,5 % ; en Guyane et à Mayotte, la TVA ne s\'applique pas pour l\'instant. Détails dans <a href="guide-tva-travaux-renovation.html#outre-mer">le guide TVA</a>.</p>'
+
 def page(slug, title, h1, desc, lead, body, kicker, toc=True):
+    body = _om(slug, body)
     _fh = fourch_html(slug)
     if _fh:
         body = body.replace("<h2>Exemple de ligne", _fh + "<h2>Exemple de ligne", 1) if "<h2>Exemple de ligne" in body else body + _fh
@@ -864,19 +876,17 @@ page("votre-cas",
  "Avant de commander, vérifiez que l'analyse correspond à votre situation. En cas de doute, le pré-diagnostic gratuit vous répond sous 24 h, sans compte ni paiement.",
  """<h2>Oui, j'analyse ces devis</h2>
 <ul><li><b>Rénovation intérieure</b> : salle de bain, douche, cuisine (y compris de grande enseigne), sols, <a href="analyse-devis-carrelage.html">carrelage</a>, peinture, <a href="analyse-devis-plomberie-chauffe-eau.html">plomberie, chauffe-eau</a>, électricité.</li>
-<li><b>Énergie</b> : isolation, pompe à chaleur, climatisation, poêle, chaudière, fenêtres, ventilation, avec la vérification de la TVA, du RGE et des primes annoncées.</li>
-<li><b>Extérieur</b> : toiture, ravalement, terrasse, clôture, portail, véranda.</li>
-<li><b>Structure et agrandissement</b> : <a href="analyse-devis-mur-porteur.html">ouverture de mur porteur</a>, extension, surélévation, aménagement de combles. Je vérifie que le devis prévoit et chiffre l'étude d'un bureau d'études et les ouvrages nécessaires ; je ne fais pas le calcul de structure moi-même.</li>
+<li><b>Énergie</b> : isolation, pompe à chaleur, climatisation, <a href="analyse-devis-poele.html">poêle à bois ou à granulés</a>, chaudière, fenêtres, ventilation, <a href="analyse-devis-panneaux-solaires.html">panneaux photovoltaïques</a>, avec la vérification de la TVA, du RGE et des primes annoncées. Pour le photovoltaïque, méfiez-vous du démarchage et vérifiez la qualification de l'installateur dans l'annuaire officiel des entreprises RGE.</li>
+<li><b>Extérieur</b> : toiture, ravalement d'une maison, terrasse, clôture, portail, <a href="analyse-devis-veranda.html">véranda</a>, <a href="analyse-devis-piscine.html">piscine</a>.</li>
+<li><b>Structure et agrandissement</b> : <a href="analyse-devis-mur-porteur.html">ouverture de mur porteur</a>, extension, surélévation, aménagement de combles. Je vérifie que le devis prévoit et chiffre l'étude d'un bureau d'études et les ouvrages nécessaires ; je ne fais pas le calcul de structure moi-même. Pour un devis de plus de 30 000 €, le prix de l'analyse est annoncé au pré-diagnostic gratuit, avant toute commande.</li>
 <li><b>Outre-mer</b> : les devis de Guadeloupe, de Martinique, de La Réunion, de Guyane et de Mayotte, au même prix, avec les règles de TVA propres à ces territoires (<a href="guide-tva-travaux-renovation.html#outre-mer">voir le guide TVA</a>).</li>
 <li><b>Devis déjà signé</b>, tant que vous êtes dans le délai de rétractation : l'analyse vous aide à décider de confirmer ou non (<a href="guide-annuler-devis-signe-retractation.html">vos droits</a>).</li></ul>
 <h2>Au cas par cas : demandez d'abord le pré-diagnostic</h2>
 <p>Pour ces situations, une partie du dossier ne se lit pas comme un devis classique. Décrivez-la dans le <a href="contact.html?sujet=prediagnostic">pré-diagnostic gratuit</a> : je vous dis ce que je peux vérifier avant toute commande.</p>
-<ul><li><b>Rénovation complète en plusieurs lots</b> : chaque devis est analysé ; le pré-diagnostic permet de fixer le périmètre et le prix avant de commander.</li>
+<ul><li><b>Rénovation complète en plusieurs lots, ou devis de plus de 30 000 €</b> : chaque devis est analysé ; le pré-diagnostic permet de fixer le périmètre et le prix avant de commander.</li>
 <li><b>Maison neuve avec un constructeur (CCMI)</b> : je peux relire la notice descriptive et les travaux laissés à votre charge. Pour le contrat lui-même, très encadré, l'ADIL de votre département vous conseille gratuitement.</li>
-<li><b>Copropriété</b> : je peux analyser un devis soumis au vote de l'assemblée générale ; la décision et le choix de l'entreprise restent ceux du syndicat des copropriétaires.</li>
-<li><b>Panneaux photovoltaïques</b> : je relis le devis (<a href="analyse-devis-panneaux-solaires.html">ce que je vérifie</a>) ; méfiez-vous du démarchage et vérifiez la qualification de l'installateur dans l'annuaire officiel des entreprises RGE.</li>
+<li><b>Copropriété</b> (ravalement, toiture, chauffage collectif…) : je peux analyser un devis soumis au vote de l'assemblée générale ; la décision et le choix de l'entreprise restent ceux du syndicat des copropriétaires. Le prix dépend du volume du dossier et vous est annoncé au pré-diagnostic.</li>
 <li><b>Assainissement non collectif</b> : la filière doit être validée par le SPANC de votre commune avant les travaux ; je vérifie que le devis correspond à l'étude.</li>
-<li><b>Piscine</b> : terrassement, structure, filtration, raccordements et démarches se vérifient sur le devis, au cas par cas.</li>
 <li><b>Désamiantage</b> : le retrait de matériaux amiantés est réservé à des entreprises certifiées, et un repérage préalable indique ce qu'il faut retirer ; je vérifie que le devis s'appuie sur ce repérage.</li></ul>
 <h2>Ce n'est pas pour moi, et vers qui aller</h2>
 <ul><li><b>Chantier en cours, supplément réclamé ou litige</b> : je n'interviens pas. Suivez les étapes du <a href="guide-depassement-devis-travaux-supplementaires.html">guide sur le dépassement de devis</a>, puis le médiateur dont relève l'entreprise ou un conciliateur de justice.</li>

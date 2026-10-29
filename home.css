@@ -55,7 +55,7 @@ section[id]{scroll-margin-top:70px}
 .verdict b{display:block;font-family:Archivo,Arial,sans-serif;font-size:17px}
 .verdict i{flex:none;width:38px;height:38px;border-radius:50%;background:var(--or);display:grid;place-items:center;font-style:normal;font-family:Archivo,Arial,sans-serif;font-weight:800;color:var(--bp3);font-size:19px}
 .go .verdict{animation:verdict .6s 3.5s cubic-bezier(.2,1.2,.4,1) forwards}
-.live .tagline{position:absolute;right:0;top:-40px;font-size:13px;color:#9fb0d0;letter-spacing:.5px}
+.live .tagline{position:absolute;right:0;top:-40px;font-size:14px;color:#d3dbec;letter-spacing:.5px}
 
 /* ---------- Bandeau des pièges ---------- */
 .ticker{background:var(--paper);border-top:1px solid #e3e6ec;border-bottom:1px solid #e3e6ec;overflow:hidden;position:relative}
