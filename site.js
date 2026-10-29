@@ -1,6 +1,6 @@
 /* Éléments interactifs Contre-Plan (fonctionnent avec ou sans animations) */
 (function () {
-  var COMEUP = 'https://comeup.com/fr/@contreplan';
+  var COMEUP = 'https://comeup.com/fr/service/549064/verifier-votre-devis-de-travaux-avant-signature-et-reperer-les-prix-abusifs-et-les-oublis';
   var reduce = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
   function each(l, f) { Array.prototype.forEach.call(l, f); }
   function gc(path) { try { if (window.goatcounter && goatcounter.count) goatcounter.count({ path: path, title: path, event: true }); } catch (e) {} }
