@@ -1,6 +1,6 @@
 /* Contre-Plan – assistant : orientation en 3 questions + FAQ (100 % local ; seuls des compteurs anonymes GoatCounter sont envoyés, aucune réponse saisie) */
 (function () {
-  var COMEUP = "https://comeup.com/fr/@contreplan";
+  var COMEUP = "https://comeup.com/fr/service/549064/verifier-votre-devis-de-travaux-avant-signature-et-reperer-les-prix-abusifs-et-les-oublis";
   var KB = [
     { q: "Combien ça coûte ?", k: ["prix", "tarif", "coût", "cout", "combien", "€", "euro", "cher"],
       a: "L'analyse d'un devis coûte 16,50 € sur ComeUp (prix de lancement). Options : 2e devis + 11 €, comparatif de plusieurs devis + 16,50 €, livraison express en 24 h + 5,50 €. Pas de TVA." },

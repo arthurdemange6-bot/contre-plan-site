@@ -3,7 +3,7 @@ sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import nouveaux_guides as NG  # guides et pages ajoutés en octobre 2026
 OUT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))  # racine du site
 GC = '<script data-goatcounter="https://contreplan.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>'
-COMEUP = "https://comeup.com/fr/@contreplan"
+COMEUP = "https://comeup.com/fr/service/549064/verifier-votre-devis-de-travaux-avant-signature-et-reperer-les-prix-abusifs-et-les-oublis"
 BOOK = "https://calendar.app.google/6LCc6yKVHnbvA3WN7"
 NEWS = "https://docs.google.com/forms/d/e/1FAIpQLScS7zVctXEahK71wNv8hUGD-MjfyqH4h_l8EpJyYPLVM-ToAA/viewform"  # formulaire « Le conseil devis du mois »
 DATE = "2026-10-23"  # date de publication par défaut des guides existants
