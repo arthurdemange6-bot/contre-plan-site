@@ -1,12 +1,12 @@
 # Pages légales générées par build.py : conditions générales de vente et politique de confidentialité.
 # Modèle d'information générale, à faire relire par un professionnel du droit.
-# SIRET et adresse renseignés le 28/10/2026. À mettre à jour après adhésion au médiateur de la consommation.
+# SIRET et adresse renseignés le 28/10/2026. Médiateur CM2C : adhésion du 29/10/2026, valable jusqu'au 29/10/2029 (à renouveler).
 
 EDITEUR = "Arthur Demange, entrepreneur individuel (EI), exerçant sous le nom commercial Contre-Plan"
 ADRESSE = "10 rue du Point de Vue, 88000 Épinal"
 SIRET = "132 070 426 00011"
 TEL = "06 75 83 65 61"
-MEDIATEUR = "en cours de désignation : ses coordonnées seront indiquées ici dès l'adhésion"
+MEDIATEUR = "CM2C (Centre de la Médiation de la Consommation de Conciliateurs de Justice), 49 rue de Ponthieu, 75008 Paris, tél. 01 89 47 00 14, litiges@cm2c.net. Saisine en ligne : <a href=\"https://www.cm2c.net/declarer-un-litige.php\" target=\"_blank\" rel=\"noopener\">www.cm2c.net/declarer-un-litige.php</a>"
 MAJ = "27 octobre 2026"
 
 CGV_BODY = f"""<p><em>Conditions en vigueur au {MAJ}.</em></p>
@@ -47,7 +47,7 @@ CGV_BODY = f"""<p><em>Conditions en vigueur au {MAJ}.</em></p>
 <p>Les devis transmis servent à réaliser l'analyse. Ils ne sont jamais publiés ni transmis à des tiers sans l'accord écrit du client. Le détail figure dans la <a href="confidentialite.html">politique de confidentialité</a>.</p>
 
 <h2 id="reclamations">9. Réclamations et médiation</h2>
-<p>Pour toute réclamation, écrivez d'abord à <a href="mailto:contact@contre-plan.com">contact@contre-plan.com</a> : une réponse est apportée sous 7 jours. En cas de désaccord persistant, le client peut recourir gratuitement au médiateur de la consommation (articles L612-1 et suivants du Code de la consommation), dans le délai d'un an à compter de sa réclamation écrite. Médiateur : {MEDIATEUR}.</p>
+<p>Pour toute réclamation, écrivez d'abord à <a href="mailto:contact@contre-plan.com">contact@contre-plan.com</a> : une réponse est apportée sous 7 jours. En cas de désaccord persistant, le client peut recourir gratuitement au médiateur de la consommation (articles L612-1 et suivants du Code de la consommation), dans le délai d'un an à compter de sa réclamation écrite. Le médiateur ne peut être saisi que si le client justifie avoir d'abord tenté de résoudre le litige directement par une réclamation écrite. Chaque partie reste libre d'accepter ou de refuser la solution proposée. Médiateur de la consommation : {MEDIATEUR}.</p>
 
 <h2 id="droit">10. Droit applicable</h2>
 <p>Les présentes conditions sont soumises au droit français. En cas de litige, le client peut saisir la juridiction du lieu où il demeurait au moment de la commande ou de la survenance du fait dommageable.</p>
