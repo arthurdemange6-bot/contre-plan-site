@@ -65,7 +65,7 @@
   ];
 
   var css = "#cp-chat-btn{position:fixed;right:20px;bottom:20px;z-index:9999;display:flex;align-items:center;gap:10px;background:#bf4a17;color:#fff;border:0;border-radius:2px;padding:14px 20px;font:700 16px 'Source Sans 3',Arial,sans-serif;box-shadow:0 8px 24px rgba(0,0,0,.3);cursor:pointer}" +
-    "#cp-chat-btn:hover{background:#b8461a}" +
+    "#cp-chat-btn:hover{background:#b8461a}#cp-chat-btn.mini{padding:12px;border-radius:50%}#cp-chat-btn.mini span{position:absolute;left:-9999px}" +
     "#cp-chat{position:fixed;right:20px;bottom:86px;z-index:9999;width:min(380px,calc(100vw - 40px));max-height:min(560px,calc(100vh - 120px));display:none;flex-direction:column;background:#ffffff;color:#14284b;border-radius:10px;box-shadow:0 16px 48px rgba(0,0,0,.35);overflow:hidden;font-family:'Source Sans 3',Arial,sans-serif}" +
     "#cp-chat.open{display:flex}" +
     "#cp-chat header{background:#0f2747;color:#fff;padding:14px 16px;display:flex;align-items:center;justify-content:space-between;gap:10px}" +
@@ -92,7 +92,7 @@
 
   var box = document.createElement("section");
   box.id = "cp-chat"; box.setAttribute("aria-label", "Assistant Contre-Plan");
-  box.innerHTML = '<header><div><b>CONTRE-PLAN</b><small>Orientation et questions fréquentes</small></div><button id="cp-close" type="button" aria-label="Fermer">×</button></header>' +
+  box.innerHTML = '<header><div><b>CONTRE-PLAN</b><small>Assistant automatique : orientation et questions fréquentes</small></div><button id="cp-close" type="button" aria-label="Fermer">×</button></header>' +
     '<div id="cp-log" aria-live="polite"></div>' +
     '<form id="cp-form"><label for="cp-in" style="position:absolute;left:-9999px">Votre question</label><input id="cp-in" type="text" placeholder="Posez votre question…" autocomplete="off"><button id="cp-send" type="submit">Envoyer</button></form>';
   document.body.appendChild(btn); document.body.appendChild(box);
@@ -174,7 +174,7 @@
       choose("Le devis fait combien, à peu près ?", [["Moins de 5 000 €", "moins-5k"], ["De 5 000 à 20 000 €", "5-20k"], ["Plus de 20 000 €", "plus-20k"], ["Je n'ai pas encore de devis", "pas-de-devis"]], function (m) {
         r.m = m[1]; gc("montant-" + m[1]);
         if (r.m === "pas-de-devis") return result(r);
-        choose("Vous devez signer quand ?", [["Cette semaine", "semaine"], ["Ce mois-ci", "mois"], ["Pas de date pour l'instant", "sans-date"]], function (d) {
+        choose("Vous devez signer quand ?", [["Cette semaine", "semaine"], ["Ce mois-ci", "mois"], ["Pas de date pour l'instant", "sans-date"], ["C'est déjà signé", "signe"]], function (d) {
           r.d = d[1]; gc("signature-" + d[1]); result(r);
         });
       });
@@ -188,15 +188,20 @@
       m.appendChild(link("/guide-bien-demander-ses-devis.html", "Comment bien demander ses devis", false, "lien-guide-demander"));
       m.appendChild(link("/checklist-devis-travaux.pdf", "La check-list à imprimer (PDF)", false, "lien-checklist"));
       m.appendChild(link("https://docs.google.com/forms/d/e/1FAIpQLScS7zVctXEahK71wNv8hUGD-MjfyqH4h_l8EpJyYPLVM-ToAA/viewform", "Recevoir le conseil devis du mois", false, "lien-conseil-du-mois"));
+    } else if (r.d === "signe") {
+      gc("resultat-deja-signe");
+      m = add("Si vous avez signé chez vous ou à distance, vous avez en principe 14 jours pour vous rétracter. L'analyse vous aide à décider à temps : prenez l'option express pour avoir le rapport en 24 h.", "bot");
+      m.appendChild(document.createElement("br")); m.appendChild(link(COMEUP, "Faire analyser mon devis en express", true, "clic-comeup-orientation-signe"));
+      m.appendChild(link("/guide-annuler-devis-signe-retractation.html", "Vos droits après signature", false, "lien-guide-retractation"));
     } else if (r.d === "semaine") {
       gc("resultat-urgent");
       m = add("Vous signez bientôt : faites relire le devis avant. Choisissez l'option express : vous recevez le rapport sous 24 h, avec les points à négocier et les questions à envoyer à l'artisan.", "bot");
       m.appendChild(document.createElement("br")); m.appendChild(link(COMEUP, "Faire analyser mon devis en express", true, "clic-comeup-orientation-urgent"));
     } else if (r.m === "plus-20k") {
       gc("resultat-gros-devis");
-      m = add("Sur un devis de plus de 20 000 €, chaque ligne compte. Vous pouvez commander l'analyse directement, ou en parler d'abord lors d'un appel gratuit de 15 minutes.", "bot");
+      m = add("Sur un devis de plus de 20 000 €, chaque ligne compte. Jusqu'à 30 000 €, vous pouvez commander l'analyse directement. Au-delà, ou pour une rénovation tous corps d'état, demandez d'abord le pré-diagnostic gratuit : le prix vous est annoncé avant toute commande. Vous pouvez aussi en parler lors d'un appel gratuit de 15 minutes.", "bot");
       m.appendChild(document.createElement("br")); m.appendChild(link(COMEUP, "Faire analyser mon devis", true, "clic-comeup-orientation-gros"));
-      m.appendChild(link(BOOK, "Réserver l'appel gratuit de 15 min", false, "clic-appel-orientation"));
+      m.appendChild(link(PREDIAG[0], PREDIAG[1], false, "clic-prediagnostic-orientation-gros")); m.appendChild(link(BOOK, "Réserver l'appel gratuit de 15 min", false, "clic-appel-orientation"));
     } else {
       gc("resultat-standard");
       m = add("Le bon moment pour faire relire votre devis, c'est avant de le signer. Vous recevez sous 48 h un rapport avec le verdict, les prix poste par poste, les oublis et les questions à poser à l'artisan.", "bot");
@@ -228,5 +233,7 @@
   box.querySelector("#cp-close").onclick = function () { open(false); btn.focus(); };
   document.addEventListener("keydown", function (ev) { if ((ev.key === "Escape" || ev.key === "Esc") && box.classList.contains("open")) { open(false); btn.focus(); } });
   if (/\/(contact|merci)(\.html)?$/.test(location.pathname)) btn.style.display = "none";
+  var side = document.querySelector(".cp-sidecard");
+  if (side && "IntersectionObserver" in window) new IntersectionObserver(function (en) { btn.classList.toggle("mini", en[0].isIntersecting && innerWidth > 900); }, { threshold: 0 }).observe(side);
   box.querySelector("#cp-form").onsubmit = function (ev) { ev.preventDefault(); var t = input.value.trim(); if (!t) return; input.value = ""; ask(t); };
 })();

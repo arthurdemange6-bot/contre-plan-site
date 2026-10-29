@@ -1,5 +1,6 @@
 /* Éléments interactifs Contre-Plan (fonctionnent avec ou sans animations) */
 (function () {
+  var NEWS = 'https://docs.google.com/forms/d/e/1FAIpQLScS7zVctXEahK71wNv8hUGD-MjfyqH4h_l8EpJyYPLVM-ToAA/viewform';
   var COMEUP = 'https://comeup.com/fr/service/549064/verifier-votre-devis-de-travaux-avant-signature-et-reperer-les-prix-abusifs-et-les-oublis';
   var reduce = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
   function each(l, f) { Array.prototype.forEach.call(l, f); }
@@ -9,6 +10,14 @@
   function test() {
     var box = document.getElementById('cp-test'); if (!box) return;
     var qs = box.querySelectorAll('.cp-q'), bar = box.querySelector('.cp-test-bar i'), res = box.querySelector('.cp-res'), done = false;
+    function summary() {
+      var out = [];
+      each(qs, function (q) {
+        var on = q.querySelector('button[aria-pressed="true"]'); if (!on) return;
+        out.push(q.querySelector('p').textContent.replace(/\s*\(.*\)\s*\?$/, ' ?') + ' ' + on.textContent);
+      });
+      return 'Résultat du test en 6 questions :\n' + out.join('\n');
+    }
     function update() {
       var answered = 0, issues = [];
       each(qs, function (q) {
@@ -23,7 +32,9 @@
       else { h = n + ' points à vérifier : ne signez pas en l\'état.'; p = 'Ce sont autant de sources de suppléments ou de litiges. À faire préciser par écrit avant de vous engager :'; }
       res.innerHTML = '<h3>' + h + '</h3><p>' + p + '</p>' + (n ? '<ul>' + issues.map(function (t) { return '<li>' + t + '</li>'; }).join('') + '</ul>' : '') +
         '<p>Je peux relire votre devis ligne par ligne et vous dire précisément quoi demander.</p>' +
-        '<a class="cp-cta" href="' + COMEUP + '" data-goatcounter-click="clic-comeup-test">Faire analyser mon devis</a>';
+        '<a class="cp-cta" href="' + COMEUP + '" data-goatcounter-click="clic-comeup-test">Faire analyser mon devis</a>' +
+        '<p class="cp-more">Pas encore prêt ? <a href="contact.html?sujet=prediagnostic&amp;test=' + encodeURIComponent(summary()) + '" data-goatcounter-click="clic-prediagnostic-test">Envoyer ces réponses en pré-diagnostic gratuit</a>' +
+        '<a href="' + NEWS + '" target="_blank" rel="noopener" data-goatcounter-click="clic-conseil-du-mois-test">Recevoir le conseil devis du mois par e-mail</a></p>';
       res.classList.add('on');
       if (!done) { done = true; gc('test-devis-termine'); setTimeout(function () { res.scrollIntoView({ behavior: reduce ? 'auto' : 'smooth', block: 'start' }); }, 120); }
     }
@@ -101,14 +112,31 @@
       });
     });
   }
-  function start() { test(); slider(); calc(); bar(); copy(); }
+
+  /* ---------- « Vous signez quand ? » ---------- */
+  function when() {
+    var w = document.querySelector('.cp-when'); if (!w) return;
+    var r = w.querySelector('.r');
+    var T = {
+      vite: 'Prenez l\'option express : le rapport arrive en 24 h, à temps pour répondre à l\'artisan. <a href="' + COMEUP + '" data-goatcounter-click="clic-comeup-quand-vite">Commander avec l\'express</a>',
+      plus: 'L\'analyse standard suffit : rapport sous 48 h. Vous pouvez d\'abord faire <a href="#test">le test en 1 minute</a>.',
+      signe: 'Signé chez vous ou à distance ? Vous avez en principe 14 jours pour vous rétracter, et l\'analyse vous aide à décider à temps. <a href="guide-annuler-devis-signe-retractation.html">Vos droits</a>'
+    };
+    each(w.querySelectorAll('button'), function (b) {
+      b.addEventListener('click', function () {
+        each(w.querySelectorAll('button'), function (o) { o.setAttribute('aria-pressed', o === b ? 'true' : 'false'); });
+        r.innerHTML = T[b.getAttribute('data-w')]; gc('quand-signez-' + b.getAttribute('data-w'));
+      });
+    });
+  }
+  function start() { test(); slider(); calc(); bar(); copy(); when(); }
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', start); else start();
 
   (function () {
     var m = location.search.match(/[?&]sujet=([^&]+)/), sel = document.querySelector('.cp-form select');
     if (!m || !sel) return;
     if (m[1] === 'professionnel') { sel.value = 'Partenariat ou presse'; return; }
-    if (m[1] === 'prediagnostic') { sel.value = 'Pré-diagnostic gratuit'; var t = document.querySelector('.cp-form textarea'); if (t && !t.value) t.placeholder = "Type de travaux, montant du devis, ce qui vous inquiète (3 lignes suffisent)."; }
+    if (m[1] === 'prediagnostic') { sel.value = 'Pré-diagnostic gratuit'; var t = document.querySelector('.cp-form textarea'); if (t && !t.value) t.placeholder = "Type de travaux, montant du devis, date de signature prévue, ce qui vous inquiète (3 lignes suffisent)."; var tm = location.search.match(/[?&]test=([^&]+)/); if (t && tm && !t.value) { try { t.value = decodeURIComponent(tm[1].replace(/\+/g, ' ')) + '\n\nTravaux et montant du devis : \nDate de signature prévue : '; } catch (e) {} } }
   })();
 
   /* ---------- Formulaire de contact : remerciement immédiat, envoi en arrière-plan ---------- */

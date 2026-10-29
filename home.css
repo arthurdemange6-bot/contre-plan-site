@@ -55,7 +55,7 @@ section[id]{scroll-margin-top:70px}
 .verdict b{display:block;font-family:Archivo,Arial,sans-serif;font-size:17px}
 .verdict i{flex:none;width:38px;height:38px;border-radius:50%;background:var(--or);display:grid;place-items:center;font-style:normal;font-family:Archivo,Arial,sans-serif;font-weight:800;color:var(--bp3);font-size:19px}
 .go .verdict{animation:verdict .6s 3.5s cubic-bezier(.2,1.2,.4,1) forwards}
-.live .tagline{position:absolute;right:0;top:-40px;font-size:14px;color:#d3dbec;letter-spacing:.5px}
+.live .tagline{position:absolute;left:50%;transform:translateX(-50%);white-space:nowrap;top:-40px;font-size:14px;color:#d3dbec;letter-spacing:.5px}
 
 /* ---------- Bandeau des pièges ---------- */
 .ticker{background:var(--paper);border-top:1px solid #e3e6ec;border-bottom:1px solid #e3e6ec;overflow:hidden;position:relative}
@@ -203,3 +203,31 @@ section[id]{scroll-margin-top:70px}
 #rapport .cp-thumbs span{color:var(--ink2)!important}
 #rapport .cp-ba{box-shadow:0 24px 50px -22px rgba(20,40,75,.55)!important}
 .who h2{color:#fff}
+
+/* ---------- Audit experts : signature, enjeu, protections, message ComeUp ---------- */
+.cp-when{margin:18px 0 0;max-width:560px}
+.cp-when .q{margin:0 0 8px;font-weight:700;font-size:15px;color:#fff}
+.cp-when .o{display:flex;flex-wrap:wrap;gap:8px}
+.cp-when button{font:600 15px 'Source Sans 3',Arial,sans-serif;color:#fff;background:rgba(255,255,255,.08);border:1.5px solid rgba(255,255,255,.45);border-radius:999px;padding:7px 14px;cursor:pointer}
+.cp-when button:hover,.cp-when button[aria-pressed="true"]{background:#fff;color:var(--ink)}
+.cp-when .r{margin:10px 0 0;font-size:15px;color:#dde4f2;min-height:0}
+.cp-when .r a{color:#ffb38f;font-weight:700}
+.cp-stake{background:#fff;border-left:4px solid var(--or-d);padding:16px 20px;margin:0 0 18px;box-shadow:0 10px 26px -18px rgba(15,39,71,.5)}
+.cp-stake .t{margin:0 0 6px;font-family:Archivo,Arial,sans-serif;font-weight:800;font-size:17px;color:var(--ink)}
+.cp-stake p{margin:0 0 8px;font-size:16px;line-height:1.5;color:var(--ink2)}
+.cp-stake a{font-weight:700}
+.cp-protect{margin-top:18px;background:#fff;border:1px solid var(--line);padding:16px 20px}
+.cp-protect .t{margin:0 0 8px;font-family:Archivo,Arial,sans-serif;font-weight:800;font-size:17px;color:var(--ink)}
+.cp-protect ul{list-style:none;margin:0 0 10px;padding:0}
+.cp-protect li{position:relative;padding-left:22px;margin:6px 0;font-size:15px;line-height:1.45;color:var(--ink2)}
+.cp-protect li::before{content:"";position:absolute;left:2px;top:.45em;width:9px;height:5px;border-left:2px solid #2e7d4f;border-bottom:2px solid #2e7d4f;transform:rotate(-45deg)}
+.cp-protect li b{color:var(--ink)}
+.cp-msg{max-width:760px;margin:34px auto 0}
+.cp-msg .t{margin:0;font-family:Archivo,Arial,sans-serif;font-weight:800;font-size:19px;color:var(--ink)}
+.cp-msg .note-s{margin:0;font-size:14px;color:var(--ink2)}
+#rapport .cp-thumbs-big{grid-template-columns:2fr 1fr;grid-template-rows:auto auto;align-items:start}
+#rapport .cp-thumbs-big a:first-child{grid-row:1 / span 2}
+@media (max-width:640px){#rapport .cp-thumbs-big{grid-template-columns:1fr 1fr}#rapport .cp-thumbs-big a:first-child{grid-column:1 / span 2;grid-row:auto}}
+.cp-res .cp-more{margin-top:14px;font-size:15px}
+.cp-res .cp-more a{font-weight:700;margin-right:14px;display:inline-block;margin-top:6px}
+.cp-res .cp-more a{color:#ffb38f}
