@@ -866,7 +866,7 @@ page("professionnels",
 <li><b>Il reçoit le rapport</b> dans la même messagerie, sous 48 h.</li></ol>
 <p>Une hésitation ? Il peut d'abord demander un <a href="contact.html?sujet=prediagnostic">pré-diagnostic gratuit</a>, sans compte ni paiement.</p>
 <h2>Plusieurs devis ou plusieurs lots</h2>
-<p>Chaque devis transmis fait l'objet d'une analyse. Un acquéreur qui a un devis d'isolation, un d'électricité et un de salle de bain transmet donc trois devis dans la même commande, avec l'option « devis supplémentaire ». Pour plusieurs devis concurrents sur les mêmes travaux, l'option « comparatif » livre en plus un tableau poste par poste. Les tarifs détaillés sont sur la <a href="index.html#tarifs">page d'accueil</a>.</p>
+<p>Chaque devis transmis fait l'objet d'une analyse. Un acquéreur qui a un devis d'isolation, un d'électricité et un de salle de bain transmet donc ses trois devis dans la même commande, avec les options « Devis supplémentaire » et « Troisième devis ». Pour plusieurs devis concurrents sur les mêmes travaux, l'option « comparatif » livre en plus un tableau poste par poste. Les tarifs détaillés sont sur la <a href="index.html#tarifs">page d'accueil</a>.</p>
 <h2>Délais</h2>
 <p>Rapport sous 48 h après réception du devis, ou 24 h avec l'option express. Pratique quand un compromis ou une offre de prêt approche.</p>
 <h2>Achat d'un bien avec travaux</h2>
