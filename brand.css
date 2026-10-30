@@ -413,3 +413,43 @@ a{color:var(--or-d)}a:hover{color:#9a330a}
 }
 @media (max-width:340px){.cp-topnav .btn{display:none!important}}
 @media (max-width:440px){.cp-mnav summary{font-size:0;gap:0;padding:11px 10px}}
+
+/* ===== Passe « cliquable » : l'orange ne sert plus qu'à commander ===== */
+:root{--lk:#1d4a8a}
+a{color:var(--lk)}a:hover{color:#0f2f63}
+.art a{color:var(--lk)}
+.tag{background:rgba(255,255,255,.1);border:1.5px solid rgba(255,255,255,.55);box-shadow:none}
+.plain .tag,.gp .tag{background:var(--ink);border-color:var(--ink)}
+.checks path,.oks path{stroke:var(--ink)}
+.bp .checks path,.bp .oks path{stroke:#fff}
+.faq summary::after{color:var(--ink)}
+.job:hover{border-top-color:var(--ink)}
+.job i,.glist a i{color:var(--lk)}
+.glist a:hover span{text-decoration-color:var(--ink)}
+.art ul li::before{background:var(--ink)!important}
+.art ol li::marker,.cp-toc li::marker{color:var(--ink)!important}
+.cp-toc a:hover,.cp-sidelinks a:hover{color:var(--lk)!important}
+.cp-rcard:hover{border-top-color:var(--ink)!important}
+.cp-rtag{color:var(--ink)!important}
+.cp-form button{background:var(--ink)!important;color:#fff!important;box-shadow:0 4px 0 #050e1f!important}
+.cp-test-bar i{background:var(--ink)!important}
+/* Boutons d'achat : un vrai retour au clic */
+.btn:active,.cp-cta:active,#cp-bar a:active{transform:translateY(3px);box-shadow:0 1px 0 #b23f12!important}
+/* Test : la réponse choisie se colore, la question en cours ressort */
+.cp-opts button:hover{border-color:var(--ink)!important}
+.cp-opts button[aria-pressed="true"][data-v="oui"]{background:#2e7d4f!important;border-color:#2e7d4f!important}
+.cp-opts button[aria-pressed="true"][data-v="non"]{background:#b3261e!important;border-color:#b3261e!important}
+.cp-q{border-left:4px solid transparent;padding-left:14px;margin-left:-18px;transition:border-color .2s}
+.cp-q.cur{border-left-color:var(--hl)}
+.cp-q.done > p{color:var(--mute)}
+.cp-test-n{margin:-8px 0 0;font-weight:700;font-size:15px;color:var(--ink2)}
+/* Bouton de chat : rond sur les pages à colonne latérale */
+#cp-chat-btn.mini{right:14px!important;width:52px;height:52px;padding:0!important;justify-content:center}
+/* Mobile : un seul bouton orange à la fois */
+@media (max-width:760px){
+  body.cp-bar-on .cp-topnav a.btn{display:none!important}
+  #cp-bar .cp-bar-q{width:auto!important;height:44px;border-radius:22px!important;padding:0 12px!important;display:flex!important;align-items:center;gap:6px;font:700 15px 'Source Sans 3',Arial,sans-serif!important}
+}
+@media (max-width:400px){#cp-bar span{font-size:12px}#cp-bar span b{font-size:14px}#cp-bar a{padding:12px 12px!important;font-size:15px!important}}
+:root{--tag:#14284b}
+.cp-ph .cp-kick,.cp-top .cp-kick,.bp .cp-kick{background:rgba(255,255,255,.1)!important;border:1.5px solid rgba(255,255,255,.55);box-shadow:none!important}
