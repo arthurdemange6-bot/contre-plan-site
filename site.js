@@ -9,7 +9,7 @@
   /* ---------- Mini-test ---------- */
   function test() {
     var box = document.getElementById('cp-test'); if (!box) return;
-    var qs = box.querySelectorAll('.cp-q'), bar = box.querySelector('.cp-test-bar i'), res = box.querySelector('.cp-res'), done = false;
+    var qs = box.querySelectorAll('.cp-q'), bar = box.querySelector('.cp-test-bar i'), res = box.querySelector('.cp-res'), cnt = box.querySelector('.cp-test-n'), done = false, last = false;
     function summary() {
       var out = [];
       each(qs, function (q) {
@@ -25,7 +25,14 @@
         if (on) { answered++; if (on.getAttribute('data-v') !== 'oui') issues.push(q.getAttribute('data-tip')); }
       });
       bar.style.width = (answered / qs.length * 100) + '%';
-      if (answered < qs.length) { res.classList.remove('on'); return; }
+      var nxt = null; each(qs, function (q) { var on = !!q.querySelector('button[aria-pressed="true"]'); q.classList.toggle('done', on); if (!on && !nxt) nxt = q; });
+      each(qs, function (q) { q.classList.toggle('cur', q === nxt); });
+      if (cnt) cnt.textContent = nxt ? 'Question ' + (Array.prototype.indexOf.call(qs, nxt) + 1) + ' sur ' + qs.length + (answered ? ' · ' + answered + ' réponse' + (answered > 1 ? 's' : '') : '') : 'Terminé : votre résultat ci-dessous';
+      if (answered < qs.length) {
+        res.classList.remove('on');
+        if (last && nxt && innerWidth < 761) setTimeout(function () { nxt.scrollIntoView({ behavior: reduce ? 'auto' : 'smooth', block: 'center' }); }, 180);
+        return;
+      }
       var n = issues.length, h, p;
       if (n === 0) { h = 'Votre devis coche les bases.'; p = 'Bonne nouvelle pour la forme. Reste ce qu\'un test ne peut pas voir : les prix poste par poste, les oublis techniques et l\'enchaînement des travaux.'; }
       else if (n <= 2) { h = n + ' point' + (n > 1 ? 's' : '') + ' à clarifier avant de signer.'; p = 'Rien d\'alarmant en soi, mais à faire préciser par écrit par l\'artisan :'; }
@@ -38,11 +45,12 @@
       res.classList.add('on');
       if (!done) { done = true; gc('test-devis-termine'); setTimeout(function () { res.scrollIntoView({ behavior: reduce ? 'auto' : 'smooth', block: 'start' }); }, 120); }
     }
+    update();
     each(qs, function (q) {
       each(q.querySelectorAll('button'), function (b) {
         b.addEventListener('click', function () {
           each(q.querySelectorAll('button'), function (o) { o.setAttribute('aria-pressed', o === b ? 'true' : 'false'); });
-          update();
+          last = true; update();
         });
       });
     });
@@ -83,7 +91,7 @@
   function bar() {
     if (!('IntersectionObserver' in window)) return;
     var b = document.createElement('div'); b.id = 'cp-bar';
-    b.innerHTML = '<span><b>Votre devis relu par un ingénieur</b>dès 16,50 €, rapport sous 48 h</span><button type="button" class="cp-bar-q" aria-label="Poser une question">?</button><a href="' + COMEUP + '" data-goatcounter-click="clic-comeup-barre">Faire analyser</a>';
+    b.innerHTML = '<span><b>Relu par un ingénieur</b>16,50 € · rapport 48 h</span><button type="button" class="cp-bar-q"><svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>Question</button><a href="' + COMEUP + '" data-goatcounter-click="clic-comeup-barre">Faire analyser</a>';
     b.querySelector('.cp-bar-q').addEventListener('click', function () { var c = document.getElementById('cp-chat-btn'); if (c) c.click(); });
     document.body.appendChild(b);
     var top = document.getElementById('top') || document.querySelector('header');

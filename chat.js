@@ -77,8 +77,8 @@
     ".cp-bot{background:#fff;border:1px solid #d8dee6;align-self:flex-start}" +
     ".cp-user{background:#14284b;color:#fff;align-self:flex-end}" +
     ".cp-chips{display:flex;flex-wrap:wrap;gap:6px}" +
-    ".cp-chip{background:#fff;border:1px solid #bf4a17;color:#b8461a;border-radius:2px;padding:8px 12px;font:600 14px 'Source Sans 3',Arial,sans-serif;cursor:pointer;min-height:36px}" +
-    ".cp-chip:hover{background:#fdf1ea}" +
+    ".cp-chip{background:#fff;border:1.5px solid #14284b;color:#14284b;border-radius:2px;padding:8px 12px;font:600 14px 'Source Sans 3',Arial,sans-serif;cursor:pointer;min-height:36px}" +
+    ".cp-chip:hover{background:#eef2f8}.cp-faqh{margin:6px 0 0;font-size:13px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:#5b6784}" +
     ".cp-cta{display:inline-block;margin-top:6px;background:#bf4a17;color:#fff!important;text-decoration:none;font-weight:700;padding:9px 14px;border-radius:2px}" +
     "#cp-form{display:flex;gap:8px;padding:10px;border-top:1px solid #e6e9ee;background:#fff}" +
     "#cp-in{flex:1;border:1px solid #c5ccd6;border-radius:2px;padding:10px;font:15px 'Source Sans 3',Arial,sans-serif;min-width:0}" +
@@ -219,21 +219,25 @@
     var w = document.createElement("div"); w.className = "cp-chips";
     [["J'ai un devis à faire vérifier", function () { qualify(); }], ["J'ai une question", function () { gc("faq-debut"); add("Choisissez une question ou écrivez la vôtre.", "bot"); chips(); focusNext(); }]].forEach(function (o) {
       var c = document.createElement("button"); c.type = "button"; c.className = "cp-chip"; c.textContent = o[0];
-      c.onclick = function () { w.remove(); add(o[0], "user"); setTimeout(o[1], 250); }; w.appendChild(c);
+      c.onclick = function () { w.remove(); f.remove(); fq.remove(); add(o[0], "user"); setTimeout(o[1], 250); }; w.appendChild(c);
     });
-    log.appendChild(w); log.scrollTop = log.scrollHeight;
+    log.appendChild(w);
+    var f = document.createElement("p"); f.className = "cp-faqh"; f.textContent = "Questions fréquentes"; log.appendChild(f);
+    var fq = document.createElement("div"); fq.className = "cp-chips";
+    KB.forEach(function (e) { if (!e.c) return; var c = document.createElement("button"); c.type = "button"; c.className = "cp-chip"; c.textContent = e.q; c.onclick = function () { w.remove(); f.remove(); fq.remove(); ask(e.q, e); }; fq.appendChild(c); });
+    log.appendChild(fq); log.scrollTop = log.scrollHeight;
   }
   function open(v) {
     box.classList.toggle("open", v); btn.setAttribute("aria-expanded", v ? "true" : "false");
     document.body.classList.toggle("cp-chat-open", v);
     if (v && !started) { started = true; gc("ouverture"); welcome(); }
-    if (v) input.focus();
+    if (v && innerWidth > 760) input.focus(); else if (v) { var c0 = log.querySelector(".cp-chip"); if (c0) c0.focus({ preventScroll: true }); }
   }
   btn.onclick = function () { open(!box.classList.contains("open")); };
   box.querySelector("#cp-close").onclick = function () { open(false); btn.focus(); };
   document.addEventListener("keydown", function (ev) { if ((ev.key === "Escape" || ev.key === "Esc") && box.classList.contains("open")) { open(false); btn.focus(); } });
   if (/\/(contact|merci)(\.html)?$/.test(location.pathname)) btn.style.display = "none";
-  var side = document.querySelector(".cp-sidecard");
-  if (side && "IntersectionObserver" in window) new IntersectionObserver(function (en) { btn.classList.toggle("mini", en[0].isIntersecting && innerWidth > 900); }, { threshold: 0 }).observe(side);
+  /* Pages avec colonne latérale (sommaire, carte d'achat) : bouton rond, sans texte, pour ne rien recouvrir */
+  if (document.querySelector(".cp-side, .cp-sidecard, .cp-toc")) { btn.classList.add("mini"); btn.setAttribute("aria-label", "Une question ?"); btn.title = "Une question ?"; }
   box.querySelector("#cp-form").onsubmit = function (ev) { ev.preventDefault(); var t = input.value.trim(); if (!t) return; input.value = ""; ask(t); };
 })();

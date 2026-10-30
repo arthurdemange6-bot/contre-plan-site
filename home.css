@@ -299,3 +299,82 @@ section[id]{scroll-margin-top:70px}
 .devis.prices .l > div:first-child{padding-right:18px}
 .cp-how .big{font-family:'Source Sans 3',Arial,sans-serif;letter-spacing:0}
 @media (max-width:960px){.hero2-in .live{margin-top:34px}}
+
+/* ===== Passe « cliquable » (audit de 1 000 web designers, 2e tour) ===== */
+/* L'orange réservé à l'achat : le titre passe au surligneur */
+.hero2 h1 .or{color:var(--hl)}
+.hero2 h1 .or::after{background:var(--hl)}
+.verdict i{background:var(--hl);color:var(--ink)}
+.st .q{border-left-color:var(--hl)}
+.story-doc .meter b{color:var(--hl)}
+.story-doc .dots i.on{background:var(--hl)}
+.cp-band-in div{border-left-color:var(--ink)}
+.steps2 .n,.steps2.in .n{border-color:var(--ink)!important;background:var(--ink)!important;color:#fff!important}
+.steps2 .track i{background:var(--ink)}
+.cp-stake{border-left-color:var(--ink)}
+.cp-calc .out b{color:var(--ink)}
+/* Fin de démonstration et fin des étapes : un bouton */
+.cp-go{margin:44px 0 0;max-width:760px;display:flex;flex-direction:column;align-items:flex-start;gap:12px;padding:26px 28px;border:1.5px dashed rgba(255,255,255,.4);border-radius:3px;background:rgba(255,255,255,.05)}
+.cp-go p{margin:0;font-size:19px;line-height:1.45;color:#dde4f2}
+.cp-go p b{color:#fff;display:block;font-family:Archivo,Arial,sans-serif;font-size:23px;margin-bottom:4px}
+.cp-go-s{font-size:15px;color:#dde4f2}
+.cp-go-l{margin:34px auto 0;align-items:center;text-align:center;border:0;background:none;padding:0}
+.cp-go-l .cp-go-s{color:var(--ink2)}
+/* Message à coller : replié */
+.cp-fold{max-width:760px;margin:30px auto 0;background:#fff;border:1px solid var(--line);border-radius:3px}
+.cp-fold summary{cursor:pointer;padding:16px 20px;font-family:Archivo,Arial,sans-serif;font-weight:800;font-size:17px;color:var(--ink);list-style:none;display:flex;justify-content:space-between;gap:12px}
+.cp-fold summary::-webkit-details-marker{display:none}
+.cp-fold summary::after{content:"+";font-size:26px;line-height:.8;color:var(--ink)}
+.cp-fold[open] summary::after{content:"–"}
+.cp-fold .cp-msg{margin:0;padding:0 20px 20px;max-width:none}
+/* Rapport : extrait lisible de la page 2 */
+.cp-rx{margin:30px 0 0;background:#fff;border:1px solid var(--line);border-radius:2px;box-shadow:0 18px 40px -24px rgba(20,40,75,.5)}
+.cp-rx-t{margin:0;padding:14px 18px;font-family:Archivo,Arial,sans-serif;font-weight:800;font-size:17px;color:var(--ink);border-bottom:2px solid var(--ink)}
+.cp-rx-h,.cp-rx-r{display:grid;grid-template-columns:1.35fr 92px 104px 2fr;gap:12px;align-items:center;padding:11px 18px}
+.cp-rx-h{font-size:12px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--mute);padding-top:10px;padding-bottom:6px}
+.cp-rx-r{border-top:1px solid #e6e9ef;font-size:15px;line-height:1.4;color:var(--ink2)}
+.cp-rx-r .po{color:var(--ink);font-weight:600}
+.cp-rx-r .mt{text-align:right;font-variant-numeric:tabular-nums}
+.cp-rx-h span:nth-child(2){text-align:right}
+.av{justify-self:start;font-size:13px;font-weight:700;padding:3px 10px;border-radius:999px;white-space:nowrap}
+.av-c{background:#e3f3e8;color:#1f6b3d}
+.av-e,.av-m{background:#fde8e6;color:#b3261e}
+.av-d{background:#fff1cc;color:#7a4f00}
+.cp-pdf-btn{margin-top:6px;background:var(--ink)!important;color:#fff!important;box-shadow:0 4px 0 #050e1f!important;flex-wrap:wrap}
+.cp-pdf-btn small{font-weight:600;font-size:14px;opacity:.85}
+.cp-pdf-btn:active{box-shadow:0 1px 0 #050e1f!important}
+@media (max-width:640px){
+  .cp-rx-h{display:none}
+  .cp-rx-r{grid-template-columns:1fr auto;gap:6px 12px;padding:12px 14px}
+  .cp-rx-r .cm{grid-column:1/-1}
+  .cp-rx-r .av{grid-column:1;grid-row:2}
+  .cp-rx-r .cm{grid-row:3}
+  .cp-rp .pin{display:none}
+  .cp-rp-legend li{padding-left:20px}
+  .cp-rp-legend li::before{content:"";width:9px;height:9px;top:.55em}
+  .cp-pdf-btn{width:100%;justify-content:center;text-align:center;box-sizing:border-box}
+}
+/* Cartouche : la case visa */
+.c-visa{position:relative;display:flex;align-items:center;gap:18px;padding:12px 16px;border-top:2px solid rgba(255,255,255,.85)}
+.c-visa .lbl{font-size:13px;letter-spacing:1px;text-transform:uppercase;color:#c9d3ea}
+.c-visa .ini{font-family:Caveat,cursive;font-weight:700;font-size:36px;line-height:1;color:#fff;transform:rotate(-5deg)}
+.c-visa .stp{margin-left:auto;font-family:Archivo,Arial,sans-serif;font-weight:800;font-size:15px;letter-spacing:3px;text-transform:uppercase;color:#ff8f8f;border:2.5px solid #ff8f8f;padding:4px 12px;border-radius:3px;transform:rotate(-6deg)}
+.c-visa .sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+.cp-cart dd{font-size:18px}
+/* Carte des tarifs : les cases à cocher sur ComeUp */
+.devis.prices .ck{display:block;margin-top:7px;font-size:14px;line-height:1.4;font-weight:600;color:var(--ink);background:#f1f4f9;border-left:3px solid var(--ink);padding:5px 9px}
+.cp-after-btn{margin:10px 0 0;font-size:14px;line-height:1.4;color:#475569;text-align:center}
+.cp-calc-go{display:inline-block;margin-top:12px;font-weight:800;font-size:16px;color:var(--ink)!important;text-decoration:underline;text-underline-offset:4px;text-decoration-thickness:2px}
+/* Mobile : le titre, le chapeau et le bouton d'abord, le devis annoté ensuite */
+@media (max-width:960px){
+  .hero2 .lead{order:2}
+  .hero2 .ctas{order:3}
+  .cp-heroline{order:4}
+  .hero2-in .live{order:5;margin:34px auto 104px}
+  .cp-when{order:6}
+  .cp-go{padding:22px 18px}
+  .cp-go .btn{width:100%;justify-content:center;box-sizing:border-box}
+}
+.devis.prices .ck{text-align:left!important}
+.cp-calc .out b{color:var(--hl)}
+.cp-calc-go{color:#fff!important;text-decoration-color:var(--hl)}
