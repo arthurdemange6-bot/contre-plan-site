@@ -231,3 +231,71 @@ section[id]{scroll-margin-top:70px}
 .cp-res .cp-more{margin-top:14px;font-size:15px}
 .cp-res .cp-more a{font-weight:700;margin-right:14px;display:inline-block;margin-top:6px}
 .cp-res .cp-more a{color:#ffb38f}
+
+/* ===== Passe design (audit de 1 000 web designers) ===== */
+/* Bande de chiffres sous le hero */
+.cp-band{background:var(--paper);border-bottom:1px solid var(--line)}
+.cp-band-in{max-width:1160px;margin:0 auto;padding:22px 24px;display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+.cp-band-in div{display:flex;flex-direction:column;gap:2px;border-left:3px solid var(--or);padding-left:14px}
+.cp-band-in b{font-family:Archivo,Arial,sans-serif;font-weight:800;font-size:clamp(24px,2.6vw,32px);line-height:1.1;color:var(--ink)}
+.cp-band-in span{font-size:15px;color:var(--ink2);line-height:1.35}
+/* Sur-titres manuscrits : pêche sur fond bleu, jamais rouge */
+.st .k{color:#ffb38a}
+/* Étapes : pastilles toujours orange */
+.steps2 .n{border-color:var(--or);background:var(--or);color:var(--bp3)}
+/* Démo : ligne de devis sous chaque étape (mobile) */
+.st-line{display:none}
+/* Rapport : une vraie page, en grand, annotée */
+.cp-rp{margin:0}
+.cp-rp-img{position:relative;display:block;background:#fff;border:1px solid var(--line);box-shadow:0 24px 50px -22px rgba(20,40,75,.55);border-radius:2px}
+.cp-rp-img img{display:block;width:100%;height:auto}
+.cp-rp .pin{position:absolute;width:34px;height:34px;margin:-17px 0 0 -17px;border-radius:50%;background:var(--pen);color:#fff;display:grid;place-items:center;font-family:Archivo,Arial,sans-serif;font-weight:800;font-size:17px;box-shadow:0 0 0 4px #fff,0 6px 14px -4px rgba(0,0,0,.4)}
+.cp-rp-legend{list-style:none;counter-reset:p;margin:18px 0 0;padding:0;display:flex;flex-direction:column;gap:8px}
+.cp-rp-legend li{counter-increment:p;position:relative;padding-left:40px;font-size:17px;line-height:1.45;color:var(--ink2)}
+.cp-rp-legend li::before{content:counter(p);position:absolute;left:0;top:-2px;width:28px;height:28px;border-radius:50%;background:var(--pen);color:#fff;display:grid;place-items:center;font:800 15px Archivo,Arial,sans-serif}
+.cp-rp-legend b{color:var(--ink)}
+#rapport .note-s{margin:12px 0 6px}
+/* Cartouche de plan : la signature sans visage */
+.cp-cart{margin-top:40px;border:2px solid rgba(255,255,255,.85);max-width:760px;font-size:16px}
+.cp-cart .c-h{display:flex;justify-content:space-between;gap:12px;padding:10px 16px;border-bottom:2px solid rgba(255,255,255,.85);font-family:Archivo,Arial,sans-serif;font-weight:800;letter-spacing:2px;font-size:14px}
+.cp-cart dl{margin:0;display:grid;grid-template-columns:repeat(3,1fr)}
+.cp-cart dl div{padding:12px 16px;border-right:1px solid rgba(255,255,255,.4);border-bottom:1px solid rgba(255,255,255,.4)}
+.cp-cart dl div:nth-child(3n){border-right:0}
+.cp-cart dl div:nth-last-child(-n+3){border-bottom:0}
+.cp-cart dt{font-size:13px;letter-spacing:1px;text-transform:uppercase;color:#c9d3ea;margin:0 0 4px}
+.cp-cart dd{margin:0;font-weight:700;color:#fff;font-size:17px}
+/* Carte des tarifs */
+.devis.prices .grp{margin:16px 0 2px;font-size:13px;font-weight:800;letter-spacing:2px;text-transform:uppercase;color:#5b6784}
+.devis.prices .p .u{display:block;font-size:13px;font-weight:600;color:#5b6784;text-align:right}
+.devis.prices .cp-card-btn{display:flex;justify-content:center;margin:20px 0 0;width:100%;box-sizing:border-box}
+.cp-how{margin-top:20px;border-top:1px solid var(--line);padding-top:14px}
+.cp-how .t{margin:0 0 8px;font-family:Archivo,Arial,sans-serif;font-weight:800;font-size:17px;color:var(--ink)}
+.cp-how ol{margin:0;padding-left:22px;display:flex;flex-direction:column;gap:6px;font-size:16px;line-height:1.5;color:var(--ink2)}
+.cp-how .big{margin:12px 0 0;font-size:15px;line-height:1.45;color:var(--ink2);font-weight:600}
+
+@media (max-width:960px){
+  /* Hero mobile : le devis annoté juste sous le titre */
+  .hero2-in{display:flex;flex-direction:column;align-items:stretch}
+  .hero2-in > div:first-child{display:contents}
+  .hero2 h1{order:1;margin-bottom:14px}
+  .hero2-in .live{order:2;margin:6px auto 104px;max-width:380px}
+  .hero2 .lead{order:3}
+  .hero2 .ctas{order:4}
+  .cp-heroline{order:5}
+  .cp-when{order:6}
+  /* Démo mobile : pas d'effet collant, la ligne concernée sous chaque étape */
+  .story-doc{display:none}
+  .st{min-height:0!important;opacity:1!important;justify-content:flex-start;padding:22px 0!important}
+  .st-line{display:grid;grid-template-columns:1fr auto;gap:2px 12px;margin:14px 0 0;background:#fff;color:var(--ink);border-radius:3px;padding:12px 14px;font-size:15px;box-shadow:0 10px 24px -14px rgba(0,0,0,.6)}
+  .st-line span:nth-child(2){font-weight:700;text-align:right}
+  .st-line em{grid-column:1/-1;font-style:normal;font-family:Caveat,cursive;font-weight:700;font-size:21px;color:var(--pen);line-height:1.1}
+  .cp-band-in{grid-template-columns:repeat(2,1fr);padding:18px 16px}
+  .cp-cart dl{grid-template-columns:repeat(2,1fr)}
+  .cp-cart dl div:nth-child(3n){border-right:1px solid rgba(255,255,255,.4)}
+  .cp-cart dl div:nth-child(2n){border-right:0}
+  .cp-cart dl div:nth-last-child(-n+3){border-bottom:1px solid rgba(255,255,255,.4)}
+  .cp-cart dl div:nth-last-child(-n+2){border-bottom:0}
+}
+.devis.prices .l > div:first-child{padding-right:18px}
+.cp-how .big{font-family:'Source Sans 3',Arial,sans-serif;letter-spacing:0}
+@media (max-width:960px){.hero2-in .live{margin-top:34px}}

@@ -5,7 +5,7 @@ OUT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))  # racine du s
 GC = '<script data-goatcounter="https://contreplan.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>'
 # Prix affiché partout : changer ici (et lancer tools/changer_prix.py pour index.html, chat.js, site.js)
 PRIX_TXT = "16,50 €"
-PRIX_MENTION = "au tarif de lancement"
+PRIX_MENTION = ""
 COMEUP = "https://comeup.com/fr/service/549064/verifier-votre-devis-de-travaux-avant-signature-et-reperer-les-prix-abusifs-et-les-oublis"
 BOOK = "https://calendar.app.google/6LCc6yKVHnbvA3WN7"
 NEWS = "https://docs.google.com/forms/d/e/1FAIpQLScS7zVctXEahK71wNv8hUGD-MjfyqH4h_l8EpJyYPLVM-ToAA/viewform"  # formulaire « Le conseil devis du mois »
@@ -77,6 +77,7 @@ h1{{font-size:clamp(32px,5.5vw,48px)!important}}
 <a href="{root}guides.html">Guides</a>
 <a class="btn" href="{COMEUP}" data-goatcounter-click="clic-comeup">Faire analyser<span class="lg"> mon devis</span></a>
 </nav>
+<details class="cp-mnav"><summary><span class="ham" aria-hidden="true"></span>Menu</summary><nav aria-label="Menu"><a href="{root}methode.html">Méthode</a><a href="{root}index.html#travaux">Travaux</a><a href="{root}index.html#tarifs">Tarifs</a><a href="{root}votre-cas.html">Votre cas est-il couvert ?</a><a href="{root}comparer-ses-devis.html">Outils</a><a href="{root}guides.html">Guides</a><a href="{root}contact.html">Contact</a></nav></details>
 </div>
 </header>
 '''
@@ -106,7 +107,7 @@ def footer(root=""):
 CTA = f'''<aside class="cp-cta-box bp">
 <span class="tag">Avant de signer</span>
 <p class="t">Un devis à signer ? Faites-le relire par un ingénieur BTP.</p>
-<p>Prix poste par poste, oublis, TVA, conditions de paiement : rapport PDF sous 48 h, {PRIX_TXT} {PRIX_MENTION}.</p>
+<p>Prix poste par poste, oublis, TVA, conditions de paiement : rapport PDF sous 48 h, {PRIX_TXT}.</p>
 <div class="row"><a class="btn" href="{COMEUP}" data-goatcounter-click="clic-comeup">Faire analyser mon devis</a><a class="btn line" href="{BOOK}" data-goatcounter-click="clic-appel" target="_blank" rel="noopener">Appel gratuit de 15 min</a></div>
 <small>Commande sur ComeUp : compte gratuit, paiement conservé jusqu'à la livraison du rapport. Rapport PDF sous 48 h, aucun engagement envers l'artisan.</small>
 </aside>'''
