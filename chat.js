@@ -1,17 +1,17 @@
 /* Contre-Plan – assistant : orientation en 3 questions + FAQ (100 % local ; seuls des compteurs anonymes GoatCounter sont envoyés, aucune réponse saisie) */
 (function () {
-  var COMEUP = "https://comeup.com/fr/service/549064/verifier-votre-devis-de-travaux-avant-signature-et-reperer-les-prix-abusifs-et-les-oublis";
+  var COMEUP = "/commander.html";
   var BOOK = "https://calendar.app.google/6LCc6yKVHnbvA3WN7";
   var PREDIAG = ["/contact.html?sujet=prediagnostic", "Demander le pré-diagnostic gratuit"];
   var KB = [
     { c: 1, q: "Combien ça coûte ?", k: ["prix", "tarif", "coût", "cout", "combien", "€", "euro", "payer combien", "ça coute", "ca coute"],
-      a: "L'analyse d'un devis coûte 16,50 € sur ComeUp (frais de la plateforme compris). Options : 2e devis + 11 €, 3e devis + 11 €, comparatif de plusieurs devis + 16,50 €, livraison express en 24 h + 5,50 €. Pas de TVA." },
+      a: "L'analyse d'un devis coûte 16,50 €, payés par carte sur le site ou sur ComeUp au même prix. 2 devis comparés : 44 € ; 3 devis comparés : 55 € ; devis pour des travaux différents : + 11 € par devis ; express en 24 h : + 5,50 €. Pas de TVA." },
     { c: 1, q: "Quel est le délai ?", k: ["délai", "delai", "quand", "recevoir", "sous combien", "combien de temps", "rapide", "express", "24", "48", "jours", "vite"],
       a: "Vous recevez votre rapport PDF sous 48 h après l'envoi du devis, ou 24 h avec l'option express." },
     { c: 1, q: "Comment ça marche ?", k: ["comment ça marche", "comment ca marche", "marche", "fonctionne", "étapes", "etapes", "commander", "procédure", "envoyer mon devis", "envoie mon devis", "envoyer le devis", "j'envoie"],
-      a: "1. Vous commandez sur ComeUp (compte gratuit, paiement par carte). 2. Vous envoyez votre devis dans la messagerie de la commande, en PDF ou en photo. 3. Vous recevez dans la même messagerie un rapport avec un verdict, les prix poste par poste, les oublis et les questions à poser à l'artisan." },
+      a: "1. Vous choisissez votre formule et payez par carte, sans créer de compte. 2. Vous envoyez votre devis par e-mail, en PDF ou en photo. 3. Vous recevez par e-mail un rapport avec un verdict, les prix poste par poste, les oublis et les questions à poser à l'artisan." },
     { c: 1, q: "Faut-il créer un compte ?", k: ["compte", "inscri", "comeup", "come up", "chèque", "cheque", "carte bancaire", "carte bleue", "paypal", "payer en ligne", "paiement", "payer", "dollar", "$"],
-      a: "Oui : ComeUp est une plateforme française de services en ligne, et la commande passe par un compte gratuit (2 minutes). Vous payez en ligne par carte, et ComeUp conserve le paiement jusqu'à la livraison et à la validation du rapport. Le prix est en euros : 16,50 € frais compris. Avant d'être connecté, ComeUp l'affiche parfois en dollars, c'est seulement un réglage d'affichage. Pas prêt à créer un compte ? Le pré-diagnostic gratuit se demande sans compte ni paiement.", l: PREDIAG },
+      a: "Non : sur le site, vous payez par carte en 1 minute, sans créer de compte, et la facture arrive par e-mail. Si vous préférez, vous pouvez aussi commander sur la plateforme ComeUp (compte gratuit), qui conserve le paiement jusqu'à la livraison du rapport. Pas encore décidé ? Le pré-diagnostic gratuit se demande sans paiement.", l: PREDIAG },
     { c: 1, q: "Que contient le rapport ?", k: ["rapport", "contient", "reçois", "recois", "livrable", "pdf", "exemple"],
       a: "Un verdict global (cohérent, négociable ou signaux d'alerte), le contrôle des prix poste par poste, les postes oubliés, les incohérences d'enchaînement des travaux, les questions à poser avant de signer, et un échange de suivi inclus.", l: ["/exemple-rapport-contre-plan.pdf", "Voir un exemple de rapport complet (PDF)"] },
     { c: 1, w: 2, q: "J'ai plusieurs devis", k: ["même prix", "meme prix", "quel que soit le montant", "pour 2 devis", "pour 3 devis", "plusieurs devis", "2 devis", "3 devis", "4 devis", "deux devis", "trois devis", "quatre devis", "plusieurs lots", "lots", "tous corps", "rénovation complète", "renovation complete", "gros devis"],
@@ -49,7 +49,7 @@
     { q: "Qui analyse mon devis ?", k: ["qui", "ingénieur", "ingenieur", "expérience", "experience", "compétent", "competent", "commission", "indépendant"],
       a: "Un ingénieur BTP avec 10 ans d'expérience sur les chantiers et environ 1 000 devis lus et négociés, avant de créer Contre-Plan en octobre 2026. Indépendant : aucune commission d'artisan, aucune entreprise à vous revendre.", l: ["/methode.html", "Voir ma méthode"] },
     { c: 1, q: "Est-ce fiable ?", k: ["arnaque", "fiable", "confiance", "sérieux", "serieux", "escroquerie", "légal", "legal", "siret", "garantie", "rassur"],
-      a: "Contre-Plan est une entreprise immatriculée (SIRET 132 070 426 00011), rattachée au médiateur de la consommation CM2C. Vous payez sur ComeUp, une plateforme française de services qui conserve le paiement jusqu'à la livraison du rapport, et vous pouvez masquer votre nom et votre adresse sur le devis. Pas sûr que l'analyse vous serve ? Le pré-diagnostic gratuit vous le dit avant toute commande.", l: ["/mentions-legales.html", "Voir les mentions légales"] },
+      a: "Contre-Plan est une entreprise immatriculée (SIRET 132 070 426 00011), rattachée au médiateur de la consommation CM2C. Le paiement par carte est sécurisé par Stripe (vos données de carte ne me sont jamais transmises), et vous pouvez masquer votre nom et votre adresse sur le devis. Pas sûr que l'analyse vous serve ? Le pré-diagnostic gratuit vous le dit avant toute commande.", l: ["/mentions-legales.html", "Voir les mentions légales"] },
     { w: 2, q: "Mon devis me paraît trop cher", k: ["est-ce cher", "est ce cher", "c'est cher", "trop élevé", "trop cher", "devis cher", "est cher", "paraît cher", "parait cher", "surfactur", "abus", "gonflé", "gonfle", "normal ce prix", "prix normal", "est-ce normal", "c'est cher"],
       a: "C'est exactement ce que vérifie l'analyse : le prix de chaque poste comparé à des ordres de grandeur, les postes oubliés ou comptés deux fois, et les points à négocier. Pour savoir d'abord si l'analyse vaut le coup sur votre devis, demandez le pré-diagnostic gratuit (réponse sous 24 h).", l: PREDIAG },
     { w: 2, q: "Et en outre-mer ?", k: ["outre-mer", "outre mer", "dom", "réunion", "reunion", "guadeloupe", "martinique", "guyane", "mayotte", "974", "971", "972"],
@@ -61,7 +61,7 @@
     { w: 2, q: "Véranda, piscine ou poêle ?", k: ["véranda", "veranda", "piscine", "bassin", "poêle", "poele", "granulés", "granules", "insert", "conduit de fumée", "tubage"],
       a: "Oui, j'analyse ces devis. Chaque page explique ce que je vérifie : dalle et raccord au mur pour une véranda, terrassement et sécurité pour une piscine, conduit et sortie de toit pour un poêle.", l: ["/analyse-devis-veranda.html", "Véranda", "/analyse-devis-piscine.html", "Piscine", "/analyse-devis-poele.html", "Poêle"] },
     { c: 1, q: "Comment vous contacter ?", k: ["contact", "contacter", "écrire", "ecrire", "mail", "email", "message", "formulaire"],
-      a: "Par le formulaire de contact, réponse sous 24 h, ou en réservant un appel gratuit de 15 min. Le numéro de téléphone de l'entreprise figure aussi dans les mentions légales. Pour faire analyser un devis, commandez directement sur ComeUp.", l: ["/contact.html", "Formulaire de contact"], l2: [BOOK, "Réserver l'appel gratuit de 15 min"] }
+      a: "Par le formulaire de contact, réponse sous 24 h, ou en réservant un appel gratuit de 15 min. Le numéro de téléphone de l'entreprise figure aussi dans les mentions légales. Pour faire analyser un devis, commandez directement en ligne : vous m'envoyez ensuite le devis par e-mail.", l: ["/contact.html", "Formulaire de contact"], l2: [BOOK, "Réserver l'appel gratuit de 15 min"] }
   ];
 
   var css = "#cp-chat-btn{position:fixed;right:20px;bottom:20px;z-index:9999;display:flex;align-items:center;gap:10px;background:#bf4a17;color:#fff;border:0;border-radius:2px;padding:14px 20px;font:700 16px 'Source Sans 3',Arial,sans-serif;box-shadow:0 8px 24px rgba(0,0,0,.3);cursor:pointer}" +
@@ -136,8 +136,8 @@
       if (e && e.l) for (var li = 0; li < e.l.length; li += 2) sub(e.l[li], e.l[li + 1]);
       if (e && e.l2) sub(e.l2[0], e.l2[1]);
       if (!(e && e.nocta)) {
-        if (!ctaShown) { ctaShown = true; m.appendChild(document.createElement("br")); m.appendChild(link(COMEUP, "Faire analyser mon devis", true, "clic-comeup-chat")); }
-        else sub(COMEUP, "Commander sur ComeUp");
+        if (!ctaShown) { ctaShown = true; m.appendChild(document.createElement("br")); m.appendChild(link(COMEUP, "Faire analyser mon devis", true, "clic-commander-chat")); }
+        else sub(COMEUP, "Commander mon analyse");
       }
       log.scrollTop = log.scrollHeight;
       input.focus({ preventScroll: true });
@@ -191,21 +191,21 @@
     } else if (r.d === "signe") {
       gc("resultat-deja-signe");
       m = add("Si vous avez signé chez vous ou à distance, vous avez en principe 14 jours pour vous rétracter. L'analyse vous aide à décider à temps : prenez l'option express pour avoir le rapport en 24 h.", "bot");
-      m.appendChild(document.createElement("br")); m.appendChild(link(COMEUP, "Faire analyser mon devis en express", true, "clic-comeup-orientation-signe"));
+      m.appendChild(document.createElement("br")); m.appendChild(link(COMEUP, "Faire analyser mon devis en express", true, "clic-commander-orientation-signe"));
       m.appendChild(link("/guide-annuler-devis-signe-retractation.html", "Vos droits après signature", false, "lien-guide-retractation"));
     } else if (r.d === "semaine") {
       gc("resultat-urgent");
       m = add("Vous signez bientôt : faites relire le devis avant. Choisissez l'option express : vous recevez le rapport sous 24 h, avec les points à négocier et les questions à envoyer à l'artisan.", "bot");
-      m.appendChild(document.createElement("br")); m.appendChild(link(COMEUP, "Faire analyser mon devis en express", true, "clic-comeup-orientation-urgent"));
+      m.appendChild(document.createElement("br")); m.appendChild(link(COMEUP, "Faire analyser mon devis en express", true, "clic-commander-orientation-urgent"));
     } else if (r.m === "plus-20k") {
       gc("resultat-gros-devis");
       m = add("Sur un devis de plus de 20 000 €, chaque ligne compte. Jusqu'à 30 000 €, vous pouvez commander l'analyse directement. Au-delà, ou pour une rénovation tous corps d'état, demandez d'abord le pré-diagnostic gratuit : le prix vous est annoncé avant toute commande. Vous pouvez aussi en parler lors d'un appel gratuit de 15 minutes.", "bot");
-      m.appendChild(document.createElement("br")); m.appendChild(link(COMEUP, "Faire analyser mon devis", true, "clic-comeup-orientation-gros"));
+      m.appendChild(document.createElement("br")); m.appendChild(link(COMEUP, "Faire analyser mon devis", true, "clic-commander-orientation-gros"));
       m.appendChild(link(PREDIAG[0], PREDIAG[1], false, "clic-prediagnostic-orientation-gros")); m.appendChild(link(BOOK, "Réserver l'appel gratuit de 15 min", false, "clic-appel-orientation"));
     } else {
       gc("resultat-standard");
       m = add("Le bon moment pour faire relire votre devis, c'est avant de le signer. Vous recevez sous 48 h un rapport avec le verdict, les prix poste par poste, les oublis et les questions à poser à l'artisan.", "bot");
-      m.appendChild(document.createElement("br")); m.appendChild(link(COMEUP, "Faire analyser mon devis", true, "clic-comeup-orientation"));
+      m.appendChild(document.createElement("br")); m.appendChild(link(COMEUP, "Faire analyser mon devis", true, "clic-commander-orientation"));
       m.appendChild(link("/exemple-rapport-contre-plan.pdf", "Voir un exemple de rapport", false, "lien-exemple-rapport"));
     }
     if (page) m.appendChild(link(page[0], page[1], false, "lien-page-" + r.t));
@@ -238,6 +238,6 @@
   document.addEventListener("keydown", function (ev) { if ((ev.key === "Escape" || ev.key === "Esc") && box.classList.contains("open")) { open(false); btn.focus(); } });
   if (/\/(contact|merci)(\.html)?$/.test(location.pathname)) btn.style.display = "none";
   /* Pages avec colonne latérale (sommaire, carte d'achat) : bouton rond, sans texte, pour ne rien recouvrir */
-  if (document.querySelector(".cp-side, .cp-sidecard, .cp-toc")) { btn.classList.add("mini"); btn.setAttribute("aria-label", "Une question ?"); btn.title = "Une question ?"; }
+  if (document.querySelector(".cp-side, .cp-sidecard, .cp-toc, .cp-order")) { btn.classList.add("mini"); btn.setAttribute("aria-label", "Une question ?"); btn.title = "Une question ?"; }
   box.querySelector("#cp-form").onsubmit = function (ev) { ev.preventDefault(); var t = input.value.trim(); if (!t) return; input.value = ""; ask(t); };
 })();
