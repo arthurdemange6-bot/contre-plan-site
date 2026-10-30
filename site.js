@@ -180,7 +180,8 @@
       Array.prototype.forEach.call(f.elements, function (el) { if (el.name && el.type !== 'hidden') saved[el.name] = el.value; });
       // Le visiteur n'attend pas la réponse du service d'envoi (souvent plusieurs secondes)
       f.reset();
-      show('<p class="t">Merci, votre message est bien envoyé.</p><p>Je vous réponds sous 24 h à l\'adresse que vous avez indiquée. Pensez à regarder vos courriers indésirables.</p>');
+      if (f.classList.contains('cp-avis')) show('<p class="t">Merci, votre avis est bien envoyé.</p><p>Je le lis personnellement. S\'il est publié, ce sera uniquement avec votre prénom ou vos initiales, et seulement si vous l\'avez accepté.</p>');
+      else show('<p class="t">Merci, votre message est bien envoyé.</p><p>Je vous réponds sous 24 h à l\'adresse que vous avez indiquée. Pensez à regarder vos courriers indésirables.</p>');
       gc('formulaire-contact-envoye');
       // Google Forms ne renvoie pas de réponse lisible (mode no-cors) : seule une coupure réseau est détectable
       fetch(f.action, { method: 'POST', body: new URLSearchParams(data), mode: 'no-cors', keepalive: true })

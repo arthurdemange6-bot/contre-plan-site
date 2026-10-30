@@ -490,3 +490,9 @@ a{color:var(--lk)}a:hover{color:#0f2f63}
   .cp-opt .p{grid-column:2;font-size:20px}
 }
 .cp-ord-note ul{margin:0 0 10px;padding-left:18px;font-size:14px;line-height:1.5;color:var(--ink2)}
+/* Page avis */
+.cp-stars{border:1px solid var(--line);border-radius:3px;padding:12px 16px;margin:0;display:flex;flex-direction:column;gap:8px}
+.cp-stars legend{font-weight:700;padding:0 6px;color:var(--ink)}
+.cp-stars label,.cp-avis .cp-check{display:flex!important;flex-direction:row!important;align-items:flex-start;gap:10px;font-weight:600}
+.cp-stars input,.cp-avis .cp-check input{width:20px;height:20px;margin:2px 0 0;accent-color:var(--ink);flex:none}
+.cp-help{display:block;font-weight:400;font-size:14px;color:#475569;margin-top:4px}

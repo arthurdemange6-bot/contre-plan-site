@@ -1191,6 +1191,36 @@ page("contact", "Contact | Contre-Plan", "Me contacter",
 merci = head("Message envoyé | Contre-Plan", "Votre message a bien été envoyé.", "https://contre-plan.com/merci.html").replace('<meta property="og:type" content="article">','<meta name="robots" content="noindex">') + pagehero("Contact", "Message envoyé", "Merci, votre message est bien parti. Je vous réponds sous 24 h à l'adresse indiquée.", None, [("Accueil", "index.html"), ("Contact", "contact.html"), ("Message envoyé", None)]) + layout(f"""<p>En attendant, vous pouvez déjà vérifier votre devis avec les <a href="guides.html">guides et outils gratuits</a>, ou le <a href="lexique-devis-travaux.html">lexique du devis</a>.</p>""", False) + footer()
 open(os.path.join(OUT, "merci.html"), "w").write(merci)
 
+# ---------- Avis des clients ayant commandé sur le site (lien envoyé avec le rapport) : noindex, hors sitemap
+# Envoi via le même formulaire Google que le contact (sujet « Autre », message préfixé « [Avis client] »).
+# Aucun avis n'est publié sans l'accord écrit du client ; aucune contrepartie n'est proposée.
+AVIS_BODY = f'''<p>Vous avez reçu votre rapport. Votre avis m'aide à améliorer les analyses, et il aide d'autres particuliers à savoir à quoi s'attendre. Il prend 1 minute.</p>
+<div class="cp-form-ok" id="cp-form-ok" role="status" aria-live="polite" tabindex="-1" hidden></div>
+<form class="cp-form cp-avis" action="{FORM_ACTION}" method="POST" accept-charset="UTF-8">
+<input type="hidden" name="entry.1520641388" value="Autre">
+<label>Prénom ou initiales<input type="text" name="entry.110816487" required maxlength="80" autocomplete="given-name"></label>
+<label>Adresse e-mail utilisée pour la commande<input type="email" name="entry.721010462" required maxlength="120" autocomplete="email"><span class="cp-help">Elle sert seulement à vérifier que vous avez bien commandé. Elle n'est jamais publiée.</span></label>
+<fieldset class="cp-stars"><legend>Votre note</legend>
+<label><input type="radio" name="cp-note" value="5" required> 5 · Très utile</label>
+<label><input type="radio" name="cp-note" value="4"> 4 · Utile</label>
+<label><input type="radio" name="cp-note" value="3"> 3 · Correct</label>
+<label><input type="radio" name="cp-note" value="2"> 2 · Décevant</label>
+<label><input type="radio" name="cp-note" value="1"> 1 · Pas utile</label>
+</fieldset>
+<label>Votre avis<textarea id="cp-avis-txt" required minlength="10" maxlength="2000" rows="6" placeholder="Type de travaux, ce que le rapport vous a apporté, ce qui pourrait être mieux."></textarea></label>
+<label class="cp-check"><input type="checkbox" id="cp-avis-pub"> J'accepte que cet avis soit publié sur contre-plan.com avec mon prénom ou mes initiales (jamais mon nom complet ni mon e-mail).</label>
+<textarea name="entry.881289893" id="cp-avis-msg" hidden></textarea>
+<button type="submit">Envoyer mon avis</button>
+</form>
+<p class="cp-form-rgpd">Tous les avis sont lus, qu'ils soient positifs ou négatifs, et aucun n'est modifié. Aucune contrepartie n'est proposée en échange d'un avis. Votre e-mail sert uniquement à vérifier la commande ; les avis sont enregistrés via Google Forms (Google). Voir la <a href="confidentialite.html">politique de confidentialité</a>.</p>
+<script>
+(function(){{var f=document.querySelector('.cp-avis');if(!f)return;
+f.addEventListener('submit',function(){{var n=f.querySelector('input[name="cp-note"]:checked'),t=document.getElementById('cp-avis-txt'),p=document.getElementById('cp-avis-pub');
+document.getElementById('cp-avis-msg').value='[Avis client] Note : '+(n?n.value:'?')+'/5\\nPublication autorisée : '+(p.checked?'oui':'non')+'\\n\\n'+t.value;}},true);}})();
+</script>'''
+_avis = head("Votre avis | Contre-Plan", "Donnez votre avis sur l'analyse de votre devis.", "https://contre-plan.com/avis.html").replace('<meta property="og:type" content="article">','<meta name="robots" content="noindex">') + pagehero("Votre avis", "Votre avis sur l'analyse", "Une minute pour dire ce que le rapport vous a apporté.", None, [("Accueil", "index.html"), ("Votre avis", None)]) + layout(AVIS_BODY, False) + footer()
+open(os.path.join(OUT, "avis.html"), "w").write(_avis)
+
 # ---------- Commande directe (Stripe) : page de commande et page de confirmation
 # Liens de paiement Stripe (Payment Links). Redirection après paiement : https://contre-plan.com/commande-confirmee.html
 STRIPE = {
