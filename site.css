@@ -202,3 +202,15 @@ h1,h2,h3{text-wrap:balance}
 @media (max-width:600px){body.cp-chat-open #cp-chat,body.cp-chat-open.cp-bar-on #cp-chat{bottom:0!important}}
 
 .cp-om{border-left:3px solid #2b5797;background:#eef3fb;padding:12px 16px;margin:18px 0;font-size:16px;color:#14284b}
+
+/* Mobile : un seul élément fixe en bas. Le chat s'ouvre depuis la barre */
+#cp-bar .cp-bar-q{display:none}
+@media (max-width:760px){
+  #cp-chat-btn{display:none!important}
+  #cp-bar .cp-bar-q{display:grid;place-items:center;flex:none;width:44px;height:44px;border-radius:50%;border:2px solid rgba(255,255,255,.5);background:transparent;color:#fff;font:800 20px Archivo,Arial,sans-serif;cursor:pointer}
+  #cp-bar{gap:10px}
+}
+.cp-calc input{background:#fff!important;color:#14284b!important;border-color:#fff!important}
+.cp-calc input::placeholder{color:#6b7891}
+.cp-opts button[aria-pressed="true"]{background:#14284b!important;color:#fff!important;border-color:#14284b!important}
+.cp-opts button{border-color:#8a96ab!important}

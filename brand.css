@@ -356,3 +356,60 @@ a{color:var(--or-d)}a:hover{color:#9a330a}
 .cp-fourch td.n{white-space:nowrap;font-weight:700}
 @media (max-width:560px){.cp-fourch td.n{white-space:normal}}
 .cp-src{font-size:14px!important;color:var(--mute)}
+
+/* ===== Passe design (audit de 1 000 web designers, 30/10/2026) ===== */
+/* Quadrillage réservé aux bandeaux bleus, papier uni ailleurs */
+.gp{background:var(--paper2)}
+/* Rubans adhésifs : seulement sur le devis du haut de l'accueil */
+.devis::before,.devis::after{content:none}
+.live .devis::before,.live .devis::after{content:""}
+/* Un seul style de focus, partout */
+:focus-visible,.cp-calc input:focus-visible,.cp-form button:focus-visible,.cp-thumbs a:focus-visible{outline:3px solid var(--hl)!important;outline-offset:3px!important;box-shadow:0 0 0 7px #0a1d3a!important}
+/* L'orange plein est réservé à l'achat : chat et pré-diagnostic en marine ou en contour */
+#cp-chat-btn,#cp-chat-btn:hover{background:#14284b!important;color:#fff!important;box-shadow:0 0 0 2px rgba(255,255,255,.35),0 10px 24px -8px rgba(0,0,0,.5)!important}
+.cp-prediag a{background:transparent!important;color:#fff!important;border:2px solid #fff!important}
+.cp-prediag a:hover{background:#fff!important;color:var(--ink)!important}
+/* Petits textes : 13-14 px minimum, gris foncé */
+.cp-ml{font-size:13px!important}
+.cp-foot-bottom{font-size:14px!important}
+.cp-toc p,.cp-sidelinks p{font-size:13px!important;color:#475569!important}
+.devis .foot{font-size:13px;color:#5b6784}
+.cp-thumbs span{font-size:14px!important}
+.cp-reassure{font-size:15px!important;color:#475569!important}
+.bp .cp-reassure,.final2 .cp-reassure{color:#dde4f2!important}
+/* Pages longues : 18 px, colonne de lecture d'environ 68 caractères */
+.art p,.art li{font-size:18px;line-height:1.65}
+.art > p,.art > ul,.art > ol{max-width:68ch}
+/* La colonne latérale ne descend plus sous le bouton de chat */
+@media (min-width:961px){.cp-side{max-height:calc(100vh - 110px);overflow-y:auto;overscroll-behavior:contain}}
+/* Menu mobile */
+.cp-mnav{display:none;position:relative}
+.cp-mnav summary{list-style:none;cursor:pointer;display:flex;align-items:center;gap:8px;color:#fff;font-weight:700;font-size:15px;padding:9px 10px;border:1.5px solid rgba(255,255,255,.4);border-radius:3px}
+.cp-mnav summary::-webkit-details-marker{display:none}
+.cp-mnav .ham,.cp-mnav .ham::before,.cp-mnav .ham::after{display:block;width:16px;height:2px;background:#fff;border-radius:1px;position:relative}
+.cp-mnav .ham::before,.cp-mnav .ham::after{content:"";position:absolute;left:0}
+.cp-mnav .ham::before{top:-5px}.cp-mnav .ham::after{top:5px}
+.cp-mnav nav{position:absolute;right:0;top:calc(100% + 10px);min-width:240px;background:#fff;border-radius:4px;box-shadow:0 18px 40px -14px rgba(0,0,0,.55);padding:8px;display:flex;flex-direction:column;z-index:60}
+.cp-mnav nav a{color:var(--ink);text-decoration:none;font-weight:600;font-size:17px;padding:12px 14px;border-radius:3px}
+.cp-mnav nav a:hover{background:var(--paper2)}
+@media (max-width:760px){
+  .cp-mnav{display:block}
+  .cp-hd-in{gap:10px}
+  .logo{margin-right:auto}
+  .btn.xl{width:100%;justify-content:center;text-align:center;box-sizing:border-box}
+}
+/* Cartes travaux compactes sur mobile : 2 colonnes */
+@media (max-width:520px){
+  .jobs{grid-template-columns:repeat(2,1fr)!important;gap:10px!important}
+  .job{padding:16px 14px!important}
+  .job span{display:none}
+  .job b{font-size:17px}
+  .job i{font-size:14px}
+}
+@media (max-width:760px){
+  .cp-topnav a.btn{white-space:nowrap;font-size:13px;padding:9px 10px}
+  .cp-mnav summary{padding:8px 9px;font-size:14px}
+  #cp-bar span{font-size:13px}#cp-bar span b{font-size:15px}
+}
+@media (max-width:340px){.cp-topnav .btn{display:none!important}}
+@media (max-width:440px){.cp-mnav summary{font-size:0;gap:0;padding:11px 10px}}

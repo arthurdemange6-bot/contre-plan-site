@@ -72,7 +72,7 @@
     function fmt(v, d) { return v.toLocaleString('fr-FR', { minimumFractionDigits: d, maximumFractionDigits: d }); }
     function upd() {
       var m = parseFloat(String(input.value).replace(/\s/g, '').replace(',', '.'));
-      if (!m || m < 100) { out.innerHTML = 'Saisissez le montant TTC de votre devis.'; return; }
+      if (!m || m < 100) { out.innerHTML = 'Exemple : sur un devis de 8\u00a0000\u00a0€, l\'analyse à ' + fmt(price, 2) + '\u00a0€ représente <b>' + fmt(price / 8000 * 100, 2) + '\u00a0%</b> du montant. Saisissez le vôtre.'; return; }
       var pct = price / m * 100, ex = m * 0.05;
       out.innerHTML = 'L\'analyse à ' + fmt(price, 2) + '\u00a0€ représente <b>' + fmt(pct, pct < 0.1 ? 2 : 1) + '\u00a0%</b> de votre devis de ' + fmt(m, 0) + '\u00a0€.<br>À titre d\'exemple, un écart de prix de 5\u00a0% sur ce devis représente ' + fmt(ex, 0) + '\u00a0€.';
     }
@@ -83,7 +83,8 @@
   function bar() {
     if (!('IntersectionObserver' in window)) return;
     var b = document.createElement('div'); b.id = 'cp-bar';
-    b.innerHTML = '<span><b>Votre devis relu par un ingénieur</b>dès 16,50 €, rapport sous 48 h</span><a href="' + COMEUP + '" data-goatcounter-click="clic-comeup-barre">Faire analyser</a>';
+    b.innerHTML = '<span><b>Votre devis relu par un ingénieur</b>dès 16,50 €, rapport sous 48 h</span><button type="button" class="cp-bar-q" aria-label="Poser une question">?</button><a href="' + COMEUP + '" data-goatcounter-click="clic-comeup-barre">Faire analyser</a>';
+    b.querySelector('.cp-bar-q').addEventListener('click', function () { var c = document.getElementById('cp-chat-btn'); if (c) c.click(); });
     document.body.appendChild(b);
     var top = document.getElementById('top') || document.querySelector('header');
     var past = false, hide = 0;
