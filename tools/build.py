@@ -1194,9 +1194,9 @@ open(os.path.join(OUT, "merci.html"), "w").write(merci)
 # ---------- Commande directe (Stripe) : page de commande et page de confirmation
 # Liens de paiement Stripe (Payment Links). Redirection après paiement : https://contre-plan.com/commande-confirmee.html
 STRIPE = {
-    "1": "STRIPE_LIEN_1_DEVIS",
-    "2": "STRIPE_LIEN_2_DEVIS",
-    "3": "STRIPE_LIEN_3_DEVIS",
+    "1": "https://buy.stripe.com/28EaEZ1N22bE7b95g4cMM00",
+    "2": "https://buy.stripe.com/7sY4gBdvK2bE1QP37WcMM01",
+    "3": "https://buy.stripe.com/9B66oJ2R6cQi3YXfUIcMM02",
 }
 MSG_DEVIS = """Bonjour,
 Voici mon devis en pièce jointe.
