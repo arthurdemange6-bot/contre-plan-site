@@ -7,6 +7,7 @@ GC = '<script data-goatcounter="https://contreplan.goatcounter.com/count" async 
 PRIX_TXT = "16,50 €"
 PRIX_MENTION = ""
 COMEUP = "https://comeup.com/fr/service/549064/verifier-votre-devis-de-travaux-avant-signature-et-reperer-les-prix-abusifs-et-les-oublis"
+CMD = "commander.html"   # page de commande (paiement Stripe, ComeUp en second choix)
 BOOK = "https://calendar.app.google/6LCc6yKVHnbvA3WN7"
 NEWS = "https://docs.google.com/forms/d/e/1FAIpQLScS7zVctXEahK71wNv8hUGD-MjfyqH4h_l8EpJyYPLVM-ToAA/viewform"  # formulaire « Le conseil devis du mois »
 DATE = "2026-10-23"  # date de publication par défaut des guides existants
@@ -76,7 +77,7 @@ h1{{font-size:clamp(32px,5.5vw,48px)!important}}
 <a href="{root}index.html#tarifs">Tarifs</a>
 <a href="{root}comparer-ses-devis.html">Outils</a>
 <a href="{root}guides.html">Guides</a>
-<a class="btn" href="{COMEUP}" data-goatcounter-click="clic-comeup">Faire analyser<span class="lg"> mon devis</span></a>
+<a class="btn" href="{root}{CMD}" data-goatcounter-click="clic-commander">Faire analyser<span class="lg"> mon devis</span></a>
 </nav>
 <details class="cp-mnav"><summary><span class="ham" aria-hidden="true"></span>Menu</summary><nav aria-label="Menu"><a href="{root}index.html#rapport">Exemple de rapport</a><a href="{root}methode.html">Méthode</a><a href="{root}index.html#travaux">Travaux</a><a href="{root}index.html#tarifs">Tarifs</a><a href="{root}votre-cas.html">Votre cas est-il couvert ?</a><a href="{root}comparer-ses-devis.html">Outils</a><a href="{root}guides.html">Guides</a><a href="{root}contact.html">Contact</a></nav></details>
 </div>
@@ -92,7 +93,7 @@ def FOOTER(root=""):
         ("https://www.pinterest.fr/contreplan/", "Pinterest", "clic-pinterest")])
     return f"""<footer class="cp-foot"><div class="cp-foot-in">
 <div class="cp-foot-brand"><div class="cp-foot-logo">CONTRE-PLAN</div><p>Votre devis de travaux relu par un ingénieur BTP avant que vous signiez. 100 % à distance, indépendant de tout artisan.</p><div class="cp-socs">{soc}</div></div>
-<div class="cp-foot-col"><p>Le service</p>{L("methode.html","Ma méthode")}{L("engagements.html","Mes engagements")}{L("votre-cas.html","Votre cas est-il couvert ?")}{L("achat-avec-travaux.html","Achat avec travaux")}{L("professionnels.html","Professionnels")}{L("exemple-rapport-contre-plan.pdf","Exemple de rapport","telechargement-exemple-rapport")}{L("index.html#tarifs","Tarifs")}{L("contact.html","Contact")}<a href="{COMEUP}" data-goatcounter-click="clic-comeup">Commander sur ComeUp</a></div>
+<div class="cp-foot-col"><p>Le service</p>{L("methode.html","Ma méthode")}{L("engagements.html","Mes engagements")}{L("votre-cas.html","Votre cas est-il couvert ?")}{L("achat-avec-travaux.html","Achat avec travaux")}{L("professionnels.html","Professionnels")}{L("exemple-rapport-contre-plan.pdf","Exemple de rapport","telechargement-exemple-rapport")}{L("index.html#tarifs","Tarifs")}{L("contact.html","Contact")}<a href="commander.html" data-goatcounter-click="clic-commander-pied">Commander une analyse</a></div>
 <div class="cp-foot-col"><p>Par travaux</p>{L("analyse-devis-salle-de-bain.html","Salle de bain")}{L("analyse-devis-pompe-a-chaleur.html","Pompe à chaleur")}{L("analyse-devis-isolation.html","Isolation")}{L("analyse-devis-toiture.html","Toiture")}{''.join(L(j['slug'] + '.html', j['kicker']) for j in NG.JOB_PAGES)}{L("cas-fictifs.html","Cas fictifs")}</div>
 <div class="cp-foot-col"><p>Ressources</p>{L("guides.html","Guides")}{L("comparer-ses-devis.html","Tableau comparatif")}{L("modeles-messages-artisan.html","Modèles de messages")}{L("lexique-devis-travaux.html","Lexique")}{L("checklist-devis-travaux.pdf","Check-list PDF","telechargement-checklist")}<a href="{NEWS}" target="_blank" rel="noopener" data-goatcounter-click="clic-conseil-du-mois">Le conseil du mois par email</a></div>
 </div><div class="cp-foot-bottom"><span>© 2026 Contre-Plan</span><a href="{root}mentions-legales.html" class="cp-ml">Mentions légales</a><a href="{root}cgv.html" class="cp-ml">CGV</a><a href="{root}confidentialite.html" class="cp-ml">Confidentialité</a></div></footer>"""
@@ -109,11 +110,11 @@ CTA = f'''<aside class="cp-cta-box bp">
 <span class="tag">Avant de signer</span>
 <p class="t">Un devis à signer ? Faites-le relire par un ingénieur BTP.</p>
 <p>Prix poste par poste, oublis, TVA, conditions de paiement : rapport PDF sous 48 h, {PRIX_TXT}.</p>
-<div class="row"><a class="btn" href="{COMEUP}" data-goatcounter-click="clic-comeup">Faire analyser mon devis</a><a class="btn line" href="{BOOK}" data-goatcounter-click="clic-appel" target="_blank" rel="noopener">Appel gratuit de 15 min</a></div>
-<small>Commande sur ComeUp : compte gratuit, paiement conservé jusqu'à la livraison du rapport. Rapport PDF sous 48 h, aucun engagement envers l'artisan.</small>
+<div class="row"><a class="btn" href="{CMD}" data-goatcounter-click="clic-commander">Faire analyser mon devis</a><a class="btn line" href="{BOOK}" data-goatcounter-click="clic-appel" target="_blank" rel="noopener">Appel gratuit de 15 min</a></div>
+<small>Paiement par carte en 1 minute, sans compte. Rapport PDF sous 48 h, aucun engagement envers l'artisan.</small>
 </aside>'''
 
-SIDE = f"""<div class="cp-sidecard"><p class="t">Votre devis relu par un ingénieur BTP</p><p>Rapport PDF sous 48 h, prix poste par poste, oublis et questions à poser. Dès {PRIX_TXT}.</p><a class="cp-btn" href="{COMEUP}" data-goatcounter-click="clic-comeup-side">Faire analyser mon devis</a><a class="cp-sublink" href="exemple-rapport-contre-plan.pdf" target="_blank" rel="noopener" data-goatcounter-click="telechargement-exemple-rapport">Voir un exemple de rapport</a></div>
+SIDE = f"""<div class="cp-sidecard"><p class="t">Votre devis relu par un ingénieur BTP</p><p>Rapport PDF sous 48 h, prix poste par poste, oublis et questions à poser. Dès {PRIX_TXT}.</p><a class="cp-btn" href="{CMD}" data-goatcounter-click="clic-commander-side">Faire analyser mon devis</a><a class="cp-sublink" href="exemple-rapport-contre-plan.pdf" target="_blank" rel="noopener" data-goatcounter-click="telechargement-exemple-rapport">Voir un exemple de rapport</a></div>
 <div class="cp-sidelinks"><p>Outils gratuits</p><a href="index.html#test">Test : votre devis est-il complet ?</a><a href="comparer-ses-devis.html">Tableau comparatif de devis</a><a href="modeles-messages-artisan.html">Modèles de messages</a><a href="checklist-devis-travaux.pdf" download data-goatcounter-click="telechargement-checklist">Check-list à imprimer</a><a href="{NEWS}" target="_blank" rel="noopener" data-goatcounter-click="clic-conseil-du-mois">Le conseil du mois par email</a></div>"""
 
 def slug_id(t):
@@ -286,7 +287,7 @@ LITIGE_CTA = '''<aside class="cp-cta-box bp">
 <span class="tag">Pour vos prochains travaux</span>
 <p class="t">Un prochain devis à signer ? Faites-le relire avant.</p>
 <p>La plupart des dépassements se jouent au moment de la signature : forfait flou, ligne « selon état », supplément non chiffré. L'analyse les repère avant que vous vous engagiez. Elle n'intervient pas sur un chantier déjà en cours.</p>
-<div class="row"><a class="btn" href="''' + COMEUP + '''" data-goatcounter-click="clic-comeup">Faire analyser un nouveau devis</a><a class="btn line" href="modeles-messages-artisan.html">Modèles de messages</a></div>
+<div class="row"><a class="btn" href="''' + CMD + '''" data-goatcounter-click="clic-commander">Faire analyser un nouveau devis</a><a class="btn line" href="modeles-messages-artisan.html">Modèles de messages</a></div>
 </aside>'''
 LITIGE_NOTE = '''<aside class="cp-alert"><p class="t">Chantier en cours ou désaccord déjà engagé ?</p><p>Je n'interviens pas dans un litige en cours : l'analyse sert avant de signer. Ce guide vous donne les étapes à suivre vous-même (réclamation écrite, médiateur, conciliateur de justice), et un <a href="modeles-messages-artisan.html">modèle de message pour contester un supplément</a>.</p></aside>
 '''
@@ -428,7 +429,7 @@ JOBS = {
         ("Pourquoi un forfait plomberie pose-t-il problème ?",
          "Parce qu'il ne dit pas ce qui est fait. Demandez le détail : alimentations et évacuations refaites ou conservées, matériaux, raccordements, robinets d'arrêt accessibles. Sans ce détail, impossible de comparer deux devis ni de contester un oubli."),
         ("Comment faire relire mon devis de salle de bain ?",
-         "Commandez l'analyse sur ComeUp et envoyez votre devis en PDF ou en photo. Vous recevez sous 48 h un rapport qui reprend chaque poste : prix, quantités, oublis, TVA et questions à poser à l'artisan avant de signer."),
+         "Commandez l'analyse en ligne et envoyez votre devis en PDF ou en photo. Vous recevez sous 48 h un rapport qui reprend chaque poste : prix, quantités, oublis, TVA et questions à poser à l'artisan avant de signer."),
     ]),
     "analyse-devis-pompe-a-chaleur": ("Analyse de devis de pompe à chaleur", [
         ("Comment savoir si la puissance de la pompe à chaleur est adaptée ?",
@@ -436,7 +437,7 @@ JOBS = {
         ("L'entreprise doit-elle être RGE ?",
          "Oui si vous comptez sur MaPrimeRénov' ou sur une prime CEE : la qualification RGE est obligatoire pour ces travaux. Vérifiez-la sur france-renov.gouv.fr, et vérifiez aussi que l'entreprise détient l'attestation de capacité pour manipuler les fluides frigorigènes."),
         ("Comment faire relire mon devis de pompe à chaleur ?",
-         "Commandez l'analyse sur ComeUp et envoyez votre devis en PDF ou en photo. Le rapport, livré sous 48 h, vérifie le dimensionnement annoncé, les postes techniques oubliés, la TVA et les aides déduites."),
+         "Commandez l'analyse en ligne et envoyez votre devis en PDF ou en photo. Le rapport, livré sous 48 h, vérifie le dimensionnement annoncé, les postes techniques oubliés, la TVA et les aides déduites."),
     ]),
     "analyse-devis-isolation": ("Analyse de devis d'isolation", [
         ("Quelle résistance thermique doit figurer sur un devis d'isolation des combles ?",
@@ -444,7 +445,7 @@ JOBS = {
         ("Le prix au m² suffit-il pour comparer deux devis d'isolation ?",
          "Non. Sans résistance thermique, épaisseur après tassement et préparation prévue (retrait de l'ancien isolant, traitement des spots et des conduits), deux prix au m² ne parlent pas de la même chose."),
         ("Comment faire relire mon devis d'isolation ?",
-         "Commandez l'analyse sur ComeUp et envoyez votre devis en PDF ou en photo. Le rapport, livré sous 48 h, vérifie les surfaces, la performance de l'isolant, l'éligibilité aux aides et la TVA."),
+         "Commandez l'analyse en ligne et envoyez votre devis en PDF ou en photo. Le rapport, livré sous 48 h, vérifie les surfaces, la performance de l'isolant, l'éligibilité aux aides et la TVA."),
     ]),
     "analyse-devis-toiture": ("Analyse de devis de toiture", [
         ("Que signifie « selon état » sur un devis de toiture ?",
@@ -452,7 +453,7 @@ JOBS = {
         ("Faut-il une autorisation pour refaire sa toiture ?",
          "Une réfection à l'identique n'en demande en général pas. Si l'aspect extérieur change (matériau, couleur, ajout de fenêtres de toit), une déclaration préalable en mairie est en principe nécessaire, et le PLU peut imposer des règles."),
         ("Comment faire relire mon devis de toiture ?",
-         "Commandez l'analyse sur ComeUp et envoyez votre devis en PDF ou en photo. Le rapport, livré sous 48 h, vérifie les surfaces, l'échafaudage, la zinguerie, les lignes « selon état » et les questions à poser au couvreur."),
+         "Commandez l'analyse en ligne et envoyez votre devis en PDF ou en photo. Le rapport, livré sous 48 h, vérifie les surfaces, l'échafaudage, la zinguerie, les lignes « selon état » et les questions à poser au couvreur."),
     ]),
 }
 
@@ -520,7 +521,7 @@ def page(slug, title, h1, desc, lead, body, kicker, toc=True):
         svc = {"@context":"https://schema.org","@type":"Service","name":service,"serviceType":"Analyse de devis de travaux","description":desc,"url":url,
                "areaServed":{"@type":"Country","name":"France"},
                "provider":{"@type":"ProfessionalService","name":"Contre-Plan","url":"https://contre-plan.com/"},
-               "offers":{"@type":"Offer","price":PRIX,"priceCurrency":"EUR","url":COMEUP}}
+               "offers":{"@type":"Offer","price":PRIX,"priceCurrency":"EUR","url":"https://contre-plan.com/commander.html"}}
         extra += '\n<script type="application/ld+json">' + json.dumps(svc, ensure_ascii=False) + '</script>\n' + faq_ld(qa)
         body = with_faq(body, qa, before='<div class="note"><p><b>Vous avez un devis')
     body = with_links(body, slug, before='<div class="note"><p><b>Vous avez un devis')
@@ -756,7 +757,7 @@ page("engagements",
 <h2>Délais</h2>
 <ul><li>Rapport sous 48 h, ou 24 h avec l'option express, à compter de la réception de votre devis complet.</li><li>Un échange de suivi est inclus : vous pouvez me poser une question après lecture du rapport.</li><li>Si un document manque ou est illisible, je vous le signale dès réception.</li></ul>
 <h2>Commande et paiement</h2>
-<p>Les commandes et le paiement passent par la plateforme ComeUp, selon ses conditions générales. Vous n'avez rien à régler en dehors de la plateforme.</p>
+<p>Le paiement se fait par carte sur ce site, via Stripe, ou sur la plateforme ComeUp si vous la préférez. Vous ne payez qu'une fois, au moment de la commande.</p>
 <h2>Portée de cette analyse</h2>
 <p>Cette analyse est un avis technique établi à distance, uniquement à partir des documents et informations que vous avez transmis. Elle ne comprend pas de visite du chantier : les éléments non visibles ou non communiqués (état réel des supports et des réseaux, présence d'amiante, contraintes de copropriété ou d'urbanisme…) ne peuvent pas être évalués.</p>
 <p>Les prix de référence cités sont des fourchettes indicatives. Ils varient selon la région, l'accès au chantier et les matériaux choisis.</p>
@@ -929,9 +930,9 @@ page("professionnels",
 <h2>Qui relit les devis</h2>
 <p>Un ingénieur BTP, dix ans sur les chantiers et environ 1 000 devis lus et négociés, côté entreprise comme côté client. Contre-Plan est une entreprise individuelle immatriculée dans les Vosges (SIRET 132 070 426 00011), rattachée au médiateur de la consommation CM2C. La méthode de contrôle est décrite en détail sur la page <a href="methode.html">ma méthode</a>.</p>
 <h2>Comment ça se passe pour votre client</h2>
-<ol><li><b>Il commande sur ComeUp</b>, une plateforme française de services : compte gratuit en 2 minutes, paiement par carte sécurisé.</li>
-<li><b>Il envoie son devis</b> dans la messagerie de la commande, en PDF ou en photo, nom et adresse masquables.</li>
-<li><b>Il reçoit le rapport</b> dans la même messagerie, sous 48 h.</li></ol>
+<ol><li><b>Il commande en ligne</b> sur contre-plan.com : paiement par carte en 1 minute, sans compte (ou sur la plateforme ComeUp s'il préfère).</li>
+<li><b>Il envoie son devis</b> par e-mail, en PDF ou en photo, nom et adresse masquables.</li>
+<li><b>Il reçoit le rapport</b> par e-mail, sous 48 h.</li></ol>
 <p>Une hésitation ? Il peut d'abord demander un <a href="contact.html?sujet=prediagnostic">pré-diagnostic gratuit</a>, sans compte ni paiement.</p>
 <h2>Plusieurs devis ou plusieurs lots</h2>
 <p>Chaque devis transmis fait l'objet d'une analyse. Un acquéreur qui a un devis d'isolation, un d'électricité et un de salle de bain transmet donc ses trois devis dans la même commande, avec les options « Devis supplémentaire » et « Troisième devis ». Pour plusieurs devis concurrents sur les mêmes travaux, l'option « comparatif » livre en plus un tableau poste par poste. Les tarifs détaillés sont sur la <a href="index.html#tarifs">page d'accueil</a>.</p>
@@ -974,7 +975,7 @@ _ml = f"""<style>.cp-ml-page,.cp-ml-page p{{font-size:11px!important;line-height
 <h2 style="font-size:12px;margin:12px 0 2px;color:#14284b">Hébergement</h2>
 <p style="margin:0">GitHub, Inc. (service GitHub Pages), 88 Colin P. Kelly Jr. Street, San Francisco, CA 94107, États-Unis. Téléphone : +1 415 857 5430.</p>
 <h2 style="font-size:12px;margin:12px 0 2px;color:#14284b">Commandes</h2>
-<p style="margin:0">Les prestations sont commandées et payées sur la plateforme ComeUp, selon ses conditions générales, et selon les <a href="cgv.html">conditions générales de vente</a> de Contre-Plan. Médiateur de la consommation : CM2C (Centre de la Médiation de la Consommation de Conciliateurs de Justice), 49 rue de Ponthieu, 75008 Paris, <a href="https://www.cm2c.net/declarer-un-litige.php" target="_blank" rel="noopener">www.cm2c.net</a>, litiges@cm2c.net. Après une réclamation écrite restée sans réponse satisfaisante, vous pouvez recourir gratuitement à cette médiation.</p>
+<p style="margin:0">Les prestations sont commandées et payées sur contre-plan.com (paiement par Stripe) ou sur la plateforme ComeUp, selon les <a href="cgv.html">conditions générales de vente</a> de Contre-Plan. Médiateur de la consommation : CM2C (Centre de la Médiation de la Consommation de Conciliateurs de Justice), 49 rue de Ponthieu, 75008 Paris, <a href="https://www.cm2c.net/declarer-un-litige.php" target="_blank" rel="noopener">www.cm2c.net</a>, litiges@cm2c.net. Après une réclamation écrite restée sans réponse satisfaisante, vous pouvez recourir gratuitement à cette médiation.</p>
 <h2 style="font-size:12px;margin:12px 0 2px;color:#14284b">Données personnelles</h2>
 <p style="margin:0">Ce site ne dépose aucun cookie. Responsable du traitement : {PL.NOM_EXPLOITANT} (EI). Le détail des données collectées, de leur durée de conservation et de vos droits figure dans la <a href="confidentialite.html">politique de confidentialité</a>. Pour toute demande : contact@contre-plan.com.</p>
 <h2 style="font-size:12px;margin:12px 0 2px;color:#14284b">Propriété intellectuelle</h2>
@@ -1148,7 +1149,7 @@ open(os.path.join(OUT, "guides.html"), "w").write(idx)
 FORM_ACTION = "https://docs.google.com/forms/d/e/1FAIpQLScKwDm4HbZRdSL-ztX3gq3D7E7z_C8HTu44G3CKTzHwInyvyQ/formResponse"
 contact_body = f"""<p>Une question sur le service, sur un devis ou sur un guide ? Écrivez-moi ici, je réponds sous 24 h à l'adresse que vous indiquez.</p>
 <p><b>Pas sûr que votre devis vaille une analyse ?</b> Choisissez « Pré-diagnostic gratuit » et décrivez-le en 3 lignes (type de travaux, montant, ce qui vous inquiète) : je vous dis gratuitement si une analyse vaut le coup.</p>
-<p class="cp-form-note">Pour faire analyser un devis, passez directement par <a href="{COMEUP}" data-goatcounter-click="clic-comeup-contact">ComeUp</a> : c'est là que vous l'envoyez et que vous recevez le rapport. N'envoyez pas votre devis par ce formulaire.</p>
+<p class="cp-form-note">Pour faire analyser un devis, <a href="{CMD}" data-goatcounter-click="clic-commander-contact">commandez en ligne</a> : vous m'envoyez ensuite le devis par e-mail. N'envoyez pas votre devis par ce formulaire.</p>
 <div class="cp-form-ok" id="cp-form-ok" role="status" aria-live="polite" tabindex="-1" hidden></div>
 <form class="cp-form" action="{FORM_ACTION}" method="POST" accept-charset="UTF-8">
 <input type="text" id="cp-hp" class="cp-hp" tabindex="-1" autocomplete="off" aria-hidden="true">
@@ -1189,6 +1190,79 @@ page("contact", "Contact | Contre-Plan", "Me contacter",
 
 merci = head("Message envoyé | Contre-Plan", "Votre message a bien été envoyé.", "https://contre-plan.com/merci.html").replace('<meta property="og:type" content="article">','<meta name="robots" content="noindex">') + pagehero("Contact", "Message envoyé", "Merci, votre message est bien parti. Je vous réponds sous 24 h à l'adresse indiquée.", None, [("Accueil", "index.html"), ("Contact", "contact.html"), ("Message envoyé", None)]) + layout(f"""<p>En attendant, vous pouvez déjà vérifier votre devis avec les <a href="guides.html">guides et outils gratuits</a>, ou le <a href="lexique-devis-travaux.html">lexique du devis</a>.</p>""", False) + footer()
 open(os.path.join(OUT, "merci.html"), "w").write(merci)
+
+# ---------- Commande directe (Stripe) : page de commande et page de confirmation
+# Liens de paiement Stripe (Payment Links). Redirection après paiement : https://contre-plan.com/commande-confirmee.html
+STRIPE = {
+    "1": "STRIPE_LIEN_1_DEVIS",
+    "2": "STRIPE_LIEN_2_DEVIS",
+    "3": "STRIPE_LIEN_3_DEVIS",
+}
+MSG_DEVIS = """Bonjour,
+Voici mon devis en pièce jointe.
+Formule payée : …
+E-mail utilisé pour le paiement : …
+Travaux : …
+Je dois répondre à l'artisan avant le : …
+Ce qui m'inquiète : …
+Je demande que l'analyse commence tout de suite, et je reconnais que je ne pourrai plus me rétracter une fois le rapport livré."""
+from urllib.parse import quote as _q
+MAILTO = "mailto:contact@contre-plan.com?subject=" + _q("Mon devis à analyser") + "&body=" + _q(MSG_DEVIS)
+def _envoi(id_):
+    return f'''<div class="cp-tpl cp-msg"><pre id="{id_}">{html.escape(MSG_DEVIS)}</pre>
+<div class="cp-ord-act"><a class="btn dark" href="{MAILTO}" data-goatcounter-click="ouvrir-mail-devis">Ouvrir mon e-mail avec ce message</a><button type="button" class="cp-copy" data-copy="{id_}" data-goatcounter-click="copie-message-devis">Copier le message</button></div>
+<p class="note-s">Envoyez-le à <b>contact@contre-plan.com</b>, devis en pièce jointe (PDF ou photo nette). Vous pouvez masquer votre nom et votre adresse. La dernière phrase est l'accord prévu à l'<a href="cgv.html#retractation">article 6 des conditions de vente</a> : sans lui, je dois vous le demander avant de commencer, ce qui retarde le rapport.</p></div>'''
+
+def _f(v, titre, desc, prix, combo):
+    chk = " checked" if v == "1" else ""
+    return f'''<label class="cp-opt"><input type="radio" name="formule" value="{v}"{chk} data-href="{STRIPE[v]}" data-prix="{prix}"><span class="d"><b>{titre}</b><small>{desc}</small></span><span class="p">{prix}</span></label>'''
+
+ORDER = f'''<main id="contenu" class="cp-order">
+<div class="cp-order-in">
+<section class="cp-ord-box" aria-labelledby="t-formule">
+<h2 id="t-formule"><span class="n">1</span>Choisissez votre formule</h2>
+<div class="cp-opts-f" role="radiogroup" aria-labelledby="t-formule">
+{_f("1", "1 devis", "Un devis à signer. Rapport PDF sous 48 h.", "16,50 €", "ne cochez aucune option.")}
+{_f("2", "2 devis comparés", "Deux entreprises pour les mêmes travaux : les deux devis analysés, un tableau poste par poste et une recommandation.", "44 €", "cochez « Devis supplémentaire » et « Comparatif ».")}
+{_f("3", "3 devis comparés", "Trois entreprises pour les mêmes travaux, avec le même comparatif.", "55 €", "cochez « Devis supplémentaire », « Troisième devis » et « Comparatif ».")}
+</div>
+<p class="cp-ord-plus">Sur la page de paiement, vous pourrez ajouter <b>l'express 24 h</b> (+ 5,50 €) et, avec la formule 1 devis, <b>des devis pour des travaux différents</b> (+ 11 € par devis).</p>
+<a class="btn xl shine" id="cp-pay" href="{STRIPE["1"]}" data-goatcounter-click="clic-stripe"><span>Payer <span class="pp">16,50 €</span> par carte</span> <span class="arr" aria-hidden="true">→</span></a>
+<p class="cp-ord-sec">Paiement sécurisé par Stripe, sans compte à créer. Vos données de carte ne me sont jamais transmises. Facture envoyée par e-mail. En payant, vous acceptez les <a href="cgv.html">conditions générales de vente</a>.</p>
+</section>
+
+<section class="cp-ord-box" aria-labelledby="t-envoi">
+<h2 id="t-envoi"><span class="n">2</span>Envoyez votre devis par e-mail</h2>
+<p>Juste après le paiement, envoyez votre devis avec ce message. Le délai de 48 h (ou 24 h en express) part de la réception du devis complet.</p>
+{_envoi("msg-devis")}
+</section>
+
+<section class="cp-ord-box" aria-labelledby="t-rapport">
+<h2 id="t-rapport"><span class="n">3</span>Recevez le rapport</h2>
+<p>Le rapport PDF arrive par e-mail : verdict, prix poste par poste, oublis, TVA et questions à poser à l'artisan. Une question de suivi est incluse. <a href="index.html#rapport">Voir un exemple de rapport</a></p>
+</section>
+
+<div class="cp-ord-side">
+<div class="cp-ord-note"><p class="t">Devis de plus de 30 000 € ou rénovation complète ?</p><p>Demandez d'abord le <a href="contact.html?sujet=prediagnostic">pré-diagnostic gratuit</a> : je vous annonce le prix avant toute commande.</p></div>
+<div class="cp-ord-note"><p class="t">Vous préférez passer par ComeUp ?</p><p>Même prix, compte gratuit. La plateforme conserve le paiement jusqu'à la livraison du rapport, et vous envoyez le devis dans la messagerie de la commande. Options à cocher :</p><ul><li>1 devis : aucune ;</li><li>2 devis comparés : « Devis supplémentaire » et « Comparatif » ;</li><li>3 devis comparés : « Devis supplémentaire », « Troisième devis » et « Comparatif ».</li></ul><a href="{COMEUP}" data-goatcounter-click="clic-comeup-commander">Commander sur ComeUp</a></div>
+<p class="cp-ord-legal">Droit de rétractation de 14 jours, dans les conditions de l'<a href="cgv.html#retractation">article 6 des CGV</a>. Médiateur de la consommation : CM2C. TVA non applicable, article 293 B du CGI.</p>
+</div>
+</div>
+</main>
+'''
+_cmd = head("Commander une analyse de devis | Contre-Plan", "Commandez l'analyse de votre devis de travaux : paiement par carte en 1 minute, devis envoyé par e-mail, rapport PDF sous 48 h.", "https://contre-plan.com/commander.html") + pagehero("Commander", "Commander votre analyse", "Paiement par carte en 1 minute, sans compte. Vous m'envoyez ensuite votre devis par e-mail, et le rapport arrive sous 48 h.", None, [("Accueil", "index.html"), ("Commander", None)]) + ORDER + footer()
+open(os.path.join(OUT, "commander.html"), "w").write(_cmd)
+PAGES.append("commander")
+
+_ok = head("Paiement reçu | Contre-Plan", "Votre paiement est bien reçu : envoyez maintenant votre devis par e-mail.", "https://contre-plan.com/commande-confirmee.html").replace('<meta property="og:type" content="article">','<meta name="robots" content="noindex">') + pagehero("Commande", "Paiement reçu, merci", "Dernière étape : envoyez-moi votre devis par e-mail. Le rapport arrive sous 48 h après sa réception (24 h en express).", None, [("Accueil", "index.html"), ("Paiement reçu", None)]) + f'''<main id="contenu" class="cp-order"><div class="cp-order-in">
+<section class="cp-ord-box"><h2><span class="n">2</span>Envoyez votre devis par e-mail</h2>
+<p>Depuis l'adresse utilisée pour payer, ou en l'indiquant dans le message.</p>
+{_envoi("msg-devis-ok")}
+</section>
+<section class="cp-ord-box"><h2><span class="n">3</span>Recevez le rapport</h2><p>La facture vous arrive par e-mail de la part de Stripe. Le rapport PDF arrive par e-mail sous 48 h après réception du devis complet. Pensez à regarder vos courriers indésirables. Une question ? Répondez simplement à mon e-mail ou écrivez à contact@contre-plan.com.</p></section>
+</div></main>
+''' + footer()
+open(os.path.join(OUT, "commande-confirmee.html"), "w").write(_ok)
 
 # ---------- 404 (absolute paths: served at any URL)
 p404 = head("Page introuvable | Contre-Plan", "Cette page n'existe pas ou a été déplacée.", "https://contre-plan.com/404.html", root="/").replace('<meta property="og:type" content="article">','<meta name="robots" content="noindex">') + f'''<main id="contenu" class="bp" style="min-height:60vh">

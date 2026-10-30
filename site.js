@@ -1,7 +1,7 @@
 /* Éléments interactifs Contre-Plan (fonctionnent avec ou sans animations) */
 (function () {
   var NEWS = 'https://docs.google.com/forms/d/e/1FAIpQLScS7zVctXEahK71wNv8hUGD-MjfyqH4h_l8EpJyYPLVM-ToAA/viewform';
-  var COMEUP = 'https://comeup.com/fr/service/549064/verifier-votre-devis-de-travaux-avant-signature-et-reperer-les-prix-abusifs-et-les-oublis';
+  var COMEUP = 'commander.html';
   var reduce = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
   function each(l, f) { Array.prototype.forEach.call(l, f); }
   function gc(path) { try { if (window.goatcounter && goatcounter.count) goatcounter.count({ path: path, title: path, event: true }); } catch (e) {} }
@@ -39,7 +39,7 @@
       else { h = n + ' points à vérifier : ne signez pas en l\'état.'; p = 'Ce sont autant de sources de suppléments ou de litiges. À faire préciser par écrit avant de vous engager :'; }
       res.innerHTML = '<h3>' + h + '</h3><p>' + p + '</p>' + (n ? '<ul>' + issues.map(function (t) { return '<li>' + t + '</li>'; }).join('') + '</ul>' : '') +
         '<p>Je peux relire votre devis ligne par ligne et vous dire précisément quoi demander.</p>' +
-        '<a class="cp-cta" href="' + COMEUP + '" data-goatcounter-click="clic-comeup-test">Faire analyser mon devis</a>' +
+        '<a class="cp-cta" href="' + COMEUP + '" data-goatcounter-click="clic-commander-test">Faire analyser mon devis</a>' +
         '<p class="cp-more">Pas encore prêt ? <a href="contact.html?sujet=prediagnostic&amp;test=' + encodeURIComponent(summary()) + '" data-goatcounter-click="clic-prediagnostic-test">Envoyer ces réponses en pré-diagnostic gratuit</a>' +
         '<a href="' + NEWS + '" target="_blank" rel="noopener" data-goatcounter-click="clic-conseil-du-mois-test">Recevoir le conseil devis du mois par e-mail</a></p>';
       res.classList.add('on');
@@ -91,7 +91,7 @@
   function bar() {
     if (!('IntersectionObserver' in window)) return;
     var b = document.createElement('div'); b.id = 'cp-bar';
-    b.innerHTML = '<span><b>Relu par un ingénieur</b>16,50 € · rapport 48 h</span><button type="button" class="cp-bar-q"><svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>Question</button><a href="' + COMEUP + '" data-goatcounter-click="clic-comeup-barre">Faire analyser</a>';
+    b.innerHTML = '<span><b>Relu par un ingénieur</b>16,50 € · rapport 48 h</span><button type="button" class="cp-bar-q"><svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>Question</button><a href="' + COMEUP + '" data-goatcounter-click="clic-commander-barre">Faire analyser</a>';
     b.querySelector('.cp-bar-q').addEventListener('click', function () { var c = document.getElementById('cp-chat-btn'); if (c) c.click(); });
     document.body.appendChild(b);
     var top = document.getElementById('top') || document.querySelector('header');
@@ -127,7 +127,7 @@
     var w = document.querySelector('.cp-when'); if (!w) return;
     var r = w.querySelector('.r');
     var T = {
-      vite: 'Prenez l\'option express : le rapport arrive en 24 h, à temps pour répondre à l\'artisan. <a href="' + COMEUP + '" data-goatcounter-click="clic-comeup-quand-vite">Commander avec l\'express</a>',
+      vite: 'Prenez l\'option express (+ 5,50 €, à ajouter sur la page de paiement) : le rapport arrive en 24 h, à temps pour répondre à l\'artisan. <a href="' + COMEUP + '" data-goatcounter-click="clic-commander-quand-vite">Commander avec l\'express</a>',
       plus: 'L\'analyse standard suffit : rapport sous 48 h. Vous pouvez d\'abord faire <a href="#test">le test en 1 minute</a>.',
       signe: 'Signé chez vous ou à distance ? Vous avez en principe 14 jours pour vous rétracter, et l\'analyse vous aide à décider à temps. <a href="guide-annuler-devis-signe-retractation.html">Vos droits</a>'
     };
@@ -138,7 +138,22 @@
       });
     });
   }
-  function start() { test(); slider(); calc(); bar(); copy(); when(); }
+  /* ---------- Page de commande : la formule choisie règle le bouton de paiement ---------- */
+  function order() {
+    var pay = document.getElementById('cp-pay'); if (!pay) return;
+    each(document.querySelectorAll('.cp-opt input'), function (r) {
+      r.addEventListener('change', function () {
+        if (!r.checked) return;
+        pay.href = r.getAttribute('data-href');
+        pay.querySelector('.pp').textContent = r.getAttribute('data-prix');
+        pay.setAttribute('data-goatcounter-click', 'clic-stripe-' + r.value);
+        gc('formule-' + r.value);
+      });
+    });
+    var m = location.search.match(/[?&]formule=([123])/);
+    if (m) { var r = document.querySelector('.cp-opt input[value="' + m[1] + '"]'); if (r) { r.checked = true; r.dispatchEvent(new Event('change')); } }
+  }
+  function start() { test(); slider(); calc(); bar(); copy(); when(); order(); }
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', start); else start();
 
   (function () {

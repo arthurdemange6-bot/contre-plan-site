@@ -309,7 +309,7 @@ JOB_PAGES.append(dict(
   ("Que doit détailler un devis de terrasse béton ?",
    "Le décaissement et l'évacuation des terres, le hérisson, l'épaisseur et le ferraillage de la dalle, la pente, les joints et la finition, avec une quantité et un prix pour chaque poste."),
   ("Comment faire relire mon devis de terrasse ?",
-   "Envoyez-le en PDF ou en photo après avoir commandé l'analyse sur ComeUp : vous recevez sous 48 h un rapport avec les postes manquants, les prix à vérifier et les questions à poser."),
+   "Envoyez-le en PDF ou en photo après avoir commandé l'analyse en ligne : vous recevez sous 48 h un rapport avec les postes manquants, les prix à vérifier et les questions à poser."),
  ],
 ))
 
@@ -412,7 +412,7 @@ JOB_PAGES.append(dict(
   ("Quelle TVA pour un remplacement de chauffe-eau ?",
    "Dans un logement de plus de 2 ans, en principe 10 % pour un chauffe-eau électrique classique et sa pose, et 5,5 % pour un chauffe-eau thermodynamique qui répond aux critères de performance."),
   ("Comment faire relire mon devis de plomberie ?",
-   "Envoyez-le en PDF ou en photo après avoir commandé l'analyse sur ComeUp : vous recevez sous 48 h un rapport avec les postes à détailler, les oublis et les questions à poser."),
+   "Envoyez-le en PDF ou en photo après avoir commandé l'analyse en ligne : vous recevez sous 48 h un rapport avec les postes à détailler, les oublis et les questions à poser."),
  ],
 ))
 
@@ -446,7 +446,7 @@ JOB_PAGES.append(dict(
   ("Faut-il compter des chutes sur un devis de carrelage ?",
    "Oui, une marge est normale, plus forte pour une pose en diagonale ou en grand format. Elle doit apparaître clairement, en quantité ou en pourcentage."),
   ("Comment faire relire mon devis de carrelage ?",
-   "Envoyez-le en PDF ou en photo après avoir commandé l'analyse sur ComeUp : vous recevez sous 48 h un rapport avec les postes manquants, les quantités à vérifier et les questions à poser."),
+   "Envoyez-le en PDF ou en photo après avoir commandé l'analyse en ligne : vous recevez sous 48 h un rapport avec les postes manquants, les quantités à vérifier et les questions à poser."),
  ],
 ))
 
@@ -476,7 +476,7 @@ JOB_PAGES.append(dict(
   ("Comment repérer un devis photovoltaïque douteux ?",
    "Une production ou des économies présentées comme garanties, une offre « autofinancée », un financement signé le jour même ou l'absence de détail sur le matériel sont des signaux d'alerte."),
   ("Comment faire relire mon devis de panneaux solaires ?",
-   "Envoyez-le en PDF ou en photo après avoir commandé l'analyse sur ComeUp : vous recevez sous 48 h un rapport avec les points à vérifier et les questions à poser."),
+   "Envoyez-le en PDF ou en photo après avoir commandé l'analyse en ligne : vous recevez sous 48 h un rapport avec les points à vérifier et les questions à poser."),
  ],
 ))
 
@@ -510,7 +510,7 @@ JOB_PAGES.append(dict(
   ("La VMC peut-elle rejeter l'air dans les combles ?",
    "Non, l'air extrait doit être rejeté vers l'extérieur, par une sortie de toiture ou de mur. Vérifiez que le devis prévoit ce rejet."),
   ("Comment faire relire mon devis de VMC ?",
-   "Envoyez-le en PDF ou en photo après avoir commandé l'analyse sur ComeUp : vous recevez sous 48 h un rapport avec les points à vérifier et les questions à poser."),
+   "Envoyez-le en PDF ou en photo après avoir commandé l'analyse en ligne : vous recevez sous 48 h un rapport avec les points à vérifier et les questions à poser."),
  ],
 ))
 
@@ -543,7 +543,7 @@ JOB_PAGES.append(dict(
   ("Faut-il une autorisation pour ouvrir un mur porteur ?",
    "En copropriété, en principe celle de l'assemblée générale. Si la façade est modifiée, une déclaration préalable en mairie peut aussi être nécessaire."),
   ("Comment faire relire mon devis d'ouverture de mur porteur ?",
-   "Envoyez-le en PDF ou en photo après avoir commandé l'analyse sur ComeUp : vous recevez sous 48 h un rapport avec les postes manquants et les questions à poser."),
+   "Envoyez-le en PDF ou en photo après avoir commandé l'analyse en ligne : vous recevez sous 48 h un rapport avec les postes manquants et les questions à poser."),
  ],
 ))
 
@@ -578,7 +578,7 @@ JOB_PAGES.append(dict(
   ("Quelle TVA pour une véranda ?",
    "20 %, comme toute extension qui crée de la surface, quel que soit l'âge de la maison."),
   ("Comment faire relire mon devis de véranda ?",
-   "Envoyez-le en PDF ou en photo après avoir commandé l'analyse sur ComeUp : vous recevez sous 48 h un rapport avec les postes manquants, les points d'étanchéité à vérifier et les questions à poser."),
+   "Envoyez-le en PDF ou en photo après avoir commandé l'analyse en ligne : vous recevez sous 48 h un rapport avec les postes manquants, les points d'étanchéité à vérifier et les questions à poser."),
  ],
 ))
 
@@ -612,7 +612,7 @@ JOB_PAGES.append(dict(
   ("Quelle sécurité est obligatoire autour d'une piscine ?",
    "Pour une piscine enterrée privative non close, au moins un dispositif normalisé : barrière, alarme, couverture ou abri. Le devis doit préciser lequel."),
   ("Comment faire relire mon devis de piscine ?",
-   "Envoyez-le en PDF ou en photo après avoir commandé l'analyse sur ComeUp : vous recevez sous 48 h un rapport avec les postes manquants et les questions à poser. Pour un devis de plus de 30 000 €, demandez d'abord le pré-diagnostic gratuit."),
+   "Envoyez-le en PDF ou en photo après avoir commandé l'analyse en ligne : vous recevez sous 48 h un rapport avec les postes manquants et les questions à poser. Pour un devis de plus de 30 000 €, demandez d'abord le pré-diagnostic gratuit."),
  ],
 ))
 
@@ -646,6 +646,6 @@ JOB_PAGES.append(dict(
   ("Que doit dire le devis sur le conduit de fumée ?",
    "S'il est tubé ou neuf, sa référence, les distances de sécurité aux matériaux combustibles, la sortie de toit et la reprise d'étanchéité, ainsi que l'amenée d'air du poêle."),
   ("Comment faire relire mon devis de poêle ?",
-   "Envoyez-le en PDF ou en photo après avoir commandé l'analyse sur ComeUp : vous recevez sous 48 h un rapport avec les postes manquants et les questions à poser."),
+   "Envoyez-le en PDF ou en photo après avoir commandé l'analyse en ligne : vous recevez sous 48 h un rapport avec les postes manquants et les questions à poser."),
  ],
 ))
