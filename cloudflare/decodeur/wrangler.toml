@@ -1,0 +1,11 @@
+name = "contre-plan-decodeur"
+main = "worker.js"
+compatibility_date = "2026-10-01"
+
+# 5 décodages par minute et par visiteur (adresse IP), pour éviter qu'un robot vide les crédits.
+[[ratelimits]]
+name = "RL"
+namespace_id = "1001"
+simple = { limit = 5, period = 60 }
+
+# La clé API se met en secret, jamais ici :  npx wrangler secret put ANTHROPIC_API_KEY
