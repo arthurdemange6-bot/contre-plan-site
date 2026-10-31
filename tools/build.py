@@ -1,6 +1,7 @@
 import json, html, os, re, sys
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import nouveaux_guides as NG  # guides et pages ajoutés en octobre 2026
+import decodeur as DEC  # outil gratuit « Décodeur de ligne de devis » (publié seulement si DEC.DECODEUR_URL est rempli)
 OUT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))  # racine du site
 GC = '<script data-goatcounter="https://contreplan.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>'
 # Prix affiché partout : changer ici (et lancer tools/changer_prix.py pour index.html, chat.js, site.js)
@@ -114,8 +115,9 @@ CTA = f'''<aside class="cp-cta-box bp">
 <small>Paiement par carte en 1 minute, sans compte. Rapport PDF sous 48 h, aucun engagement envers l'artisan.</small>
 </aside>'''
 
+DEC_SIDE = '<a href="decodeur-ligne-devis.html">Décodeur de ligne de devis</a>' if DEC.DECODEUR_URL else ""
 SIDE = f"""<div class="cp-sidecard"><p class="t">Votre devis relu par un ingénieur BTP</p><p>Rapport PDF sous 48 h, prix poste par poste, oublis et questions à poser. Dès {PRIX_TXT}.</p><a class="cp-btn" href="{CMD}" data-goatcounter-click="clic-commander-side">Faire analyser mon devis</a><a class="cp-sublink" href="exemple-rapport-contre-plan.pdf" target="_blank" rel="noopener" data-goatcounter-click="telechargement-exemple-rapport">Voir un exemple de rapport</a></div>
-<div class="cp-sidelinks"><p>Outils gratuits</p><a href="index.html#test">Test : votre devis est-il complet ?</a><a href="comparer-ses-devis.html">Tableau comparatif de devis</a><a href="modeles-messages-artisan.html">Modèles de messages</a><a href="checklist-devis-travaux.pdf" download data-goatcounter-click="telechargement-checklist">Check-list à imprimer</a><a href="{NEWS}" target="_blank" rel="noopener" data-goatcounter-click="clic-conseil-du-mois">Le conseil du mois par email</a></div>"""
+<div class="cp-sidelinks"><p>Outils gratuits</p>{DEC_SIDE}<a href="index.html#test">Test : votre devis est-il complet ?</a><a href="comparer-ses-devis.html">Tableau comparatif de devis</a><a href="modeles-messages-artisan.html">Modèles de messages</a><a href="checklist-devis-travaux.pdf" download data-goatcounter-click="telechargement-checklist">Check-list à imprimer</a><a href="{NEWS}" target="_blank" rel="noopener" data-goatcounter-click="clic-conseil-du-mois">Le conseil du mois par email</a></div>"""
 
 def slug_id(t):
     t = t.lower()
@@ -1085,6 +1087,14 @@ page("comparer-ses-devis",
 <p>Pour demander des devis comparables dès le départ : <a href="guide-bien-demander-ses-devis.html">comment bien demander ses devis</a>. Pour écrire aux artisans : <a href="modeles-messages-artisan.html">les modèles de messages</a>.</p>""",
  "Outil gratuit")
 
+if DEC.DECODEUR_URL:
+    page("decodeur-ligne-devis",
+     "Décodeur de ligne de devis de travaux gratuit | Contre-Plan",
+     "Décodeur de ligne de devis",
+     "Collez une ligne de votre devis de travaux : explication en langage simple, points à vérifier et questions à poser à l'artisan avant de signer. Gratuit.",
+     "Une ligne de votre devis vous laisse perplexe ? Collez-la ici : vous saurez ce qu'elle veut dire, ce qu'il faut vérifier et quoi demander à l'artisan avant de signer.",
+     DEC.body(), "Outil gratuit", toc=False)
+
 TPL = [
  ("Demander l'attestation d'assurance décennale",
   "Bonjour,\n\nMerci pour votre devis du [date]. Avant de m'engager, pourriez-vous me transmettre votre attestation d'assurance décennale en cours de validité, couvrant les travaux prévus ([type de travaux]) ?\n\nJe vous remercie par avance.\n\nCordialement,\n[Votre nom]"),
@@ -1124,6 +1134,7 @@ t_cards = "".join(rcard(h_, "Par travaux", t_, d_, "Ce que je vérifie") for h_,
  ("analyse-devis-toiture.html", "Toiture", "Surface, échafaudage, zinguerie, charpente, amiante.")] + [
  (j["slug"] + ".html", j["kicker"], j["card"]) for j in NG.JOB_PAGES])
 o_cards = "".join([
+ (rcard("decodeur-ligne-devis.html", "Outil gratuit", "Décodeur de ligne de devis", "Collez une ligne de votre devis : ce qu'elle veut dire et les questions à poser à l'artisan.", "Décoder une ligne") if DEC.DECODEUR_URL else ""),
  rcard("index.html#test", "Outil gratuit", "Test : votre devis est-il complet ?", "Six questions pour repérer en une minute ce qu'il faut faire préciser.", "Faire le test"),
  rcard("comparer-ses-devis.html", "Outil gratuit", "Tableau comparatif de devis", "Excel et PDF : totaux, TVA, acompte et postes manquants calculés pour vous.", "Télécharger"),
  rcard("modeles-messages-artisan.html", "Outil gratuit", "Modèles de messages à l'artisan", "Huit messages prêts à copier pour demander, négocier ou refuser poliment.", "Voir les modèles"),
