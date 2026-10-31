@@ -6,6 +6,8 @@
 // Variables (Settings > Variables and Secrets du Worker) :
 //   ANTHROPIC_API_KEY  (secret, obligatoire)
 //   MODEL              (texte, facultatif, défaut claude-sonnet-5-5)
+//   TURNSTILE_SECRET   (secret, conseillé) : clé secrète Cloudflare Turnstile. Si elle existe,
+//                      chaque demande doit porter un jeton anti-robot valide émis pour contre-plan.com.
 // Binding facultatif : RL (Rate Limiting, 5 requêtes / 60 s par visiteur), voir wrangler.toml.
 
 const ORIGINS = ["https://contre-plan.com", "https://www.contre-plan.com"];
@@ -97,6 +99,22 @@ export default {
     const travaux = clean(data && data.travaux, MAX_TRAVAUX);
     if (ligne.length < 4) return json({ erreur: "Collez une ligne de votre devis (au moins quelques mots)." }, 400, origin);
     if (ligne.length > MAX_LIGNE) return json({ erreur: `Une seule ligne à la fois, ${MAX_LIGNE} caractères au maximum.` }, 400, origin);
+
+    if (env.TURNSTILE_SECRET) {
+      const jeton = String((data && data.jeton) || "");
+      if (!jeton) return json({ erreur: "Vérification anti-robot manquante. Rechargez la page et réessayez." }, 403, origin);
+      let ok = false;
+      try {
+        const form = new FormData();
+        form.append("secret", env.TURNSTILE_SECRET);
+        form.append("response", jeton);
+        const ip = request.headers.get("CF-Connecting-IP");
+        if (ip) form.append("remoteip", ip);
+        const v = await (await fetch("https://challenges.cloudflare.com/turnstile/v0/siteverify", { method: "POST", body: form })).json();
+        ok = v.success === true && (!v.hostname || ["contre-plan.com", "www.contre-plan.com"].includes(v.hostname));
+      } catch { ok = false; }
+      if (!ok) return json({ erreur: "La vérification anti-robot a échoué. Rechargez la page et réessayez." }, 403, origin);
+    }
 
     const contenu = (travaux ? `Type de travaux indiqué : ${travaux}\n` : "") + `Ligne du devis :\n"""${ligne}"""`;
 
