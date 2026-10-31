@@ -2,7 +2,7 @@
 # Le navigateur appelle le relais Cloudflare (cloudflare/decodeur/worker.js), qui détient la clé API.
 # Tant que DECODEUR_URL est vide, la page affiche « bientôt disponible » et n'est liée nulle part.
 
-DECODEUR_URL = ""  # ex. "https://contre-plan-decodeur.<compte>.workers.dev"
+DECODEUR_URL = "https://contre-plan-decodeur.bitter-heart-1579.workers.dev"
 
 TRAVAUX = ["Salle de bain", "Cuisine", "Électricité", "Plomberie", "Chauffage, pompe à chaleur", "Isolation",
            "Toiture, charpente", "Fenêtres, menuiseries", "Maçonnerie, gros œuvre", "Carrelage, sols",
