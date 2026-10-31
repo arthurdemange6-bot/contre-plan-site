@@ -116,23 +116,31 @@
     });
     return tsLoad.then(function () {
       if (!window.turnstile) return "";
-      if (tsWid === null) { tsBox = document.createElement("div"); log.appendChild(tsBox); tsWid = turnstile.render(tsBox, { sitekey: SITEKEY, appearance: "interaction-only", language: "fr" }); }
-      else { log.appendChild(tsBox); }
+      tsBox = document.createElement("div"); log.appendChild(tsBox);
+      tsWid = turnstile.render(tsBox, { sitekey: SITEKEY, appearance: "interaction-only", language: "fr" });
       return new Promise(function (ok) {
-        var n = 0, t = setInterval(function () { var v = ""; try { v = turnstile.getResponse(tsWid) || ""; } catch (x) {} if (v || ++n > 120) { clearInterval(t); ok(v); } }, 250);
+        var n = 0, t = setInterval(function () {
+          var v = ""; try { v = turnstile.getResponse(tsWid) || ""; } catch (x) {}
+          if (n === 12 && !v && window.cpWait) window.cpWait.textContent = "Petite vérification anti-robot : cochez la case ci-dessous, puis patientez.";
+          if (v || ++n > 240) { clearInterval(t); ok(v); }
+        }, 250);
       });
     });
   }
   function aiAsk(text, done) {
-    var wait = add("Je cherche la réponse…", "bot"), snd = box.querySelector("#cp-send");
+    var wait = window.cpWait = add("Je cherche la réponse…", "bot"), snd = box.querySelector("#cp-send");
     input.disabled = true; snd.disabled = true;
-    var fin = done; done = function (m, ok) { input.disabled = false; snd.disabled = false; fin(m, ok); };
+    var fin = done; done = function (m, ok) {
+      input.disabled = false; snd.disabled = false; window.cpWait = null;
+      try { if (tsWid !== null) turnstile.remove(tsWid); } catch (x) {} tsWid = null; if (tsBox && tsBox.parentNode) tsBox.parentNode.removeChild(tsBox);
+      fin(m, ok);
+    };
     tsReady().then(function (jeton) {
       if (SITEKEY && !jeton) throw 0;
       return fetch(AI_URL, { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ question: text, historique: hist.slice(-6), jeton: jeton }) }).then(function (r) { return r.json(); });
     }).then(function (d) {
-      try { turnstile.reset(tsWid); } catch (x) {}
-      if (!d || d.erreur || d.hors_sujet || !d.reponse) throw 0;
+      if (d && d.hors_sujet) { gc("ia-hors-sujet"); wait.textContent = "Je réponds seulement aux questions sur les devis de travaux et sur l'analyse Contre-Plan. Pour toute autre demande, écrivez-moi par le formulaire de contact."; done(wait, false); return; }
+      if (!d || d.erreur || !d.reponse) throw 0;
       gc("ia-reponse");
       wait.textContent = d.reponse;
       hist.push({ role: "user", texte: text });
@@ -140,7 +148,6 @@
       var n0 = document.createElement("small"); n0.style.cssText = "display:block;margin-top:6px;color:#5b6784;font-size:12px"; n0.textContent = "Réponse automatique à partir des informations du site."; wait.appendChild(n0);
       done(wait, true);
     }).catch(function () {
-      try { turnstile.reset(tsWid); } catch (x) {}
       gc("ia-indisponible");
       wait.textContent = FALLBACK;
       done(wait, false);
