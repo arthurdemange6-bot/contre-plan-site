@@ -87,12 +87,13 @@ h1{font-size:clamp(32px,5.5vw,48px)!important}
 <p class="dec-ex">Pas de devis sous la main ? Essayez un exemple : <button type="button" data-ex="Fourniture et pose receveur extra-plat 90x120 avec paroi fixe, 1 u, 1 280,00 € HT">receveur de douche</button>, <button type="button" data-ex="Main d'œuvre selon temps passé, régie">régie</button>, <button type="button" data-ex="Isolation combles perdus soufflage laine minérale R=7, 60 m²">isolation des combles</button>.</p>
 <label for="dec-travaux">Type de travaux <span style="font-weight:400">(facultatif)</span></label>
 <select id="dec-travaux"><option value="">Choisir…</option><option>Salle de bain</option><option>Cuisine</option><option>Électricité</option><option>Plomberie</option><option>Chauffage, pompe à chaleur</option><option>Isolation</option><option>Toiture, charpente</option><option>Fenêtres, menuiseries</option><option>Maçonnerie, gros œuvre</option><option>Carrelage, sols</option><option>Peinture, plâtrerie</option><option>Façade</option><option>Extension, construction neuve</option><option>Terrasse, extérieurs</option><option>Autre</option></select>
-<div class="dec-row"><button type="submit" class="btn" id="dec-go">Décoder la ligne</button><span class="dec-count" id="dec-count">0 / 400</span></div>
+<div id="dec-ts"></div><div class="dec-row"><button type="submit" class="btn" id="dec-go">Décoder la ligne</button><span class="dec-count" id="dec-count">0 / 400</span></div>
 <p class="dec-note">Ne collez ni votre nom, ni votre adresse, ni le nom de l'entreprise : seule la ligne est utile. Le texte est envoyé à un outil d'intelligence artificielle pour produire l'explication, puis oublié : rien n'est enregistré. <a href="confidentialite.html#quoi">En savoir plus</a>.</p>
 </form>
 <div id="dec-out" aria-live="polite"></div><script>
 (function(){
-var URL_API = "https://contre-plan-decodeur.bitter-heart-1579.workers.dev";
+var URL_API = "https://contre-plan-decodeur.bitter-heart-1579.workers.dev", SITEKEY = "0x4AAAAAAFuFDFliNKSy-7Rr", wid = null;
+window.decTurnstile = function(){ if (SITEKEY && window.turnstile) wid = turnstile.render("#dec-ts", {sitekey: SITEKEY, appearance: "interaction-only", language: "fr"}); };
 var f = document.getElementById('dec-form'); if (!f) return;
 var ta = document.getElementById('dec-ligne'), sel = document.getElementById('dec-travaux'), go = document.getElementById('dec-go'),
     out = document.getElementById('dec-out'), cnt = document.getElementById('dec-count');
@@ -108,9 +109,11 @@ f.addEventListener('submit', function(e){
   e.preventDefault();
   var ligne = ta.value.trim();
   if (ligne.length < 4) { err('Collez une ligne de votre devis (au moins quelques mots).'); return; }
+  var jeton = '';
+  if (SITEKEY) { jeton = (window.turnstile && wid !== null) ? turnstile.getResponse(wid) : ''; if (!jeton) { err('Vérification anti-robot en cours : réessayez dans une seconde.'); return; } }
   go.disabled = true; go.textContent = 'Décodage en cours…'; out.innerHTML = '';
   gc('envoi');
-  fetch(URL_API, {method: 'POST', headers: {'Content-Type': 'application/json'}, body: JSON.stringify({ligne: ligne, travaux: sel.value})})
+  fetch(URL_API, {method: 'POST', headers: {'Content-Type': 'application/json'}, body: JSON.stringify({ligne: ligne, travaux: sel.value, jeton: jeton})})
   .then(function(r){ return r.json().catch(function(){ return {erreur: 'Le décodeur est indisponible pour le moment.'}; }); })
   .then(function(d){
     if (d.erreur) { err(d.erreur); gc('erreur'); return; }
@@ -136,10 +139,10 @@ f.addEventListener('submit', function(e){
     out.innerHTML = ''; out.appendChild(box); box.scrollIntoView({behavior: 'smooth', block: 'start'});
   })
   .catch(function(){ err('Connexion impossible. Vérifiez votre connexion internet et réessayez.'); gc('erreur-reseau'); })
-  .then(function(){ go.disabled = false; go.textContent = 'Décoder la ligne'; });
+  .then(function(){ go.disabled = false; go.textContent = 'Décoder la ligne'; if (SITEKEY && window.turnstile && wid !== null) turnstile.reset(wid); });
 });
 })();
-</script><h2 id="ce-que-fait-le-decodeur">Ce que fait le décodeur</h2>
+</script><script src="https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit&onload=decTurnstile" async defer></script><h2 id="ce-que-fait-le-decodeur">Ce que fait le décodeur</h2>
 <ul><li>Il explique en langage simple ce que la ligne veut dire : ce que l'artisan va faire ou fournir.</li>
 <li>Il dit si la ligne est claire, à faire préciser ou à vérifier avant de signer.</li>
 <li>Il liste les points à contrôler (quantité, unité, matériau, ce qui est inclus ou non) et les questions à poser à l'artisan, prêtes à copier.</li></ul>

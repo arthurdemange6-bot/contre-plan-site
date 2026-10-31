@@ -3,6 +3,7 @@
 # Tant que DECODEUR_URL est vide, la page affiche « bientôt disponible » et n'est liée nulle part.
 
 DECODEUR_URL = "https://contre-plan-decodeur.bitter-heart-1579.workers.dev"
+TURNSTILE_SITEKEY = "0x4AAAAAAFuFDFliNKSy-7Rr"  # clé de site Cloudflare Turnstile (publique). Vide = pas de vérification anti-robot sur la page.
 
 TRAVAUX = ["Salle de bain", "Cuisine", "Électricité", "Plomberie", "Chauffage, pompe à chaleur", "Isolation",
            "Toiture, charpente", "Fenêtres, menuiseries", "Maçonnerie, gros œuvre", "Carrelage, sols",
@@ -35,7 +36,7 @@ FORM = """<form class="dec-form" id="dec-form" novalidate>
 <p class="dec-ex">Pas de devis sous la main ? Essayez un exemple : <button type="button" data-ex="Fourniture et pose receveur extra-plat 90x120 avec paroi fixe, 1 u, 1 280,00 € HT">receveur de douche</button>, <button type="button" data-ex="Main d'œuvre selon temps passé, régie">régie</button>, <button type="button" data-ex="Isolation combles perdus soufflage laine minérale R=7, 60 m²">isolation des combles</button>.</p>
 <label for="dec-travaux">Type de travaux <span style="font-weight:400">(facultatif)</span></label>
 <select id="dec-travaux"><option value="">Choisir…</option>{opts}</select>
-<div class="dec-row"><button type="submit" class="btn" id="dec-go">Décoder la ligne</button><span class="dec-count" id="dec-count">0 / 400</span></div>
+{turnstile}<div class="dec-row"><button type="submit" class="btn" id="dec-go">Décoder la ligne</button><span class="dec-count" id="dec-count">0 / 400</span></div>
 <p class="dec-note">Ne collez ni votre nom, ni votre adresse, ni le nom de l'entreprise : seule la ligne est utile. Le texte est envoyé à un outil d'intelligence artificielle pour produire l'explication, puis oublié : rien n'est enregistré. <a href="confidentialite.html#quoi">En savoir plus</a>.</p>
 </form>
 <div id="dec-out" aria-live="polite"></div>"""
@@ -44,7 +45,8 @@ SOON = """<div class="note"><p><b>Bientôt disponible.</b> Le décodeur est en c
 
 JS = """<script>
 (function(){
-var URL_API = __URL__;
+var URL_API = __URL__, SITEKEY = __SITEKEY__, wid = null;
+window.decTurnstile = function(){ if (SITEKEY && window.turnstile) wid = turnstile.render("#dec-ts", {sitekey: SITEKEY, appearance: "interaction-only", language: "fr"}); };
 var f = document.getElementById('dec-form'); if (!f) return;
 var ta = document.getElementById('dec-ligne'), sel = document.getElementById('dec-travaux'), go = document.getElementById('dec-go'),
     out = document.getElementById('dec-out'), cnt = document.getElementById('dec-count');
@@ -60,9 +62,11 @@ f.addEventListener('submit', function(e){
   e.preventDefault();
   var ligne = ta.value.trim();
   if (ligne.length < 4) { err('Collez une ligne de votre devis (au moins quelques mots).'); return; }
+  var jeton = '';
+  if (SITEKEY) { jeton = (window.turnstile && wid !== null) ? turnstile.getResponse(wid) : ''; if (!jeton) { err('Vérification anti-robot en cours : réessayez dans une seconde.'); return; } }
   go.disabled = true; go.textContent = 'Décodage en cours…'; out.innerHTML = '';
   gc('envoi');
-  fetch(URL_API, {method: 'POST', headers: {'Content-Type': 'application/json'}, body: JSON.stringify({ligne: ligne, travaux: sel.value})})
+  fetch(URL_API, {method: 'POST', headers: {'Content-Type': 'application/json'}, body: JSON.stringify({ligne: ligne, travaux: sel.value, jeton: jeton})})
   .then(function(r){ return r.json().catch(function(){ return {erreur: 'Le décodeur est indisponible pour le moment.'}; }); })
   .then(function(d){
     if (d.erreur) { err(d.erreur); gc('erreur'); return; }
@@ -88,7 +92,7 @@ f.addEventListener('submit', function(e){
     out.innerHTML = ''; out.appendChild(box); box.scrollIntoView({behavior: 'smooth', block: 'start'});
   })
   .catch(function(){ err('Connexion impossible. Vérifiez votre connexion internet et réessayez.'); gc('erreur-reseau'); })
-  .then(function(){ go.disabled = false; go.textContent = 'Décoder la ligne'; });
+  .then(function(){ go.disabled = false; go.textContent = 'Décoder la ligne'; if (SITEKEY && window.turnstile && wid !== null) turnstile.reset(wid); });
 });
 })();
 </script>"""
@@ -108,4 +112,6 @@ def body():
     if not DECODEUR_URL:
         return CSS + SOON + EXPLAIN
     import json
-    return CSS + FORM.replace("{opts}", opts) + JS.replace("__URL__", json.dumps(DECODEUR_URL)) + EXPLAIN
+    ts = ('<div id="dec-ts"></div>' if TURNSTILE_SITEKEY else "")
+    tsjs = ('<script src="https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit&onload=decTurnstile" async defer></script>' if TURNSTILE_SITEKEY else "")
+    return CSS + FORM.replace("{opts}", opts).replace("{turnstile}", ts) + JS.replace("__URL__", json.dumps(DECODEUR_URL)).replace("__SITEKEY__", json.dumps(TURNSTILE_SITEKEY)) + tsjs + EXPLAIN

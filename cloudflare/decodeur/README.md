@@ -10,7 +10,7 @@ Le navigateur du visiteur appelle ce Worker, qui appelle l'API Claude avec la cl
 2. **Cloudflare** (compte gratuit) : Workers & Pages > Create > Worker, nom `contre-plan-decodeur` > Deploy, puis Edit code : remplacer tout le code par `worker.js`, Deploy.
    - Settings > Variables and Secrets > Add : type **Secret**, nom `ANTHROPIC_API_KEY`, valeur = la clé API.
    - Facultatif : variable texte `MODEL` (par défaut `claude-sonnet-5-5`).
-   - Facultatif mais conseillé : binding **Rate limiting** nommé `RL` (5 requêtes par 60 s), ou déploiement avec `npx wrangler deploy` qui lit `wrangler.toml`.
+   - Conseillé : protection anti-robot **Turnstile**. Créer un widget « Décodeur » (mode Managed, hostname contre-plan.com) dans Application security > Turnstile, mettre sa clé de site dans `TURNSTILE_SITEKEY` de `tools/decodeur.py` et sa clé secrète en secret `TURNSTILE_SECRET` du Worker. Le binding Rate limiting de `wrangler.toml` ne se configure qu'en ligne de commande (`npx wrangler deploy`).
 3. Copier l'adresse du Worker (`https://contre-plan-decodeur.<compte>.workers.dev`) dans `DECODEUR_URL` de `tools/decodeur.py`, puis `python3 tools/build.py` : la page `decodeur-ligne-devis.html`, ses liens (page Guides, encadré latéral), le sitemap et la politique de confidentialité sont générés.
 
 ## Sécurité
