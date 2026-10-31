@@ -1,6 +1,8 @@
 import json, html, os, re, sys
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import nouveaux_guides as NG  # guides et pages ajoutés en octobre 2026
+import mentions as MEN  # contrôle des mentions obligatoires (même relais que le décodeur)
+import assistant_kb as AKB  # base de connaissances de l'assistant Claude (assistant-kb.txt)
 import decodeur as DEC  # outil gratuit « Décodeur de ligne de devis » (publié seulement si DEC.DECODEUR_URL est rempli)
 OUT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))  # racine du site
 GC = '<script data-goatcounter="https://contreplan.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>'
@@ -115,7 +117,7 @@ CTA = f'''<aside class="cp-cta-box bp">
 <small>Paiement par carte en 1 minute, sans compte. Rapport PDF sous 48 h, aucun engagement envers l'artisan.</small>
 </aside>'''
 
-DEC_SIDE = '<a href="decodeur-ligne-devis.html">Décodeur de ligne de devis</a>' if DEC.DECODEUR_URL else ""
+DEC_SIDE = '<a href="decodeur-ligne-devis.html">Décodeur de ligne de devis</a><a href="verifier-mentions-devis.html">Contrôle des mentions du devis</a>' if DEC.DECODEUR_URL else ""
 SIDE = f"""<div class="cp-sidecard"><p class="t">Votre devis relu par un ingénieur BTP</p><p>Rapport PDF sous 48 h, prix poste par poste, oublis et questions à poser. Dès {PRIX_TXT}.</p><a class="cp-btn" href="{CMD}" data-goatcounter-click="clic-commander-side">Faire analyser mon devis</a><a class="cp-sublink" href="exemple-rapport-contre-plan.pdf" target="_blank" rel="noopener" data-goatcounter-click="telechargement-exemple-rapport">Voir un exemple de rapport</a></div>
 <div class="cp-sidelinks"><p>Outils gratuits</p>{DEC_SIDE}<a href="index.html#test">Test : votre devis est-il complet ?</a><a href="comparer-ses-devis.html">Tableau comparatif de devis</a><a href="modeles-messages-artisan.html">Modèles de messages</a><a href="checklist-devis-travaux.pdf" download data-goatcounter-click="telechargement-checklist">Check-list à imprimer</a><a href="{NEWS}" target="_blank" rel="noopener" data-goatcounter-click="clic-conseil-du-mois">Le conseil du mois par email</a></div>"""
 
@@ -1094,6 +1096,12 @@ if DEC.DECODEUR_URL:
      "Collez une ligne de votre devis de travaux : explication en langage simple, points à vérifier et questions à poser à l'artisan avant de signer. Gratuit.",
      "Une ligne de votre devis vous laisse perplexe ? Collez-la ici : vous saurez ce qu'elle veut dire, ce qu'il faut vérifier et quoi demander à l'artisan avant de signer.",
      DEC.body(), "Outil gratuit", toc=False)
+    page("verifier-mentions-devis",
+     "Contrôle gratuit des mentions d'un devis de travaux | Contre-Plan",
+     "Contrôle des mentions de votre devis",
+     "Envoyez la photo ou le PDF de votre devis de travaux : vérification gratuite de ses mentions (SIRET, assurance, délai, TVA, déchets, paiement…) et des précisions utiles.",
+     "Envoyez la photo ou le PDF de votre devis : en une trentaine de secondes, vous savez quelles mentions sont présentes, à préciser ou introuvables, et quoi demander à l'artisan.",
+     MEN.body(), "Outil gratuit", toc=False)
 
 TPL = [
  ("Demander l'attestation d'assurance décennale",
@@ -1134,6 +1142,7 @@ t_cards = "".join(rcard(h_, "Par travaux", t_, d_, "Ce que je vérifie") for h_,
  ("analyse-devis-toiture.html", "Toiture", "Surface, échafaudage, zinguerie, charpente, amiante.")] + [
  (j["slug"] + ".html", j["kicker"], j["card"]) for j in NG.JOB_PAGES])
 o_cards = "".join([
+ (rcard("verifier-mentions-devis.html", "Outil gratuit", "Contrôle des mentions du devis", "Envoyez la photo de votre devis : les mentions présentes, incomplètes ou absentes.", "Contrôler mon devis") if DEC.DECODEUR_URL else ""),
  (rcard("decodeur-ligne-devis.html", "Outil gratuit", "Décodeur de ligne de devis", "Collez une ligne de votre devis : ce qu'elle veut dire et les questions à poser à l'artisan.", "Décoder une ligne") if DEC.DECODEUR_URL else ""),
  rcard("index.html#test", "Outil gratuit", "Test : votre devis est-il complet ?", "Six questions pour repérer en une minute ce qu'il faut faire préciser.", "Faire le test"),
  rcard("comparer-ses-devis.html", "Outil gratuit", "Tableau comparatif de devis", "Excel et PDF : totaux, TVA, acompte et postes manquants calculés pour vous.", "Télécharger"),
@@ -1331,6 +1340,7 @@ for _slug, _title, _h1, _desc, _lead, _body in [
 urls = [("", "1.0"), ("guides.html","0.8")] + [(s+".html","0.7") for s,_,_,_ in ARTICLES] + [(s+".html","0.7") for s in PAGES] + [("checklist-devis-travaux.pdf","0.6"),("exemple-rapport-contre-plan.pdf","0.6"),("tableau-comparatif-devis.pdf","0.5")]
 sm = '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n' + "".join(f'  <url><loc>https://contre-plan.com/{u}</loc><lastmod>{LASTMOD.get(u, max([DATE] + list(LASTMOD.values())))}</lastmod><priority>{p}</priority></url>\n' for u,p in urls) + '</urlset>\n'
 open(os.path.join(OUT, "sitemap.xml"), "w").write(sm)
+AKB.build(OUT)
 import subprocess, sys as _s
 subprocess.run([_s.executable, os.path.join(os.path.dirname(os.path.abspath(__file__)), "typo.py"), OUT], check=True)
 print("ok", [a[0] for a in ARTICLES])

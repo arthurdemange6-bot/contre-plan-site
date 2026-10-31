@@ -1,4 +1,4 @@
-/* Contre-Plan – assistant : orientation en 3 questions + FAQ (100 % local ; seuls des compteurs anonymes GoatCounter sont envoyés, aucune réponse saisie) */
+/* Contre-Plan – assistant : orientation en 3 questions + FAQ préparée (dans le navigateur). Une question libre sans réponse préparée est envoyée au relais Cloudflare (route /question), qui répond avec Claude à partir de assistant-kb.txt. Rien n'est enregistré ; seuls des compteurs anonymes GoatCounter sont envoyés. */
 (function () {
   var COMEUP = "/commander.html";
   var BOOK = "https://calendar.app.google/6LCc6yKVHnbvA3WN7";
@@ -106,6 +106,46 @@
   }
   var FALLBACK = "Je n'ai pas de réponse toute prête à cette question. Je vous réponds personnellement sous 24 h par le formulaire de contact. Vous pouvez aussi demander le pré-diagnostic gratuit de votre devis, ou réserver un appel gratuit de 15 min.";
   var ctaShown = false;
+  var AI_URL = "https://contre-plan-decodeur.bitter-heart-1579.workers.dev/question", SITEKEY = "0x4AAAAAAFuFDFliNKSy-7Rr";
+  var hist = [], tsWid = null, tsLoad = null, tsBox = null;
+  function tsReady() {
+    if (!SITEKEY) return Promise.resolve("");
+    if (!tsLoad) tsLoad = new Promise(function (ok) {
+      window.cpTs = function () { ok(); };
+      var sc = document.createElement("script"); sc.src = "https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit&onload=cpTs"; sc.async = true; sc.onerror = function () { ok(); }; document.head.appendChild(sc);
+    });
+    return tsLoad.then(function () {
+      if (!window.turnstile) return "";
+      if (tsWid === null) { tsBox = document.createElement("div"); log.appendChild(tsBox); tsWid = turnstile.render(tsBox, { sitekey: SITEKEY, appearance: "interaction-only", language: "fr" }); }
+      else { log.appendChild(tsBox); }
+      return new Promise(function (ok) {
+        var n = 0, t = setInterval(function () { var v = ""; try { v = turnstile.getResponse(tsWid) || ""; } catch (x) {} if (v || ++n > 120) { clearInterval(t); ok(v); } }, 250);
+      });
+    });
+  }
+  function aiAsk(text, done) {
+    var wait = add("Je cherche la réponse…", "bot"), snd = box.querySelector("#cp-send");
+    input.disabled = true; snd.disabled = true;
+    var fin = done; done = function (m, ok) { input.disabled = false; snd.disabled = false; fin(m, ok); };
+    tsReady().then(function (jeton) {
+      if (SITEKEY && !jeton) throw 0;
+      return fetch(AI_URL, { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ question: text, historique: hist.slice(-6), jeton: jeton }) }).then(function (r) { return r.json(); });
+    }).then(function (d) {
+      try { turnstile.reset(tsWid); } catch (x) {}
+      if (!d || d.erreur || d.hors_sujet || !d.reponse) throw 0;
+      gc("ia-reponse");
+      wait.textContent = d.reponse;
+      hist.push({ role: "user", texte: text });
+      if (d.lien_url && /^\/(?!\/)[A-Za-z0-9._\-\/#]*$/.test(d.lien_url)) { var l = link(d.lien_url, d.lien_texte || "En savoir plus", false); wait.appendChild(document.createElement("br")); wait.appendChild(l); }
+      var n0 = document.createElement("small"); n0.style.cssText = "display:block;margin-top:6px;color:#5b6784;font-size:12px"; n0.textContent = "Réponse automatique à partir des informations du site."; wait.appendChild(n0);
+      done(wait, true);
+    }).catch(function () {
+      try { turnstile.reset(tsWid); } catch (x) {}
+      gc("ia-indisponible");
+      wait.textContent = FALLBACK;
+      done(wait, false);
+    });
+  }
   function focusNext() {
     setTimeout(function () { var w = log.querySelectorAll(".cp-chips"), last = w[w.length - 1]; var f = last && last.parentNode && last.querySelector(".cp-chip"); (f || input).focus({ preventScroll: true }); }, 30);
   }
@@ -130,6 +170,8 @@
     add(text, "user");
     var e = entry || find(text);
     gc(e ? "faq-" + e.q : "faq-sans-reponse");
+    if (!e && AI_URL) { aiAsk(text, function (m, ok) { m0 = m; if (!ok) { sub("/contact.html", "Formulaire de contact"); sub(PREDIAG[0], PREDIAG[1]); sub(BOOK, "Réserver l'appel gratuit de 15 min"); } if (!ctaShown) { ctaShown = true; m.appendChild(document.createElement("br")); m.appendChild(link(COMEUP, "Faire analyser mon devis", true, "clic-commander-chat")); } log.scrollTop = log.scrollHeight; input.focus({ preventScroll: true }); }); return; }
+    if (e) hist.push({ role: "user", texte: text });
     setTimeout(function () {
       var m = m0 = add(e ? e.a : FALLBACK, "bot");
       if (!e) { sub("/contact.html", "Formulaire de contact"); sub(PREDIAG[0], PREDIAG[1]); sub(BOOK, "Réserver l'appel gratuit de 15 min"); }
